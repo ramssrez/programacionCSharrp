@@ -24,6 +24,59 @@ namespace UnidadUnoEA
         static void Main(string[] args)
         {
             Console.WriteLine("hola desde aqui");
+            string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento;
+            Console.Write("Ingresa el nombre del paciente: ");
+            nombre = Console.ReadLine();
+
+            Console.Write("Ingresa el apellido paterno del paciente: ");
+            apellidoPaterno = Console.ReadLine();
+
+            Console.Write("Ingresa el apellido materno del paciente: ");
+            apellidoMaterno = Console.ReadLine();
+
+            Console.Write("Ingresa la fecha de nacimiento del paciente en este formato AAAA/mm/dd: ");
+            fechaNacimiento = Console.ReadLine();
+
+            Console.WriteLine($"{nombre}, {apellidoPaterno} {apellidoMaterno} {fechaNacimiento}");
+            PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento);
+            personaRegistro.ToString();
+
+
+
         }
     }
+
+    class PersonaRegistro
+    {
+        private string nombre;
+        private string apellidoPaterno;
+        private string apellidoMaterno;
+        private string fechaNacimiento;
+        PersonaRegistro()
+        {
+
+        }
+        public PersonaRegistro(string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento)
+        {
+            this.nombre = nombre;
+            this.apellidoPaterno = apellidoPaterno;
+            this.apellidoMaterno = apellidoMaterno;
+            this.fechaNacimiento = fechaNacimiento;
+
+        }
+        public string GetNombre()
+        {
+            return nombre;
+        }
+        public void SetNombre(string nombre)
+        {
+            this.nombre = nombre;
+        }
+        public void ToString()
+        {
+            Console.WriteLine($"El nombre es {nombre}, el apellido P. es: {apellidoPaterno} el apellido materno es {apellidoMaterno} nacimiento {fechaNacimiento}");
+        }
+    }
+         
+
 }
