@@ -45,7 +45,14 @@ namespace UnidadUnoEA
 
             string fechaNacimiento = "30/11/1994";
             string fechaVacunacion = "2021/10/11";
-            Random random = new Random();
+            string nombre = "Raúl";
+            string apellidoPaterno = "Ramírez";
+            string apellidoMaterno = "Pérez";
+            char letraNombre = nombre[0];
+            char letraPaterno = apellidoPaterno[1];
+            char letraMat = apellidoMaterno[2];
+            Console.WriteLine($"Folio Vacunación:{Char.ToUpper(letraNombre)}{Char.ToUpper(letraPaterno)}{Char.ToUpper(letraMat)}-{RandomNumero()}-{RandomLetra()}");
+
 
 
             //var Charsarr = new char[8];
@@ -63,7 +70,7 @@ namespace UnidadUnoEA
             Console.WriteLine($"La edad del paciente es: {edad.TotalDays/365.2425}");
             Console.WriteLine($"La edad del paciente es: {CalcularEdad(fechaNacimiento)}");
             Console.WriteLine($"{RandomNumero()} {RandomLetra()}");
-
+            Console.WriteLine($"Folio{Folio(nombre, apellidoPaterno, apellidoMaterno)}");
 
             //Console.WriteLine("The Date is: " + dateObject.Day + " " + dateObject.Month + " " + dateObject.Year);
 
@@ -125,6 +132,15 @@ namespace UnidadUnoEA
             char[] letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
             char letra = letras[random.Next(0, 26)];
             return letra;
+        }
+        static string Folio(string nombre, string apellidoPaterno, string apellidoMaterno)
+        {
+            string folio;
+            char letraNombre = nombre[0];
+            char letraPaterno = apellidoPaterno[1];
+            char letraMat = apellidoMaterno[2];
+            folio = $"{Char.ToUpper(letraNombre)}{Char.ToUpper(letraPaterno)}{Char.ToUpper(letraMat)}-{RandomNumero()}-{RandomLetra()}";
+            return folio;
         }
     }
 
