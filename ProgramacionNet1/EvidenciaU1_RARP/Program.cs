@@ -73,6 +73,9 @@ namespace UnidadUnoEA
             Console.WriteLine($"Folio{Folio(nombre, apellidoPaterno, apellidoMaterno)}");
 
             //Console.WriteLine("The Date is: " + dateObject.Day + " " + dateObject.Month + " " + dateObject.Year);
+            PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento);
+            personaRegistro.Age = 25;
+            Console.WriteLine(personaRegistro.Age);
 
         }
         static string CalcularEfectividad(string fechaVacunacion)
@@ -150,6 +153,16 @@ namespace UnidadUnoEA
         private string apellidoPaterno;
         private string apellidoMaterno;
         private string fechaNacimiento;
+        private char sexo;
+        private double ingresoMensual;
+        private string correo;
+        private string fechaAplicacion;
+        private string horaAplicacion;
+        private string estadoCivil;
+        private string discapacidad;
+        private int edad;
+        public int Age { get;}
+
         PersonaRegistro()
         {
 
