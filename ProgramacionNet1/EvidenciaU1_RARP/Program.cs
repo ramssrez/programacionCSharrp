@@ -44,10 +44,17 @@ namespace UnidadUnoEA
             */
 
             string fechaNacimiento = "30/11/1994";
-            string fechaVacunacion = "2021/10/11";
+            string fechaVacunacion = "11/10/2021";
             string nombre = "Raúl";
             string apellidoPaterno = "Ramírez";
             string apellidoMaterno = "Pérez";
+            char sexo = 'M';
+            string correo = "ramssrez@gmail.com";
+            string discapacidad = "NO";
+            PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento,sexo,15000.0,correo,fechaVacunacion,"13:30","Casado",discapacidad);
+            personaRegistro.ToString();
+
+            /*
             char letraNombre = nombre[0];
             char letraPaterno = apellidoPaterno[1];
             char letraMat = apellidoMaterno[2];
@@ -76,6 +83,7 @@ namespace UnidadUnoEA
             PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento);
             personaRegistro.Age = 25;
             Console.WriteLine(personaRegistro.Age);
+            */
 
         }
         static string CalcularEfectividad(string fechaVacunacion)
@@ -93,9 +101,6 @@ namespace UnidadUnoEA
             int year = dateNow.Year - dateNacimiento.Year;
             int month = dateNow.Month - dateNacimiento.Month;
             int day = dateNow.Day - dateNacimiento.Day;
-            Console.WriteLine($"meses {month} dias {day} year {year}");
-
-
             //hago la comparación
             if (month < 0)
             {
@@ -149,43 +154,135 @@ namespace UnidadUnoEA
 
     class PersonaRegistro
     {
-        private string nombre;
-        private string apellidoPaterno;
-        private string apellidoMaterno;
-        private string fechaNacimiento;
-        private char sexo;
-        private double ingresoMensual;
-        private string correo;
-        private string fechaAplicacion;
-        private string horaAplicacion;
-        private string estadoCivil;
-        private string discapacidad;
-        private int edad;
-        public int Age { get;}
-
+        public string Nombre { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+        public string FechaNacimiento { get; set; }
+        public char Sexo { get; set; }
+        public double IngresoMensual { get; set; }
+        public string Correo { get; set; }
+        public string FechaAplicacion { get; set; }
+        public string HoraAplicacion { get; set; }
+        public string EstadoCivil { get; set; }
+        public string Discapacidad { get; set; }
+        public int Edad { get; set; }
+        public string FechaEfectivaVacuna { get; set; }
+        public int Impuesto { get; set; }
+        public string Folio { get; set; }
+        public int HoraEjercicio { get; set; }
         PersonaRegistro()
         {
 
         }
         public PersonaRegistro(string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento)
         {
-            this.nombre = nombre;
-            this.apellidoPaterno = apellidoPaterno;
-            this.apellidoMaterno = apellidoMaterno;
-            this.fechaNacimiento = fechaNacimiento;
+            this.Nombre = nombre;
+            this.ApellidoPaterno = apellidoPaterno;
+            this.ApellidoMaterno = apellidoMaterno;
+            this.FechaNacimiento = fechaNacimiento;
 
         }
-        public string GetNombre()
+
+        public PersonaRegistro(string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento, char sexo, double ingresoMensual, string correo, string fechaAplicacion, string horaAplicacion, string estadoCivil, string discapacidad)
         {
-            return nombre;
+            Nombre = nombre;
+            ApellidoMaterno = apellidoMaterno;
+            ApellidoPaterno = apellidoPaterno;
+            FechaNacimiento = fechaNacimiento;
+            Sexo = sexo;
+            IngresoMensual = ingresoMensual;
+            Correo = correo;
+            FechaAplicacion = fechaAplicacion;
+            HoraAplicacion = horaAplicacion;
+            EstadoCivil = estadoCivil;
+            Discapacidad = discapacidad;
+            FechaEfectivaVacuna = CalcularEfectividad(fechaAplicacion);
+            Edad = CalcularEdad(fechaNacimiento);
+            Folio = FolioVacunacion(nombre, apellidoPaterno, apellidoMaterno);
         }
-        public void SetNombre(string nombre)
+        private string CalcularEfectividad(string fechaVacunacion)
         {
-            this.nombre = nombre;
+            DateTime dateVacunacion = DateTime.Parse(fechaVacunacion);
+            DateTime efectividad = dateVacunacion.AddDays(180);
+            return efectividad.ToString("dd/MM/yyyy");
         }
+        private int CalcularEdad(string fechaNacimiento)
+        {
+            DateTime dateNow = DateTime.Now;
+            DateTime dateNacimiento = DateTime.Parse(fechaNacimiento);
+
+            //obtengo la fecha en años, meses y dias
+            int year = dateNow.Year - dateNacimiento.Year;
+            int month = dateNow.Month - dateNacimiento.Month;
+            int day = dateNow.Day - dateNacimiento.Day;
+            //hago la comparación
+            if (month < 0)
+            {
+                //devuelvo la edad en años teniendo en cuenta la diferencia de meses
+                return year - 1;
+            }
+
+            else if (month == 0)
+            {
+                //devuelvo la edad en años teniendo en cuenta la diferencia de días
+
+                if (day >= 0)
+                {
+                    return year;
+                }
+                else
+                {
+                    return year - 1;
+                }
+            }
+
+            else
+            {
+                return year;
+            }
+        }
+        private int RandomNumero()
+        {
+            Random random = new Random();
+            int valor = random.Next(0, 1001);
+            return valor;
+        }
+        private char RandomLetra()
+        {
+            Random random = new Random();
+            char[] letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            char letra = letras[random.Next(0, 26)];
+            return letra;
+        }
+        private string FolioVacunacion(string nombre, string apellidoPaterno, string apellidoMaterno)
+        {
+            string folio;
+            char letraNombre = nombre[0];
+            char letraPaterno = apellidoPaterno[1];
+            char letraMat = apellidoMaterno[2];
+            folio = $"{Char.ToUpper(letraNombre)}{Char.ToUpper(letraPaterno)}{Char.ToUpper(letraMat)}-{RandomNumero()}-{RandomLetra()}";
+            return folio;
+        }
+
         public void ToString()
         {
-            Console.WriteLine($"El nombre es {nombre}, el apellido P. es: {apellidoPaterno} el apellido materno es {apellidoMaterno} nacimiento {fechaNacimiento}");
+            Console.WriteLine("Los datos del paciente e historial de vacunación");
+            Console.WriteLine($"Nombre del paciente: {Nombre}, \n" +
+                $"Apellido Paterno: {ApellidoPaterno} \n" +
+                $"Apellido Materno {ApellidoMaterno} \n" +
+                $"Fecha de Nacimiento: {FechaNacimiento} \n" +
+                $"Sexo: {Sexo} \n" +
+                $"Edad: {Edad}\n" +
+                $"Estado Civil: {EstadoCivil} \n" +
+                $"Ingreso Mensual: ${IngresoMensual} \n" +
+                $"Correo: {Correo} \n" +
+                $"Discapacidad: {Discapacidad} \n" +
+                $"Fecha de aplicación de vacuna: {FechaAplicacion} \n" +
+                $"Hora de aplicación de vacuna: {HoraAplicacion} \n" +
+                $"Fecha efectiva de vacuna: {FechaEfectivaVacuna} \n" +
+                $"Impuesto(1.5%): ${Impuesto} \n" +
+                $"Folio: {Folio} \n" +
+                $"Hora para poder ejercitarse: {HoraEjercicio} \n");
         }
     }
          
