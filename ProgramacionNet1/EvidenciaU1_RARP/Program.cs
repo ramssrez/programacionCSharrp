@@ -23,6 +23,7 @@ namespace UnidadUnoEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
+            /*
             Console.WriteLine("hola desde aqui");
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento;
             Console.Write("Ingresa el nombre del paciente: ");
@@ -40,9 +41,90 @@ namespace UnidadUnoEA
             Console.WriteLine($"{nombre}, {apellidoPaterno} {apellidoMaterno} {fechaNacimiento}");
             PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento);
             personaRegistro.ToString();
+            */
+
+            string fechaNacimiento = "30/11/1994";
+            string fechaVacunacion = "2021/10/11";
+            Random random = new Random();
 
 
+            //var Charsarr = new char[8];
+            //var random = new Random();
+            //Use of DateTime.Parse()   
+            DateTime dateNow = DateTime.Now;
+            DateTime dateNacimiento = DateTime.Parse(fechaNacimiento);
+            DateTime dateVacunacion = DateTime.Parse(fechaVacunacion);
+            DateTime efectividad =  dateVacunacion.AddDays(180);
+            TimeSpan edad = dateNow - dateNacimiento;
+            DateTime totalEdad = new DateTime(edad.Ticks);
 
+
+            Console.WriteLine($"La efectividad de la vacuna es en la fecha: {CalcularEfectividad(fechaVacunacion)}");
+            Console.WriteLine($"La edad del paciente es: {edad.TotalDays/365.2425}");
+            Console.WriteLine($"La edad del paciente es: {CalcularEdad(fechaNacimiento)}");
+            Console.WriteLine($"{RandomNumero()} {RandomLetra()}");
+
+
+            //Console.WriteLine("The Date is: " + dateObject.Day + " " + dateObject.Month + " " + dateObject.Year);
+
+        }
+        static string CalcularEfectividad(string fechaVacunacion)
+        {
+            DateTime dateVacunacion = DateTime.Parse(fechaVacunacion);
+            DateTime efectividad = dateVacunacion.AddDays(180);
+            return efectividad.ToString("yyyy/MM/dd");
+        }
+        static int CalcularEdad(string fechaNacimiento)
+        {
+            DateTime dateNow = DateTime.Now;
+            DateTime dateNacimiento = DateTime.Parse(fechaNacimiento);
+
+            //obtengo la fecha en años, meses y dias
+            int year = dateNow.Year - dateNacimiento.Year;
+            int month = dateNow.Month - dateNacimiento.Month;
+            int day = dateNow.Day - dateNacimiento.Day;
+            Console.WriteLine($"meses {month} dias {day} year {year}");
+
+
+            //hago la comparación
+            if (month < 0)
+            {
+                //devuelvo la edad en años teniendo en cuenta la diferencia de meses
+                return year - 1;
+            }
+
+            else if (month == 0)
+            {
+                //devuelvo la edad en años teniendo en cuenta la diferencia de días
+                
+                if (day>=0)
+                {
+                    return year;
+                }
+                else
+                {
+                    return year - 1;
+                }                
+            }
+
+            else
+            {
+                return year;
+            }
+        }
+
+        static int RandomNumero()
+        {
+            Random random = new Random();
+            int valor = random.Next(0, 1001);
+            return valor;
+        }
+        static char RandomLetra()
+        {
+            Random random = new Random();
+            char[] letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            char letra = letras[random.Next(0, 26)];
+            return letra;
         }
     }
 
