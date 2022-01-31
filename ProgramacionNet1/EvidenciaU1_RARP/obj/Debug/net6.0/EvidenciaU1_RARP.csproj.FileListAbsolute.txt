@@ -1,0 +1,14 @@
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\obj\Debug\net6.0\EvidenciaU1_RARP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\obj\Debug\net6.0\EvidenciaU1_RARP.AssemblyInfoInputs.cache
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\obj\Debug\net6.0\EvidenciaU1_RARP.AssemblyInfo.cs
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\obj\Debug\net6.0\EvidenciaU1_RARP.csproj.CoreCompileInputs.cache
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\bin\Debug\net6.0\EvidenciaU1_RARP.exe
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\bin\Debug\net6.0\EvidenciaU1_RARP.deps.json
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\bin\Debug\net6.0\EvidenciaU1_RARP.runtimeconfig.json
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\bin\Debug\net6.0\EvidenciaU1_RARP.dll
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\bin\Debug\net6.0\ref\EvidenciaU1_RARP.dll
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\bin\Debug\net6.0\EvidenciaU1_RARP.pdb
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\obj\Debug\net6.0\EvidenciaU1_RARP.dll
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\obj\Debug\net6.0\ref\EvidenciaU1_RARP.dll
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\obj\Debug\net6.0\EvidenciaU1_RARP.pdb
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\EvidenciaU1_RARP\obj\Debug\net6.0\EvidenciaU1_RARP.genruntimeconfig.cache

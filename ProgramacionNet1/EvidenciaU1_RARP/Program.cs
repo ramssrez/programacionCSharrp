@@ -1,5 +1,5 @@
 ﻿using System;
-namespace UnidadUnoA3
+namespace UnidadUnoEA
 {
     /*
      * El gobierno de México necesita un programa para registrar a las personas vacunadas de COVID-19, para ello 
@@ -23,7 +23,7 @@ namespace UnidadUnoA3
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            Console.WriteLine("hola desde aqui")
+            Console.WriteLine("hola desde aqui");
         }
     }
 }
