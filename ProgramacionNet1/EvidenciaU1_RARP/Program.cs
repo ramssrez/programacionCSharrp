@@ -249,16 +249,13 @@ namespace UnidadUnoEA
         {
             return ((salario*1.6)/100);
         }
+        //Método que realiza la suma de la hora entrada
         private string CalculoHora(string horavacunacion)
         {
-            var horaEntrada = horavacunacion + ":00";
-            Console.WriteLine(horaEntrada);
-            var horasSuma = "05:00:00";
+            string horaEntrada = horavacunacion + ":00";
+            string horasSuma = "05:00:00";
             TimeSpan tsEntrada = new TimeSpan(Convert.ToInt32(horaEntrada.Split(':')[0]), Convert.ToInt32(horaEntrada.Split(':')[1]), Convert.ToInt32(horaEntrada.Split(':')[2]));
-            TimeSpan tsSuma = new TimeSpan(Convert.ToInt32(horasSuma.Split(':')[0]), Convert.ToInt32(horasSuma.Split(':')[1]), Convert.ToInt32(horasSuma.Split(':')[2]));
-            Console.WriteLine(Math.Truncate((tsEntrada + tsSuma).TotalHours));
-            Console.WriteLine(Math.Truncate((tsEntrada + tsSuma).TotalMinutes));
-            Console.WriteLine(Math.Truncate((tsEntrada + tsSuma).TotalMilliseconds));
+            TimeSpan tsSuma = new TimeSpan(Convert.ToInt32(horasSuma.Split(':')[0]), Convert.ToInt32(horasSuma.Split(':')[1]), Convert.ToInt32(horasSuma.Split(':')[2]));;
             string horaTotal = String.Format("{0}:{1}", Math.Truncate((tsEntrada + tsSuma).TotalHours).ToString("00"), (tsEntrada + tsSuma).Minutes.ToString("00"));
             return horaTotal;
         }
