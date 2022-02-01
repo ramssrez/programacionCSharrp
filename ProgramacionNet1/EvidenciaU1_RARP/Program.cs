@@ -23,9 +23,11 @@ namespace UnidadUnoEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
+            //Declaración de variables
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, fechaVacunacion, horaVacunacion, estadoCivil, discapacidad;
             char sexo;
             double salario;
+            //Impresión y solicitud de datos 
             Console.WriteLine("**********************************************************************************************");
             Console.WriteLine("Bienvenidos al sistema de vacunación, ingresa los siguientes datos del paciente");
             Console.Write("Ingresa el nombre del paciente: ");
@@ -44,31 +46,32 @@ namespace UnidadUnoEA
             correo = Console.ReadLine();
             Console.Write("Ingresa la fecha de vacunación del paciente en el siguiente formato (dd/MM/AAAA): ");
             fechaVacunacion = Console.ReadLine();
-            Console.Write("Ingresa la hora de vacunación del paciente: ");
+            Console.Write("Ingresa la hora de vacunación del paciente(07:00-19:00 hr) ");
             horaVacunacion = Console.ReadLine();
             Console.Write("Ingresa el estado civil del paciente: ");
             estadoCivil = Console.ReadLine();
             Console.Write("El paciente tiene discapacidad? (SI/NO): ");
             discapacidad = Console.ReadLine();
             /*
+             * Datos para pruebas
             fechaNacimiento = "30/11/1994";
             fechaVacunacion = "11/10/2021";
             nombre = "Raúl";
             apellidoPaterno = "Ramírez";
             apellidoMaterno = "Pérez";
             sexo = 'M';
-            correo = "ramssrez@gmail.com";
+            correo = "ejemplo@gmail.com";
             discapacidad = "NO";
             estadoCivil = "Casado";
             salario = 15000.00;
             horaVacuanción = "13:30";
             */
-
+            //Generación de objeto PersonaRegistro creandolo con los datos que agrego el usuario por medio de la consola
             PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo, salario, correo, fechaVacunacion, horaVacunacion, estadoCivil, discapacidad);
             Console.WriteLine("**********************************************************************************************");
+            //Impresión de pantalla de los datos del paciente
             personaRegistro.ToString();
             Console.WriteLine("**********************************************************************************************");
-
         }
 
     }
