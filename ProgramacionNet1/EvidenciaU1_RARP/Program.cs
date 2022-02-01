@@ -52,6 +52,7 @@ namespace UnidadUnoEA
             string correo = "ramssrez@gmail.com";
             string discapacidad = "NO";
             PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento,sexo,15000.0,correo,fechaVacunacion,"13:30","Casado",discapacidad);
+            personaRegistro.HoraEjercicio = "12:00";
             personaRegistro.ToString();
 
             /*
@@ -86,70 +87,7 @@ namespace UnidadUnoEA
             */
 
         }
-        static string CalcularEfectividad(string fechaVacunacion)
-        {
-            DateTime dateVacunacion = DateTime.Parse(fechaVacunacion);
-            DateTime efectividad = dateVacunacion.AddDays(180);
-            return efectividad.ToString("yyyy/MM/dd");
-        }
-        static int CalcularEdad(string fechaNacimiento)
-        {
-            DateTime dateNow = DateTime.Now;
-            DateTime dateNacimiento = DateTime.Parse(fechaNacimiento);
 
-            //obtengo la fecha en años, meses y dias
-            int year = dateNow.Year - dateNacimiento.Year;
-            int month = dateNow.Month - dateNacimiento.Month;
-            int day = dateNow.Day - dateNacimiento.Day;
-            //hago la comparación
-            if (month < 0)
-            {
-                //devuelvo la edad en años teniendo en cuenta la diferencia de meses
-                return year - 1;
-            }
-
-            else if (month == 0)
-            {
-                //devuelvo la edad en años teniendo en cuenta la diferencia de días
-                
-                if (day>=0)
-                {
-                    return year;
-                }
-                else
-                {
-                    return year - 1;
-                }                
-            }
-
-            else
-            {
-                return year;
-            }
-        }
-
-        static int RandomNumero()
-        {
-            Random random = new Random();
-            int valor = random.Next(0, 1001);
-            return valor;
-        }
-        static char RandomLetra()
-        {
-            Random random = new Random();
-            char[] letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-            char letra = letras[random.Next(0, 26)];
-            return letra;
-        }
-        static string Folio(string nombre, string apellidoPaterno, string apellidoMaterno)
-        {
-            string folio;
-            char letraNombre = nombre[0];
-            char letraPaterno = apellidoPaterno[1];
-            char letraMat = apellidoMaterno[2];
-            folio = $"{Char.ToUpper(letraNombre)}{Char.ToUpper(letraPaterno)}{Char.ToUpper(letraMat)}-{RandomNumero()}-{RandomLetra()}";
-            return folio;
-        }
     }
 
     class PersonaRegistro
@@ -167,9 +105,9 @@ namespace UnidadUnoEA
         public string Discapacidad { get; set; }
         public int Edad { get; set; }
         public string FechaEfectivaVacuna { get; set; }
-        public int Impuesto { get; set; }
+        public double Impuesto { get; set; }
         public string Folio { get; set; }
-        public int HoraEjercicio { get; set; }
+        public string HoraEjercicio { get; set; }
         PersonaRegistro()
         {
 
@@ -199,6 +137,7 @@ namespace UnidadUnoEA
             FechaEfectivaVacuna = CalcularEfectividad(fechaAplicacion);
             Edad = CalcularEdad(fechaNacimiento);
             Folio = FolioVacunacion(nombre, apellidoPaterno, apellidoMaterno);
+            Impuesto = ImpuestoVacuna(ingresoMensual);
         }
         private string CalcularEfectividad(string fechaVacunacion)
         {
@@ -263,11 +202,15 @@ namespace UnidadUnoEA
             folio = $"{Char.ToUpper(letraNombre)}{Char.ToUpper(letraPaterno)}{Char.ToUpper(letraMat)}-{RandomNumero()}-{RandomLetra()}";
             return folio;
         }
+        private double ImpuestoVacuna(double salario)
+        {
+            return ((salario*1.6)/100);
+        }
 
         public void ToString()
         {
             Console.WriteLine("Los datos del paciente e historial de vacunación");
-            Console.WriteLine($"Nombre del paciente: {Nombre}, \n" +
+            Console.WriteLine($"Nombre del paciente: {Nombre} \n" +
                 $"Apellido Paterno: {ApellidoPaterno} \n" +
                 $"Apellido Materno {ApellidoMaterno} \n" +
                 $"Fecha de Nacimiento: {FechaNacimiento} \n" +
@@ -285,6 +228,4 @@ namespace UnidadUnoEA
                 $"Hora para poder ejercitarse: {HoraEjercicio} \n");
         }
     }
-         
-
 }
