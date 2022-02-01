@@ -23,6 +23,13 @@ namespace UnidadUnoEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
+           /*
+            string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, fechaAplicacion, horaAplicacion, estadoCivil, discapacidad,;
+            char sexo;
+            double ingreso;
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine("Bienvenidos al sistema de vacunación, ingresa los siguientes datos del paciente");
+           */
             /*
             Console.WriteLine("hola desde aqui");
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento;
@@ -43,6 +50,7 @@ namespace UnidadUnoEA
             personaRegistro.ToString();
             */
 
+            
             string fechaNacimiento = "30/11/1994";
             string fechaVacunacion = "11/10/2021";
             string nombre = "Raúl";
@@ -51,9 +59,24 @@ namespace UnidadUnoEA
             char sexo = 'M';
             string correo = "ramssrez@gmail.com";
             string discapacidad = "NO";
-            PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento,sexo,15000.0,correo,fechaVacunacion,"13:30","Casado",discapacidad);
-            personaRegistro.HoraEjercicio = "12:00";
+            string estadoCivil = "Casado";
+            double salario = 15000.25;
+            string horaVacuanción = "13:30";
+            PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento,sexo,salario,correo,fechaVacunacion,horaVacuanción,estadoCivil,discapacidad);
+            personaRegistro.HoraEjercicio = "13:30" + "12:00";
+
+            var Time1 = "19:30:00";
+            var Time2 = "05:00:00";
+            var TimeSpan1 = new TimeSpan(Convert.ToInt32(Time1.Split(':')[0]), Convert.ToInt32(Time1.Split(':')[1]), Convert.ToInt32(Time1.Split(':')[2]));
+            var TimeSpan2 = new TimeSpan(Convert.ToInt32(Time2.Split(':')[0]), Convert.ToInt32(Time2.Split(':')[1]), Convert.ToInt32(Time2.Split(':')[2]));
+            string Time3 = String.Format("{0}:{1}:{2}", Math.Truncate((TimeSpan1 + TimeSpan2).TotalHours).ToString("00"), (TimeSpan1 + TimeSpan2).Minutes.ToString("00"), (TimeSpan1 + TimeSpan2).Seconds.ToString("00"));
+            //Console.WriteLine((TimeSpan1 + TimeSpan2).TotalHours).ToString("00"));
+            Console.WriteLine(Time3);
+            //personaRegistro.HoraEjercicio = Time3;
             personaRegistro.ToString();
+
+
+
 
             /*
             char letraNombre = nombre[0];
@@ -92,6 +115,7 @@ namespace UnidadUnoEA
 
     class PersonaRegistro
     {
+        //Declaración de variables y métodos getter y setter del objeto PersonaRegistro
         public string Nombre { get; set; }
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
@@ -108,21 +132,15 @@ namespace UnidadUnoEA
         public double Impuesto { get; set; }
         public string Folio { get; set; }
         public string HoraEjercicio { get; set; }
+        //Declaración de constructor vacío de la clase
         PersonaRegistro()
         {
 
         }
-        public PersonaRegistro(string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento)
-        {
-            this.Nombre = nombre;
-            this.ApellidoPaterno = apellidoPaterno;
-            this.ApellidoMaterno = apellidoMaterno;
-            this.FechaNacimiento = fechaNacimiento;
-
-        }
-
+        //Declaración del constructor de la clase con los elementos que se registraron a partir de la consola
         public PersonaRegistro(string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento, char sexo, double ingresoMensual, string correo, string fechaAplicacion, string horaAplicacion, string estadoCivil, string discapacidad)
         {
+            //Asignación de los atributos de la clase con los datos que se ingresaron en la consola
             Nombre = nombre;
             ApellidoMaterno = apellidoMaterno;
             ApellidoPaterno = apellidoPaterno;
@@ -134,79 +152,103 @@ namespace UnidadUnoEA
             HoraAplicacion = horaAplicacion;
             EstadoCivil = estadoCivil;
             Discapacidad = discapacidad;
+            //Asignación de atributos de la clase con métodos que se encuentran dentro de la clase
             FechaEfectivaVacuna = CalcularEfectividad(fechaAplicacion);
             Edad = CalcularEdad(fechaNacimiento);
             Folio = FolioVacunacion(nombre, apellidoPaterno, apellidoMaterno);
             Impuesto = ImpuestoVacuna(ingresoMensual);
         }
+        //Método que permite calcular la efectividad de la vacuna
         private string CalcularEfectividad(string fechaVacunacion)
         {
+            //Tranformación del string de la fecha de vacunación a un tipo DateTime
             DateTime dateVacunacion = DateTime.Parse(fechaVacunacion);
+            //Agregación de los dias efectivos que son 180 días despues de la vacunación con el uso del método AddDays()
             DateTime efectividad = dateVacunacion.AddDays(180);
+            //Retorno de la fecha de efectividad en formato dd/MM/yyyy
             return efectividad.ToString("dd/MM/yyyy");
         }
+        //Método que calcula la edad del paciente con la diferencia de fechas, la fecha actual y la fecha de nacimientos
         private int CalcularEdad(string fechaNacimiento)
         {
+            //Determinación de la fecha actual
             DateTime dateNow = DateTime.Now;
+            //Parseo de la fecha de nacimiento a un tipo DateTime
             DateTime dateNacimiento = DateTime.Parse(fechaNacimiento);
 
-            //obtengo la fecha en años, meses y dias
+            //Obtención del año, meses y dias de la resta entre las fechas
             int year = dateNow.Year - dateNacimiento.Year;
             int month = dateNow.Month - dateNacimiento.Month;
             int day = dateNow.Day - dateNacimiento.Day;
-            //hago la comparación
+            //Comparación de los meses para determinar el número de años con if/else
             if (month < 0)
             {
-                //devuelvo la edad en años teniendo en cuenta la diferencia de meses
+                //Retorno de la edad en años, cuando la diferencia de meses es menor a cero
                 return year - 1;
             }
-
+            //else if para el caso de que los meses sean igual a cero, se verifica la diferencia entre los días
             else if (month == 0)
             {
-                //devuelvo la edad en años teniendo en cuenta la diferencia de días
-
+                //En caso de que los dias son mayores o igual a cero se retorna el año
                 if (day >= 0)
                 {
                     return year;
                 }
                 else
                 {
+                    //En caso contrario se le resta un -1 al año
                     return year - 1;
                 }
             }
-
+            //En caso de las ultimas dos opciones no fueran correctas se retorna el año
             else
             {
                 return year;
             }
         }
+        //Método que permite generar un número aleatorio entre 0 al 1000
         private int RandomNumero()
         {
+            //Declaración de la clase Random
             Random random = new Random();
+            //Declaración del valor a retornar y el rango para generarlos 
             int valor = random.Next(0, 1001);
+            //Retorno del valor generado
             return valor;
         }
+        //Método que permite seleccionar una letra random de un arreglo
         private char RandomLetra()
         {
+            //Declaración de la clase Random
             Random random = new Random();
+            //Declaración del arreglo que contiene las letras del abcedario que vamos a utilizar
             char[] letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            //Selección de las letras random
             char letra = letras[random.Next(0, 26)];
+            //Retorno de la letra seleccioanda
             return letra;
         }
+        //Método que permite generar el folio de vacunación del paciente, en función de su nombre y apellidos
         private string FolioVacunacion(string nombre, string apellidoPaterno, string apellidoMaterno)
         {
             string folio;
+            //Selección de la primera letra del nombre
             char letraNombre = nombre[0];
+            //Seleccion de la segunda letra del apellido paterno
             char letraPaterno = apellidoPaterno[1];
+            //Selección de la tercera letra del apellido materno
             char letraMat = apellidoMaterno[2];
+            //Generación del folio, usando métodos para pasar a mayusculas las letras seleccionadas y los métodos random
             folio = $"{Char.ToUpper(letraNombre)}{Char.ToUpper(letraPaterno)}{Char.ToUpper(letraMat)}-{RandomNumero()}-{RandomLetra()}";
+            //Retorno del folio generado
             return folio;
         }
+        //Método que realiza el calculo del impuesto de la vacuna en función del salario del paciente
         private double ImpuestoVacuna(double salario)
         {
             return ((salario*1.6)/100);
         }
-
+        //Método que permite imprimir los datos de la clase con formato para este caso en especifico
         public void ToString()
         {
             Console.WriteLine("Los datos del paciente e historial de vacunación");
