@@ -63,16 +63,7 @@ namespace UnidadUnoEA
             double salario = 15000.25;
             string horaVacuanción = "13:30";
             PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento,sexo,salario,correo,fechaVacunacion,horaVacuanción,estadoCivil,discapacidad);
-            personaRegistro.HoraEjercicio = "13:30" + "12:00";
 
-            var Time1 = "19:30:00";
-            var Time2 = "05:00:00";
-            var TimeSpan1 = new TimeSpan(Convert.ToInt32(Time1.Split(':')[0]), Convert.ToInt32(Time1.Split(':')[1]), Convert.ToInt32(Time1.Split(':')[2]));
-            var TimeSpan2 = new TimeSpan(Convert.ToInt32(Time2.Split(':')[0]), Convert.ToInt32(Time2.Split(':')[1]), Convert.ToInt32(Time2.Split(':')[2]));
-            string Time3 = String.Format("{0}:{1}:{2}", Math.Truncate((TimeSpan1 + TimeSpan2).TotalHours).ToString("00"), (TimeSpan1 + TimeSpan2).Minutes.ToString("00"), (TimeSpan1 + TimeSpan2).Seconds.ToString("00"));
-            //Console.WriteLine((TimeSpan1 + TimeSpan2).TotalHours).ToString("00"));
-            Console.WriteLine(Time3);
-            //personaRegistro.HoraEjercicio = Time3;
             personaRegistro.ToString();
 
 
@@ -84,7 +75,16 @@ namespace UnidadUnoEA
             char letraMat = apellidoMaterno[2];
             Console.WriteLine($"Folio Vacunación:{Char.ToUpper(letraNombre)}{Char.ToUpper(letraPaterno)}{Char.ToUpper(letraMat)}-{RandomNumero()}-{RandomLetra()}");
 
+                        personaRegistro.HoraEjercicio = "13:30" + "12:00";
 
+            var Time1 = "19:30:00";
+            var Time2 = "05:00:00";
+            var TimeSpan1 = new TimeSpan(Convert.ToInt32(Time1.Split(':')[0]), Convert.ToInt32(Time1.Split(':')[1]), Convert.ToInt32(Time1.Split(':')[2]));
+            var TimeSpan2 = new TimeSpan(Convert.ToInt32(Time2.Split(':')[0]), Convert.ToInt32(Time2.Split(':')[1]), Convert.ToInt32(Time2.Split(':')[2]));
+            string Time3 = String.Format("{0}:{1}:{2}", Math.Truncate((TimeSpan1 + TimeSpan2).TotalHours).ToString("00"), (TimeSpan1 + TimeSpan2).Minutes.ToString("00"), (TimeSpan1 + TimeSpan2).Seconds.ToString("00"));
+            //Console.WriteLine((TimeSpan1 + TimeSpan2).TotalHours).ToString("00"));
+            Console.WriteLine(Time3);
+            //personaRegistro.HoraEjercicio = Time3;
 
             //var Charsarr = new char[8];
             //var random = new Random();
@@ -157,6 +157,7 @@ namespace UnidadUnoEA
             Edad = CalcularEdad(fechaNacimiento);
             Folio = FolioVacunacion(nombre, apellidoPaterno, apellidoMaterno);
             Impuesto = ImpuestoVacuna(ingresoMensual);
+            HoraEjercicio = CalculoHora(horaAplicacion);
         }
         //Método que permite calcular la efectividad de la vacuna
         private string CalcularEfectividad(string fechaVacunacion)
@@ -248,6 +249,19 @@ namespace UnidadUnoEA
         {
             return ((salario*1.6)/100);
         }
+        private string CalculoHora(string horavacunacion)
+        {
+            var horaEntrada = horavacunacion + ":00";
+            Console.WriteLine(horaEntrada);
+            var horasSuma = "05:00:00";
+            TimeSpan tsEntrada = new TimeSpan(Convert.ToInt32(horaEntrada.Split(':')[0]), Convert.ToInt32(horaEntrada.Split(':')[1]), Convert.ToInt32(horaEntrada.Split(':')[2]));
+            TimeSpan tsSuma = new TimeSpan(Convert.ToInt32(horasSuma.Split(':')[0]), Convert.ToInt32(horasSuma.Split(':')[1]), Convert.ToInt32(horasSuma.Split(':')[2]));
+            Console.WriteLine(Math.Truncate((tsEntrada + tsSuma).TotalHours));
+            Console.WriteLine(Math.Truncate((tsEntrada + tsSuma).TotalMinutes));
+            Console.WriteLine(Math.Truncate((tsEntrada + tsSuma).TotalMilliseconds));
+            string horaTotal = String.Format("{0}:{1}", Math.Truncate((tsEntrada + tsSuma).TotalHours).ToString("00"), (tsEntrada + tsSuma).Minutes.ToString("00"));
+            return horaTotal;
+        }
         //Método que permite imprimir los datos de la clase con formato para este caso en especifico
         public void ToString()
         {
@@ -263,11 +277,11 @@ namespace UnidadUnoEA
                 $"Correo: {Correo} \n" +
                 $"Discapacidad: {Discapacidad} \n" +
                 $"Fecha de aplicación de vacuna: {FechaAplicacion} \n" +
-                $"Hora de aplicación de vacuna: {HoraAplicacion} \n" +
+                $"Hora de aplicación de vacuna: {HoraAplicacion} hr\n" +
                 $"Fecha efectiva de vacuna: {FechaEfectivaVacuna} \n" +
                 $"Impuesto(1.5%): ${Impuesto} \n" +
                 $"Folio: {Folio} \n" +
-                $"Hora para poder ejercitarse: {HoraEjercicio} \n");
+                $"Hora para poder ejercitarse: {HoraEjercicio} hr\n");
         }
     }
 }
