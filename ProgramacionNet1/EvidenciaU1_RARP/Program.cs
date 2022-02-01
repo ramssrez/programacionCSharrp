@@ -23,91 +23,51 @@ namespace UnidadUnoEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-           /*
-            string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, fechaAplicacion, horaAplicacion, estadoCivil, discapacidad,;
+            string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, fechaVacunacion, horaVacunacion, estadoCivil, discapacidad;
             char sexo;
-            double ingreso;
+            double salario;
             Console.WriteLine("**********************************************************************************************");
             Console.WriteLine("Bienvenidos al sistema de vacunación, ingresa los siguientes datos del paciente");
-           */
-            /*
-            Console.WriteLine("hola desde aqui");
-            string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento;
             Console.Write("Ingresa el nombre del paciente: ");
             nombre = Console.ReadLine();
-
             Console.Write("Ingresa el apellido paterno del paciente: ");
             apellidoPaterno = Console.ReadLine();
-
             Console.Write("Ingresa el apellido materno del paciente: ");
             apellidoMaterno = Console.ReadLine();
-
-            Console.Write("Ingresa la fecha de nacimiento del paciente en este formato AAAA/mm/dd: ");
+            Console.Write("Ingresa la fecha de nacimiento del paciente en el siguiente formato (dd/MM/AAAA): ");
             fechaNacimiento = Console.ReadLine();
-
-            Console.WriteLine($"{nombre}, {apellidoPaterno} {apellidoMaterno} {fechaNacimiento}");
-            PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento);
-            personaRegistro.ToString();
-            */
-
-            
-            string fechaNacimiento = "30/11/1994";
-            string fechaVacunacion = "11/10/2021";
-            string nombre = "Raúl";
-            string apellidoPaterno = "Ramírez";
-            string apellidoMaterno = "Pérez";
-            char sexo = 'M';
-            string correo = "ramssrez@gmail.com";
-            string discapacidad = "NO";
-            string estadoCivil = "Casado";
-            double salario = 15000.25;
-            string horaVacuanción = "13:30";
-            PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento,sexo,salario,correo,fechaVacunacion,horaVacuanción,estadoCivil,discapacidad);
-
-            personaRegistro.ToString();
-
-
-
-
+            Console.Write("Ingresa el sexo del paciente en el siguiente formato(M/F): ");
+            sexo = Char.Parse(Console.ReadLine());
+            Console.Write("Ingresa el salario del paciente: ");
+            salario = Double.Parse(Console.ReadLine());
+            Console.Write("Ingresa el correo del paciente ");
+            correo = Console.ReadLine();
+            Console.Write("Ingresa la fecha de vacunación del paciente en el siguiente formato (dd/MM/AAAA): ");
+            fechaVacunacion = Console.ReadLine();
+            Console.Write("Ingresa la hora de vacunación del paciente: ");
+            horaVacunacion = Console.ReadLine();
+            Console.Write("Ingresa el estado civil del paciente: ");
+            estadoCivil = Console.ReadLine();
+            Console.Write("El paciente tiene discapacidad? (SI/NO): ");
+            discapacidad = Console.ReadLine();
             /*
-            char letraNombre = nombre[0];
-            char letraPaterno = apellidoPaterno[1];
-            char letraMat = apellidoMaterno[2];
-            Console.WriteLine($"Folio Vacunación:{Char.ToUpper(letraNombre)}{Char.ToUpper(letraPaterno)}{Char.ToUpper(letraMat)}-{RandomNumero()}-{RandomLetra()}");
-
-                        personaRegistro.HoraEjercicio = "13:30" + "12:00";
-
-            var Time1 = "19:30:00";
-            var Time2 = "05:00:00";
-            var TimeSpan1 = new TimeSpan(Convert.ToInt32(Time1.Split(':')[0]), Convert.ToInt32(Time1.Split(':')[1]), Convert.ToInt32(Time1.Split(':')[2]));
-            var TimeSpan2 = new TimeSpan(Convert.ToInt32(Time2.Split(':')[0]), Convert.ToInt32(Time2.Split(':')[1]), Convert.ToInt32(Time2.Split(':')[2]));
-            string Time3 = String.Format("{0}:{1}:{2}", Math.Truncate((TimeSpan1 + TimeSpan2).TotalHours).ToString("00"), (TimeSpan1 + TimeSpan2).Minutes.ToString("00"), (TimeSpan1 + TimeSpan2).Seconds.ToString("00"));
-            //Console.WriteLine((TimeSpan1 + TimeSpan2).TotalHours).ToString("00"));
-            Console.WriteLine(Time3);
-            //personaRegistro.HoraEjercicio = Time3;
-
-            //var Charsarr = new char[8];
-            //var random = new Random();
-            //Use of DateTime.Parse()   
-            DateTime dateNow = DateTime.Now;
-            DateTime dateNacimiento = DateTime.Parse(fechaNacimiento);
-            DateTime dateVacunacion = DateTime.Parse(fechaVacunacion);
-            DateTime efectividad =  dateVacunacion.AddDays(180);
-            TimeSpan edad = dateNow - dateNacimiento;
-            DateTime totalEdad = new DateTime(edad.Ticks);
-
-
-            Console.WriteLine($"La efectividad de la vacuna es en la fecha: {CalcularEfectividad(fechaVacunacion)}");
-            Console.WriteLine($"La edad del paciente es: {edad.TotalDays/365.2425}");
-            Console.WriteLine($"La edad del paciente es: {CalcularEdad(fechaNacimiento)}");
-            Console.WriteLine($"{RandomNumero()} {RandomLetra()}");
-            Console.WriteLine($"Folio{Folio(nombre, apellidoPaterno, apellidoMaterno)}");
-
-            //Console.WriteLine("The Date is: " + dateObject.Day + " " + dateObject.Month + " " + dateObject.Year);
-            PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento);
-            personaRegistro.Age = 25;
-            Console.WriteLine(personaRegistro.Age);
+            fechaNacimiento = "30/11/1994";
+            fechaVacunacion = "11/10/2021";
+            nombre = "Raúl";
+            apellidoPaterno = "Ramírez";
+            apellidoMaterno = "Pérez";
+            sexo = 'M';
+            correo = "ramssrez@gmail.com";
+            discapacidad = "NO";
+            estadoCivil = "Casado";
+            salario = 15000.00;
+            horaVacuanción = "13:30";
             */
+
+            PersonaRegistro personaRegistro = new PersonaRegistro(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo, salario, correo, fechaVacunacion, horaVacunacion, estadoCivil, discapacidad);
+            Console.WriteLine("**********************************************************************************************");
+            personaRegistro.ToString();
+            Console.WriteLine("**********************************************************************************************");
 
         }
 
@@ -254,9 +214,12 @@ namespace UnidadUnoEA
         {
             string horaEntrada = horavacunacion + ":00";
             string horasSuma = "05:00:00";
+            //Creación de objetos de tipo TimeSpan agregando las partes del string de horas, donde se diferencia con ":" y se convierte a un entero 
             TimeSpan tsEntrada = new TimeSpan(Convert.ToInt32(horaEntrada.Split(':')[0]), Convert.ToInt32(horaEntrada.Split(':')[1]), Convert.ToInt32(horaEntrada.Split(':')[2]));
             TimeSpan tsSuma = new TimeSpan(Convert.ToInt32(horasSuma.Split(':')[0]), Convert.ToInt32(horasSuma.Split(':')[1]), Convert.ToInt32(horasSuma.Split(':')[2]));;
+            //Asignación de la suma de las horas con el formato de horas y minutosm además de truncar la suma de horarios y con un formato específico
             string horaTotal = String.Format("{0}:{1}", Math.Truncate((tsEntrada + tsSuma).TotalHours).ToString("00"), (tsEntrada + tsSuma).Minutes.ToString("00"));
+            //Retorno de la hora para realizar ejercicio
             return horaTotal;
         }
         //Método que permite imprimir los datos de la clase con formato para este caso en especifico
