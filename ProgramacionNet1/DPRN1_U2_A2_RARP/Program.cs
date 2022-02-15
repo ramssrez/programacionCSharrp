@@ -32,7 +32,7 @@ namespace UnidadDosA2
             }
             //Llamado a los métodos para la impresión de los datos ingresados 
             listaCiudad(ciudades);
-            listaNumeros(numeros);
+            calculadoraNumeros(numeros);
         }
         //Método que lista las ciudades de un arreglo, no retorna valores
         public static void listaCiudad(string [] ciudades)
@@ -46,18 +46,20 @@ namespace UnidadDosA2
             }
             Console.WriteLine("**********************************************************************************************");
         }
-        //Método que lista los numeros de un arreglo, no retorna valores
-        public static void listaNumeros(int[] numeros)
+        //Método que realiza la calculadora de tres números que son ingresados por medio de un arreglo
+        public static void calculadoraNumeros(int[] numeros)
         {
+            //Declaración de variables y realización de la operación.
+            int suma = numeros[0] + numeros[1] + numeros[2];
+            int resta = numeros[0] - numeros[1] - numeros[2];
+            int multi = numeros[0] * numeros[1] * numeros[2];
+            //Impresión de los resultados
             Console.WriteLine("**********************************************************************************************");
-            Console.WriteLine("Los numeros son los siguientes");
-            //Uso de sentencia for para poder imprimir los numeros
-            for (int i = 0; i < numeros.Length; i++)
-            {
-                Console.WriteLine($"El número {i + 1} es: {numeros[i]}");
-            }
+            Console.WriteLine("Las operaciones son los siguientes: ");
+            Console.WriteLine($"La suma es: {suma}");
+            Console.WriteLine($"La resta es: {resta}");
+            Console.WriteLine($"La multiplicación es: {multi}");
             Console.WriteLine("**********************************************************************************************");
         }
-
     }
 }
