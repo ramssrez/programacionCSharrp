@@ -5,6 +5,11 @@
       "ProjectGuid": "7006bef1-0e23-45a4-b19e-71840b3c3007",
       "DisplayName": "EvidenciaU1_RARP",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 1
