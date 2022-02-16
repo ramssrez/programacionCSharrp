@@ -16,7 +16,8 @@ namespace UnidadDosA3
             double RadioTierra = 6372.795477598;
             double DeltaLongitud = LongitudDos - LongitudUno;
             double DeltaLatitud = LatitudDos - LatitudUno;
-            //double area = Base * Altura;
+            double PastoNatural =1000.0 ;
+            double PastoArtificial = 3500.0;
             Console.WriteLine($"Base: {Base}");
             Console.WriteLine($"Altura: {Altura}");
             Console.WriteLine($"Long 1: {LongitudUno}");
@@ -28,6 +29,7 @@ namespace UnidadDosA3
             Console.WriteLine($"Delta lati: {CalculoDelta(LatitudUno,LatitudDos)}");
             Console.WriteLine($"Area: {CalculoArea(Base, Altura)} [m*m]");
             Console.WriteLine($"Distancia: {CalculoDistancia(LatitudUno,LatitudDos,LongitudUno,LongitudDos)}[m]");
+            CostoTotal(PastoNatural,Base,Altura,LatitudUno,LatitudDos,LongitudUno,LongitudDos);
         }
         public static double CalculoDelta(double ValorUno, double ValorDos)
         {
@@ -55,8 +57,16 @@ namespace UnidadDosA3
             D = A + C;
             Raiz = Math.Sqrt(D);
             Distancia = 2 * RadioTierra*Math.Asin(Raiz);
-            Console.WriteLine($"ArcoSin {Math.Asin(Raiz)}");
             return Distancia;
+        }
+        public static void CostoTotal(double TipoPasto, double Base, double Longitud, double LatitudUno, double LatitudDos, double LongitudUno, double LongitudDos)
+        {
+            double CostoDistancia = 40.0;
+            double Area, Distancia, Costo;
+            Area = CalculoArea(Base, Longitud);
+            Distancia = CalculoDistancia(LatitudUno, LatitudDos , LongitudUno, LongitudDos);
+            Costo = ((TipoPasto * Area)+(CostoDistancia*Distancia)) * (0.20);
+            Console.WriteLine($"El costo es: {Costo}");
         }
     }
 }
