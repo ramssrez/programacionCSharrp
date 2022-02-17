@@ -6,17 +6,13 @@ namespace UnidadDosA3
     {
         //Comienzo de la función principal en C#
         static void Main(string[] args)
-        {
-            //double Base = 20;
-            //double Altura = 15;
-            //double LongitudDos = -99.068316;
-            //double LatitudDos = 19.462441;
-            //double PastoNatural = 1000.0 ;
-            //double PastoArtificial = 3500.0;
+        {            
+            //Llamado el método que realiza la presentación del programa
             Presentacion();
         }
         public static void Presentacion()
         {
+            //Declaración de las variables a utilizar
             double Base;
             double Largo;
             double LongitudDos;
@@ -26,6 +22,7 @@ namespace UnidadDosA3
             string Natural = "Natural";
             string Artificial = "Artificial";
             int Tipo;
+            //Impresión y recolección de la información que se necesita para poder realizar los calculos necesarias.
             Console.WriteLine("**********************************************************************************************");
             Console.WriteLine("Bienvenidos a Ponemos Pasto, ingresa los siguientes datos para calcular el presupuesto de las cancha");
             Console.WriteLine(" ");
@@ -40,16 +37,21 @@ namespace UnidadDosA3
             LatitudDos = double.Parse(Console.ReadLine());
             Console.Write("Ingresa 1 para el pasto natural y 2 para el pasto artificial: ");
             Tipo = int.Parse(Console.ReadLine());
+            
+            //Sentencia if else para los tipos de pasto para la cotización
             if (Tipo == 1)
             {
+                //Llamado al método del costo total con los datos ingresados
                 CostoTotal(PASTONATURAL, Base, Largo, LatitudDos, LongitudDos, Natural);
             }
             else if(Tipo == 2)
             {
+                //Llamado al método del costo total con los datos ingresados
                 CostoTotal(PASTOARIFICIAL, Base, Largo, LatitudDos, LongitudDos, Artificial);
             }
             else
             {
+                //Impresión de advertencia para el caso de que no se ingrese el tipo de pasto
                 Console.WriteLine("**********************************************************************************************");
                 Console.WriteLine("El ingreso de datos no fueron ingreados correctamente");
                 Console.WriteLine("**********************************************************************************************");
