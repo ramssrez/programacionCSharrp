@@ -7,17 +7,54 @@ namespace UnidadDosA3
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            double Base = 20;
-            double Altura = 15;
-            double LongitudUno = - 99.1068475;
-            double LatitudUno = 19.3041477;
-            double LongitudDos = -99.068316;
-            double LatitudDos = 19.462441;
-            double PastoNatural = 1000.0 ;
-            double PastoArtificial = 3500.0;
-            CostoTotal(PastoNatural,Base,Altura,LatitudUno,LatitudDos,LongitudUno,LongitudDos,"Natural");
+            //double Base = 20;
+            //double Altura = 15;
+            //double LongitudDos = -99.068316;
+            //double LatitudDos = 19.462441;
+            //double PastoNatural = 1000.0 ;
+            //double PastoArtificial = 3500.0;
+            Presentacion();
         }
-
+        public static void Presentacion()
+        {
+            double Base;
+            double Largo;
+            double LongitudDos;
+            double LatitudDos;
+            double PASTONATURAL = 1000.0;
+            double PASTOARIFICIAL = 3500.0;
+            string Natural = "Natural";
+            string Artificial = "Artificial";
+            int Tipo;
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine("Bienvenidos a Ponemos Pasto, ingresa los siguientes datos para calcular el presupuesto de las cancha");
+            Console.WriteLine(" ");
+            Console.WriteLine("Ingresa las siguientes datos de la cancha: ");
+            Console.Write("Ingresa la base de la cancha: ");
+            Base = double.Parse(Console.ReadLine());
+            Console.Write("Ingresa el largo de la cancha: ");
+            Largo = double.Parse(Console.ReadLine());
+            Console.Write("Ingresa la longitud de localización de la cancha: ");
+            LongitudDos = double.Parse(Console.ReadLine());
+            Console.Write("Ingresa la latitud de la localización de la cancha: ");
+            LatitudDos = double.Parse(Console.ReadLine());
+            Console.Write("Ingresa 1 para el pasto natural y 2 para el pasto artificial: ");
+            Tipo = int.Parse(Console.ReadLine());
+            if (Tipo == 1)
+            {
+                CostoTotal(PASTONATURAL, Base, Largo, LatitudDos, LongitudDos, Natural);
+            }
+            else if(Tipo == 2)
+            {
+                CostoTotal(PASTOARIFICIAL, Base, Largo, LatitudDos, LongitudDos, Artificial);
+            }
+            else
+            {
+                Console.WriteLine("**********************************************************************************************");
+                Console.WriteLine("El ingreso de datos no fueron ingreados correctamente");
+                Console.WriteLine("**********************************************************************************************");
+            }
+        }
         //Método que realiza el cálculo de la diferencia de dos valores, se necesita de dos valores y retorna la resta
         public static double CalculoDelta(double ValorUno, double ValorDos)
         {
@@ -68,9 +105,9 @@ namespace UnidadDosA3
         }
 
         //Método que calcula el costo total con el ingreso de las longitudes y latitudes de los puntos, la base, la longitud y el costo del pasto y el tipo.
-        public static void CostoTotal(double TipoPastoCosto, double Base, double Longitud, double LatitudUno, double LatitudDos, double LongitudUno, double LongitudDos, string TipoPasto)
+        public static void CostoTotal(double TipoPastoCosto, double Base, double Longitud, double LatitudDos, double LongitudDos, string TipoPasto)
         {
-            Console.WriteLine("*******************************************************************************");
+            Console.WriteLine("**********************************************************************************************");
             //Declaración de la constante de la distancia
             double COSTODISTANCIA = 40.0;
             //Declaración de variables para utilizar
@@ -96,8 +133,7 @@ namespace UnidadDosA3
             Console.WriteLine($"El costo del material de 5% es: ${CostoCinco}");
             Console.WriteLine($" ");
             Console.WriteLine($"El costo total de instalación: ${CostoSumado}");
-            Console.WriteLine("*******************************************************************************");
+            Console.WriteLine("**********************************************************************************************");
         }
     }
 }
-//
