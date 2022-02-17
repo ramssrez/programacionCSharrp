@@ -130,7 +130,7 @@ namespace UnidadDosA3
             //Impresión del desglose de los gastos generales y desglose.
             Console.WriteLine($"El costo del pasto fue: ${TipoPastoCosto} por metro cuadrado de tipo {TipoPasto}");
             Console.WriteLine($"La área fue {Area}[m^2] con un costo: ${CostoPasto}");
-            Console.WriteLine($"El costo del trasporte es ${COSTODISTANCIA} y {Distancia}[m]: ${CostoDistanciaTotal}");
+            Console.WriteLine($"El costo del trasporte es ${COSTODISTANCIA} y distancia de {Distancia}[m]: ${CostoDistanciaTotal}");
             Console.WriteLine($"El costo de instalación del 15% es: ${CostoQuince}");
             Console.WriteLine($"El costo del material de 5% es: ${CostoCinco}");
             Console.WriteLine($" ");
