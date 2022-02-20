@@ -8,11 +8,11 @@ namespace UnidadDosEA
         static void Main(string[] args)
         {
             //Llamado el método que realiza la presentación del programa
-            //Presentacion();
+            Presentacion();
         }
         public static void Presentacion()
         {
-
+            IngresoDatosUsuario();
         }
         public static void IngresoDatosUsuario()
         {
@@ -21,8 +21,29 @@ namespace UnidadDosEA
             cliente.Nombre = Console.ReadLine();
             Console.WriteLine("Ingrese la clave del cliente: ");
             cliente.Clave = Console.ReadLine();
-            Console.WriteLine("Ingrese el tipo de cliente (Standart, Priority, Premium): ");
-            cliente.Nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese el tipo de cliente (Standart, Priority o Premium): ");
+            cliente.TipoCliente = Console.ReadLine();
+            Console.WriteLine("Ingrese el monto del cliente: ");
+            cliente.Monto = int.Parse(Console.ReadLine());
+            DeterminarTipoCliente(cliente);
+        }
+        public static Cliente DeterminarTipoCliente(Cliente cliente)
+        {
+            if (cliente.TipoCliente == "Standart")
+            {
+                cliente.CantidadDepositos = 3;
+                cliente.CantidadRetiros = 2;
+            }else if (cliente.TipoCliente == "Priority")
+            {
+                cliente.CantidadDepositos = 5;
+                cliente.CantidadRetiros = 4;
+            }
+            else if (cliente.TipoCliente == "Premium")
+            {
+                cliente.CantidadDepositos = 8;
+                cliente.CantidadRetiros = 8;
+            }
+            return cliente;
         }
         public static void MostrarInformacionUsuario()
         {
@@ -45,8 +66,8 @@ namespace UnidadDosEA
     {
         public string Nombre { get; set; }
         public string Clave { get; set;}
-        public string  TipoCliente { get;}
-        public string TipoOperacion { get;}
+        public string  TipoCliente { get; set; }
+        public string TipoOperacion { get; set; }
         public double Monto { get; set;}
         public int CantidadDepositos { get; set; }
         public int CantidadRetiros { get; set; }
