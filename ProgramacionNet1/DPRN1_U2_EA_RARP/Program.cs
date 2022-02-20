@@ -12,20 +12,22 @@ namespace UnidadDosEA
         }
         public static void Presentacion()
         {
-            IngresoDatosUsuario();
-        }
-        public static void IngresoDatosUsuario()
-        {
             Cliente cliente = new Cliente();
-            Console.WriteLine("Ingrese el nombre del cliente: ");
+            IngresoDatosUsuario(cliente);
+            
+        }
+        public static void IngresoDatosUsuario(Cliente cliente)
+        {
+            Console.Write("Ingrese el nombre del cliente: ");
             cliente.Nombre = Console.ReadLine();
-            Console.WriteLine("Ingrese la clave del cliente: ");
+            Console.Write("Ingrese la clave del cliente: ");
             cliente.Clave = Console.ReadLine();
-            Console.WriteLine("Ingrese el tipo de cliente (Standart, Priority o Premium): ");
+            Console.Write("Ingrese el tipo de cliente (Standart, Priority o Premium): ");
             cliente.TipoCliente = Console.ReadLine();
-            Console.WriteLine("Ingrese el monto del cliente: ");
-            cliente.Monto = int.Parse(Console.ReadLine());
+            Console.Write("Ingrese el monto del cliente: ");
+            cliente.Monto = double.Parse(Console.ReadLine());
             DeterminarTipoCliente(cliente);
+            cliente.ToString();
         }
         public static Cliente DeterminarTipoCliente(Cliente cliente)
         {
