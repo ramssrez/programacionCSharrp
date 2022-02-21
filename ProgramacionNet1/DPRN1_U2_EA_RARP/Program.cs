@@ -12,11 +12,10 @@ namespace UnidadDosEA
         }
         public static void Presentacion()
         {
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine("Bienvenidos al sistema bancario, selecciona alguna opción del menú");
             Cliente cliente = new Cliente();
-            
-
             bool salir = false;
-
             while (!salir)
             {
                 Console.WriteLine("1. Ingresar los datos del usuario");
@@ -25,7 +24,7 @@ namespace UnidadDosEA
                 Console.WriteLine("4. Realizar retiros a la cuenta");
                 Console.WriteLine("5. Mostrar monto de la cuenta");
                 Console.WriteLine("6. Salir");
-                Console.WriteLine("Elige una de las opciones");
+                Console.Write("Ingresa una opción: ");
                 int opcion = Convert.ToInt32(Console.ReadLine());
 
                 switch (opcion)
@@ -60,6 +59,7 @@ namespace UnidadDosEA
                          Console.WriteLine("Elige una opcion entre 1 y 6");
                         break;
                 }
+                System
             }    
         }
         public static void IngresoDatosUsuario(Cliente cliente)
@@ -76,16 +76,16 @@ namespace UnidadDosEA
         }
         public static Cliente DeterminarTipoCliente(Cliente cliente)
         {
-            if (cliente.TipoCliente == "Standart")
+            if (cliente.TipoCliente == "Standart" || cliente.TipoCliente == "standart")
             {
                 cliente.CantidadDepositos = 3;
                 cliente.CantidadRetiros = 2;
-            }else if (cliente.TipoCliente == "Priority")
+            }else if (cliente.TipoCliente == "Priority" || cliente.TipoCliente == "priority")
             {
                 cliente.CantidadDepositos = 5;
                 cliente.CantidadRetiros = 4;
             }
-            else if (cliente.TipoCliente == "Premium")
+            else if (cliente.TipoCliente == "Premium" || cliente.TipoCliente == "premium")
             {
                 cliente.CantidadDepositos = 8;
                 cliente.CantidadRetiros = 8;
@@ -101,23 +101,38 @@ namespace UnidadDosEA
         public static void RealizarDepositos(Cliente cliente)
         {
             Console.WriteLine("**************************************************************************************");
-            Console.Write("Ingresa el deposito a realizar: ");
-            double depositar = Convert.ToDouble(Console.ReadLine()); 
-            cliente.Depositar(depositar);
+            if (cliente.CantidadDepositos != 0)
+            {
+                Console.Write("Ingresa el deposito a realizar: ");
+                double depositar = Convert.ToDouble(Console.ReadLine());
+                cliente.Depositar(depositar);
+            }
+            else
+            {
+                Console.WriteLine("No se pueden realizar mas depositos");
+            }
             Console.WriteLine("**************************************************************************************");
         }
         public static void RealizarRetiros(Cliente cliente)
         {
             Console.WriteLine("**************************************************************************************");
-            Console.Write("Ingresa el deposito a realizar: ");
-            double retirar = Convert.ToDouble(Console.ReadLine());
-            cliente.Retirar(retirar);
+
+            if (cliente.CantidadRetiros != 0)
+            {
+                Console.Write("Ingresa el retiro a realizar: ");
+                double retirar = Convert.ToDouble(Console.ReadLine());
+                cliente.Retirar(retirar);
+            }
+            else
+            {
+                Console.WriteLine("No se pueden realizar mas retiros");
+            }
             Console.WriteLine("**************************************************************************************");
         }
         public static void MostrarBalance(Cliente cliente)
         {
             Console.WriteLine("**************************************************************************************");
-            Console.Write($"El cliente tiene un monto de : {cliente.Monto}");
+            Console.WriteLine($"El cliente tiene un monto de: ${cliente.Monto}");
             Console.WriteLine("**************************************************************************************");
         }
     }
@@ -145,18 +160,20 @@ namespace UnidadDosEA
         } 
         public void Depositar(double ingreso)
         {
-            this.Monto = this.Monto + ingreso; 
+            this.Monto = this.Monto + ingreso;
+            this.CantidadDepositos = this.CantidadDepositos - 1;
         }
         public void Retirar(double retiro)
         {
             this.Monto = this.Monto - retiro;
+            this.CantidadRetiros = this.CantidadRetiros - 1;
         }
         public void ToString()
         {
             Console.WriteLine("Los datos del cliente son los siguientes");
             Console.WriteLine($"Nombre del cliente: {Nombre} \n" +
                 $"Clave: {Clave} \n" +
-                $"Tipo de cliente {TipoCliente} \n" +
+                $"Tipo de cliente: {TipoCliente} \n" +
                 $"Cantidad depositos permitidos: {CantidadDepositos} \n" +
                 $"Cantidad retiros permitidos: {CantidadRetiros} \n" +
                 $"Monto: {Monto}\n");
