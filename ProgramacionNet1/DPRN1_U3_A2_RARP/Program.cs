@@ -113,8 +113,8 @@ namespace UnidadTresU2
             //Llamado al método que determina al área y perímetro del círculo
             (double Area, double Perimetro) = AreaPerimetroEstrella(Lado,Altura,tipo);
             //Impresión de los calculos realizados.
-            Console.WriteLine($"El área de la estrella de 6 picos es: {Area} [Unidades Cuadradas]");
-            Console.WriteLine($"El perímetro de la estrella de 6 picos es: {Perimetro} [Unidades]");
+            Console.WriteLine($"El área de la estrella de {tipo} picos es: {Area} [Unidades Cuadradas]");
+            Console.WriteLine($"El perímetro de la estrella de {tipo} picos es: {Perimetro} [Unidades]");
             Console.WriteLine("**************************************************************************************");
         }
         //Método que realizar el calculo del perímetro y área del trapecio
@@ -164,7 +164,6 @@ namespace UnidadTresU2
             aCuadrado = (Lado / 2) * (Lado / 2);
             bCuadrado = Apotema * Apotema;
             double Pitagoras = Math.Sqrt(aCuadrado + bCuadrado);
-            Console.WriteLine(Pitagoras);
             double Perimetro = lados * 2 * Pitagoras;
             //Retorno del área y perímetro de los cálculos realizados.
             return (AreaEstrella, Perimetro);
