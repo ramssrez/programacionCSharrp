@@ -41,6 +41,7 @@ namespace UnidadTresU2
                     //Llamado del método para mostrar la información del usuario
                     case 2:
                         Console.WriteLine("Has elegido la opción 2");
+                        DatosEstrella("Seis");
                         //MostrarInformacionUsuario(cliente);
                         break;
                     //Llamado del método para ingresar los datos del circulo e impresión de cálculos
@@ -51,6 +52,7 @@ namespace UnidadTresU2
                     //llamado del método para realizar un deposito del cliente
                     case 4:
                         Console.WriteLine("Has elegido la opción 4");
+                        DatosEstrella("Cinco");
                         //RealizarRetiros(cliente);
                         break;
                     //Llamado del método para mostrar la información del cliente
@@ -84,7 +86,7 @@ namespace UnidadTresU2
             //Llamado al método que determina al área y perímetro del Trapecio
             (double Area, double Perimetro) = AreaPerimetroTrapecio(BaseMayor,BaseMenor,Altura);
             Console.WriteLine($"El área del Trapecio es: {Area} [Unidades Cuadradas]");
-            Console.WriteLine($"El períemetro del Trapecio es: {Perimetro} [Unidades]");
+            Console.WriteLine($"El perímetro del Trapecio es: {Perimetro} [Unidades]");
             Console.WriteLine("**************************************************************************************");
         }
         public static void DatosCirculo()
@@ -97,7 +99,27 @@ namespace UnidadTresU2
             //Llamado al método que determina al área y perímetro del Trapecio
             (double Area, double Perimetro) = AreaPerimetroCirculo(Radio);
             Console.WriteLine($"El área del Círculo es: {Area} [Unidades Cuadradas]");
-            Console.WriteLine($"El períemetro del Círculo es: {Perimetro} [Unidades]");
+            Console.WriteLine($"El perímetro del Círculo es: {Perimetro} [Unidades]");
+            Console.WriteLine("**************************************************************************************");
+        }
+        public static void DatosEstrella(string tipo)
+        {
+            //Impresión y recepción de la información del trapecio
+            Console.WriteLine("**************************************************************************************");
+            double Lado, Altura;
+            Console.Write("Ingresa la longitud de un triangulo de la estrella: ");
+            Lado = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Ingresa la el apotema o altura del triangulo de la estrella: ");
+            Altura = Convert.ToDouble(Console.ReadLine());
+            (double Area, double Perimetro) = AreaPerimetroEstrella(Lado,Altura,tipo);
+            Console.WriteLine($"El área de la estrella de 6 picos es: {Area} [Unidades Cuadradas]");
+            Console.WriteLine($"El perímetro de la estrella de 6 picos es: {Perimetro} [Unidades]");
+            /*
+            //Llamado al método que determina al área y perímetro del Trapecio
+            (double Area, double Perimetro) = AreaPerimetroTrapecio(BaseMayor, BaseMenor, Altura);
+            Console.WriteLine($"El área del Trapecio es: {Area} [Unidades Cuadradas]");
+            Console.WriteLine($"El períemetro del Trapecio es: {Perimetro} [Unidades]");
+            */
             Console.WriteLine("**************************************************************************************");
         }
         public static (double, double) AreaPerimetroTrapecio(double BaseM, double Basem,double Altura)
@@ -116,17 +138,29 @@ namespace UnidadTresU2
             double Perimetro = 2 * Math.PI * Radio;
             return (Area, Perimetro);
         }
-        public static double Area(double BaseMayor, double BaseMenor, double Altura)
+        public static (double, double) AreaPerimetroEstrella(double Lado, double Apotema, string tipo)
         {
-            return ((BaseMayor + BaseMenor) / 2) * Altura;
-        }
-        public static double Perimetro(double BaseMayor, double BaseMenor, double LadoIzquierdo, double LadoDerecho)
-        {
-            return (BaseMenor +BaseMayor + LadoDerecho + LadoIzquierdo);
-        }
-        public static double Area(double Radio)
-        {
-            return (Math.PI*(Radio*Radio));
+            double AreaEstrella, AreaTriangulo, AreaPoligono;
+            double aCuadrado, bCuadrado;
+            int lados = 0;
+            if (tipo.Equals("Seis"))
+            {
+                lados = 6;
+            }
+            else if(tipo.Equals("Cinco"))
+            {
+                lados = 5;
+            }
+
+            AreaPoligono = (lados * Lado / 2) * Apotema;
+            AreaTriangulo = (Lado * Apotema) / 2;
+            AreaEstrella = AreaPoligono + (lados * AreaTriangulo);
+            aCuadrado = (Lado / 2) * (Lado / 2);
+            bCuadrado = Apotema * Apotema;
+            double Pitagoras = Math.Sqrt(aCuadrado + bCuadrado);
+            Console.WriteLine(Pitagoras);
+            double Perimetro = lados * 2 * Pitagoras;
+            return (AreaEstrella, Perimetro);
         }
     }
 }
