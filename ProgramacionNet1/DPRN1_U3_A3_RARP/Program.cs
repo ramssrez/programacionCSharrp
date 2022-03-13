@@ -13,6 +13,7 @@ namespace UnidadTresA3
             string[,] matriz = new string[fila,columna];
             matriz = IngresarValorVetor(fila, columna,cara);
             ImprimirLetraL(fila, columna, matriz);
+            //ImprimirLetraA(fila, columna, matriz);
 
             //Llamado el método que realiza la presentación del programa
             //Presentacion();
@@ -22,14 +23,36 @@ namespace UnidadTresA3
         {
 
         }
-
-        public static void ImprimirLetraL(int fila, int columna, string[,] matriz)
+        public static void ImprimirLetraA(int fila, int columna, string[,] matriz)
         {
             for (int f = 0; f < fila; f++)
             {
                 for (int c = 0; c < columna; c++)
                 {
+                    Console.Write(matriz[f, c] + " ");
 
+                    /*
+                    if (c == 0 && f <= fila)
+                    {
+                        Console.Write(matriz[f, c] + " ");
+                    }
+                    else if (f == (fila - 1) && c > 0)
+                    {
+                        Console.Write(matriz[f, c] + " ");
+                    }
+                    */
+                }
+                Console.WriteLine();
+
+            }
+        }
+
+            public static void ImprimirLetraL(int fila, int columna, string[,] matriz)
+        {
+            for (int f = 0; f < fila; f++)
+            {
+                for (int c = 0; c < columna; c++)
+                {
                     if (c == 0 && f <= fila)
                     {
                         Console.Write(matriz[f, c] + " ");
