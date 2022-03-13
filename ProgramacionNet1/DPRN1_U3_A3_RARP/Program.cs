@@ -8,7 +8,7 @@ namespace UnidadTresA3
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            int fila = 4;
+            int fila = 10;
             int columna = 10;
             string cara = "%";
             var input = "147812357898";
@@ -31,12 +31,15 @@ namespace UnidadTresA3
             Console.WriteLine();
             ImprimirLetraA(fila, columna, matriz);
 
+            PruebaTotal(10,10);
+
             //Llamado el método que realiza la presentación del programa
             //Presentacion();
         }
         //Método que muestra el menú principal para poder realiar el llamado a los diferentes métodos
         public static void Presentacion()
         {
+
 
         }
         public static void ImprimirLetraA(int fila, int columna, string[,] matriz)
@@ -85,6 +88,27 @@ namespace UnidadTresA3
                 }
                 Console.WriteLine();
             }
+        }
+        public static void PruebaTotal(int fila, int col)
+        {
+            int columaTotal = (col * 2) + 1;
+            string[,] matriz = IngresarValorVetor(fila,columaTotal,"&");
+            for (int f = 0; f < fila; f++)
+            {
+                for (int c = 0; c < columaTotal; c++)
+                {
+                    if (c == 0 && f <= fila)
+                    {
+                        Console.Write(matriz[f, c]);
+                    }
+                    else if (f == (fila - 1) && c > 0)
+                    {
+                        Console.Write(matriz[f, c]);
+                    }
+                }
+                Console.WriteLine();
+            }
+
         }
         public static string[,] IngresarValorVetor(int fila, int columna,string caracter)
         {
