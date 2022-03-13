@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 namespace UnidadTresA3
 {
     //Inicio de de codificación del programa
@@ -8,12 +9,27 @@ namespace UnidadTresA3
         static void Main(string[] args)
         {
             int fila = 4;
-            int columna = 5;
-            string cara = "S";
+            int columna = 10;
+            string cara = "%";
+            var input = "147812357898";
+            var reg = @"\d{3}";
+            string result = Regex.Replace(input, reg, " $000");
+            Console.WriteLine(result);
+            string str = "";
+
+            Console.Write("|");
+            Console.Write(str.PadRight(15));
+            Console.WriteLine("|");
+
+            //string valor = " ";
+            //string valorDos = valor.Insert(0, " ");
+            //Console.WriteLine(valorDos.);
+
             string[,] matriz = new string[fila,columna];
             matriz = IngresarValorVetor(fila, columna,cara);
             ImprimirLetraL(fila, columna, matriz);
-            //ImprimirLetraA(fila, columna, matriz);
+            Console.WriteLine();
+            ImprimirLetraA(fila, columna, matriz);
 
             //Llamado el método que realiza la presentación del programa
             //Presentacion();
@@ -25,22 +41,28 @@ namespace UnidadTresA3
         }
         public static void ImprimirLetraA(int fila, int columna, string[,] matriz)
         {
+            string espacio = "";
             for (int f = 0; f < fila; f++)
             {
                 for (int c = 0; c < columna; c++)
                 {
-                    Console.Write(matriz[f, c] + " ");
-
-                    /*
+                    
                     if (c == 0 && f <= fila)
                     {
-                        Console.Write(matriz[f, c] + " ");
+                        Console.Write(matriz[f, c]);
                     }
-                    else if (f == (fila - 1) && c > 0)
+                    else if(f == 0)
                     {
-                        Console.Write(matriz[f, c] + " ");
+                        Console.Write(matriz[f, c]);
                     }
-                    */
+                    else if (f == 2)
+                    {
+                        Console.Write(matriz[f, c]);
+                    }
+                    else if (c == (columna - 1) && f <= fila)
+                    {
+                        Console.Write(espacio.PadRight(columna-2) + matriz[f, c]);
+                    }
                 }
                 Console.WriteLine();
 
@@ -55,10 +77,10 @@ namespace UnidadTresA3
                 {
                     if (c == 0 && f <= fila)
                     {
-                        Console.Write(matriz[f, c] + " ");
+                        Console.Write(matriz[f, c]);
                     } else if (f == (fila-1) && c >0)
                     {
-                        Console.Write(matriz[f, c] + " ");
+                        Console.Write(matriz[f, c]);
                     }
                 }
                 Console.WriteLine();
