@@ -15,16 +15,51 @@ namespace UnidadTresA3
         {
             Console.WriteLine("**********************************************************************************************");
             Console.WriteLine("Bienvenidos al sistema para imprimir LA con un tipo de caracter");
+            bool salir = false;
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones
+                Console.WriteLine("1. Ingresar datos");
+                Console.WriteLine("2. Salir");;
+                Console.Write("Ingresa una opción del menú: ");
+                int opcion = Convert.ToInt32(Console.ReadLine());
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    //Llamado del método para ingresar los datos del trapecio e impresión de cálculos
+                    case 1:
+                        Console.WriteLine("Has elegido la opción 1");
+                        IngresarDatos();
+                        //DatosTrapecio();
+                        break;
+                    //Llamado del método para ingresar los datos de la estrella de 6 picos e impresión de cálculos
+                    case 2:
+                        Console.WriteLine("Has elegido salir de la aplicación");
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción
+                    default:
+                        Console.WriteLine("Elige una opcion entre 1 y 2");
+                        break;
+                }
+            }
+
+        }
+        public static void IngresarDatos()
+        {
             int fila = ValidarNumero("Ingresa el valor de la fila: ");
             int columna = ValidarNumero("Ingresa el valor de la columna: ");
             string caracter = ValidarSoloCaracter("Ingrese el caracter: ");
             string[,] matriz = new string[fila, columna];
             matriz = IngresarValorVetor(fila, columna, caracter);
+            Console.WriteLine($"La letra L con el caracter {caracter} se ve de esta manera");
+            Console.WriteLine();
             ImprimirLetraL(fila, columna, matriz);
+            Console.WriteLine();
+            Console.WriteLine($"La letra A con el caracter {caracter} se ve de esta manera");
             Console.WriteLine();
             ImprimirLetraA(fila, columna, matriz);
             Console.WriteLine();
-
         }
         public static bool EsIgualMayorCuatro(int valor)
         {
