@@ -8,11 +8,19 @@ namespace UnidadTresA3
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
+            /*
             int fila = ValidarNumero("Ingresa el valor de la fila: ");
             Console.WriteLine(fila);
             int columna = ValidarNumero("Ingresa el valor de la columna: ");
-            Console.Write(columna);
+            Console.WriteLine(columna);
+            Console.Write("Ingrese el valor del caracter: ");
+            */
+            string caracter = ValidarSoloCaracter("Ingrese el caracter: ");
+            
 
+            Console.WriteLine("caracteres: " + caracter.Length);
+           //ValidarNumero("Ingresa el valor de la columna: ");
+           Console.WriteLine(caracter);
 
 
             /*
@@ -109,6 +117,35 @@ namespace UnidadTresA3
                 }
             }
             return valor;
+        }
+        public static bool EsNuloCaracter(string s)
+        {
+            bool validacion = false;
+            if (s.Length == 0)
+            {
+                Console.WriteLine("El caracter no tiene que ser nulo");
+            }
+            else if (s.Length > 1)
+            {
+                Console.WriteLine("Solo tiene que ser un caracter ");
+            }
+            else
+            {
+                validacion = true;
+            }
+            return validacion;
+        }
+        public static string ValidarSoloCaracter(string mensaje)
+        {
+            bool salir = false;
+            string s = "";
+            while (!salir)
+            {
+                Console.Write(mensaje);
+                s = Console.ReadLine();
+                salir = EsNuloCaracter(s);    
+            }
+            return s;
         }
         public static void ImprimirLetraA(int fila, int columna, string[,] matriz)
         {
