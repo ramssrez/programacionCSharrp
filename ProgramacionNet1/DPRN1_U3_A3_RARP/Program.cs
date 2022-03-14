@@ -8,83 +8,23 @@ namespace UnidadTresA3
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            /*
-            int fila = ValidarNumero("Ingresa el valor de la fila: ");
-            Console.WriteLine(fila);
-            int columna = ValidarNumero("Ingresa el valor de la columna: ");
-            Console.WriteLine(columna);
-            Console.Write("Ingrese el valor del caracter: ");
-            */
-            string caracter = ValidarSoloCaracter("Ingrese el caracter: ");
-            
-
-            Console.WriteLine("caracteres: " + caracter.Length);
-           //ValidarNumero("Ingresa el valor de la columna: ");
-           Console.WriteLine(caracter);
-
-
-            /*
-            int fila = 5;
-            int columna = 5;
-            string cara = "%";
-            var input = "147812357898";
-            var reg = @"\d{3}";
-            string result = Regex.Replace(input, reg, " $000");
-            Console.WriteLine(result);
-            string str = "";
-
-            Console.Write("|");
-            Console.Write(str.PadRight(15));
-            Console.WriteLine("|");
-
-            //string valor = " ";
-            //string valorDos = valor.Insert(0, " ");
-            //Console.WriteLine(valorDos.);
-
-            string[,] matriz = new string[fila,columna];
-            matriz = IngresarValorVetor(fila, columna,cara);
-            ImprimirLetraL(fila, columna, matriz);
-            Console.WriteLine();
-            ImprimirLetraA(fila, columna, matriz);
-            Console.WriteLine();
-            */
-
-            //PruebaTotal(4,5);
-
-            //Llamado el método que realiza la presentación del programa
-            //Presentacion();
+            Presentacion();
         }
         //Método que muestra el menú principal para poder realiar el llamado a los diferentes métodos
         public static void Presentacion()
         {
             Console.WriteLine("**********************************************************************************************");
             Console.WriteLine("Bienvenidos al sistema para imprimir LA con un tipo de caracter");
-            Console.Write("Ingresa el tamaño de la fila: ");
-            int fila = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Ingresa el tamaño de la columna: ");
-            int columna = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Ingresa el caracter a imprimir: ");
-            string caracter = Console.ReadLine();
+            int fila = ValidarNumero("Ingresa el valor de la fila: ");
+            int columna = ValidarNumero("Ingresa el valor de la columna: ");
+            string caracter = ValidarSoloCaracter("Ingrese el caracter: ");
+            string[,] matriz = new string[fila, columna];
+            matriz = IngresarValorVetor(fila, columna, caracter);
+            ImprimirLetraL(fila, columna, matriz);
+            Console.WriteLine();
+            ImprimirLetraA(fila, columna, matriz);
+            Console.WriteLine();
 
-            //Varaible para salir del ciclo.
-            bool salir = false;
-            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
-            while (!salir)
-            {
-                //Impresión de los diferentes opciones
-                Console.WriteLine("1. Área y perímetro de un Trapecio");
-                Console.WriteLine("2. Área y perímetro de una Estrella de 6 puntas");
-                Console.WriteLine("3. Área y perímetro de un Círculo");
-                Console.WriteLine("4. Área y perímetro de una Estrella de 5 puntas");
-                Console.WriteLine("5. Salir");
-                Console.Write("Ingresa una opción: ");
-                int opcion = Convert.ToInt32(Console.ReadLine());
-                //Uso del switch para seleccion de las opciones ingresadas desde la consola
-                switch (opcion)
-                {
-
-                }
-            }
         }
         public static bool EsIgualMayorCuatro(int valor)
         {
