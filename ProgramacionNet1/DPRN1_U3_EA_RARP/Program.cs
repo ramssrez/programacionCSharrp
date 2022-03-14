@@ -15,6 +15,29 @@ namespace UnidadTresEA
         {
             int numero = ValidarNumero("Ingresa el valor de la fila: ");
             Console.WriteLine(numero);
+            int valorFila = 0;
+            string caracter = "";
+            if (numero >= 0 && numero <= 11)
+            {
+                valorFila = 7;
+                caracter = "#";
+            }
+            else if(numero > 11 && numero <= 50){
+                valorFila = 6;
+                caracter = "*";
+            }
+            else if (numero > 50)
+            {
+                valorFila = 5;
+                caracter = "@";
+            }
+            string[,] matriz = new string[valorFila, valorFila];
+            //Llamado al método que llena toda la matriz con un caracter
+            matriz = IngresarValorVetor(valorFila, valorFila, caracter);
+            ImprimirUno(valorFila, valorFila, matriz);
+            ImprimirCero(valorFila, valorFila, matriz);
+
+            /*
             int fila = ValidarNumero("Ingresa el valor de la fila: ");
             int columna = ValidarNumero("Ingresa el valor de la columna: ");
             string caracter = "#";
@@ -25,7 +48,7 @@ namespace UnidadTresEA
             matriz = IngresarValorVetor(fila, columna, caracter);
             ImprimirUno(fila, columna, matriz);
             ImprimirCero(fila, columna, matriz);
-
+            */
         }
         //Método que llena a la matriz con el caracter ingresado por parte del usuario
         public static string[,] IngresarValorVetor(int fila, int columna, string caracter)
