@@ -15,6 +15,7 @@ namespace UnidadTresEA
         {
             int numero = ValidarNumero("Ingresa el valor de la fila: ");
             Console.WriteLine(numero);
+            
             int valorFila = 0;
             string caracter = "";
             if (numero >= 0 && numero <= 11)
@@ -34,21 +35,50 @@ namespace UnidadTresEA
             string[,] matriz = new string[valorFila, valorFila];
             //Llamado al método que llena toda la matriz con un caracter
             matriz = IngresarValorVetor(valorFila, caracter);
+            /*
             ImprimirUno(valorFila, matriz);
             ImprimirCero(valorFila, matriz);
-
-            /*
-            int fila = ValidarNumero("Ingresa el valor de la fila: ");
-            int columna = ValidarNumero("Ingresa el valor de la columna: ");
-            string caracter = "#";
-
-            //Declaración de la matriz de n*m
-            string[,] matriz = new string[fila, columna];
-            //Llamado al método que llena toda la matriz con un caracter
-            matriz = IngresarValorVetor(fila, columna, caracter);
-            ImprimirUno(fila, columna, matriz);
-            ImprimirCero(fila, columna, matriz);
             */
+            string binario = NumeroBinario(numero);
+            Console.WriteLine(binario);
+            Console.WriteLine("hay uno" + binario.Contains("1"));
+            Console.WriteLine("hay cero" + binario.Contains("0"));
+
+
+
+            for (int i = 0; i < binario.Length; i++)
+            {
+                if (binario[i] == '1')
+                {
+                    ImprimirUno(valorFila, matriz);
+                }
+                else if(binario[i] == '0') {
+                    ImprimirCero(valorFila, matriz);
+                }
+                /*
+                if(binario.Contains("0"))
+                {
+                    Console.WriteLine("Hay un 0");
+                }
+                */
+                Console.WriteLine();
+            }
+            
+        }
+        public static string NumeroBinario(int decimalNumber)
+        {
+            //int decimalNumber = 15;
+            int remainder;
+            string binary = string.Empty;
+
+            while (decimalNumber > 0)
+            {
+                remainder = decimalNumber % 2;
+                decimalNumber /= 2;
+                binary = remainder.ToString() + binary;
+            }
+            Console.WriteLine($"Binary: {binary}");
+            return binary;
         }
         //Método que llena a la matriz con el caracter ingresado por parte del usuario
         public static string[,] IngresarValorVetor(int valor, string caracter)
