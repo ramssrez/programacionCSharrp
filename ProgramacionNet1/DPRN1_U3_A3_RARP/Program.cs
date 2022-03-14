@@ -32,6 +32,7 @@ namespace UnidadTresA3
                     case 1:
                         Console.WriteLine("Has elegido la opción 1");
                         IngresarDatos();
+                        Console.WriteLine("**********************************************************************************************");
                         break;
                     //Opción para la finalización del programa
                     case 2:
