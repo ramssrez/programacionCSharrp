@@ -8,6 +8,7 @@ namespace UnidadTresA3
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
+            //Llamado el método que realiza la presentación del programa
             Presentacion();
         }
         //Método que muestra el menú principal para poder realiar el llamado a los diferentes métodos
@@ -26,11 +27,10 @@ namespace UnidadTresA3
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
-                    //Llamado del método para ingresar los datos del trapecio e impresión de cálculos
+                    //Llamado del método para ingresar los datos para la 
                     case 1:
                         Console.WriteLine("Has elegido la opción 1");
                         IngresarDatos();
-                        //DatosTrapecio();
                         break;
                     //Llamado del método para ingresar los datos de la estrella de 6 picos e impresión de cálculos
                     case 2:
@@ -181,57 +181,5 @@ namespace UnidadTresA3
             }
             return ejemplo;
         }
-        /*
-        public static void PruebaTotal(int fila, int col)
-        {
-            string espacio = "";
-            int columaTotal = (col * 2) + 1;
-            string[,] matriz = IngresarValorVetor(fila,columaTotal,"&");
-            for (int f = 0; f < fila; f++)
-            {
-                for (int c = 0; c < columaTotal; c++)
-                {
-                    if (c == 0 && f <= fila)
-                    {
-                        Console.Write(matriz[f, c]);
-                    }                    
-                    else if (f == (fila - 1) && c > 0 && c<=col-1)
-                    {
-                        Console.Write(matriz[f, c]);
-                    }
-                    
-                    else if (c == (col+1) && f < fila-1)
-                    {
-                        Console.Write(espacio.PadRight(col) + matriz[f, c]);
-                    }
-                    else if (c == (col + 1) && f <= fila)
-                    {
-                        Console.Write(matriz[f, c]);
-                    }
-                    
-                    else if (f == 0)
-                    {
-                        Console.Write(matriz[f, c]);
-                    }
-                    else if (f == 2)
-                    {
-                        Console.Write(matriz[f, c]);
-                    }
-                    else if (c == (columaTotal - 1) && f <= fila)
-                    {
-                        Console.Write(espacio.PadRight(columaTotal - 2) + matriz[f, c]);
-                    }
-                    
-
-                    //Console.Write("+");
-
-                }
-                Console.WriteLine();
-            }
-
-        }
-        */
-
-
     }
 }
