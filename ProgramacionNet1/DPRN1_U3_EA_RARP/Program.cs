@@ -33,9 +33,9 @@ namespace UnidadTresEA
             }
             string[,] matriz = new string[valorFila, valorFila];
             //Llamado al método que llena toda la matriz con un caracter
-            matriz = IngresarValorVetor(valorFila, valorFila, caracter);
-            ImprimirUno(valorFila, valorFila, matriz);
-            ImprimirCero(valorFila, valorFila, matriz);
+            matriz = IngresarValorVetor(valorFila, caracter);
+            ImprimirUno(valorFila, matriz);
+            ImprimirCero(valorFila, matriz);
 
             /*
             int fila = ValidarNumero("Ingresa el valor de la fila: ");
@@ -51,15 +51,15 @@ namespace UnidadTresEA
             */
         }
         //Método que llena a la matriz con el caracter ingresado por parte del usuario
-        public static string[,] IngresarValorVetor(int fila, int columna, string caracter)
+        public static string[,] IngresarValorVetor(int valor, string caracter)
         {
             //Declaración de la matriz de nxm
-            string[,] matriz = new string[fila, columna];
+            string[,] matriz = new string[valor, valor];
             //Uso del primer for que representa las filas de la matriz
-            for (int f = 0; f < fila; f++)
+            for (int f = 0; f < valor; f++)
             {
                 //Uso del segundo for que representa las columnas de la matriz
-                for (int c = 0; c < columna; c++)
+                for (int c = 0; c < valor; c++)
                 {
                     //Llenado de todos los espacios de la matriz con el caracter seleccionado.
                     matriz[f, c] = caracter;
@@ -92,16 +92,16 @@ namespace UnidadTresEA
             return valor;
         }
         //Método que imprime la letra L desde una matriz
-        public static void ImprimirUno(int fila, int columna, string[,] matriz)
+        public static void ImprimirUno(int valor, string[,] matriz)
         {
             //Uso del primer for que representa las filas de la matriz
-            for (int f = 0; f < fila; f++)
+            for (int f = 0; f < valor; f++)
             {
                 //Uso del segundo for que representa las columnas de la matriz
-                for (int c = 0; c < columna; c++)
+                for (int c = 0; c < valor; c++)
                 {
                     //Sentencias if/else para las diferentes opciones para la impresión de la L
-                    if (c == 0 && f <= fila)
+                    if (c == 0 && f <= valor)
                     {
                         Console.Write("  "+matriz[f, c]);
                     }
@@ -111,18 +111,18 @@ namespace UnidadTresEA
             }
         }
         //Método que imprime la letra A desde una matriz.
-        public static void ImprimirCero(int fila, int columna, string[,] matriz)
+        public static void ImprimirCero(int valor, string[,] matriz)
         {
             //Declaración de un string vacio
             string espacio = "";
             //Uso del primer for que representa las filas de la matriz
-            for (int f = 0; f < fila; f++)
+            for (int f = 0; f < valor; f++)
             {
                 //Uso del segundo for que representa las columnas de la matriz
-                for (int c = 0; c < columna; c++)
+                for (int c = 0; c < valor; c++)
                 {
                     //Uso de if, else para la impresión de los caracteres de la letra con las diferentes opciones para su impresión 
-                    if (c == 0 && f <= fila)
+                    if (c == 0 && f <= valor)
                     {
                         Console.Write(matriz[f, c]);
                     }
@@ -131,15 +131,15 @@ namespace UnidadTresEA
                     {
                         Console.Write(matriz[f, c]);
                     }                    
-                    else if (f == fila-1)
+                    else if (f == valor-1)
                     {
                         Console.Write(matriz[f, c]);
                     }
                     
-                    else if (c == (columna - 1) && f <= fila)
+                    else if (c == ( valor - 1) && f <= valor)
                     {
                         //Para este caso se hacer uso de un metodo del string para poder darle espacio vacios entre caracter a otro
-                        Console.Write(espacio.PadRight(columna - 2) + matriz[f, c]);
+                        Console.Write(espacio.PadRight(valor - 2) + matriz[f, c]);
                     }
                 }
                 Console.WriteLine();
