@@ -9,6 +9,7 @@ namespace UnidadTresEA
         {
             string s = ValidarSoloString("Ingresa un string: ");
             Console.WriteLine("sdfsdfsdf: " +s);
+            int opcion = ValidarNumero("Ingresa una opción del menú: ");
             //Llamado el método que realiza la presentación del programa
             //Presentacion();
         }
@@ -68,11 +69,13 @@ namespace UnidadTresEA
                 }
                 catch (FormatException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     //Mensaje de error en caso de que no se haya ingresado un entero
                     Console.WriteLine("Error al ingresa valor, vuelve a intentarlo");
                 }
-                catch (OverflowException)
+                catch (OverflowException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     //Mensaje de error en caso de que se haya ingresado un número muy grande
                     Console.WriteLine("Número demasiado grande, intenta con otro número");
                 }
@@ -80,29 +83,6 @@ namespace UnidadTresEA
             //Retorno del valor ingresado
             return valor;
         }
-        /*
-        public static bool EsNuloCaracter(string s)
-        {
-            bool validacion = false;
-            //Declaración de la sentencia if/else para los casos presentados
-            if (s. Length == 0)
-            {
-                //Opción cuando el string es igual a cero o nulo
-                Console.WriteLine("El caracter no tiene que ser nulo");
-            }
-            else if (s.Length > 1)
-            {
-                //Opción cuando el string es mayor a uno
-                Console.WriteLine("Solo tiene que ser un caracter ");
-            }
-            else
-            {
-                validacion = true;
-            }
-            //Retorno de booleano para continuar con las opciones
-            return validacion;
-        }
-        */
         //Método que reliza la validación de un caracter hasta que se cumpla que sea correcto
         public static string ValidarSoloString(string mensaje)
         {
@@ -111,56 +91,29 @@ namespace UnidadTresEA
             //Ciclo while para verificar las caracteristicas de un caracter
             while (!salir)
             {
-                try
+                Console.Write(mensaje);
+                s = Console.ReadLine();
+                if (!SoloLetras(s))
                 {
-                    Console.Write(mensaje);
-                    s = Console.ReadLine();
-                    
-                    if (!SoloLetras(s))
-                    {
-                        Console.WriteLine("Error al ingresar el string, intenta de nuevo");
-                    }
-                    else
-                    {
-                        salir = true;
-                    }
-                }
-                catch (ArgumentNullException ex)
+                    Console.WriteLine("Ingresa solo letras en la sección, sin espacios");
+                }else if (string.IsNullOrEmpty(s))
                 {
-                    Console.Write("Error al ingresar el string, intenta de nuevo");
+                    Console.WriteLine("El string se encuentra vación, vuelve a intentarlo");
                 }
-
+                else
+                {
+                    salir = true;
+                }                
             }
             //Retorno del string que se ha ingresado
             return s;
         }
-        /*
-         *     public static String validarString(String argumento){
-        boolean bandera = false;
-        String string = "";
-        while (!bandera){
-            try {
-                System.out.print(argumento);
-                string = System.console().readLine();
-                if (!soloLetras(string) || string.isEmpty()){
-                    System.err.println("Nombre incorrecto, intenta de nuevo");
-                }else {
-                    bandera = true;
-                }
-            }catch (Exception e){
-                System.out.println("Valor incorrecto, se espera un string");
-            }
-        }
-        return string;
-    }
-         */
-
         //Metodo que permite identificar si los caracteres son letras o no
         static bool SoloLetras(string sCaracteres)
         {
             foreach (char ch in sCaracteres)
             {
-                if (!Char.IsLetter(ch) && ch == 32)
+                if (!Char.IsLetter(ch))
                 {
                     return false;
                 }
