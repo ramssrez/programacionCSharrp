@@ -13,9 +13,67 @@ namespace UnidadTresEA
         //Método que muestra el menú principal para poder realiar el llamado a los diferentes métodos
         public static void Presentacion()
         {
-            int numero = ValidarNumero("Ingresa el valor de la fila: ");
-            Console.WriteLine(numero);
-            
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine("Bienvenidos al sistema para imprimir LA con un tipo de caracter");
+            //Varaible para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones
+                Console.WriteLine("1. Ingresar datos");
+                Console.WriteLine("2. Salir"); ;
+                int opcion = ValidarNumero("Ingresa una opción del menú: ");
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    //Llamado del método para ingresar los datos para la impresión de los caracters 
+                    case 1:
+                        Console.WriteLine("Has elegido la opción 1");
+                        IngresoDatosMatriz();
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    //Opción para la finalización del programa
+                    case 2:
+                        Console.WriteLine("Has elegido salir de la aplicación");
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción
+                    default:
+                        Console.WriteLine("Elige una opcion entre 1 y 2");
+                        break;
+                }
+            }
+           
+        }
+        public static void IngresoDatosMatriz()
+        {
+            int numero = ValidarNumero("Ingresa el múmero del jugador: ");
+            (int valorFila, string caracter) = ValoresMatriz(numero);
+            string[,] matriz = new string[valorFila, valorFila];
+            matriz = IngresarValorVetor(valorFila, caracter);
+            string binario = NumeroBinario(numero);
+            ImprimirBinario(binario, valorFila, matriz);
+        }
+        public static void ImprimirBinario(string binario, int valorFila, string [,] matriz)
+        {
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine("Número del jugador en binario es: ");
+            for (int i = 0; i < binario.Length; i++)
+            {
+                if (binario[i] == '1')
+                {
+                    ImprimirUno(valorFila, matriz);
+                }
+                else if (binario[i] == '0')
+                {
+                    ImprimirCero(valorFila, matriz);
+                }
+                Console.WriteLine();
+            }
+        }
+        public static (int, string) ValoresMatriz(int numero)
+        {
             int valorFila = 0;
             string caracter = "";
             if (numero >= 0 && numero <= 11)
@@ -23,7 +81,8 @@ namespace UnidadTresEA
                 valorFila = 7;
                 caracter = "#";
             }
-            else if(numero > 11 && numero <= 50){
+            else if (numero > 11 && numero <= 50)
+            {
                 valorFila = 6;
                 caracter = "*";
             }
@@ -32,53 +91,25 @@ namespace UnidadTresEA
                 valorFila = 5;
                 caracter = "@";
             }
-            string[,] matriz = new string[valorFila, valorFila];
-            //Llamado al método que llena toda la matriz con un caracter
-            matriz = IngresarValorVetor(valorFila, caracter);
-            /*
-            ImprimirUno(valorFila, matriz);
-            ImprimirCero(valorFila, matriz);
-            */
-            string binario = NumeroBinario(numero);
-            Console.WriteLine(binario);
-            Console.WriteLine("hay uno" + binario.Contains("1"));
-            Console.WriteLine("hay cero" + binario.Contains("0"));
-
-
-
-            for (int i = 0; i < binario.Length; i++)
-            {
-                if (binario[i] == '1')
-                {
-                    ImprimirUno(valorFila, matriz);
-                }
-                else if(binario[i] == '0') {
-                    ImprimirCero(valorFila, matriz);
-                }
-                /*
-                if(binario.Contains("0"))
-                {
-                    Console.WriteLine("Hay un 0");
-                }
-                */
-                Console.WriteLine();
-            }
-            
+            return (valorFila, caracter);
         }
-        public static string NumeroBinario(int decimalNumber)
+        public static string NumeroBinario(int numero)
         {
             //int decimalNumber = 15;
-            int remainder;
-            string binary = string.Empty;
-
-            while (decimalNumber > 0)
+            int remanente;
+            string binario = string.Empty;
+            if (numero == 0)
             {
-                remainder = decimalNumber % 2;
-                decimalNumber /= 2;
-                binary = remainder.ToString() + binary;
+                binario = "0";
             }
-            Console.WriteLine($"Binary: {binary}");
-            return binary;
+
+            while (numero > 0)
+            {
+                remanente = numero % 2;
+                numero /= 2;
+                binario = remanente.ToString() + binario;
+            }
+            return binario;
         }
         //Método que llena a la matriz con el caracter ingresado por parte del usuario
         public static string[,] IngresarValorVetor(int valor, string caracter)
