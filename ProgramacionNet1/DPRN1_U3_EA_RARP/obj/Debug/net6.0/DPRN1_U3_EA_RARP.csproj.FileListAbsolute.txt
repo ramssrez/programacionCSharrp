@@ -4,7 +4,6 @@ C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\bin\Deb
 C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\bin\Debug\net6.0\DPRN1_U3_EA_RARP.dll
 C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\bin\Debug\net6.0\ref\DPRN1_U3_EA_RARP.dll
 C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\bin\Debug\net6.0\DPRN1_U3_EA_RARP.pdb
-C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\obj\Debug\net6.0\DPRN1_U3_EA_RARP.csproj.AssemblyReference.cache
 C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\obj\Debug\net6.0\DPRN1_U3_EA_RARP.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\obj\Debug\net6.0\DPRN1_U3_EA_RARP.AssemblyInfoInputs.cache
 C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\obj\Debug\net6.0\DPRN1_U3_EA_RARP.AssemblyInfo.cs
@@ -13,3 +12,4 @@ C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\obj\Deb
 C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\obj\Debug\net6.0\ref\DPRN1_U3_EA_RARP.dll
 C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\obj\Debug\net6.0\DPRN1_U3_EA_RARP.pdb
 C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\obj\Debug\net6.0\DPRN1_U3_EA_RARP.genruntimeconfig.cache
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramacionNet1\DPRN1_U3_EA_RARP\obj\Debug\net6.0\DPRN1_U3_EA_RARP.csproj.AssemblyReference.cache
