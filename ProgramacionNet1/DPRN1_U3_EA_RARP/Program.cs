@@ -164,7 +164,7 @@ namespace UnidadTresEA
             //Retorno de la matriz
             return matriz;
         }
-        ////Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
+        //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
         {
             //Declaración de variables necesarias para realizar el programa
