@@ -10,7 +10,7 @@ namespace UnidadTresEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            
+            /*
             //Datos para pruebas
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
             nombre = "Raúl";
@@ -27,6 +27,7 @@ namespace UnidadTresEA
             pacienteGeneral = new Paciente(nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,sexo,correo,tipoSangre,fechaConsulta,motivoConsulta,celuar,curp);
             consultaGeneral = new Consulta(pacienteGeneral, "Se descarta el covid, solo son sintomas de una gripa, se le manda con paracetamol");
             consultaGeneral.ToString();
+            */
             
             //Llamado el método que realiza la presentación del programa
             Presentacion();
@@ -105,61 +106,75 @@ namespace UnidadTresEA
                 }
             }
         }
+        //Método que imprime el informe de la consulta que se genero al paciente
         private static void InformeConsulta()
         {
+            //Sentencia if/else para verificar si se cuenta con información de un paciente
             if (validarPacienteNulo())
             {
+                //Sentencia if/else para verificar si se cuenta con información una consulta
                 if (consultaGeneral != null)
                 {
                     consultaGeneral.ToString();
                 }
                 else
                 {
+                    //Mensaje en consola en caso de que no se ha generado una consulta
                     Console.WriteLine("Aún no se ha generado la consulta");
                 }
             }
             else
             {
+                //Mensaje en consola en caso de que no se ha generado un paciente
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
         }
-
+        //Método que registra la consulta del paciente
         private static void RegistrarConsulta()
         {
+            //Sentencia if/else para verificar si se cuenta con información del paciente
             if (validarPacienteNulo())
             {
+                //Llamando al metodo que realiza el registro de los datos de la consulta
                 IngresarDatosConsulta();
             }
             else
             {
+                //Mensaje en consola para el caso de que no haya registro de un paciente
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
         }
-
+        //Método que ingresa los datos de la consulta
         private static void IngresarDatosConsulta()
         {
+            //Declaración de la consulta general como nula cuando se use esta opción 
             consultaGeneral = null;
+            //Impresión de los datos del paciente para generar la consulta
             Console.WriteLine($"La consulta generada es para el paciente {pacienteGeneral.Nombre} {pacienteGeneral.ApellidoPaterno} {pacienteGeneral.ApellidoMaterno}");
+            //Solicitud del diagnostico del paciente
             string diagnostico = ValidarString($"Ingrese el diagnostico: ");
+            //Creación de un objeto de tipo Consulta ingresando un opbejto de tipo Paciente y un diagnostico
             consultaGeneral = new Consulta(pacienteGeneral,diagnostico);
         }
-
+        //Método que actualiza los datos del paciente
         private static void ActualizarDatosPaciente()
         {
+            //Sentencia if/else para vaidar que se cuenta con datos del paciente
             if (validarPacienteNulo())
             {
-                //pacienteGeneral.ToString();
+                //Llamado al menú para actualizar los datos del paciente
                 MenuActualizarPaciente();
             }
             else
             {
+                //Mensaje para el caso de que no se cuente con registros del paciente
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
         }
         //Método que muestra las opciones para modificar la información de
         private static void MenuActualizarPaciente()
         {
-            //Mensaje de presentación del programa
+            //Mensaje de presentación del submenu
             Console.WriteLine("**********************************************************************************************");
             Console.WriteLine($"Actualización de la información del paciente {pacienteGeneral.Nombre} {pacienteGeneral.ApellidoPaterno} {pacienteGeneral.ApellidoMaterno}.");
             Console.WriteLine("Selecciona una opción del menú para actualizar la información");
@@ -185,7 +200,7 @@ namespace UnidadTresEA
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
-                    //Llamado del método para ingresar los datos del paciente
+                    //Llamado del método para ingresar el nuevo nombre del paciente
                     case 1:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 1");
@@ -193,7 +208,7 @@ namespace UnidadTresEA
                         Console.WriteLine("Actualización realizada exitosamente....");
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Llamado al método para imprimir la información del paciente
+                    //Llamado del método para ingresar el nuevo apellido paterno del paciente
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
@@ -201,7 +216,7 @@ namespace UnidadTresEA
                         Console.WriteLine("Actualización realizada exitosamente....");
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Llamado al método para actualizar la información del cliente
+                    //Llamado del método para ingresar el nuevo apellido materno del paciente
                     case 3:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 3");
@@ -210,7 +225,7 @@ namespace UnidadTresEA
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 4:
-                        //Llamado al método para registrar una consulta para el paciente
+                        //Llamado del método para ingresar la nueva fecha de nacimiento del paciente
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 4");
                         pacienteGeneral.setFechaNacimiento(ValidarFecha("Ingresa la fecha de nacimiento del paciente en el siguiente formato (dd/MM/AAAA): "));
@@ -218,7 +233,7 @@ namespace UnidadTresEA
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 5:
-                        //Llamado al metodo para mostrar el informe de la consulta
+                        //Llamado del método para ingresar el sexo del paciente
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 5");
                         pacienteGeneral.Sexo = ValidarSoloString("Ingresa el sexo del paciente (Masculino/Femenino): ");
@@ -226,7 +241,7 @@ namespace UnidadTresEA
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 6:
-                        //Llamado al metodo para mostrar el informe de la consulta
+                        //Llamado del método para ingresar el tipo de sangre del paciente
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 6");
                         pacienteGeneral.TipoSangre = ValidarString("Ingresa el tipo de sangre del paciente: ");
@@ -234,7 +249,7 @@ namespace UnidadTresEA
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 7:
-                        //Llamado al metodo para mostrar el informe de la consulta
+                        //Llamado del método para ingresar la nueva fecha de consulta del paciente
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 7");
                         pacienteGeneral.FechaConsulta = ValidarFecha("Ingresa la fecha de consulta del paciente en el siguiente formato (dd/MM/AAAA): ");
@@ -242,7 +257,7 @@ namespace UnidadTresEA
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 8:
-                        //Llamado al metodo para mostrar el informe de la consulta
+                        //Llamado del método para ingresar el motivo de la consulta del paciente
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 8");
                         pacienteGeneral.MotivoConsulta = ValidarString("Ingresa el motivo de la consulta: ");
@@ -250,7 +265,7 @@ namespace UnidadTresEA
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 9:
-                        //Llamado al metodo para mostrar el informe de la consulta
+                        //Llamado del método para ingresar el nuevo correo electronico del paciente
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 9");
                         pacienteGeneral.CorreoElectronico = ValidarString("Ingresa el correo electronico del paciente: ");
@@ -258,7 +273,7 @@ namespace UnidadTresEA
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 10:
-                        //Llamado al metodo para mostrar el informe de la consulta
+                        //Llamado del método para ingresar el nuevo numero telefonico del paciente
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 10");
                         pacienteGeneral.setNumeroCelular(ValidarTamanioNumero("Ingresa el número de celular del paciente: "));
@@ -266,7 +281,7 @@ namespace UnidadTresEA
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 11:
-                        //Llamado al metodo para mostrar el informe de la consulta
+                        //Llamado del método para ingresar el nuevo CURP del paciente
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 11");
                         pacienteGeneral.setCURP(ValidarString("Ingresa el CURP del paciente: "));
@@ -330,18 +345,18 @@ namespace UnidadTresEA
         private static bool validarPacienteNulo()
         {
             //Uso de la varaible bandera para verificar si hay información del cliente
-            bool badera = false;
+            bool bandera = false;
             //Sentencia if/else para verificar si hay información para el cliente,
             if (pacienteGeneral != null)
             {
-                badera = true;
+                bandera = true;
             }
             else
             {
-                badera = false;
+                bandera = false;
             }
             //Retorno de la bandera en función de lo que se obtuvo de la bandera
-            return badera;
+            return bandera;
         }
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
@@ -543,7 +558,6 @@ namespace UnidadTresEA
         public string Nombre { get; set; }
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
-        //public string FechaNacimiento { get; set; }
         public int Edad { get; set; }
         public string Sexo { get; set; }
         public string TipoSangre { get; set; }
@@ -581,7 +595,7 @@ namespace UnidadTresEA
             Edad = CalcularEdad(fechaNacimiento);
             Folio = FolioPaciente(curp,numeroCelular);
         }
-        //Declaración de los getters y setter para el núemero celular y el curp
+        //Declaración de los getters y setter para el número celular, folio y el curp
         public void setNumeroCelular(string numeroCelular)
         {
             NumeroCelular = numeroCelular;
@@ -689,10 +703,12 @@ namespace UnidadTresEA
         public string Folio { get; set; }
         public string FechaProximaCita { get; set; }
         public Paciente Paciente { get; set;}
+        //Declaración del constructor vacio de la clase
         public Consulta()
         {
 
         }
+        //Declaración del constructor para la consulta con varaibles
         public Consulta(Paciente paciente, string diagnostico)
         {
             Paciente = paciente;
@@ -702,6 +718,7 @@ namespace UnidadTresEA
             FechaProximaCita = CalculoProximaFecha(FechaConsulta);
             Folio = paciente.Folio + string.Join("",FechaConsulta.Split('/'));
         }
+        //Metodo que permite calcular la proxima fecha de la consulta
         private string CalculoProximaFecha(string fechaConsulta)
         {
             //Tranformación del string de la fecha de consulta a un tipo DateTime
@@ -711,7 +728,7 @@ namespace UnidadTresEA
             //Retorno de la fecha de la proxima consulta en formato dd/MM/yyyy
             return proximaConsulta.ToString("dd/MM/yyyy");
         }
-        
+        //Método que permite imprimir los datos de la clase con formato para este caso en especifico
         public void ToString()
         {
             //Console.WriteLine("Los datos de la consulta");
