@@ -8,11 +8,8 @@ namespace UnidadTresEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            string numero = ValidarTamanioNumero("Ingresa el número de celular: ");
-            Console.WriteLine(numero);
-            //string fechaNacimiento = ValidarFecha("Ingresa la fecha de nacimiento del paciente en el siguiente formato (dd/MM/AAAA): ");
-            //Console.WriteLine(fechaNacimiento);
             /*
+            //Datos para pruebas
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
             nombre = "Raúl";
             apellidoPaterno = "Ramírez";
@@ -25,7 +22,9 @@ namespace UnidadTresEA
             motivoConsulta = "Dolor de estomago";
             celuar = "5514130475";
             curp = "RAPR920627HMACMRL02";
-            Paciente paciente = new Paciente(nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,sexo,correo,tipoSangre,fechaConsulta,motivoConsulta,celuar,curp);
+            pacienteGeneral = new Paciente(nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,sexo,correo,tipoSangre,fechaConsulta,motivoConsulta,celuar,curp);
+            
+            /*
             paciente.ToString();
 
             paciente.setCURP("AALA940625GTDKM01");
@@ -56,30 +55,95 @@ namespace UnidadTresEA
             {
                 //Impresión de los diferentes opciones
                 Console.WriteLine("1. Ingresar datos del paciente");
-                Console.WriteLine("2. Salir");
+                Console.WriteLine("2. Informe del paciente");
+                Console.WriteLine("3. Ingresar datos del paciente");
+                Console.WriteLine("4. Ingresar datos del paciente");
+                Console.WriteLine("5. Ingresar datos del paciente");
+                Console.WriteLine("6. Salir");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
                     //Llamado del método para ingresar los datos necesarios para la impresión del número
                     case 1:
+                        Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 1");
                         IngresarDatosPaciente();
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Opción para la finalización del programa
                     case 2:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 2");
+                        InformePaciente();
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 3:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 3");
+                        ActualizarDatosPaciente();
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 4:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 4");
+                        //IngresarDatosPaciente();
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 5:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 5");
+                        //IngresarDatosPaciente();
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 6:
+                        Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido salir de la aplicación");
+                        Console.WriteLine("**********************************************************************************************");
                         salir = true;
                         break;
                     //Opción en el caso de que el usuario no seleccione una opción
                     default:
-                        Console.WriteLine("Elige una opcion entre 1 y 2");
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Elige una opcion entre 1 y 6");
+                        Console.WriteLine("**********************************************************************************************");
                         break;
                 }
             }
 
         }
+
+        private static void ActualizarDatosPaciente()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void InformePaciente()
+        {
+            if (validarPacienteNulo())
+            {
+                pacienteGeneral.ToString();
+            }
+            else
+            {
+                Console.WriteLine("Aún no hay registro de un paciente");
+            }
+
+        }
+        private static bool validarPacienteNulo()
+        {
+            bool badera = false;
+            if (pacienteGeneral != null)
+            {
+                badera = true;
+            }
+            else
+            {
+                badera = false;
+            }
+            return badera;
+        }
+
         public static void IngresarDatosPaciente()
         {
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
@@ -242,7 +306,7 @@ namespace UnidadTresEA
             return s;
         }
         //Metodo que permite identificar si los caracteres son letras o no
-        static bool SoloLetras(string sCaracteres)
+        public static bool SoloLetras(string sCaracteres)
         {
             foreach (char ch in sCaracteres)
             {
@@ -253,7 +317,7 @@ namespace UnidadTresEA
             }
             return true;
         }
-        static bool EspacioVacio(string sCaracteres)
+        public static bool EspacioVacio(string sCaracteres)
         {
             foreach (char ch in sCaracteres)
             {
@@ -266,7 +330,6 @@ namespace UnidadTresEA
         }
 
     }
-
     class Paciente
     {
         //Declaración de variables y métodos getter y setter del objeto PersonaRegistro
