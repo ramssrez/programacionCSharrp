@@ -159,20 +159,6 @@ namespace UnidadTresEA
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
         }
-        private static bool validarPacienteNulo()
-        {
-            bool badera = false;
-            if (pacienteGeneral != null)
-            {
-                badera = true;
-            }
-            else
-            {
-                badera = false;
-            }
-            return badera;
-        }
-
         public static void IngresarDatosPaciente()
         {
             pacienteGeneral = null;
@@ -189,6 +175,19 @@ namespace UnidadTresEA
             celuar = ValidarTamanioNumero("Ingresa el número de celular del paciente: ");
             curp = ValidarString("Ingresa el CURP del paciente: ");
             pacienteGeneral = new Paciente(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp);
+        }
+        private static bool validarPacienteNulo()
+        {
+            bool badera = false;
+            if (pacienteGeneral != null)
+            {
+                badera = true;
+            }
+            else
+            {
+                badera = false;
+            }
+            return badera;
         }
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
@@ -361,7 +360,7 @@ namespace UnidadTresEA
     }
     class Paciente
     {
-        //Declaración de variables y métodos getter y setter del objeto PersonaRegistro
+        //Declaración de variables y métodos getter y setter del objeto Paciente
         public string Nombre { get; set; }
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
@@ -373,6 +372,7 @@ namespace UnidadTresEA
         public string MotivoConsulta { get; set; }
         public string CorreoElectronico { get; set; }
         public string Folio { get; set; }
+        //Declaración de atributos para poder manipular los getters y setter
         private string NumeroCelular;
         private string CURP;
 
@@ -401,9 +401,11 @@ namespace UnidadTresEA
             Edad = CalcularEdad(fechaNacimiento);
             Folio = FolioPaciente(curp,numeroCelular);
         }
+        //Declaración de los getters y setter para el núemero celular y el curp
         public void setNumeroCelular(string numeroCelular)
         {
             NumeroCelular = numeroCelular;
+            //Reasignamiento del folio  del paciente
             Folio = FolioPaciente(CURP, numeroCelular);
         }
         public string getNumeroCelular()
@@ -413,13 +415,14 @@ namespace UnidadTresEA
         public void setCURP(string curp)
         {
             CURP = curp;
+            //Reasignamiento del folio  del paciente
             Folio = FolioPaciente(curp, NumeroCelular);
         }
         public string getCURP()
         {
             return CURP;
         }
-        //Método que calcula la edad del paciente con la diferencia de fechas, la fecha actual y la fecha de nacimientos
+        //Método que calcula la edad del paciente con la diferencia de fechas, la fecha actual y la fecha de nacimiento
         private int CalcularEdad(string fechaNacimiento)
         {
             //Determinación de la fecha actual
@@ -457,16 +460,15 @@ namespace UnidadTresEA
                 return year;
             }
         }
-        //Método que permite generar el folio de vacunación del paciente, en función de su nombre y apellidos
-        
+        //Método que permite generar el folio del paciente, en función del curp y numero celular
         private string FolioPaciente(string curp, string numeroCelular)
         {
-            string folio;
+            //Obtención de los cuatro caracters del curp
             string cuatroCaracter = curp.Substring(0, 4);
+            //Obtención de los ultimos cuatro caracteres del celular
             string ultimosDigitos = numeroCelular.Substring((numeroCelular.Length - 4), 4);
-            folio = cuatroCaracter + ultimosDigitos;
             //Retorno del folio generado
-            return folio;
+            return cuatroCaracter + ultimosDigitos;
         }
         
         //Método que permite imprimir los datos de la clase con formato para este caso en especifico
