@@ -42,9 +42,9 @@ namespace UnidadTresEA
                 //Impresión de los diferentes opciones
                 Console.WriteLine("1. Ingresar datos del paciente");
                 Console.WriteLine("2. Informe del paciente");
-                Console.WriteLine("3. Ingresar datos del paciente");
-                Console.WriteLine("4. Ingresar datos del paciente");
-                Console.WriteLine("5. Ingresar datos del paciente");
+                Console.WriteLine("3. Actualizar datos del paciente");
+                Console.WriteLine("4. Registrar consulta");
+                Console.WriteLine("5. Informe de la consulta");
                 Console.WriteLine("6. Salir");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
@@ -130,12 +130,147 @@ namespace UnidadTresEA
             if (validarPacienteNulo())
             {
                 //pacienteGeneral.ToString();
+                MenuActualizarPaciente();
             }
             else
             {
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
+            pacienteGeneral.ToString();
         }
+
+        private static void MenuActualizarPaciente()
+        {
+            //Mensaje de presentación del programa
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine($"Actualización de la información del paciente {pacienteGeneral.Nombre} {pacienteGeneral.ApellidoPaterno} {pacienteGeneral.ApellidoMaterno}.");
+            Console.WriteLine("Selecciona una opción del menú para actualizar la información");
+            //Variable para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones
+                Console.WriteLine("1. Nombre");
+                Console.WriteLine("2. Apellido Paterno");
+                Console.WriteLine("3. Apellido Materno");
+                Console.WriteLine("4. Fecha de nacimiento");
+                Console.WriteLine("5. Sexo");
+                Console.WriteLine("6. Tipo de sangre");
+                Console.WriteLine("7. Fecha consulta");
+                Console.WriteLine("8. Motivo consulta");
+                Console.WriteLine("9. Correo electronico");
+                Console.WriteLine("10. Número de celular");
+                Console.WriteLine("11. CURP");
+                Console.WriteLine("12. Salir al menú principal");
+                int opcion = ValidarNumero("Ingresa una opción del menú: ");
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    //Llamado del método para ingresar los datos del paciente
+                    case 1:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 1");
+                        pacienteGeneral.Nombre = ValidarSoloString("Ingresa el nombre del paciente: ");
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    //Llamado al método para imprimir la información del paciente
+                    case 2:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 2");
+                        pacienteGeneral.ApellidoPaterno = ValidarSoloString("Ingresa el apellido paterno del paciente: ");
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    //Llamado al método para actualizar la información del cliente
+                    case 3:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 3");
+                        pacienteGeneral.ApellidoMaterno = ValidarSoloString("Ingresa el apellido materno del paciente: ");
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 4:
+                        //Llamado al método para registrar una consulta para el paciente
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 4");
+                        pacienteGeneral.setFechaNacimiento(ValidarFecha("Ingresa la fecha de nacimiento del paciente en el siguiente formato (dd/MM/AAAA): "));
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 5:
+                        //Llamado al metodo para mostrar el informe de la consulta
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 5");
+                        pacienteGeneral.Sexo = ValidarSoloString("Ingresa el sexo del paciente (Masculino/Femenino): ");
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 6:
+                        //Llamado al metodo para mostrar el informe de la consulta
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 6");
+                        pacienteGeneral.TipoSangre = ValidarString("Ingresa el tipo de sangre del paciente: ");
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 7:
+                        //Llamado al metodo para mostrar el informe de la consulta
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 7");
+                        pacienteGeneral.FechaConsulta = ValidarFecha("Ingresa la fecha de consulta del paciente en el siguiente formato (dd/MM/AAAA): ");
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 8:
+                        //Llamado al metodo para mostrar el informe de la consulta
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 8");
+                        pacienteGeneral.MotivoConsulta = ValidarString("Ingresa el motivo de la consulta: ");
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 9:
+                        //Llamado al metodo para mostrar el informe de la consulta
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 9");
+                        pacienteGeneral.CorreoElectronico = ValidarString("Ingresa el correo electronico del paciente: ");
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 10:
+                        //Llamado al metodo para mostrar el informe de la consulta
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 10");
+                        pacienteGeneral.setNumeroCelular(ValidarTamanioNumero("Ingresa el número de celular del paciente: "));
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 11:
+                        //Llamado al metodo para mostrar el informe de la consulta
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 11");
+                        pacienteGeneral.setCURP(ValidarString("Ingresa el CURP del paciente: "));
+                        Console.WriteLine("Actualización realizada exitosamente....");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 12:
+                        //Opción para la salida del programa
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Retornando al menú principal");
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción
+                    default:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Elige una opcion entre 1 y 12");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                }
+            }
+        }
+
         private static void InformePaciente()
         {
             if (validarPacienteNulo())
@@ -159,7 +294,7 @@ namespace UnidadTresEA
             string apellidoMaterno = ValidarSoloString("Ingresa el apellido materno del paciente: ");
             string fechaNacimiento = ValidarFecha("Ingresa la fecha de nacimiento del paciente en el siguiente formato (dd/MM/AAAA): ");
             string sexo = ValidarSoloString("Ingresa el sexo del paciente (Masculino/Femenino): ");
-            string correo = ValidarString("Ingresa el correo del paciente: ");
+            string correo = ValidarString("Ingresa el correo electronico del paciente: ");
             string tipoSangre = ValidarString("Ingresa el tipo de sangre del paciente: ");
             string fechaConsulta = ValidarFecha("Ingresa la fecha de consulta del paciente en el siguiente formato (dd/MM/AAAA): ");
             string motivoConsulta = ValidarString("Ingresa el motivo de la consulta: ");
@@ -356,7 +491,7 @@ namespace UnidadTresEA
             foreach (char ch in s)
             {
                 //Verificación de si solo hay letras en el string
-                if (!Char.IsLetter(ch))
+                if (!Char.IsLetter(ch) && ch != 32)
                 {
                     return false;
                 }
@@ -385,7 +520,7 @@ namespace UnidadTresEA
         public string Nombre { get; set; }
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
-        public string FechaNacimiento { get; set; }
+        //public string FechaNacimiento { get; set; }
         public int Edad { get; set; }
         public string Sexo { get; set; }
         public string TipoSangre { get; set; }
@@ -396,6 +531,7 @@ namespace UnidadTresEA
         //Declaración de atributos para poder manipular los getters y setter
         private string NumeroCelular;
         private string CURP;
+        private string FechaNacimiento;
 
         //Declaración de constructor vacío de la clase
         public Paciente()
@@ -442,6 +578,16 @@ namespace UnidadTresEA
         public string getCURP()
         {
             return CURP;
+        }
+        public void setFechaNacimiento(string fecha)
+        {
+            FechaNacimiento = fecha;
+            //Reasignamiento de la edad del paciente
+            Edad = CalcularEdad(fecha);
+        }
+        public string getFechaNacimietno()
+        {
+            return FechaNacimiento;
         }
         //Método que calcula la edad del paciente con la diferencia de fechas, la fecha actual y la fecha de nacimiento
         private int CalcularEdad(string fechaNacimiento)
