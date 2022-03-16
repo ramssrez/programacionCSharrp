@@ -4,6 +4,7 @@ namespace UnidadTresEA
     //Inicio de de codificación del programa
     class Program
     {
+        //Declaración de la variable paciente general para poder manipularlo en toda la ejecución de la aplicación
         private static Paciente pacienteGeneral = null;
         //Comienzo de la función principal en C#
         static void Main(string[] args)
@@ -21,23 +22,8 @@ namespace UnidadTresEA
             fechaConsulta = "16/03/2022";
             motivoConsulta = "Dolor de estomago";
             celuar = "5514130475";
-            curp = "RAPR920627HMACMRL02";
+            curp = "RAPR920627HMCMRL02";
             pacienteGeneral = new Paciente(nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,sexo,correo,tipoSangre,fechaConsulta,motivoConsulta,celuar,curp);
-            
-            /*
-            paciente.ToString();
-
-            paciente.setCURP("AALA940625GTDKM01");
-            paciente.ToString();
-
-            paciente.setNumeroCelular("5514138900");
-            paciente.ToString();
-
-            /*
-            Paciente paciente1 = new Paciente();
-            paciente = null;
-            paciente.ToString();
-            */
 
             //Llamado el método que realiza la presentación del programa
             Presentacion();
@@ -47,7 +33,7 @@ namespace UnidadTresEA
         {
             //Mensaje de presentación del programa
             Console.WriteLine("**********************************************************************************************");
-            Console.WriteLine("Bienvenidos al sistema para transformar tu número en binario");
+            Console.WriteLine("Bienvenidos al sistema para gestión de pacientes");
             //Variable para salir del ciclo.
             bool salir = false;
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
@@ -64,20 +50,21 @@ namespace UnidadTresEA
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
-                    //Llamado del método para ingresar los datos necesarios para la impresión del número
+                    //Llamado del método para ingresar los datos del paciente
                     case 1:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 1");
                         IngresarDatosPaciente();
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Opción para la finalización del programa
+                    //Llamado al método para imprimir la información del paciente
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
                         InformePaciente();
                         Console.WriteLine("**********************************************************************************************");
                         break;
+                        //Llamado al método para actualizar la información del cliente
                     case 3:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 3");
@@ -85,18 +72,21 @@ namespace UnidadTresEA
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 4:
+                        //Llamado al método para registrar una consulta para el paciente
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 4");
                         RegistrarConsulta();
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 5:
+                        //Llamado al metodo para mostrar el informe de la consulta
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 5");
                         InformeConsulta();
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 6:
+                        //Opción para la salida del programa
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido salir de la aplicación");
                         Console.WriteLine("**********************************************************************************************");
@@ -110,7 +100,6 @@ namespace UnidadTresEA
                         break;
                 }
             }
-
         }
         private static void InformeConsulta()
         {
@@ -159,26 +148,32 @@ namespace UnidadTresEA
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
         }
+        //Método que ingresa los datos del paciente
         public static void IngresarDatosPaciente()
         {
+            //Declaración del pacinte general como nulo
             pacienteGeneral = null;
-            string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
-            nombre = ValidarSoloString("Ingresa el nombre del paciente: ");
-            apellidoPaterno = ValidarSoloString("Ingresa el apellido paterno del paciente: ");
-            apellidoMaterno = ValidarSoloString("Ingresa el apellido materno del paciente: ");
-            fechaNacimiento = ValidarFecha("Ingresa la fecha de nacimiento del paciente en el siguiente formato (dd/MM/AAAA): ");
-            sexo = ValidarSoloString("Ingresa el sexo del paciente (Masculino/Femenino): ");
-            correo = ValidarString("Ingresa el correo del paciente: ");
-            tipoSangre = ValidarString("Ingresa el tipo de sangre del paciente: ");
-            fechaConsulta = ValidarFecha("Ingresa la fecha de consulta del paciente en el siguiente formato (dd/MM/AAAA): ");
-            motivoConsulta = ValidarString("Ingresa el motivo de la consulta: ");
-            celuar = ValidarTamanioNumero("Ingresa el número de celular del paciente: ");
-            curp = ValidarString("Ingresa el CURP del paciente: ");
+            //Declaracion de varibles para llenar los datos del paciente, así como la asignación de los datos al paciente
+            string nombre = ValidarSoloString("Ingresa el nombre del paciente: ");
+            string apellidoPaterno = ValidarSoloString("Ingresa el apellido paterno del paciente: ");
+            string apellidoMaterno = ValidarSoloString("Ingresa el apellido materno del paciente: ");
+            string fechaNacimiento = ValidarFecha("Ingresa la fecha de nacimiento del paciente en el siguiente formato (dd/MM/AAAA): ");
+            string sexo = ValidarSoloString("Ingresa el sexo del paciente (Masculino/Femenino): ");
+            string correo = ValidarString("Ingresa el correo del paciente: ");
+            string tipoSangre = ValidarString("Ingresa el tipo de sangre del paciente: ");
+            string fechaConsulta = ValidarFecha("Ingresa la fecha de consulta del paciente en el siguiente formato (dd/MM/AAAA): ");
+            string motivoConsulta = ValidarString("Ingresa el motivo de la consulta: ");
+            string celuar = ValidarTamanioNumero("Ingresa el número de celular del paciente: ");
+            string curp = ValidarString("Ingresa el CURP del paciente: ");
+            //Creación del paciente general con los datos ingresados desde consola
             pacienteGeneral = new Paciente(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp);
         }
+        //Método que permite vaidar si el paciente es nulo
         private static bool validarPacienteNulo()
         {
+            //Uso de la varaible bandera para verificar si hay información del cliente
             bool badera = false;
+            //Sentencia if/else para verificar si hay información para el cliente,
             if (pacienteGeneral != null)
             {
                 badera = true;
@@ -187,6 +182,7 @@ namespace UnidadTresEA
             {
                 badera = false;
             }
+            //Retorno de la bandera en función de lo que se obtuvo de la bandera
             return badera;
         }
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
@@ -220,25 +216,29 @@ namespace UnidadTresEA
             //Retorno del valor ingresado
             return valor;
         }
-        //Método que reliza la validación de un caracter hasta que se cumpla que sea correcto
+        //Método que reliza la validación del string sea solo string sin números 
         public static string ValidarSoloString(string mensaje)
         {
             bool salir = false;
             string s = null;
-            //Ciclo while para verificar las caracteristicas de un caracter
+            //Ciclo while para verificar las caracteristicas del string
             while (!salir)
             {
                 Console.Write(mensaje);
                 s = Console.ReadLine();
+                //Sentencia if/else para verificar el string ingresado por el usuario
                 if (!SoloLetras(s))
                 {
+                    //Sentencia donde solo se necesita letra sin número ni espacios
                     Console.WriteLine("Ingresa solo letras, sin espacios");
                 }else if (string.IsNullOrEmpty(s))
                 {
+                    //Snetencia para el caso de que el string se encuentre vacio
                     Console.WriteLine("El string se encuentra vacío, vuelve a intentarlo");
                 }
                 else
                 {
+                    //En caso contrario se puede salir del programa
                     salir = true;
                 }                
             }
@@ -246,17 +246,20 @@ namespace UnidadTresEA
             //Retorno del string que se ha ingresado
             return s;
         }
+        //Métod que valida el string ingresado desde la consola
         public static string ValidarString(string mensaje)
         {
             bool salir = false;
             string s = null;
-            //Ciclo while para verificar las caracteristicas de un caracter
+            //Ciclo while para verificar las caracteristicas del string
             while (!salir)
             {
+                //Uso de la sentencia try/catch para el caso de que no se haya ingresado de manera adecuada la información 
                 try
                 {
                     Console.Write(mensaje);
                     s = Console.ReadLine();
+                    //Sentencia if/else para verificar si esta escrito sin espacios y vacios el string
                     if (string.IsNullOrEmpty(s))
                     {
                         Console.WriteLine("El string se encuentra vacío, vuelve a intentarlo");
@@ -271,52 +274,63 @@ namespace UnidadTresEA
                     }
 
                 }
+                //Catch para el caso de que se cuente con un error
                 catch (FormatException ex)
                 {
                     Console.WriteLine("Error al ingresar el texto, vuelve a intentarlo");
                 }
             }
+            //Retorno de string obtenido desde la consola
             return s;
         }
+        //Método que valida el tamaño del número telefonico hasta una longitud de 10 caracteres
         public static string ValidarTamanioNumero(string mensaje)
         {
+            //Declaración de variables locales
             bool salir = false;
             string s = null;
-            //Ciclo while para verificar las caracteristicas de un caracter
+            //Ciclo while para verificar las caracteristicas del string para determinar un tamaño definido
             while (!salir)
             {
                 try
                 {
+                    //Declaración de las varaibles internas
                     Console.Write(mensaje);
                     s = Console.ReadLine();
-                    if (s.Length < 10 || s.Length > 10)
-                    {
-                        Console.WriteLine("El número tiene que ser de 10 digitos, intenta de nuevo");
-                    }
-                    else
+                    //Sentecia if/else para veirificar si el string ingresado sea igual a 10 digitos
+                    if (s.Length == 10)
                     {
                         salir = true;
                     }
+                    else
+                    {
+                        Console.WriteLine("El número tiene que ser de 10 digitos, intenta de nuevo");
+                    }
                 }
+                //Excepción para el caso de que el string no sea ingresado de manera correcta
                 catch (FormatException ex)
                 {
-                    Console.WriteLine("Error el número, intenta de nuevo");
+                    Console.WriteLine("Error al ingresar el número, intenta de nuevo");
                 }
             }
             return s;
         }
+        //Método que valida la fecha ingresada desde un string
         public static string ValidarFecha(string mensaje)
         {
+            //Declaración de las variables necesarias para esta sección de codigo
             DateTime fecha;
             bool salir = false;
             string s = null;
-            //Ciclo while para verificar las caracteristicas de un caracter
+            //Ciclo while para verificar las caracteristicas de la fehca
             while (!salir)
             {
+                //Sentencia try para el caso de que el string no sea agregao de manera correcta
                 try
                 {
                     Console.Write(mensaje);
                     s = Console.ReadLine();
+                    //Sentencia if/else para veriicar si el string ingesado se puede parsear a un tipo DateTiem
                     if (!DateTime.TryParse(s,out fecha))
                     {
                         Console.WriteLine("La fecha no cuenta con el formato establecido, vuelve a intentarlo");
@@ -326,18 +340,22 @@ namespace UnidadTresEA
                         salir = true;
                     }
                 }
+                //Sentencia catch para el caso de que no se ingrese información adecuada
                 catch (FormatException ex)
                 {
                     Console.WriteLine("Error al ingresar la fecha, intenta de nuevo");
                 }
             }
+            //Retorno del string que se genero
             return s;
         }
         //Metodo que permite identificar si los caracteres son letras o no
-        public static bool SoloLetras(string sCaracteres)
+        public static bool SoloLetras(string s)
         {
-            foreach (char ch in sCaracteres)
+            //Recorrido del string con un foreach
+            foreach (char ch in s)
             {
+                //Verificación de si solo hay letras en el string
                 if (!Char.IsLetter(ch))
                 {
                     return false;
@@ -345,10 +363,12 @@ namespace UnidadTresEA
             }
             return true;
         }
-        public static bool EspacioVacio(string sCaracteres)
+        //Metodo que permite identificar si al inicio del string haya un espacio
+        public static bool EspacioVacio(string s)
         {
-            foreach (char ch in sCaracteres)
+            foreach (char ch in s)
             {
+                //Verificación del codigo ASCII para el espacio vacio
                 if (ch != 32)
                 {
                     return false;
@@ -358,6 +378,7 @@ namespace UnidadTresEA
         }
 
     }
+    //Declaración de la clase Paciente con los atributos necesarios para su funcionamiento
     class Paciente
     {
         //Declaración de variables y métodos getter y setter del objeto Paciente
