@@ -4,16 +4,19 @@ namespace UnidadTresEA
     //Inicio de de codificación del programa
     class Program
     {
+        private static Paciente pacienteGeneral = null;
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp;
-            char sexo;
+            //string fechaNacimiento = ValidarFecha("Ingresa la fecha de nacimiento del paciente en el siguiente formato (dd/MM/AAAA): ");
+            //Console.WriteLine(fechaNacimiento);
+            /*
+            string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
             nombre = "Raúl";
             apellidoPaterno = "Ramírez";
             apellidoMaterno = "Pérez";
             fechaNacimiento = "30/11/1994";
-            sexo = 'M';
+            sexo = "M";
             correo = "ejemplo@gmail.com";
             tipoSangre = "O+";
             fechaConsulta = "16/03/2022";
@@ -28,11 +31,15 @@ namespace UnidadTresEA
 
             paciente.setNumeroCelular("5514138900");
             paciente.ToString();
-            
 
+            /*
+            Paciente paciente1 = new Paciente();
+            paciente = null;
+            paciente.ToString();
+            */
 
             //Llamado el método que realiza la presentación del programa
-            //Presentacion();
+            Presentacion();
         }
         //Método que muestra el menú principal para poder realiar el llamado a los diferentes métodos
         public static void Presentacion()
@@ -46,7 +53,7 @@ namespace UnidadTresEA
             while (!salir)
             {
                 //Impresión de los diferentes opciones
-                Console.WriteLine("1. Ingresar datos");
+                Console.WriteLine("1. Ingresar datos del paciente");
                 Console.WriteLine("2. Salir");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
@@ -55,7 +62,7 @@ namespace UnidadTresEA
                     //Llamado del método para ingresar los datos necesarios para la impresión del número
                     case 1:
                         Console.WriteLine("Has elegido la opción 1");
-                        //IngresoDatosMatriz();
+                        IngresarDatosPaciente();
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Opción para la finalización del programa
@@ -70,6 +77,26 @@ namespace UnidadTresEA
                 }
             }
 
+        }
+        public static void IngresarDatosPaciente()
+        {
+            string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
+
+            nombre = ValidarSoloString("Ingresa el nombre del paciente: ");
+            apellidoPaterno = ValidarSoloString("Ingresa el apellido paterno del paciente: ");
+            apellidoMaterno = ValidarSoloString("Ingresa el apellido materno del paciente: ");
+            fechaNacimiento = ValidarFecha("Ingresa la fecha de nacimiento del paciente en el siguiente formato (dd/MM/AAAA): ");
+            sexo = ValidarSoloString("Ingresa el sexo del paciente (Masculino/Femenino): ");
+            correo = ValidarString("Ingresa el correo del paciente: ");
+            tipoSangre = ValidarString("Ingresa el tipo de sangre del paciente: ");
+            fechaConsulta = ValidarFecha("Ingresa la fecha de consulta del paciente en el siguiente formato (dd/MM/AAAA): ");
+            motivoConsulta = ValidarString("Ingresa el motivo de la consulta: ");
+            celuar = ValidarString("Ingresa el número de celular del paciente: ");
+            curp = ValidarString("Ingresa el CURP del paciente: ");
+            pacienteGeneral = new Paciente(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp);
+            pacienteGeneral.ToString();
+            pacienteGeneral.setCURP("AALA5659535s");
+            pacienteGeneral.ToString();
         }
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
@@ -155,7 +182,35 @@ namespace UnidadTresEA
                 }
                 catch (FormatException ex)
                 {
-                    Console.WriteLine("Error al ingresar el string");
+                    Console.WriteLine("Error al ingresar el texto, vuelve a intentarlo");
+                }
+            }
+            return s;
+        }
+        public static string ValidarFecha(string mensaje)
+        {
+            DateTime fecha;
+            bool salir = false;
+            string s = null;
+            //Ciclo while para verificar las caracteristicas de un caracter
+            while (!salir)
+            {
+                try
+                {
+                    Console.Write(mensaje);
+                    s = Console.ReadLine();
+                    if (!DateTime.TryParse(s,out fecha))
+                    {
+                        Console.WriteLine("La fecha no cuenta con el formato establecido, vuelve a intentarlo");
+                    }
+                    else
+                    {
+                        salir = true;
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Error al ingresar la fecha, intenta de nuevo");
                 }
             }
             return s;
@@ -194,23 +249,23 @@ namespace UnidadTresEA
         public string ApellidoMaterno { get; set; }
         public string FechaNacimiento { get; set; }
         public int Edad { get; set; }
-        public char Sexo { get; set; }
+        public string Sexo { get; set; }
         public string TipoSangre { get; set; }
         public string FechaConsulta { get; set; }
         public string MotivoConsulta { get; set; }
         public string CorreoElectronico { get; set; }
         public string Folio { get; set; }
-        public string NumeroCelular;
-        public string CURP;
+        private string NumeroCelular;
+        private string CURP;
 
         //Declaración de constructor vacío de la clase
-        Paciente()
+        public Paciente()
         {
 
         }
         //Declaración del constructor de la clase con los elementos que se registraron a partir de la consola
         public Paciente(string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento, 
-            char sexo, string correo, string tipoSangre, string fechaConsulta, string motivoConsulta, string numeroCelular, string curp)
+            string sexo, string correo, string tipoSangre, string fechaConsulta, string motivoConsulta, string numeroCelular, string curp)
         {
             //Asignación de los atributos de la clase con los datos que se ingresaron en la consola
             Nombre = nombre;
