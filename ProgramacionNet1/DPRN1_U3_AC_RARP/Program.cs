@@ -9,8 +9,8 @@ namespace UnidadTresEA
         private static Consulta consultaGeneral = null;
         //Comienzo de la función principal en C#
         static void Main(string[] args)
-        {           
-            /*
+        {
+            
             //Datos para pruebas
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
             nombre = "Raúl";
@@ -27,7 +27,7 @@ namespace UnidadTresEA
             pacienteGeneral = new Paciente(nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,sexo,correo,tipoSangre,fechaConsulta,motivoConsulta,celuar,curp);
             consultaGeneral = new Consulta(pacienteGeneral, "Se descarta el covid, solo son sintomas de una gripa, se le manda con paracetamol");
             consultaGeneral.ToString();
-            */
+            
             //Llamado el método que realiza la presentación del programa
             Presentacion();
         }
@@ -58,6 +58,7 @@ namespace UnidadTresEA
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 1");
                         IngresarDatosPaciente();
+                        Console.WriteLine("****Ingreso de datos exitosa***");
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Llamado al método para imprimir la información del paciente
@@ -699,7 +700,7 @@ namespace UnidadTresEA
             FechaConsulta = paciente.FechaConsulta;
             Diagnostico = diagnostico;
             FechaProximaCita = CalculoProximaFecha(FechaConsulta);
-            Folio = paciente.Folio + FechaConsulta;
+            Folio = paciente.Folio + string.Join("",FechaConsulta.Split('/'));
         }
         private string CalculoProximaFecha(string fechaConsulta)
         {
