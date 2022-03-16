@@ -136,7 +136,6 @@ namespace UnidadTresEA
             {
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
-            pacienteGeneral.ToString();
         }
 
         private static void MenuActualizarPaciente()
