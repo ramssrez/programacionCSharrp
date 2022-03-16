@@ -7,17 +7,29 @@ namespace UnidadTresEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            string CURP = "RAPR920627HMCMRL02";
-            string cuatroCaracter = CURP.Substring(0, 4);
-            Console.WriteLine(cuatroCaracter);
-            /*
-            string s = ValidarSoloString("Ingresa un string: ");
-            Console.WriteLine("sdfsdfsdf: " +s);
-            int opcion = ValidarNumero("Ingresa una opción del menú: ");
-            Console.WriteLine("sdfsdfsdf: " + opcion);
-            string ss = ValidarString("Ingresa un string: ");
-            Console.WriteLine("sdfsdfsdf: " + ss);
-            */
+            string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp;
+            char sexo;
+            nombre = "Raúl";
+            apellidoPaterno = "Ramírez";
+            apellidoMaterno = "Pérez";
+            fechaNacimiento = "30/11/1994";
+            sexo = 'M';
+            correo = "ejemplo@gmail.com";
+            tipoSangre = "O+";
+            fechaConsulta = "16/03/2022";
+            motivoConsulta = "Dolor de estomago";
+            celuar = "5514130475";
+            curp = "RAPR920627HMACMRL02";
+            Paciente paciente = new Paciente(nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,sexo,correo,tipoSangre,fechaConsulta,motivoConsulta,celuar,curp);
+            paciente.ToString();
+
+            paciente.setCURP("AALA940625GTDKM01");
+            paciente.ToString();
+
+            paciente.setNumeroCelular("5514138900");
+            paciente.ToString();
+            
+
 
             //Llamado el método que realiza la presentación del programa
             //Presentacion();
@@ -187,9 +199,10 @@ namespace UnidadTresEA
         public string FechaConsulta { get; set; }
         public string MotivoConsulta { get; set; }
         public string CorreoElectronico { get; set; }
-        public string NumeroCelular { get; set; }
-        public string CURP { get; set; }
         public string Folio { get; set; }
+        public string NumeroCelular;
+        public string CURP;
+
         //Declaración de constructor vacío de la clase
         Paciente()
         {
@@ -213,7 +226,25 @@ namespace UnidadTresEA
             CorreoElectronico = correo;
             //Asignación de atributos de la clase con métodos que se encuentran dentro de la clase
             Edad = CalcularEdad(fechaNacimiento);
-            Folio = FolioVacunacion(nombre, apellidoPaterno, apellidoMaterno);
+            Folio = FolioPaciente(curp,numeroCelular);
+        }
+        public void setNumeroCelular(string numeroCelular)
+        {
+            NumeroCelular = numeroCelular;
+            Folio = FolioPaciente(CURP, numeroCelular);
+        }
+        public string getNumeroCelular()
+        {
+            return NumeroCelular;
+        }
+        public void setCURP(string curp)
+        {
+            CURP = curp;
+            Folio = FolioPaciente(curp, NumeroCelular);
+        }
+        public string getCURP()
+        {
+            return CURP;
         }
         //Método que calcula la edad del paciente con la diferencia de fechas, la fecha actual y la fecha de nacimientos
         private int CalcularEdad(string fechaNacimiento)
@@ -253,56 +284,31 @@ namespace UnidadTresEA
                 return year;
             }
         }
-        //Método que permite generar un número aleatorio entre 0 al 1000
-        private int RandomNumero()
-        {
-            //Declaración de la clase Random
-            Random random = new Random();
-            //Declaración del valor a retornar y el rango para generarlos 
-            int valor = random.Next(0, 1001);
-            //Retorno del valor generado
-            return valor;
-        }
-        //Método que permite seleccionar una letra random de un arreglo
-        private char RandomLetra()
-        {
-            //Declaración de la clase Random
-            Random random = new Random();
-            //Declaración del arreglo que contiene las letras del abcedario que vamos a utilizar
-            char[] letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-            //Selección de las letras random
-            char letra = letras[random.Next(0, 26)];
-            //Retorno de la letra seleccioanda
-            return letra;
-        }
         //Método que permite generar el folio de vacunación del paciente, en función de su nombre y apellidos
-        private string FolioVacunacion(string nombre, string apellidoPaterno, string apellidoMaterno)
+        
+        private string FolioPaciente(string curp, string numeroCelular)
         {
             string folio;
-            //Selección de la primera letra del nombre
-            char letraNombre = nombre[0];
-            //Seleccion de la segunda letra del apellido paterno
-            char letraPaterno = apellidoPaterno[1];
-            //Selección de la tercera letra del apellido materno
-            char letraMat = apellidoMaterno[2];
-            //Generación del folio, usando métodos para pasar a mayusculas las letras seleccionadas y los métodos random
-            folio = $"{Char.ToUpper(letraNombre)}{Char.ToUpper(letraPaterno)}{Char.ToUpper(letraMat)}-{RandomNumero()}-{RandomLetra()}";
+            string cuatroCaracter = curp.Substring(0, 4);
+            string ultimosDigitos = numeroCelular.Substring((numeroCelular.Length - 4), 4);
+            folio = cuatroCaracter + ultimosDigitos;
             //Retorno del folio generado
             return folio;
         }
+        
         //Método que permite imprimir los datos de la clase con formato para este caso en especifico
         public void ToString()
         {
             //Console.WriteLine("Los datos del paciente e historial de vacunación");
             Console.WriteLine($"Nombre del paciente: {Nombre} \n" +
                 $"Apellido Paterno: {ApellidoPaterno} \n" +
-                $"Apellido Materno {ApellidoMaterno} \n" +
+                $"Apellido Materno: {ApellidoMaterno} \n" +
                 $"Fecha de Nacimiento: {FechaNacimiento} \n" +
                 $"Sexo: {Sexo} \n" +
-                $"Edad: {Edad}\n" +
+                $"Edad: {Edad} años \n" +
                 $"Correo: {CorreoElectronico} \n" +
                 $"Tipo de Sangre: {TipoSangre} \n" +
-                $"Fecha Consulta: ${FechaConsulta} \n" +
+                $"Fecha Consulta: {FechaConsulta} \n" +
                 $"Motivo Consulta: {MotivoConsulta} \n" +
                 $"Número Celular: {NumeroCelular} \n" +
                 $"CURP: {CURP} \n" +
