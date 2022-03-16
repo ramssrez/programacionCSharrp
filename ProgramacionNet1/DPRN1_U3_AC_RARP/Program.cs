@@ -8,8 +8,7 @@ namespace UnidadTresEA
         private static Paciente pacienteGeneral = null;
         //Comienzo de la función principal en C#
         static void Main(string[] args)
-        {
-            
+        {            
             //Datos para pruebas
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
             nombre = "Raúl";
@@ -137,7 +136,7 @@ namespace UnidadTresEA
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
         }
-
+        //Método que muestra las opciones para modificar la información de
         private static void MenuActualizarPaciente()
         {
             //Mensaje de presentación del programa
@@ -269,16 +268,19 @@ namespace UnidadTresEA
                 }
             }
         }
-
+        //Método que imprime la información del paciente, se tiene que validar no sea nulo el objeto del paciente  general
         private static void InformePaciente()
         {
+            //Senetencia if/else para validar si contiene datos el objeto de paciente general
             if (validarPacienteNulo())
             {
                 Console.WriteLine($"*** Los datos del paciente {pacienteGeneral.Nombre} {pacienteGeneral.ApellidoPaterno} {pacienteGeneral.ApellidoMaterno} son los siguientes ***");
+                //Impresión de la información del paciente con el llamado del método toString
                 pacienteGeneral.ToString();
             }
             else
             {
+                //En caso de que no haya información en el objeto, se manda un mensaje de que no hay registo
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
         }
@@ -656,4 +658,5 @@ namespace UnidadTresEA
                 $"Folio: {Folio} \n");
         }
     }
+    //Declaración de la clase 
 }
