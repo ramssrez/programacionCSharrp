@@ -8,6 +8,8 @@ namespace UnidadTresEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
+            string numero = ValidarTamanioNumero("Ingresa el número de celular: ");
+            Console.WriteLine(numero);
             //string fechaNacimiento = ValidarFecha("Ingresa la fecha de nacimiento del paciente en el siguiente formato (dd/MM/AAAA): ");
             //Console.WriteLine(fechaNacimiento);
             /*
@@ -91,12 +93,9 @@ namespace UnidadTresEA
             tipoSangre = ValidarString("Ingresa el tipo de sangre del paciente: ");
             fechaConsulta = ValidarFecha("Ingresa la fecha de consulta del paciente en el siguiente formato (dd/MM/AAAA): ");
             motivoConsulta = ValidarString("Ingresa el motivo de la consulta: ");
-            celuar = ValidarString("Ingresa el número de celular del paciente: ");
+            celuar = ValidarTamanioNumero("Ingresa el número de celular del paciente: ");
             curp = ValidarString("Ingresa el CURP del paciente: ");
             pacienteGeneral = new Paciente(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp);
-            pacienteGeneral.ToString();
-            pacienteGeneral.setCURP("AALA5659535s");
-            pacienteGeneral.ToString();
         }
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
@@ -183,6 +182,33 @@ namespace UnidadTresEA
                 catch (FormatException ex)
                 {
                     Console.WriteLine("Error al ingresar el texto, vuelve a intentarlo");
+                }
+            }
+            return s;
+        }
+        public static string ValidarTamanioNumero(string mensaje)
+        {
+            bool salir = false;
+            string s = null;
+            //Ciclo while para verificar las caracteristicas de un caracter
+            while (!salir)
+            {
+                try
+                {
+                    Console.Write(mensaje);
+                    s = Console.ReadLine();
+                    if (s.Length < 10 || s.Length > 10)
+                    {
+                        Console.WriteLine("El número tiene que ser de 10 digitos, intenta de nuevo");
+                    }
+                    else
+                    {
+                        salir = true;
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Error el número, intenta de nuevo");
                 }
             }
             return s;
