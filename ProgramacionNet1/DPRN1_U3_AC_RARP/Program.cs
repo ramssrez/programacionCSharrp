@@ -6,6 +6,7 @@ namespace UnidadTresEA
     {
         //Declaración de la variable paciente general para poder manipularlo en toda la ejecución de la aplicación
         private static Paciente pacienteGeneral = null;
+        private static Consulta consultaGeneral = null;
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {            
@@ -23,7 +24,8 @@ namespace UnidadTresEA
             celuar = "5514130475";
             curp = "RAPR920627HMCMRL02";
             pacienteGeneral = new Paciente(nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,sexo,correo,tipoSangre,fechaConsulta,motivoConsulta,celuar,curp);
-
+            consultaGeneral = new Consulta(pacienteGeneral,"Tiene infección en el estomago, es necesario de ingresarlo al hospital");
+            consultaGeneral.ToString();
             //Llamado el método que realiza la presentación del programa
             Presentacion();
         }
@@ -642,7 +644,6 @@ namespace UnidadTresEA
         //Método que permite imprimir los datos de la clase con formato para este caso en especifico
         public void ToString()
         {
-            //Console.WriteLine("Los datos del paciente e historial de vacunación");
             Console.WriteLine($"Nombre del paciente: {Nombre} \n" +
                 $"Apellido Paterno: {ApellidoPaterno} \n" +
                 $"Apellido Materno: {ApellidoMaterno} \n" +
@@ -658,5 +659,49 @@ namespace UnidadTresEA
                 $"Folio: {Folio} \n");
         }
     }
-    //Declaración de la clase 
+    //Declaración de la clase Consulta
+    class Consulta
+    {
+        //Declaración de variables y métodos getter y setter del objeto Paciente
+        public string NombrePaciente { get; set; }
+        public string FechaConsulta { get; set; }
+        public string Diagnostico { get; set; }
+        public string Folio { get; set; }
+        public string FechaProximaCita { get; set; }
+        public Paciente Paciente { get; set;}
+        public Consulta()
+        {
+
+        }
+        public Consulta(Paciente paciente, string diagnostico)
+        {
+            Paciente = paciente;
+            NombrePaciente = paciente.Nombre + paciente.ApellidoPaterno + paciente.ApellidoMaterno;
+            FechaConsulta = paciente.FechaConsulta;
+            Diagnostico = diagnostico;
+            FechaProximaCita = CalculoProximaFecha(FechaConsulta);
+            Folio = paciente.Folio + FechaConsulta;
+        }
+        private string CalculoProximaFecha(string fechaConsulta)
+        {
+            //Tranformación del string de la fecha de vacunación a un tipo DateTime
+            DateTime dateVacunacion = DateTime.Parse(fechaConsulta);
+            //Agregación de los dias efectivos que son 180 días despues de la vacunación con el uso del método AddDays()
+            DateTime proximaConsulta = dateVacunacion.AddDays(60);
+            //Retorno de la fecha de efectividad en formato dd/MM/yyyy
+            return proximaConsulta.ToString("dd/MM/yyyy");
+        }
+        
+        public void ToString()
+        {
+            //Console.WriteLine("Los datos de la consulta");
+            Console.WriteLine($"Nombre paciente: {NombrePaciente} \n" +
+                $"Fecha Consulta: {FechaConsulta} \n" +
+                $"Diagnostico: {Diagnostico} \n" +
+                $"Folio: {Folio} \n" +
+                $"Fecha proxima cita: {FechaProximaCita}\n" );
+        }
+        
+
+    }
 }
