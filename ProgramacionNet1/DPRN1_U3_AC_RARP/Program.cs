@@ -106,71 +106,6 @@ namespace UnidadTresEA
                 }
             }
         }
-        //Método que imprime el informe de la consulta que se genero al paciente
-        private static void InformeConsulta()
-        {
-            //Sentencia if/else para verificar si se cuenta con información de un paciente
-            if (validarPacienteNulo())
-            {
-                //Sentencia if/else para verificar si se cuenta con información una consulta
-                if (consultaGeneral != null)
-                {
-                    consultaGeneral.ToString();
-                }
-                else
-                {
-                    //Mensaje en consola en caso de que no se ha generado una consulta
-                    Console.WriteLine("Aún no se ha generado la consulta");
-                }
-            }
-            else
-            {
-                //Mensaje en consola en caso de que no se ha generado un paciente
-                Console.WriteLine("Aún no hay registro de un paciente");
-            }
-        }
-        //Método que registra la consulta del paciente
-        private static void RegistrarConsulta()
-        {
-            //Sentencia if/else para verificar si se cuenta con información del paciente
-            if (validarPacienteNulo())
-            {
-                //Llamando al metodo que realiza el registro de los datos de la consulta
-                IngresarDatosConsulta();
-            }
-            else
-            {
-                //Mensaje en consola para el caso de que no haya registro de un paciente
-                Console.WriteLine("Aún no hay registro de un paciente");
-            }
-        }
-        //Método que ingresa los datos de la consulta
-        private static void IngresarDatosConsulta()
-        {
-            //Declaración de la consulta general como nula cuando se use esta opción 
-            consultaGeneral = null;
-            //Impresión de los datos del paciente para generar la consulta
-            Console.WriteLine($"La consulta generada es para el paciente {pacienteGeneral.Nombre} {pacienteGeneral.ApellidoPaterno} {pacienteGeneral.ApellidoMaterno}");
-            //Solicitud del diagnostico del paciente
-            string diagnostico = ValidarString($"Ingrese el diagnostico: ");
-            //Creación de un objeto de tipo Consulta ingresando un opbejto de tipo Paciente y un diagnostico
-            consultaGeneral = new Consulta(pacienteGeneral,diagnostico);
-        }
-        //Método que actualiza los datos del paciente
-        private static void ActualizarDatosPaciente()
-        {
-            //Sentencia if/else para vaidar que se cuenta con datos del paciente
-            if (validarPacienteNulo())
-            {
-                //Llamado al menú para actualizar los datos del paciente
-                MenuActualizarPaciente();
-            }
-            else
-            {
-                //Mensaje para el caso de que no se cuente con registros del paciente
-                Console.WriteLine("Aún no hay registro de un paciente");
-            }
-        }
         //Método que muestra las opciones para modificar la información de
         private static void MenuActualizarPaciente()
         {
@@ -303,6 +238,72 @@ namespace UnidadTresEA
                 }
             }
         }
+        //Método que imprime el informe de la consulta que se genero al paciente
+        private static void InformeConsulta()
+        {
+            //Sentencia if/else para verificar si se cuenta con información de un paciente
+            if (validarPacienteNulo())
+            {
+                //Sentencia if/else para verificar si se cuenta con información una consulta
+                if (consultaGeneral != null)
+                {
+                    consultaGeneral.ToString();
+                }
+                else
+                {
+                    //Mensaje en consola en caso de que no se ha generado una consulta
+                    Console.WriteLine("Aún no se ha generado la consulta");
+                }
+            }
+            else
+            {
+                //Mensaje en consola en caso de que no se ha generado un paciente
+                Console.WriteLine("Aún no hay registro de un paciente");
+            }
+        }
+        //Método que registra la consulta del paciente
+        private static void RegistrarConsulta()
+        {
+            //Sentencia if/else para verificar si se cuenta con información del paciente
+            if (validarPacienteNulo())
+            {
+                //Llamando al metodo que realiza el registro de los datos de la consulta
+                IngresarDatosConsulta();
+            }
+            else
+            {
+                //Mensaje en consola para el caso de que no haya registro de un paciente
+                Console.WriteLine("Aún no hay registro de un paciente");
+            }
+        }
+        //Método que ingresa los datos de la consulta
+        private static void IngresarDatosConsulta()
+        {
+            //Declaración de la consulta general como nula cuando se use esta opción 
+            consultaGeneral = null;
+            //Impresión de los datos del paciente para generar la consulta
+            Console.WriteLine($"La consulta generada es para el paciente {pacienteGeneral.Nombre} {pacienteGeneral.ApellidoPaterno} {pacienteGeneral.ApellidoMaterno}");
+            //Solicitud del diagnostico del paciente
+            string diagnostico = ValidarString($"Ingrese el diagnostico: ");
+            //Creación de un objeto de tipo Consulta ingresando un opbejto de tipo Paciente y un diagnostico
+            consultaGeneral = new Consulta(pacienteGeneral,diagnostico);
+        }
+        //Método que actualiza los datos del paciente
+        private static void ActualizarDatosPaciente()
+        {
+            //Sentencia if/else para vaidar que se cuenta con datos del paciente
+            if (validarPacienteNulo())
+            {
+                //Llamado al menú para actualizar los datos del paciente
+                MenuActualizarPaciente();
+            }
+            else
+            {
+                //Mensaje para el caso de que no se cuente con registros del paciente
+                Console.WriteLine("Aún no hay registro de un paciente");
+            }
+        }
+        
         //Método que imprime la información del paciente, se tiene que validar no sea nulo el objeto del paciente  general
         private static void InformePaciente()
         {
