@@ -9,23 +9,25 @@ namespace UnidadTresEA
         private static Consulta consultaGeneral = null;
         //Comienzo de la función principal en C#
         static void Main(string[] args)
-        {            
+        {           
+            /*
             //Datos para pruebas
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
             nombre = "Raúl";
             apellidoPaterno = "Ramírez";
             apellidoMaterno = "Pérez";
             fechaNacimiento = "30/11/1994";
-            sexo = "M";
+            sexo = "Masculino";
             correo = "ejemplo@gmail.com";
             tipoSangre = "O+";
             fechaConsulta = "16/03/2022";
-            motivoConsulta = "Dolor de estomago";
-            celuar = "5514130475";
+            motivoConsulta = "Tengo sintomas de COVID, pero no se si lo sea";
+            celuar = "555555555";
             curp = "RAPR920627HMCMRL02";
             pacienteGeneral = new Paciente(nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,sexo,correo,tipoSangre,fechaConsulta,motivoConsulta,celuar,curp);
-            consultaGeneral = new Consulta(pacienteGeneral,"Tiene infección en el estomago, es necesario de ingresarlo al hospital");
+            consultaGeneral = new Consulta(pacienteGeneral, "Se descarta el covid, solo son sintomas de una gripa, se le manda con paracetamol");
             consultaGeneral.ToString();
+            */
             //Llamado el método que realiza la presentación del programa
             Presentacion();
         }
@@ -106,7 +108,14 @@ namespace UnidadTresEA
         {
             if (validarPacienteNulo())
             {
-                //pacienteGeneral.ToString();
+                if (consultaGeneral != null)
+                {
+                    consultaGeneral.ToString();
+                }
+                else
+                {
+                    Console.WriteLine("Aún no se ha generado la consulta");
+                }
             }
             else
             {
@@ -118,12 +127,20 @@ namespace UnidadTresEA
         {
             if (validarPacienteNulo())
             {
-                //pacienteGeneral.ToString();
+                IngresarDatosConsulta();
             }
             else
             {
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
+        }
+
+        private static void IngresarDatosConsulta()
+        {
+            consultaGeneral = null;
+            Console.WriteLine($"La consulta generada es para el paciente {pacienteGeneral.Nombre} {pacienteGeneral.ApellidoPaterno} {pacienteGeneral.ApellidoMaterno}");
+            string diagnostico = ValidarString($"Ingrese el diagnostico: ");
+            consultaGeneral = new Consulta(pacienteGeneral,diagnostico);
         }
 
         private static void ActualizarDatosPaciente()
@@ -289,8 +306,10 @@ namespace UnidadTresEA
         //Método que ingresa los datos del paciente
         public static void IngresarDatosPaciente()
         {
-            //Declaración del pacinte general como nulo
+            //Declaración del paciente general como nulo
             pacienteGeneral = null;
+            //Declaración de la consulta general como nulo
+            consultaGeneral = null;
             //Declaracion de varibles para llenar los datos del paciente, así como la asignación de los datos al paciente
             string nombre = ValidarSoloString("Ingresa el nombre del paciente: ");
             string apellidoPaterno = ValidarSoloString("Ingresa el apellido paterno del paciente: ");
@@ -676,7 +695,7 @@ namespace UnidadTresEA
         public Consulta(Paciente paciente, string diagnostico)
         {
             Paciente = paciente;
-            NombrePaciente = paciente.Nombre + paciente.ApellidoPaterno + paciente.ApellidoMaterno;
+            NombrePaciente = paciente.Nombre + " " +  paciente.ApellidoPaterno + " " + paciente.ApellidoMaterno;
             FechaConsulta = paciente.FechaConsulta;
             Diagnostico = diagnostico;
             FechaProximaCita = CalculoProximaFecha(FechaConsulta);
@@ -684,11 +703,11 @@ namespace UnidadTresEA
         }
         private string CalculoProximaFecha(string fechaConsulta)
         {
-            //Tranformación del string de la fecha de vacunación a un tipo DateTime
+            //Tranformación del string de la fecha de consulta a un tipo DateTime
             DateTime dateVacunacion = DateTime.Parse(fechaConsulta);
-            //Agregación de los dias efectivos que son 180 días despues de la vacunación con el uso del método AddDays()
+            //Agregación de los dias efectivos que son 60 días despues de la consulta inicial
             DateTime proximaConsulta = dateVacunacion.AddDays(60);
-            //Retorno de la fecha de efectividad en formato dd/MM/yyyy
+            //Retorno de la fecha de la proxima consulta en formato dd/MM/yyyy
             return proximaConsulta.ToString("dd/MM/yyyy");
         }
         
@@ -701,7 +720,5 @@ namespace UnidadTresEA
                 $"Folio: {Folio} \n" +
                 $"Fecha proxima cita: {FechaProximaCita}\n" );
         }
-        
-
     }
 }
