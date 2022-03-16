@@ -8,7 +8,7 @@ namespace UnidadTresEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            /*
+            
             //Datos para pruebas
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
             nombre = "Raúl";
@@ -87,13 +87,13 @@ namespace UnidadTresEA
                     case 4:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 4");
-                        //IngresarDatosPaciente();
+                        RegistrarConsulta();
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 5:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 5");
-                        //IngresarDatosPaciente();
+                        InformeConsulta();
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 6:
@@ -112,23 +112,52 @@ namespace UnidadTresEA
             }
 
         }
+        private static void InformeConsulta()
+        {
+            if (validarPacienteNulo())
+            {
+                //pacienteGeneral.ToString();
+            }
+            else
+            {
+                Console.WriteLine("Aún no hay registro de un paciente");
+            }
+        }
+
+        private static void RegistrarConsulta()
+        {
+            if (validarPacienteNulo())
+            {
+                //pacienteGeneral.ToString();
+            }
+            else
+            {
+                Console.WriteLine("Aún no hay registro de un paciente");
+            }
+        }
 
         private static void ActualizarDatosPaciente()
         {
-            throw new NotImplementedException();
+            if (validarPacienteNulo())
+            {
+                //pacienteGeneral.ToString();
+            }
+            else
+            {
+                Console.WriteLine("Aún no hay registro de un paciente");
+            }
         }
-
         private static void InformePaciente()
         {
             if (validarPacienteNulo())
             {
+                Console.WriteLine($"*** Los datos del paciente {pacienteGeneral.Nombre} {pacienteGeneral.ApellidoPaterno} {pacienteGeneral.ApellidoMaterno} son los siguientes ***");
                 pacienteGeneral.ToString();
             }
             else
             {
                 Console.WriteLine("Aún no hay registro de un paciente");
             }
-
         }
         private static bool validarPacienteNulo()
         {
@@ -146,8 +175,8 @@ namespace UnidadTresEA
 
         public static void IngresarDatosPaciente()
         {
+            pacienteGeneral = null;
             string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, tipoSangre, fechaConsulta, motivoConsulta, celuar, curp, sexo;
-
             nombre = ValidarSoloString("Ingresa el nombre del paciente: ");
             apellidoPaterno = ValidarSoloString("Ingresa el apellido paterno del paciente: ");
             apellidoMaterno = ValidarSoloString("Ingresa el apellido materno del paciente: ");
