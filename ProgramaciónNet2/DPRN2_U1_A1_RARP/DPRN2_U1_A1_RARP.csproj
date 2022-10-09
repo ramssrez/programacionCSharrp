@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U1_A1_RARP\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U1_A1_RARP\.editorconfig" />
+  </ItemGroup>
+
+</Project>
