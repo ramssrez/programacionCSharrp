@@ -11,14 +11,15 @@ namespace UnidadUnoEA
             //personaje.NombreReal = "Princesa Diana de Temiscaar";
 
             //Console.WriteLine("Hola mundo" + personaje.NombreReal);
-            Personajes();
-            Console.WriteLine("**********************************************************************************************");
+            //Personajes();
+            Personajes personajes = new Personajes();
+            Personaje personaje1 = personajes.WoderWoman();
+            personaje1.ToString();
+            personaje1.NombreReal = "Julion";
+            personaje1.ToString();
+
+
         }
-        public static void Personajes()
-        {
-            Personaje wonderWoman = new Personaje("Wonder Woman","Princesa Diana de Temiscira","All Start Commics V1 #8, Dic. 1941/ Ene. 1942","Wonder Eoman V4 #1, Sep. 2011",
-                "Vuelo, Súper fierza, Súper velocidad, Brazaletes indestructibles, Lazo mágico dela verdad","William Moulton Marston, Harry G. Peter","sdfasdfasdfasdf",1.0f,"sdfasdfsadf", true);
-            wonderWoman.ToString();
-        } 
+
     }
 }
