@@ -37,10 +37,9 @@
             List<Creador> creadores = new List<Creador> { creador1, creador2 };
             wonderWoman.Creadores = creadores;
             wonderWoman.EsHumano = false;
-            //wonderWoman.ToString();
             return wonderWoman;
         }
-        public static Personaje Lobo()
+        public Personaje Lobo()
         {
             Personaje lobo = new Personaje();
             lobo.NombreComercial = "Lobo";
@@ -62,10 +61,9 @@
             List<Creador> creadores = new() { creador1, creador2 };
             lobo.Creadores = creadores;
             lobo.EsHumano = false;
-            //lobo.ToString();
             return lobo;
         }
-        public static Personaje ReverseFlash()
+        public Personaje ReverseFlash()
         {
             Personaje reverseFlash = new Personaje();
             reverseFlash.NombreComercial = "Reverse Flash";
@@ -85,10 +83,9 @@
             List<Creador> creadores = new() { creador1, creador2 };
             reverseFlash.Creadores = creadores;
             reverseFlash.EsHumano = true;
-            //reverseFlash.ToString();
             return reverseFlash;
         }
-        public static Personaje CatWoman()
+        public Personaje CatWoman()
         {
             Personaje catWoman = new Personaje();
             catWoman.NombreComercial = "Catwoman";
@@ -110,7 +107,6 @@
             List<Creador> creadores = new() { creador1, creador2 };
             catWoman.Creadores = creadores;
             catWoman.EsHumano = true;
-            //catWoman.ToString();
             return catWoman;
         }
     }
