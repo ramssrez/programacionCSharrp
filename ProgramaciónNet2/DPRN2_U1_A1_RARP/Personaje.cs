@@ -48,7 +48,6 @@
                 Console.WriteLine($"{NombreComercial}, ha aumentado su experiencia a {PuntosExperiencia}");
                 Console.WriteLine($"{NombreComercial}, ahora tiene un cansancio de {Cansancio}");
                 Console.WriteLine($"{NombreComercial}, puede pelear {10-PeleasTotales} veces");
-
             }
             else
             {
@@ -57,8 +56,17 @@
         }
         public void Ataque()
         {
-            float danioReal = (PuntosExperiencia*(NivelFisico*0.8f))-Cansancio;
-            Console.WriteLine($"{NombreComercial}, ha hecho un daño de {danioReal}");
+            if (PeleasTotales < 10 || NivelFisico <= 0.0f)
+            {
+                Random r = new Random();
+                int numero = r.Next(0, Poderes.Count);
+                float danioReal = (PuntosExperiencia * (NivelFisico * 0.8f)) - Cansancio;
+                Console.WriteLine($"{NombreComercial}, ha hecho un daño de: {danioReal}, con el ataque {Poderes[numero].Descripcion}");
+            }
+            else
+            {
+                Console.WriteLine($"{NombreComercial}, ya no puede pelear");
+            }
         }
         public void ToString()
         {

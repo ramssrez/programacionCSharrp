@@ -4,10 +4,94 @@ namespace UnidadUnoEA
 {
     class Program
     {
+        public static Personajes? personajes;
+        public static Personaje? personaje;
+        public static List<Personaje>? personajeList;
+
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
+            personajes = new Personajes();
+            personajeList = personajes.PersonajesDC();
             Presentacion();
+        }
+        public static void Presentacion()
+        {
+            //Mensaje de presentación del programa
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine("Bienvenidos al sistema de héroes DC");
+            //Variable para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones
+                Console.WriteLine("1. Mostrar información de los personajes");
+                Console.WriteLine("2. Seleccionar personaje");
+                Console.WriteLine("3. Pelea");
+                Console.WriteLine("4. Ataque");
+                Console.WriteLine("5. Salir");
+                int opcion = ValidarNumero("Ingresa una opción del menú: ");
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    //L
+                    case 1:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 1, información de los personajes de DC");
+                        infoPersonajes(personajeList);
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    //Lla
+                    case 2:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 2");
+                        seleccionPersonaje();
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    //Llam
+                    case 3:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 3");
+                        if (personaje != null)
+                        {
+                            personaje.Pelea();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se ha seleccionado al personaje");
+                        }
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 4:
+                        //Lla
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 4");
+                        if (personaje != null)
+                        {
+                            personaje.Ataque();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se ha seleccionado al personaje");
+                        }
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 5:
+                        //Opción para la salida del programa
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido salir de la aplicación");
+                        Console.WriteLine("**********************************************************************************************");
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción
+                    default:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Elige una opcion entre 1 y 5");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                }
+            }
         }
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
@@ -40,87 +124,81 @@ namespace UnidadUnoEA
             //Retorno del valor ingresado
             return valor;
         }
-        public static void Presentacion()
+        public static void infoPersonajes(List<Personaje>? personajeList)
         {
-            Personajes personajes = new Personajes();
-            Personaje personaje1 = personajes.WoderWoman();
-            Personaje personaje2 = personajes.Lobo();
-            Personaje personaje3 = personajes.CatWoman();
-            Personaje personaje4 = personajes.ReverseFlash();
-            //Mensaje de presentación del programa
+            foreach (Personaje p in personajeList)
+            {
+                Console.WriteLine("**********************************************************************************************");
+                p.ToString();
+                Console.WriteLine("**********************************************************************************************");
+            }
+        }
+        public static void seleccionPersonaje()
+        {
             Console.WriteLine("**********************************************************************************************");
-            Console.WriteLine("Bienvenidos al sistema de héroes DC");
+            Console.WriteLine("Selecciona un personajes de DC");
             //Variable para salir del ciclo.
             bool salir = false;
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
             while (!salir)
             {
                 //Impresión de los diferentes opciones
-                Console.WriteLine("1. Mostrar información de los personajes");
-                Console.WriteLine("2. Seleccionar personaje");
-                Console.WriteLine("3. Pelea");
-                Console.WriteLine("4. Ataque");
-                Console.WriteLine("5. Informe de la consulta");
-                Console.WriteLine("6. Salir");
+                Console.WriteLine("0. Wonder Woman");
+                Console.WriteLine("1. Lobo");
+                Console.WriteLine("2. Flash Reverse");
+                Console.WriteLine("3. CatWoman");
+                Console.WriteLine("4. Salir");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
                     //Llamado del método para ingresar los datos del paciente
-                    case 1:
+                    case 0:
+                        personaje = personajeList[opcion];
                         Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido la opción 1");
-                        //IngresarDatosPaciente();
-                        Console.WriteLine("****Ingreso de datos exitosa***");
+                        Console.WriteLine($"Has elegido a: {personaje.NombreComercial}");
+                        salir = true;
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Llamado al método para imprimir la información del paciente
-                    case 2:
+                    case 1:
+                        personaje = personajeList[opcion];
                         Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido la opción 2");
-                        personaje1.Ataque();
-                        personaje1.Pelea();
-                        personaje1.ToString();
-                        //InformePaciente();
+                        Console.WriteLine($"Has elegido a: {personaje.NombreComercial}");
+                        salir = true;
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Llamado al método para actualizar la información del cliente
-                    case 3:
+                    case 2:
+                        personaje = personajeList[opcion];
                         Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido la opción 3");
-                        //ActualizarDatosPaciente();
+                        Console.WriteLine($"Has elegido a: {personaje.NombreComercial}");
+                        salir = true;
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 3:
+                        personaje = personajeList[opcion]; 
+                        //Llamado al método para registrar una consulta para el paciente
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine($"Has elegido a: {personaje.NombreComercial}");
+                        salir = true;
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 4:
-                        //Llamado al método para registrar una consulta para el paciente
-                        Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido la opción 4");
-                        //RegistrarConsulta();
-                        Console.WriteLine("**********************************************************************************************");
-                        break;
-                    case 5:
-                        //Llamado al metodo para mostrar el informe de la consulta
-                        Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido la opción 5");
-                        //InformeConsulta();
-                        Console.WriteLine("**********************************************************************************************");
-                        break;
-                    case 6:
                         //Opción para la salida del programa
                         Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido salir de la aplicación");
+                        Console.WriteLine("Has elegido salir del manú secundario");
                         Console.WriteLine("**********************************************************************************************");
                         salir = true;
                         break;
                     //Opción en el caso de que el usuario no seleccione una opción
                     default:
                         Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Elige una opcion entre 1 y 6");
+                        Console.WriteLine("Elige una opcion entre 0 y 4");
                         Console.WriteLine("**********************************************************************************************");
                         break;
                 }
             }
         }
-
     }
 }
