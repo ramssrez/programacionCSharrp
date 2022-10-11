@@ -1,17 +1,21 @@
-﻿namespace UnidadUnoEA
+﻿namespace UnidadUnoA1
 {
+    //Declaración de la clase Personajes con sus atributos necesarios
     public class Personajes
     {
+        //Declaración de las variables y métodos  getter y setter del objeto Personaje
         public List<Personaje> PersonajesList { get; set; }
-
+        //Declaración del constructor vacio de la clase, donde se inicializa cada uno de los personajes
         public Personajes()
         {
             PersonajesList = new List<Personaje> { WoderWoman(),Lobo(),ReverseFlash(),CatWoman()};
         }
+        //Método que retorna en una lista todos los personajes
         public List<Personaje> PersonajesDC()
         {
             return PersonajesList;
         }
+        //Método que devuelve un tipo Personaje con los datos de WonderWoman
         public Personaje  WoderWoman()
         {
             Personaje wonderWoman = new Personaje();
@@ -39,6 +43,7 @@
             wonderWoman.EsHumano = false;
             return wonderWoman;
         }
+        //Método que devuelve un tipo Personaje con los datos de Lobo
         public Personaje Lobo()
         {
             Personaje lobo = new Personaje();
@@ -63,6 +68,7 @@
             lobo.EsHumano = false;
             return lobo;
         }
+        //Método que devuelve un tipo Personaje con los datos de ReverseFlash
         public Personaje ReverseFlash()
         {
             Personaje reverseFlash = new Personaje();
@@ -85,6 +91,7 @@
             reverseFlash.EsHumano = true;
             return reverseFlash;
         }
+        //Método que devuelve un tipo Personaje con los datos de CatWoman
         public Personaje CatWoman()
         {
             Personaje catWoman = new Personaje();

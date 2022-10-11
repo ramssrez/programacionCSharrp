@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
-namespace UnidadUnoEA
+namespace UnidadUnoA1
 {
     class Program
     {
+        //Declaración de variables globales del programa
         public static Personajes? personajes;
         public static Personaje? personaje;
         public static List<Personaje>? personajeList;
@@ -11,15 +12,18 @@ namespace UnidadUnoEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
+            //Instancia de las variables globales
             personajes = new Personajes();
             personajeList = personajes.PersonajesDC();
+            //Llamado al método de presentación
             Presentacion();
         }
+        //Declaración del método presentación
         public static void Presentacion()
         {
             //Mensaje de presentación del programa
             Console.WriteLine("**********************************************************************************************");
-            Console.WriteLine("Bienvenidos al sistema de héroes DC");
+            Console.WriteLine("Bienvenidos al sistema de personajes de DC");
             //Variable para salir del ciclo.
             bool salir = false;
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
@@ -35,21 +39,21 @@ namespace UnidadUnoEA
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
-                    //L
+                    //Caso para poder mostrar la información de los personajes
                     case 1:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 1, información de los personajes de DC");
                         infoPersonajes(personajeList);
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Lla
+                    //Caso para poder elegir un personaje
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
                         seleccionPersonaje();
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Llam
+                    //Caso para poder realizar la pelea del personaje seleccionado
                     case 3:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 3");
@@ -64,7 +68,7 @@ namespace UnidadUnoEA
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 4:
-                        //Lla
+                        //Caso para poder realizar el ataque del personaje
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 4");
                         if (personaje != null)
@@ -124,15 +128,19 @@ namespace UnidadUnoEA
             //Retorno del valor ingresado
             return valor;
         }
+        //Método que imprime la información de los personajes
         public static void infoPersonajes(List<Personaje>? personajeList)
         {
+            //Recorrido de la lista de los personajes
             foreach (Personaje p in personajeList)
             {
+                //Impresión de la informaición de los personajes
                 Console.WriteLine("**********************************************************************************************");
                 p.ToString();
                 Console.WriteLine("**********************************************************************************************");
             }
         }
+        //Nétodo que permite seleccionar un personaje de un menú
         public static void seleccionPersonaje()
         {
             Console.WriteLine("**********************************************************************************************");
@@ -142,7 +150,7 @@ namespace UnidadUnoEA
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
             while (!salir)
             {
-                //Impresión de los diferentes opciones
+                //Impresión de los diferentes opciones con las quese cuenta
                 Console.WriteLine("0. Wonder Woman");
                 Console.WriteLine("1. Lobo");
                 Console.WriteLine("2. Flash Reverse");
@@ -152,7 +160,7 @@ namespace UnidadUnoEA
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
-                    //Llamado del método para ingresar los datos del paciente
+                    //Selección de Wonder Woman
                     case 0:
                         personaje = personajeList[opcion];
                         Console.WriteLine("**********************************************************************************************");
@@ -160,7 +168,7 @@ namespace UnidadUnoEA
                         salir = true;
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Llamado al método para imprimir la información del paciente
+                    //Selección de Lobo
                     case 1:
                         personaje = personajeList[opcion];
                         Console.WriteLine("**********************************************************************************************");
@@ -168,7 +176,7 @@ namespace UnidadUnoEA
                         salir = true;
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Llamado al método para actualizar la información del cliente
+                    //Selección de Reverse Flash
                     case 2:
                         personaje = personajeList[opcion];
                         Console.WriteLine("**********************************************************************************************");
@@ -176,9 +184,9 @@ namespace UnidadUnoEA
                         salir = true;
                         Console.WriteLine("**********************************************************************************************");
                         break;
+                        //Selección de Cat Woman
                     case 3:
                         personaje = personajeList[opcion]; 
-                        //Llamado al método para registrar una consulta para el paciente
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine($"Has elegido a: {personaje.NombreComercial}");
                         salir = true;
