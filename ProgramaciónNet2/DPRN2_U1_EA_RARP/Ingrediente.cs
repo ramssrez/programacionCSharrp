@@ -19,13 +19,19 @@
             Calorias = calorias;
             Precio = precio;
         }
-        public void Informacion()
+        public string RevisarIngrediente(int tipo, float peso)
         {
-            Console.WriteLine($"Nombre: {Nombre} \n" +
+            string texto = "Calorias del ingrediente es: " + peso*Calorias;
+            return texto;
+        }
+        public string RevisarIngrediente()
+        {
+            string info = $"Nombre: {Nombre} \n" +
                 $"Tipo: {Tipo.TipoInsumo} \n" +
-                $"Medida rendimiento {MedidaRendimiento}\n" +
-                $"Calorias {Calorias} \n" +
-                $"Precio {Precio}");
+                $"Medida rendimiento: {MedidaRendimiento}\n" +
+                $"Calorias: {Calorias} \n" +
+                $"Precio: {Precio}";
+            return info;
         }
     }
 }

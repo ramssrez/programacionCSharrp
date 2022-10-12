@@ -12,7 +12,7 @@
             IngredientesTotales.AddRange(IngredienteDedicatoria());
             IngredientesTotales.AddRange(IngredienteFlan());
         }
-        private List<Ingrediente> IngredientesPan()
+        public List<Ingrediente> IngredientesPan()
         {
             TipoIngrediente tipo1 = new TipoIngrediente(1, "Pan");
             List<Ingrediente> ingredientePan = new List<Ingrediente>();
@@ -24,7 +24,7 @@
             ingredientePan.Add(ingrediente3);
             return ingredientePan;
         }
-        private List<Ingrediente> IngredientesRelleno()
+        public List<Ingrediente> IngredientesRelleno()
         {
             List<Ingrediente> ingredienteRelleno = new List<Ingrediente>();
             TipoIngrediente tipo2 = new TipoIngrediente(2, "Relleno");
@@ -36,7 +36,7 @@
             ingredienteRelleno.Add(ingrediente3);
             return ingredienteRelleno;
         }
-        private List<Ingrediente> IngredienteGlaseado()
+        public List<Ingrediente> IngredienteGlaseado()
         {
             List<Ingrediente> ingredienteGlaseado = new List<Ingrediente>();
             TipoIngrediente tipo3 = new TipoIngrediente(3, "Cubierta superior");
@@ -48,7 +48,7 @@
             ingredienteGlaseado.Add(ingrediente3);
             return ingredienteGlaseado;
         }
-        private List<Ingrediente> IngredienteDedicatoria()
+        public List<Ingrediente> IngredienteDedicatoria()
         {
             List<Ingrediente> ingredienteDedicatoria = new List<Ingrediente>();
             TipoIngrediente tipo4 = new TipoIngrediente(4, "Dedicatoria");
@@ -60,7 +60,7 @@
             ingredienteDedicatoria.Add(ingrediente3);
             return ingredienteDedicatoria;
         }
-        private List<Ingrediente> IngredienteFlan()
+        public List<Ingrediente> IngredienteFlan()
         {
             List<Ingrediente> ingredienteFlan = new List<Ingrediente>();
             TipoIngrediente tipo5 = new TipoIngrediente(5, "Flan");
@@ -71,6 +71,14 @@
             ingredienteFlan.Add(ingrediente2);
             ingredienteFlan.Add(ingrediente3);
             return ingredienteFlan;
+        }
+        public void RevisarIngrediente(Ingrediente ingrediente, float peso)
+        {
+
+        }
+        public string RevisarIngrediente(Ingrediente ingrediente)
+        {
+            return ingrediente.RevisarIngrediente();
         }
     }
 }
