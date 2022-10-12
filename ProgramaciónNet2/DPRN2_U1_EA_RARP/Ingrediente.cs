@@ -19,9 +19,9 @@
             Calorias = calorias;
             Precio = precio;
         }
-        public string RevisarIngrediente(int tipo, float peso)
+        public string RevisarIngrediente(float peso)
         {
-            string texto = "Calorias del ingrediente es: " + peso*Calorias;
+            string texto = $"El ingrediente {Nombre} tiene {Calorias} [kcal] y con un peso {peso} [kg] tiene un total de {Calorias*peso} [kcal]";
             return texto;
         }
         public string RevisarIngrediente()

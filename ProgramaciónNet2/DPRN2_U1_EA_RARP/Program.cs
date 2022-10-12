@@ -4,14 +4,14 @@ namespace UnidadUnoEA
 {
     class Program
     {
-        Pastel pastel = new Pastel();
+        public static Pastel pastel = new Pastel();
         public static Ingredientes ingredientes = new Ingredientes();
 
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            Pastel pastel = new Pastel();
-            Ingrediente ingrediente = new Ingrediente();
+            //Pastel pastel = new Pastel();
+            //Ingrediente ingrediente = new Ingrediente();
 
             Presentacion();
         }
@@ -28,10 +28,11 @@ namespace UnidadUnoEA
                 //Impresión de los diferentes opciones
                 Console.WriteLine("1. Mostrar ingredientes diponibles totales");
                 Console.WriteLine("2. Mostrar información de los ingrediente");
-                Console.WriteLine("3. Realizar pedido");
-                Console.WriteLine("4. Mostrar información del pedido");
-                Console.WriteLine("5. Cerrar pedido");
-                Console.WriteLine("6. Salir");
+                Console.WriteLine("3. Mostrar información de calorias por peso");
+                Console.WriteLine("4. Realizar pedido");
+                Console.WriteLine("5. Mostrar información del pedido");
+                Console.WriteLine("6. Cerrar pedido");
+                Console.WriteLine("7. Salir");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
@@ -54,12 +55,14 @@ namespace UnidadUnoEA
                     case 3:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 3");
+                        BuscarIngredienteCaloria();
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 4:
                         //Caso para poder realizar el ataque del personaje
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 4");
+                        RealizarPedido();
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 5:
@@ -78,6 +81,177 @@ namespace UnidadUnoEA
                 }
             }
         }
+        private static void RealizarPedido()
+        {
+            Console.WriteLine("**********************************************************************************************");
+            //Variable para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                Console.WriteLine("Selecciona el tamaño del pastel");
+                //Impresión de los diferentes opciones con las quese cuenta
+                Console.WriteLine("1. Pequeño");
+                Console.WriteLine("2. Mediano");
+                Console.WriteLine("3. Grande");
+                int opcion = ValidarNumero("Ingresa una opción del menú: ");
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                if (opcion == 1)
+                {
+                    Tamanio tamanio = new Tamanio(1, "Pequeño", "4 Rebanadas");
+                    pastel.Rendimiento = tamanio;
+                    salir = true;
+
+                }
+                else if (opcion == 2)
+                {
+                    Tamanio tamanio = new Tamanio(2, "Mediano", "8 Rebanadas");
+                    pastel.Rendimiento = tamanio;
+                    salir = true;
+
+                }
+                else if (opcion == 3)
+                {
+                    Tamanio tamanio = new Tamanio(3, "Grande", "16 Rebanadas");
+                    pastel.Rendimiento = tamanio;
+                    salir = true;
+                }
+                else
+                {
+                    Console.WriteLine("No se ha seleccionado una opción del menú");
+                }
+            }
+            salir = false;
+            while (!salir)
+            {
+                Console.WriteLine("Selecciona el Pan del Pastel");
+                //Impresión de los diferentes opciones con las que se cuenta
+                for(int i = 0;i< ingredientes.IngredientesPan().Count; i++)
+                {
+                    Console.WriteLine($"{i}. {ingredientes.IngredientesPan()[i].Nombre}");
+                }
+                int opcion = ValidarNumero("Ingresa una opción del menú: ");
+                for (int i = 0; i < ingredientes.IngredientesPan().Count; i++)
+                {
+                    Console.WriteLine($"Se ejecuta");
+                    if (i == opcion)
+                    {
+                        Console.WriteLine($"Se ha seleccionado Opcion: {opcion} e i: {i}");
+                        //pastel.AgregarIngrediente(ingrediente);
+                        /*
+                        ingrediente = ingredientes.IngredientesPan()[i];
+                        Console.WriteLine(ingrediente.RevisarIngrediente());
+                        //pastel.AgregarIngrediente(ingrediente);
+                        //pastel.Informacion();
+                        salir = true;
+                        */
+                        salir = true;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"No se ha seleccionado un ingrediente");
+                    }
+                }
+                /*Ingrediente ingrediente = new Ingrediente();
+                foreach(Ingrediente i in ingredientes.IngredientesPan())
+                {
+
+                }
+                */
+
+                /*
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                if (ingredientes.IngredientesPan()[opcion].Equals(opcion))
+                {
+                    pastel.AgregarIngrediente = tamanio;
+                    pastel.Informacion();
+                    salir = true;
+
+                }
+                */
+
+            }
+        }
+        //Método que permirte ver las calorías de los ingredientes por categorías por el peso que se ingrese
+        private static void BuscarIngredienteCaloria()
+        {
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine("Selecciona una categoría del ingrediente");
+            //Variable para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones con las quese cuenta
+                Console.WriteLine("1. Pan");
+                Console.WriteLine("2. Relleno");
+                Console.WriteLine("3. Glaseado");
+                Console.WriteLine("4. Dedicatoria");
+                Console.WriteLine("5. Flan");
+                Console.WriteLine("6. Salir");
+                int opcion = ValidarNumero("Ingresa una opción del menú: ");
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    case 1:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.Write("Ingresa el peso del ingrediente: ");
+                        string s = Console.ReadLine();
+                        Console.WriteLine("************************************ Calorías del Pan ***************************************************");
+                        ImpresionIngredienteGeneral(ingredientes.IngredientesPan(),float.Parse(s));
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 2:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.Write("Ingresa el peso del ingrediente: ");
+                        string s1 = Console.ReadLine();
+                        Console.WriteLine("************************************ Calorías Relleno *************************************************");
+                        ImpresionIngredienteGeneral(ingredientes.IngredientesRelleno(), float.Parse(s1));
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 3:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.Write("Ingresa el peso del ingrediente: ");
+                        string s2 = Console.ReadLine();
+                        Console.WriteLine("************************************ Calorías Glaseado ***********************************************");
+                        ImpresionIngredienteGeneral(ingredientes.IngredienteGlaseado(), float.Parse(s2));
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 4:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.Write("Ingresa el peso del ingrediente: ");
+                        string s3 = Console.ReadLine();
+                        Console.WriteLine("************************************ Calorías Dedicatoria ***********************************************");
+                        ImpresionIngredienteGeneral(ingredientes.IngredienteDedicatoria(), float.Parse(s3));
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 5:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.Write("Ingresa el peso del ingrediente: ");
+                        string s4 = Console.ReadLine();
+                        Console.WriteLine("************************************ Calorías Flan ***********************************************");
+                        ImpresionIngredienteGeneral(ingredientes.IngredienteFlan(), float.Parse(s4));
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 6:
+                        //Opción para la salida del programa
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido salir del menú secundario");
+                        Console.WriteLine("**********************************************************************************************");
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción
+                    default:
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Elige una opcion entre 1 y 6");
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                }
+            }
+        }
+        //Método de la impresión de las caracteristicas generales de la lista
+
         //Método que permite visualizar todos los ingredientes disponibles para realizar las combinaciones
         public static void ImpresionIngredientes()
         {
@@ -102,7 +276,7 @@ namespace UnidadUnoEA
                 Console.WriteLine("2. Relleno");
                 Console.WriteLine("3. Glaseado");
                 Console.WriteLine("4. Dedicatoria");
-                Console.WriteLine("5. flan");
+                Console.WriteLine("5. Flan");
                 Console.WriteLine("6. Salir");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
@@ -144,20 +318,30 @@ namespace UnidadUnoEA
                     //Opción en el caso de que el usuario no seleccione una opción
                     default:
                         Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Elige una opcion entre 0 y 6");
+                        Console.WriteLine("Elige una opcion entre 1 y 6");
                         Console.WriteLine("**********************************************************************************************");
                         break;
                 }
             }
         }
+        //Método de la impresión de las caracteristicas generales de la lista
         public static void ImpresionIngredienteGeneral(List<Ingrediente> ingredientesList)
         {
+            //Uso de foreach para recorrer la lista de los ingredientes
             foreach (Ingrediente i in ingredientesList)
             {
                 Console.WriteLine("**********************************************************************************************");
                 Console.WriteLine(i.RevisarIngrediente());
             }
-        } 
+        }
+        public static void ImpresionIngredienteGeneral(List<Ingrediente> ingredientesList, float peso)
+        {
+            //Uso de foreach para recorrer la lista de los ingredientes
+            foreach (Ingrediente i in ingredientesList)
+            {
+                Console.WriteLine(i.RevisarIngrediente(peso));
+            }
+        }
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
         {
@@ -189,5 +373,6 @@ namespace UnidadUnoEA
             //Retorno del valor ingresado
             return valor;
         }
+     
     }
 }

@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public List<Ingrediente> Ingredientes { get; set;}
         public float Peso { get; set; }
-        public float Rendimiento { get; set; }
+        public Tamanio Rendimiento { get; set; }
         public float Costo { get; set; }    
         public Pastel()
         {
@@ -22,7 +22,13 @@
         public void Informacion()
         {
             Console.WriteLine($"Id: {Id} \n" +
-                $"Descripción: {Peso} \n");
+                $"Descripción: {Peso} \n" +
+                $"Tamaño: {Rendimiento.Name}");
+            Console.WriteLine("Ingredientes: ");
+            foreach (Ingrediente p in Ingredientes)
+            {
+                Console.WriteLine($"{p.Nombre}");
+            }
         }
     }
 }
