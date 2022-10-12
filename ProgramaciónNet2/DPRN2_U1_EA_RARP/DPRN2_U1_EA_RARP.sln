@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPRN2_U1_EA_RARP", "DPRN2_U1_EA_RARP.csproj", "{75214830-7B73-4380-98EC-9EE1FF2708DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75214830-7B73-4380-98EC-9EE1FF2708DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75214830-7B73-4380-98EC-9EE1FF2708DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75214830-7B73-4380-98EC-9EE1FF2708DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75214830-7B73-4380-98EC-9EE1FF2708DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCE3D47F-E0FE-47AB-8FB4-874C31ADAB6D}
+	EndGlobalSection
+EndGlobal
