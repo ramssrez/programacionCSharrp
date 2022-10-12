@@ -15,6 +15,10 @@
         {
             Ingredientes.Add(ingrediente);
         }
+        public int CantidadIngredientes()
+        {
+            return Ingredientes.Count;
+        }
         public void Informacion()
         {
             Console.WriteLine($"Id: {Id} \n" +

@@ -4,22 +4,24 @@ namespace UnidadUnoEA
 {
     class Program
     {
-        //Declaración de variables globales del programa
-        //public static Personajes? personajes;
-        //public static Personaje? personaje;
-        //public static List<Personaje>? personajeList;
-
+        Pastel pastel = new Pastel();
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
             Pastel pastel = new Pastel();
             Ingrediente ingrediente = new Ingrediente();
             Ingredientes ingredientes = new Ingredientes();
-            Console.WriteLine("Hola mundo");
-            foreach(Ingrediente i in ingredientes.IngredientesTotales)
+            ingredientes.IngredientesTotales.Add(ingrediente);
+            foreach(Ingrediente om in ingredientes.IngredientesTotales)
             {
                 Console.WriteLine("**********************************************************************************************");
-                i.Informacion();
+                Console.WriteLine(om.Nombre);
+                /*
+                if (i.Tipo.Id != 1)
+                {
+                    Console.WriteLine(i.Nombre);
+                }
+                */
             }
             Presentacion();
         }
@@ -34,10 +36,10 @@ namespace UnidadUnoEA
             while (!salir)
             {
                 //Impresión de los diferentes opciones
-                Console.WriteLine("1. Realizar pedido");
-                Console.WriteLine("2. Mostrar información del pedido");
-                Console.WriteLine("3. Cerrar pedido");
-                Console.WriteLine("4. Ataque");
+                Console.WriteLine("1. Mostrar ingredientes diponibles");
+                Console.WriteLine("2. Realizar pedido");
+                Console.WriteLine("3. Mostrar información del pedido");
+                Console.WriteLine("4. Cerrar pedido");
                 Console.WriteLine("5. Salir");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
