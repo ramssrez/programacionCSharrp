@@ -10,9 +10,6 @@ namespace UnidadUnoEA
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            //Pastel pastel = new Pastel();
-            //Ingrediente ingrediente = new Ingrediente();
-
             Presentacion();
         }
         public static void Presentacion()
@@ -68,6 +65,13 @@ namespace UnidadUnoEA
                     case 5:
                         //Opción para la salida del programa
                         Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 4");
+                        pastel.Informacion();
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 6:
+                        //Opción para la salida del programa
+                        Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido salir de la aplicación");
                         Console.WriteLine("**********************************************************************************************");
                         salir = true;
@@ -99,23 +103,28 @@ namespace UnidadUnoEA
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 if (opcion == 1)
                 {
+
                     Tamanio tamanio = new Tamanio(1, "Pequeño", "4 Rebanadas");
                     pastel.Rendimiento = tamanio;
                     salir = true;
-
+                    Console.WriteLine("**********************************************************************************************");
+                    Console.WriteLine("Se ha seleccionado un tamaño");
                 }
                 else if (opcion == 2)
                 {
                     Tamanio tamanio = new Tamanio(2, "Mediano", "8 Rebanadas");
                     pastel.Rendimiento = tamanio;
                     salir = true;
-
+                    Console.WriteLine("**********************************************************************************************");
+                    Console.WriteLine("Se ha seleccionado un tamaño");
                 }
                 else if (opcion == 3)
                 {
                     Tamanio tamanio = new Tamanio(3, "Grande", "16 Rebanadas");
                     pastel.Rendimiento = tamanio;
                     salir = true;
+                    Console.WriteLine("**********************************************************************************************");
+                    Console.WriteLine("Se ha seleccionado un tamaño");
                 }
                 else
                 {
@@ -174,12 +183,13 @@ namespace UnidadUnoEA
                     Console.WriteLine("No se ha seleccionado una opción del menú");
                 }
             }
-            pastel.Informacion();
+            Console.WriteLine("Se ha generado un pedido");
         }
         //Método que imprime y selecciona las opciones que se cuenta de los ingredientes
         public static bool SeleccionIngrediente(List<Ingrediente> lista, string texto)
         {
             bool salir = false;
+            //Ciclo while para que se repita el menú hasta que se seleccione una opción correcta
             while (!salir)
             {
                 Console.WriteLine("**********************************************************************************************");
@@ -191,6 +201,7 @@ namespace UnidadUnoEA
                 }
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
                 Ingrediente ingre = null;
+                //Recorrido de la lista para escoger la opción de los ingredientes
                 for (int i = 0; i < lista.Count; i++)
                 {
                     if (i == opcion)
@@ -201,6 +212,7 @@ namespace UnidadUnoEA
                         break;
                     }
                 }
+                //ciclo if, para el caso de que no se ha seleccionado una opción del menú
                 if (ingre == null)
                 {
                     Console.WriteLine("**********************************************************************************************");

@@ -30,7 +30,7 @@
                 $"Tipo: {Tipo.TipoInsumo} \n" +
                 $"Medida rendimiento: {MedidaRendimiento}\n" +
                 $"Calorias: {Calorias} \n" +
-                $"Precio: {Precio}";
+                $"Precio: ${Precio}";
             return info;
         }
     }

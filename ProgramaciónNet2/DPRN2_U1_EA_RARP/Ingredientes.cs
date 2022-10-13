@@ -72,13 +72,5 @@
             ingredienteFlan.Add(ingrediente3);
             return ingredienteFlan;
         }
-        public void RevisarIngrediente(Ingrediente ingrediente, float peso)
-        {
-
-        }
-        public string RevisarIngrediente(Ingrediente ingrediente)
-        {
-            return ingrediente.RevisarIngrediente();
-        }
     }
 }
