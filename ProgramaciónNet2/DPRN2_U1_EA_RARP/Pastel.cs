@@ -9,12 +9,14 @@
         public float Costo { get; set; }    
         public Pastel()
         {
-            
+            Ingredientes = new List<Ingrediente>();
         }
+        /*
         public void AgregarIngrediente(Ingrediente ingrediente)
         {
             Ingredientes.Add(ingrediente);
         }
+        */
         public int CantidadIngredientes()
         {
             return Ingredientes.Count;
@@ -25,9 +27,9 @@
                 $"Descripción: {Peso} \n" +
                 $"Tamaño: {Rendimiento.Name}");
             Console.WriteLine("Ingredientes: ");
-            foreach (Ingrediente p in Ingredientes)
+            for (int i = 0; i < Ingredientes.Count; i++)
             {
-                Console.WriteLine($"{p.Nombre}");
+                Console.WriteLine($"{i+1}. {Ingredientes[i].Nombre}");
             }
         }
     }
