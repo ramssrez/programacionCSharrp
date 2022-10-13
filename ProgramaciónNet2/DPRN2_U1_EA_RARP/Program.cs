@@ -89,6 +89,7 @@ namespace UnidadUnoEA
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
             while (!salir)
             {
+                Console.WriteLine("**********************************************************************************************");
                 Console.WriteLine("Selecciona el tamaño del pastel");
                 //Impresión de los diferentes opciones con las quese cuenta
                 Console.WriteLine("1. Pequeño");
@@ -118,10 +119,10 @@ namespace UnidadUnoEA
                 }
                 else
                 {
+                    Console.WriteLine("**********************************************************************************************");
                     Console.WriteLine("No se ha seleccionado una opción del menú");
                 }
             }
-            salir = false;
             if (SeleccionIngrediente(ingredientes.IngredientesPan(), "Selecciona el Pan del Pastel"))
             {
                 Console.WriteLine("**********************************************************************************************");
@@ -142,62 +143,38 @@ namespace UnidadUnoEA
                 Console.WriteLine("**********************************************************************************************");
                 Console.WriteLine("Se ha seleccionado una dedicatoria");
             }
-            pastel.Informacion();
-            /*
-            while (!salir)
-            {
-                Console.WriteLine("**********************************************************************************************");
-                Console.WriteLine("Selecciona el Pan del Pastel");
-                //Impresión de los diferentes opciones con las que se cuenta
-                for(int i = 0;i< ingredientes.IngredientesPan().Count; i++)
-                {
-                    Console.WriteLine($"{i}. {ingredientes.IngredientesPan()[i].Nombre}");
-                }
-                int opcion = ValidarNumero("Ingresa una opción del menú: ");
-                Ingrediente ingre = null;
-                for (int i = 0; i < ingredientes.IngredientesPan().Count; i++)
-                {
-                    if (i == opcion)
-                    {
-                        ingre = ingredientes.IngredientesPan()[i];
-                        pastel.Ingredientes.Add(ingre);
-                        salir = true;
-                        break;
-                    }
-                }
-                if(ingre == null)
-                {
-                    Console.WriteLine($"No se ha seleccionado un ingrediente");
-                }
-            }
             salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
             while (!salir)
             {
                 Console.WriteLine("**********************************************************************************************");
-                Console.WriteLine("Selecciona el Relleno del pastel");
-                //Impresión de los diferentes opciones con las que se cuenta
-                for (int i = 0; i < ingredientes.IngredientesRelleno().Count; i++)
-                {
-                    Console.WriteLine($"{i}. {ingredientes.IngredientesRelleno()[i].Nombre}");
-                }
+                Console.WriteLine("¿Deseas flan en el pastel?");
+                //Impresión de los diferentes opciones con las quese cuenta
+                Console.WriteLine("1. Si");
+                Console.WriteLine("2. No");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
-                Ingrediente ingre = null;
-                for (int i = 0; i < ingredientes.IngredientesRelleno().Count; i++)
+                if (opcion == 1)
                 {
-                    if (i == opcion)
+                    if (SeleccionIngrediente(ingredientes.IngredienteFlan(), "Selecciona el Flan del Pastel"))
                     {
-                        ingre = ingredientes.IngredientesRelleno()[i];
-                        pastel.Ingredientes.Add(ingre);
-                        salir = true;
-                        break;
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Se ha seleccionado un flan");
                     }
+                    salir = true;
                 }
-                if (ingre == null)
+                else if (opcion == 2)
                 {
-                    Console.WriteLine($"No se ha seleccionado un ingrediente");
+                    Console.WriteLine("**********************************************************************************************");
+                    Console.WriteLine("No se ha seleccionado un flan");
+                    salir = true;
+                }
+                else
+                {
+                    Console.WriteLine("**********************************************************************************************");
+                    Console.WriteLine("No se ha seleccionado una opción del menú");
                 }
             }
-            */
+            pastel.Informacion();
         }
         //Método que imprime y selecciona las opciones que se cuenta de los ingredientes
         public static bool SeleccionIngrediente(List<Ingrediente> lista, string texto)
