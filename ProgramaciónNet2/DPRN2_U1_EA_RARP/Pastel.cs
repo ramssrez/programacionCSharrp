@@ -57,10 +57,10 @@
             Console.WriteLine($"Calorias: {CaloriasPastel()} \n" +
                 $"Costo del pastel: ${Costo} \n" +
                 $"Rendimiento pastel: {RendimientoPastel()} \n" +
-                $"Peso del pastel {Peso}[kg] \n" +
+                $"Peso del pastel: {Peso}[kg] \n" +
                 $"Tamaño: {Rendimiento.Name} \n" +
-                $"Total de rebanadas {Rendimiento.Rebanadas} \n");
-            Console.WriteLine("Ingredientes: ");
+                $"Total de rebanadas: {Rendimiento.Rebanadas} \n");
+            Console.WriteLine("Ingredientes del pastel: ");
             for (int i = 0; i < Ingredientes.Count; i++)
             {
                 Console.WriteLine($"{i+1}. {Ingredientes[i].Nombre}");

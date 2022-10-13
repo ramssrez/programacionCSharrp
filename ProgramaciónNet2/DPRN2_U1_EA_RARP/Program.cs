@@ -4,7 +4,7 @@ namespace UnidadUnoEA
 {
     class Program
     {
-        public static Pastel pastel = new Pastel();
+        public static Pastel pastel = null;
         public static Ingredientes ingredientes = new Ingredientes();
 
         //Comienzo de la función principal en C#
@@ -59,17 +59,47 @@ namespace UnidadUnoEA
                         //Caso para poder realizar el ataque del personaje
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 4");
-                        RealizarPedido();
+                        if (pastel == null)
+                        {
+                            RealizarPedido();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Selecciona la opción 6, se necesita cerrar el pedido anterior");
+                        }
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 5:
                         //Opción para la salida del programa
                         Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido la opción 4");
-                        pastel.Informacion();
+                        Console.WriteLine("Has elegido la opción 5");
+                        if (pastel != null)
+                        {
+                            pastel.Informacion();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Aún no se tiene información del pastel");
+                        }
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 6:
+                        //Caso para poder realizar el ataque del personaje
+                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine("Has elegido la opción 6");
+                        if (pastel ==null)
+                        {
+                            Console.WriteLine("Aún no se ha generado un pedido");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Se ha cerrado el pedido");
+                            pastel = null;
+                        }
+                        //RealizarPedido();
+                        Console.WriteLine("**********************************************************************************************");
+                        break;
+                    case 7:
                         //Opción para la salida del programa
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido salir de la aplicación");
@@ -79,7 +109,7 @@ namespace UnidadUnoEA
                     //Opción en el caso de que el usuario no seleccione una opción
                     default:
                         Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Elige una opcion entre 1 y 5");
+                        Console.WriteLine("Elige una opcion entre 1 y 7");
                         Console.WriteLine("**********************************************************************************************");
                         break;
                 }
@@ -87,9 +117,9 @@ namespace UnidadUnoEA
         }
         private static void RealizarPedido()
         {
-            Console.WriteLine("**********************************************************************************************");
             //Variable para salir del ciclo.
             bool salir = false;
+            pastel = new Pastel();
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
             while (!salir)
             {
@@ -183,6 +213,7 @@ namespace UnidadUnoEA
                     Console.WriteLine("No se ha seleccionado una opción del menú");
                 }
             }
+            Console.WriteLine("**********************************************************************************************");
             Console.WriteLine("Se ha generado un pedido");
         }
         //Método que imprime y selecciona las opciones que se cuenta de los ingredientes
