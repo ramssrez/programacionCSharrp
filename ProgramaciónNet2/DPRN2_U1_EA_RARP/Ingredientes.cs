@@ -1,8 +1,11 @@
 ﻿namespace UnidadUnoEA
 {
+    //Declaración de la clase Ingredientes, la cual contiene la información de todos los ingredientes
     class Ingredientes
     {
+        //Declaración de los atributos de la clase
         public List<Ingrediente> IngredientesTotales { private set; get; }
+        //Declaración del constructor de la clase
         public Ingredientes()
         {
             IngredientesTotales = new List<Ingrediente>();
@@ -12,6 +15,7 @@
             IngredientesTotales.AddRange(IngredienteDedicatoria());
             IngredientesTotales.AddRange(IngredienteFlan());
         }
+        //Generación de la lista de ingredientes que tiene pan
         public List<Ingrediente> IngredientesPan()
         {
             TipoIngrediente tipo1 = new TipoIngrediente(1, "Pan");
@@ -24,6 +28,7 @@
             ingredientePan.Add(ingrediente3);
             return ingredientePan;
         }
+        //Generación de la lista de ingredientes que tiene relleno
         public List<Ingrediente> IngredientesRelleno()
         {
             List<Ingrediente> ingredienteRelleno = new List<Ingrediente>();
@@ -36,6 +41,7 @@
             ingredienteRelleno.Add(ingrediente3);
             return ingredienteRelleno;
         }
+        //Generación de la lista de ingredientes que tiene glaseado
         public List<Ingrediente> IngredienteGlaseado()
         {
             List<Ingrediente> ingredienteGlaseado = new List<Ingrediente>();
@@ -48,6 +54,7 @@
             ingredienteGlaseado.Add(ingrediente3);
             return ingredienteGlaseado;
         }
+        //Generación de la lista de ingredientes que tiene dedicatoria
         public List<Ingrediente> IngredienteDedicatoria()
         {
             List<Ingrediente> ingredienteDedicatoria = new List<Ingrediente>();
@@ -60,6 +67,7 @@
             ingredienteDedicatoria.Add(ingrediente3);
             return ingredienteDedicatoria;
         }
+        //Generación de la lista de ingredientes que tiene flan
         public List<Ingrediente> IngredienteFlan()
         {
             List<Ingrediente> ingredienteFlan = new List<Ingrediente>();
