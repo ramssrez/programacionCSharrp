@@ -14,7 +14,7 @@
         }
         public new string DatosVehiculo()
         {
-            string info = $"Tipo : {Tipo} \n" + base.DatosVehiculo();
+            string info = $"Tipo: {Tipo} \n" + base.DatosVehiculo();
             return info;
         }
     }

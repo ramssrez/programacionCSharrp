@@ -43,17 +43,14 @@ namespace UnidadDosEA
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
-                        Console.WriteLine($"Costo del auto: ${produccion.CostoAuto()}");
-                        Console.WriteLine($"Costo de la camioneta: ${produccion.CostoCamioneta()}");
-                        Console.WriteLine($"Costo de la van: ${produccion.CostoVan()}");
-                        //BuscarIngrediente();
+                        InfoPreciosVehiculos(produccion);
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Caso para poder visualizar las calorias de los ingredientes por peso
                     case 3:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 3");
-                        //BuscarIngredienteCaloria();
+                        ProduccionAutos(produccion);
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 4:
@@ -72,14 +69,54 @@ namespace UnidadDosEA
                 }
             }
         }
+        //Método que muestra la información de los componentes de los vehiculos con parametros de entrada de tipo Producción
         public static void InfoComponentes(Produccion produccion)
         {
+            //Impresión de la información de los vehiculos
             Console.WriteLine("**********************************************************************************************");
             Console.WriteLine($"Componentes del auto: \n{produccion.Auto.DatosVehiculo()}");
             Console.WriteLine("**********************************************************************************************");
             Console.WriteLine($"Componentes de la camioneta: \n{produccion.Camioneta.DatosVehiculo()}");
             Console.WriteLine("**********************************************************************************************");
             Console.WriteLine($"Componentes de la van: \n{produccion.Van.DatosVehiculo()}");
+        }
+        //Método que muestra la información del costo de producción de los vehiculos
+        public static void InfoPreciosVehiculos(Produccion produccion)
+        {
+            //Impresión de la información de los vehiculos
+            Console.WriteLine("Los costos de los vehiculos son los siguientes: ");
+            Console.WriteLine($"Costo del auto: ${produccion.CostoAuto()}");
+            Console.WriteLine($"Costo de la camioneta: ${produccion.CostoCamioneta()}");
+            Console.WriteLine($"Costo de la van: ${produccion.CostoVan()}");
+        }
+        //Método que muestra la información de la producción de vehiculos de forma mensual, tomando en cuenta el costo de los vehiculos como la cantidad.
+        public static void ProduccionAutos(Produccion produccion)
+        {
+            //Asignación de presupuesto por mes, así como la producción de cada uno de los vehiculos, tomando en cuenta 50% presupuesto para autos, 20% presupuesto para camionetas y 30% para Van
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(950000, 7, 1, 2, "enero"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(1092500, 7, 2, 2, "febrero"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(1256375, 7, 2, 3, "marzo"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(1444831, 8, 3, 3, "abril"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(1661555, 11, 2, 4, "mayo"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(1910789,11, 3, 5, "junio"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(2197404, 13, 3, 6, "julio"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(2527018, 15, 3, 7, "agosto"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(2906071, 17, 4, 8, "septiembre"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(3341982, 19, 5, 9, "octubre"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(3843279, 24, 5, 10, "noviembre"));
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(produccion.Piezas(4419771, 26, 6, 12, "diciembre"));
         }
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
