@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections;
-namespace UnidadDosEA
+﻿namespace UnidadDosEA
 {
     class Program
     {
+        //Comienzo de la función principal en C#
         static void Main(string[] args)
         {            
             Presentacion();
         }
-
+        //Método que muesta el menú de opciones para el caso de estudio
         public static void Presentacion()
         {
             Produccion produccion = new();
-            Console.WriteLine(produccion.Piezas(950000, 7, 1, 2, "enero"));
-
             //Mensaje de presentación del programa
             Console.WriteLine("**********************************************************************************************");
             Console.WriteLine("Bienvenidos al sistema de construcción de vehiculos de Tesla");
