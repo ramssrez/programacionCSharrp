@@ -2,11 +2,13 @@
 {
     class Program
     {
+        //Declaración de la variable global de la aplicación
         public static MonedaVirtual moneda = null;
 
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
+            //Inicio del método que contiene el menú de principal.
             Presentacion();
         }
         //Método que muesta el menú de opciones para el caso de estudio
@@ -14,7 +16,7 @@
         {
             //Mensaje de presentación del programa
             Console.WriteLine("**********************************************************************************************");
-            Console.WriteLine("Bienvenidos al sistema de compra de monedas virtuales");
+            Console.WriteLine("Bienvenidos al sistema de alta y compra de monedas virtuales");
             //Variable para salir del ciclo.
             bool salir = false;
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
