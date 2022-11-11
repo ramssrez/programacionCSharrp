@@ -27,7 +27,7 @@
                 //Impresión de los diferentes opciones
                 Console.WriteLine("1. Mostrar las monedas disponibles para comprar.");
                 Console.WriteLine("2. Comprar moneda virtual");
-                Console.WriteLine("3. Comprar monedas virtuales");
+                Console.WriteLine("3. Mostrar información de la cartera");
                 Console.WriteLine("4. Salir");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
@@ -58,19 +58,24 @@
                         try
                         {
                             moneda = monedas.Monedas[op - 1];
+                            double montoInvertir = ValidarNumeroDouble("Ingresa el monto a invertir: ");
+                            double monedasCompradas = montoInvertir / moneda.Precio;
+                            Console.WriteLine($"Se han comprado {monedasCompradas} monedas {moneda.Nombre}");
+                            cartera.GuardarInformacion(moneda, monedasCompradas,montoInvertir);
                         }
                         catch (ArgumentOutOfRangeException ex)
                         {
-                            Console.WriteLine("No se ha seleccionado una opcion correcta, vuleve a intentarlo");
+                            Console.WriteLine("No se ha seleccionado una opción del menú, vuleve seleccionar la opcion 2");
+                            moneda = null;
                         }
-                        /*
-                        if (monedas.Monedas.Contains(moneda))
+                        finally
                         {
-                            Console.WriteLine($"Se ha seleccionado {moneda.Nombre}");
+                            moneda = null;
                         }
-                        else
-                        {
-                        }
+
+                        //double monto = ValidarNumeroDouble("Ingresa el monto a invertir: ");
+
+
                         /*
                         if (moneda != null)
                         {
@@ -87,6 +92,8 @@
                     case 3:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 3");
+                        cartera.MostrarCarteraVitual();
+                        /*
                         if (moneda != null)
                         {
                             double monto = ValidarNumeroDouble("Ingresa el monto a invertir: ");
@@ -96,6 +103,7 @@
                         {
                             Console.WriteLine("No se han ingresado datos de la moneda, vuelve a la opción uno del menú");
                         }
+                        */
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 4:
