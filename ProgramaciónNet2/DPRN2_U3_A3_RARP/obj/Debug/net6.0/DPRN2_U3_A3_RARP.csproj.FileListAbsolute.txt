@@ -1,0 +1,15 @@
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\bin\Debug\net6.0\DPRN2_U3_A3_RARP.exe
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\bin\Debug\net6.0\DPRN2_U3_A3_RARP.deps.json
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\bin\Debug\net6.0\DPRN2_U3_A3_RARP.runtimeconfig.json
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\bin\Debug\net6.0\DPRN2_U3_A3_RARP.dll
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\bin\Debug\net6.0\ref\DPRN2_U3_A3_RARP.dll
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\bin\Debug\net6.0\DPRN2_U3_A3_RARP.pdb
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\obj\Debug\net6.0\DPRN2_U3_A3_RARP.csproj.AssemblyReference.cache
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\obj\Debug\net6.0\DPRN2_U3_A3_RARP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\obj\Debug\net6.0\DPRN2_U3_A3_RARP.AssemblyInfoInputs.cache
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\obj\Debug\net6.0\DPRN2_U3_A3_RARP.AssemblyInfo.cs
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\obj\Debug\net6.0\DPRN2_U3_A3_RARP.csproj.CoreCompileInputs.cache
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\obj\Debug\net6.0\DPRN2_U3_A3_RARP.dll
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\obj\Debug\net6.0\ref\DPRN2_U3_A3_RARP.dll
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\obj\Debug\net6.0\DPRN2_U3_A3_RARP.pdb
+C:\Users\ramss\Documents\CarpetaCSharp\ProgramaciónNet2\DPRN2_U3_A3_RARP\obj\Debug\net6.0\DPRN2_U3_A3_RARP.genruntimeconfig.cache
