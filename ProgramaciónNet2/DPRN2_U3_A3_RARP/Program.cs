@@ -5,7 +5,7 @@
         //Declaración de la variable global de la aplicación
         public static MonedaVirtual moneda = null;
         public static MonedasVirtual monedas = new();
-        public static Cartera cartera = new();
+        public static Cartera cartera = new("Raúl","Ramirez",1500.0);
 
         //Comienzo de la función principal en C#
         static void Main(string[] args)
@@ -55,7 +55,7 @@
                                 double montoInvertir = ValidarNumeroDouble("Ingresa el monto a invertir: ");
                                 if (cartera.Presupuesto < montoInvertir)
                                 {
-                                    Console.WriteLine("No cuentas con suficiente presupuesto");
+                                    Console.WriteLine($"{cartera.Nombre} {cartera.Apellido}, no cuentas con suficiente presupuesto");
                                 }
                                 else
                                 {
@@ -67,7 +67,7 @@
                             }
                             catch (ArgumentOutOfRangeException ex)
                             {
-                                Console.WriteLine("No se ha seleccionado una opción del menú, vuleve seleccionar la opcion 2");
+                                Console.WriteLine("No se ha seleccionado una opción del menú, vuelve seleccionar la opcion 2");
                                 moneda = null;
                             }
                             finally
@@ -77,7 +77,7 @@
                         }
                         else
                         {
-                            Console.WriteLine("Ya no cuentas con suficiente saldo para comprar monedas virtuales");
+                            Console.WriteLine($"{cartera.Nombre} {cartera.Apellido}, ya no cuentas con suficiente saldo para comprar monedas virtuales");
                         }
                         Console.WriteLine("**********************************************************************************************");
                         break;
@@ -163,6 +163,6 @@
             }
             //Retorno del valor ingresado
             return valor;
-        }d
+        }
     }
 }
