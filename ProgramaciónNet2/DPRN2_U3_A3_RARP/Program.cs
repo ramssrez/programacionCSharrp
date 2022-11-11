@@ -33,77 +33,59 @@
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
-                    //Caso para poder mostrar la información de todos los ingredientes disponibles
+                    //Caso para poder mostrar la información de las monedas
                     case 1:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 1");
                         monedas.MostrarMonedas();
-                        /*
-                        moneda = new MonedaVirtual();
-                        string nombre = ValidarSoloString("Ingresa el nombre de maneda virtual: ");
-                        int numero = ValidarNumero("Ingresa la posición de la moneda virtual: ");
-                        string id = ValidarString("Ingresa el identificador de la moneda: ");
-                        double precio = ValidarNumeroDouble("Ingresa el precio de la moneda: ");
-                        moneda.GuardarInformacion(numero, nombre, id, precio);
-                        */
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Caso para poder visualizar los ingredientes por categoría
+                    //Caso para poder realizar la compra de monedas virtuales
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
-                        moneda = new MonedaVirtual();
-                        monedas.MostrarMonedasPorID();
-                        int op = ValidarNumero("Selecciona una moneda para comprar: ");
-                        try
+                        if (cartera.Presupuesto != 0.0)
                         {
-                            moneda = monedas.Monedas[op - 1];
-                            double montoInvertir = ValidarNumeroDouble("Ingresa el monto a invertir: ");
-                            double monedasCompradas = montoInvertir / moneda.Precio;
-                            Console.WriteLine($"Se han comprado {monedasCompradas} monedas {moneda.Nombre}");
-                            cartera.GuardarInformacion(moneda, monedasCompradas,montoInvertir);
-                        }
-                        catch (ArgumentOutOfRangeException ex)
-                        {
-                            Console.WriteLine("No se ha seleccionado una opción del menú, vuleve seleccionar la opcion 2");
-                            moneda = null;
-                        }
-                        finally
-                        {
-                            moneda = null;
-                        }
+                            try
+                            {
+                                moneda = new MonedaVirtual();
+                                monedas.MostrarMonedasPorID();
+                                int op = ValidarNumero("Selecciona una moneda para comprar: ");
+                                moneda = monedas.Monedas[op - 1];
+                                double montoInvertir = ValidarNumeroDouble("Ingresa el monto a invertir: ");
+                                if (cartera.Presupuesto < montoInvertir)
+                                {
+                                    Console.WriteLine("No cuentas con suficiente presupuesto");
+                                }
+                                else
+                                {
+                                    double monedasCompradas = montoInvertir / moneda.Precio;
+                                    Console.WriteLine($"Se han comprado {monedasCompradas} monedas {moneda.Nombre}");
+                                    cartera.GuardarInformacion(moneda, monedasCompradas, montoInvertir);
+                                }
 
-                        //double monto = ValidarNumeroDouble("Ingresa el monto a invertir: ");
-
-
-                        /*
-                        if (moneda != null)
-                        {
-                            Console.WriteLine($"{moneda.MostrarInformacion()}");
+                            }
+                            catch (ArgumentOutOfRangeException ex)
+                            {
+                                Console.WriteLine("No se ha seleccionado una opción del menú, vuleve seleccionar la opcion 2");
+                                moneda = null;
+                            }
+                            finally
+                            {
+                                moneda = null;
+                            }
                         }
                         else
                         {
-                            Console.WriteLine("No se han ingresado datos de la moneda, vuelve a la opción uno del menú");
+                            Console.WriteLine("Ya no cuentas con suficiente saldo para comprar monedas virtuales");
                         }
-                        */
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Caso para poder visualizar las calorias de los ingredientes por peso
+                    //Caso para poder visualizar la cartera del usuario
                     case 3:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 3");
                         cartera.MostrarCarteraVitual();
-                        /*
-                        if (moneda != null)
-                        {
-                            double monto = ValidarNumeroDouble("Ingresa el monto a invertir: ");
-                            RealizarCompra(monto, moneda.Precio);
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se han ingresado datos de la moneda, vuelve a la opción uno del menú");
-                        }
-                        */
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 4:
@@ -122,22 +104,6 @@
                 }
             }
         }
-        //Método que realiza la compra de una moneda, con parametros de entrada como el monto a invertir y el precio de la moneda
-        private static void RealizarCompra(double monto, double precio)
-        {
-            //Uso de la sentecia try/catch para el caso de que no se cuente aún con información de la moneda
-            try
-            {
-                double monedas = monto / precio;
-                Console.WriteLine($"Se han comprado {monedas} monedas {moneda.Nombre}");
-            }
-            catch (NullReferenceException ex)
-            {
-                //Mensaje de error para el caso de que no se cuente con información de la cuenta
-                Console.WriteLine("No se han ingresado los valores de la moneda, vuelve a la opción uno del menú");
-            }
-        }
-
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static double ValidarNumeroDouble(string mensaje)
         {
@@ -197,134 +163,6 @@
             }
             //Retorno del valor ingresado
             return valor;
-        }
-        //Métod que valida el string ingresado desde la consola
-        public static string ValidarString(string mensaje)
-        {
-            bool salir = false;
-            string s = null;
-            //Ciclo while para verificar las caracteristicas del string
-            while (!salir)
-            {
-                //Uso de la sentencia try/catch para el caso de que no se haya ingresado de manera adecuada la información 
-                try
-                {
-                    Console.Write(mensaje);
-                    s = Console.ReadLine();
-                    //Sentencia if/else para verificar si esta escrito sin espacios y vacios el string
-                    if (string.IsNullOrEmpty(s))
-                    {
-                        Console.WriteLine("El string se encuentra vacío, vuelve a intentarlo");
-                    }
-                    else if (EspacioVacio(s))
-                    {
-                        Console.WriteLine("Ingresa un string sin espacios");
-                    }
-                    else
-                    {
-                        salir = true;
-                    }
-                }
-                //Catch para el caso de que se cuente con un error
-                catch (FormatException ex)
-                {
-                    Console.WriteLine("Error al ingresar el texto, vuelve a intentarlo");
-                }
-            }
-            //Retorno de string obtenido desde la consola
-            return s;
-        }
-        //Método que reliza la validación del string sea solo string sin números 
-        public static string ValidarSoloString(string mensaje)
-        {
-            bool salir = false;
-            string s = null;
-            //Ciclo while para verificar las caracteristicas del string
-            while (!salir)
-            {
-                Console.Write(mensaje);
-                s = Console.ReadLine();
-                //Sentencia if/else para verificar el string ingresado por el usuario
-                if (!SoloLetras(s))
-                {
-                    //Sentencia donde solo se necesita letra sin número ni espacios
-                    Console.WriteLine("Ingresa solo letras, sin espacios");
-                }
-                else if (string.IsNullOrEmpty(s))
-                {
-                    //Snetencia para el caso de que el string se encuentre vacio
-                    Console.WriteLine("El string se encuentra vacío, vuelve a intentarlo");
-                }
-                else
-                {
-                    //En caso contrario se puede salir del programa
-                    salir = true;
-                }
-            }
-
-            //Retorno del string que se ha ingresado
-            return s;
-        }
-        //Metodo que permite identificar si al inicio del string haya un espacio
-        public static bool EspacioVacio(string s)
-        {
-            foreach (char ch in s)
-            {
-                //Verificación del codigo ASCII para el espacio vacio
-                if (ch != 32)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        //Metodo que permite identificar si los caracteres son letras o no
-        public static bool SoloLetras(string s)
-        {
-            //Recorrido del string con un foreach
-            foreach (char ch in s)
-            {
-                //Verificación de si solo hay letras en el string
-                if (!Char.IsLetter(ch) && ch != 32)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        //Método que valida la fecha ingresada desde un string
-        public static string ValidarFecha(string mensaje)
-        {
-            //Declaración de las variables necesarias para esta sección de codigo
-            DateTime fecha;
-            bool salir = false;
-            string s = null;
-            //Ciclo while para verificar las caracteristicas de la fehca
-            while (!salir)
-            {
-                //Sentencia try para el caso de que el string no sea agregao de manera correcta
-                try
-                {
-                    Console.Write(mensaje);
-                    s = Console.ReadLine();
-                    //Sentencia if/else para veriicar si el string ingesado se puede parsear a un tipo DateTiem
-                    if (!DateTime.TryParse(s, out fecha))
-                    {
-                        Console.WriteLine("La fecha no cuenta con el formato establecido, vuelve a intentarlo");
-                    }
-                    else
-                    {
-                        salir = true;
-                    }
-                }
-                //Sentencia catch para el caso de que no se ingrese información adecuada
-                catch (FormatException ex)
-                {
-                    Console.WriteLine("Error al ingresar la fecha, intenta de nuevo");
-                }
-            }
-            //Retorno del string que se genero
-            return s;
-        }
+        }d
     }
 }

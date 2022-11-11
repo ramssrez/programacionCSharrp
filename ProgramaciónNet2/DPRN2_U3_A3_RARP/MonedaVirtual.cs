@@ -23,15 +23,6 @@
             Precio = precio;
             FechaPrecio = fecha;
         }
-        //Declaración del método que guarda la informaicón de la moneda virtual
-        public void GuardarInformacion(int numero, string nombre, string id, double precio, string fecha)
-        {
-            Numero = numero;
-            Nombre = nombre;
-            ID = id;
-            Precio = precio;
-            FechaPrecio = fecha;
-        }
         //Método que muestra la información de la moneda virtual
         public string MostrarInformacion()
         {

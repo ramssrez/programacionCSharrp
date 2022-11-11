@@ -9,10 +9,10 @@
         {
 
         }
-        public Compra(MonedaVirtual moneda, double monedasCompradas, double inversion)
+        public void RealizarCompra(MonedaVirtual moneda, double monedasCompradas, double inversion)
         {
             Moneda = moneda;
-            MonedasComprada= monedasCompradas;
+            MonedasComprada = monedasCompradas;
             Inversion = inversion;
         }
     }

@@ -4,30 +4,29 @@
     {
         public string Nombre { get; set; }
         public string Apellido { get; set;}
-        public Compra Compra { get; set; }
-        //public List<double> Inversion { get; set; }
-        //public List<MonedaVirtual> Monedas { get; set; }
+        public double Presupuesto { get; set; }
         public List<Compra> Compras { get; set; }
-        public Cartera()
+        public Cartera(string nombre, string apellido, double presupuesto)
         {
-            //Monedas = new List<MonedaVirtual>();
-            //Inversion = new List<double>();
             Compras = new List<Compra>();
-            //Presupuesto = 0;
+            Presupuesto = presupuesto;
+            Nombre = nombre;
+            Apellido = apellido;
         }
+        //Declaración del método que guarda la información de la moneda virtual
         public void GuardarInformacion(MonedaVirtual moneda, double monedasCompradas,double inversion)
         {
-            Compra = new Compra(moneda, monedasCompradas,inversion);
-            Compras.Add(Compra);
-            //Monedas.Add(moneda);
-            //Inversion.Add(inversion);
+            Compra compra = new ();
+            compra.RealizarCompra(moneda, monedasCompradas, inversion);
+            Presupuesto -= inversion;
+            Compras.Add(compra);
         }
         private double InversionTotal()
         {
             double suma = 0.0;
             for (int i = 0; i < Compras.Count; i++)
             {
-                suma = suma + Compras[i].Inversion;
+                suma += Compras[i].Inversion;
             }
             return suma;
         }
@@ -39,6 +38,7 @@
                 Console.WriteLine($"Id: {i.Moneda.ID}, Total: {i.MonedasComprada} monedas, Inversión: ${i.Inversion}");
             }
             Console.WriteLine($"Inversión total: ${InversionTotal()}");
+            Console.WriteLine($"Presupuesto: {Presupuesto}");
         }
     }
 }

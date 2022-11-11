@@ -1,8 +1,11 @@
 ﻿namespace UnidadTresA3
 {
+    //Declaración de la clase MonedasVirtual
     class MonedasVirtual
     {
+        //Declaración de los atributos de la clase, así como los getters y setters
         public List<MonedaVirtual> Monedas { get; set; }
+        //Declaración del constructor vacio de la clase pero que genera 10 monedas virtuales
         public MonedasVirtual()
         {
             Monedas = new List<MonedaVirtual>();
@@ -35,6 +38,7 @@
                 Console.WriteLine(i.MostrarInformacion());
             }
         }
+        //Método que muestra la información de las monedas virtuales
         public void MostrarMonedasPorID()
         {
             foreach (MonedaVirtual i in Monedas)
