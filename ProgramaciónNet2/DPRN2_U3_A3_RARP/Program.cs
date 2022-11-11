@@ -5,6 +5,7 @@
         //Declaración de la variable global de la aplicación
         public static MonedaVirtual moneda = null;
         public static MonedasVirtual monedas = new();
+        public static Cartera cartera = new();
 
         //Comienzo de la función principal en C#
         static void Main(string[] args)
@@ -24,8 +25,8 @@
             while (!salir)
             {
                 //Impresión de los diferentes opciones
-                Console.WriteLine("1. Ingresa los datos de la moneda virtual.");
-                Console.WriteLine("2. Mostrar información de la moneda virtual");
+                Console.WriteLine("1. Mostrar las monedas disponibles para comprar.");
+                Console.WriteLine("2. Comprar moneda virtual");
                 Console.WriteLine("3. Comprar monedas virtuales");
                 Console.WriteLine("4. Salir");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
@@ -51,6 +52,26 @@
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
+                        moneda = new MonedaVirtual();
+                        monedas.MostrarMonedasPorID();
+                        int op = ValidarNumero("Selecciona una moneda para comprar: ");
+                        try
+                        {
+                            moneda = monedas.Monedas[op - 1];
+                        }
+                        catch (ArgumentOutOfRangeException ex)
+                        {
+                            Console.WriteLine("No se ha seleccionado una opcion correcta, vuleve a intentarlo");
+                        }
+                        /*
+                        if (monedas.Monedas.Contains(moneda))
+                        {
+                            Console.WriteLine($"Se ha seleccionado {moneda.Nombre}");
+                        }
+                        else
+                        {
+                        }
+                        /*
                         if (moneda != null)
                         {
                             Console.WriteLine($"{moneda.MostrarInformacion()}");
@@ -59,6 +80,7 @@
                         {
                             Console.WriteLine("No se han ingresado datos de la moneda, vuelve a la opción uno del menú");
                         }
+                        */
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Caso para poder visualizar las calorias de los ingredientes por peso
