@@ -18,7 +18,7 @@
         {
             //Mensaje de presentación del programa
             Console.WriteLine("**********************************************************************************************");
-            Console.WriteLine("Bienvenidos al sistema de alta y compra de monedas virtuales");
+            Console.WriteLine("Bienvenidos al sistema de compra de monedas virtuales");
             //Variable para salir del ciclo.
             bool salir = false;
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
