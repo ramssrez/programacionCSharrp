@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4b958ffd-80d3-46ef-915a-1466bf674af3": {
+      "ProjectGuid": "4b958ffd-80d3-46ef-915a-1466bf674af3",
+      "DisplayName": "DPRN2_U3_A4_RARP",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}
