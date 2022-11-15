@@ -7,7 +7,7 @@
         public static List<Inmueble> mesasDesayuno = inmuebles.MesasDesayuno;
         public static List<Inmueble> mesasComida = inmuebles.MesasComida;
         public static List<Inmueble> mesasCena = inmuebles.MesasCena;
-        public static Integer conMeDe= 0;
+        public static int conMeDe= 0;
         public static int conMeCo = 0;
         public static int conMeCe = 0;
 
@@ -162,14 +162,14 @@
                     case 1:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 1");
-                        TipoReserva("Desayuno", mesasDesayuno,conMeDe);
+                        conMeDe = TipoReserva("Desayuno", mesasDesayuno,conMeDe);
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Caso para poder realizar la compra de monedas virtuales
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
-                        //conMeCe = TipoReserva("Comida",mesasComida,conMeCo);
+                        conMeCe = TipoReserva("Comida",mesasComida,conMeCo);
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Caso para poder visualizar la cartera del usuario
@@ -289,7 +289,7 @@
             }
             return true;
         }
-        public static void TipoReserva(string tiempo, List<Inmueble> inmuebl, int contador)
+        public static int TipoReserva(string tiempo, List<Inmueble> inmuebl, int contador)
         {
             //Mensaje de presentación del programa
             Console.WriteLine("**********************************************************************************************");
@@ -313,19 +313,25 @@
                         Console.WriteLine("Has elegido la opción 1");
                         if (InmuebleDisponibles(inmuebl))
                         {
-                            MostrarInmuebleDisponibles(inmuebl);
-                            Console.WriteLine("contador: " +contador);
-                            Console.WriteLine("Se cuenta con mesas disponibles");
                             int numeroPersonas = ValidarNumero("Ingresa la cantidad de personas: ");
-                            inmuebl[contador].IsOcupada = true;
-                            inmuebl[contador].Espacios = numeroPersonas;
-                            string nombre = ValidarSoloString("Ingresa el nombre de la persona: ");
-                            string apellido = ValidarSoloString("Ingresa el apellido de la persona: ");
-                            CrearReserva(inmuebl[contador], tiempo, nombre, apellido);
-                            Console.WriteLine("La reservación ha sido creada con la siguiente información ");
-                            Console.WriteLine($"{reserva.MostrarInformacion()}");
-                            contador++;
-                            Console.WriteLine("contador: " + contador);
+                            if (!(numeroPersonas > 4))
+                            {
+                                string nombre = ValidarSoloString("Ingresa el nombre de la persona: ");
+                                string apellido = ValidarSoloString("Ingresa el apellido de la persona: ");
+                                inmuebl[contador].IsOcupada = true;
+                                inmuebl[contador].Espacios = numeroPersonas;
+                                CrearReserva(inmuebl[contador], tiempo, nombre, apellido);
+                                Console.WriteLine("La reservación ha sido creada con la siguiente información ");
+                                Console.WriteLine($"{reserva.MostrarInformacion()}");
+                                contador++;
+                                Console.WriteLine("contador: " + contador);
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Solo se pueden 4 personas por mesa");
+                            }
+
                         }
                         else
                         {
