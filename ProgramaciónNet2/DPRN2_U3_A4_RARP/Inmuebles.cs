@@ -4,6 +4,7 @@
     {
         public List<Inmueble> Mesas{ get; set; }
         public List<Inmueble> MesasDesayuno { get; set; }
+        public List<Inmueble> MesasComida { get; set; }
         public List<Inmueble> MesasCena { get; set; }
 
         public List<Inmueble> Salas { get; set; }
@@ -11,22 +12,7 @@
         {
             MesasMañana();
             MesasNoche();
-            Mesas = new List<Inmueble>();
-            Salas = new List<Inmueble>();
-            Inmueble mesa1 = new(1, "Mesa");
-            Inmueble mesa2 = new(2, "Mesa");
-            Inmueble mesa3 = new(3, "Mesa");
-            Mesas.Add(mesa1);
-            Mesas.Add(mesa2);
-            Mesas.Add(mesa3);
-
-
-            Inmueble sala1 = new Inmueble(1, "Sala");
-            Inmueble sala2 = new Inmueble(2, "Sala");
-            Inmueble sala3 = new Inmueble(3, "Sala");
-            Salas.Add(sala1);
-            Salas.Add(sala2);
-            Salas.Add(sala3);
+            MesasTarde();
         }
         public void MesasMañana()
         {
@@ -37,6 +23,16 @@
             MesasDesayuno.Add(mesa1);
             MesasDesayuno.Add(mesa2);
             MesasDesayuno.Add(mesa3);
+        }
+        public void MesasTarde()
+        {
+            MesasComida = new List<Inmueble>();
+            Inmueble mesa1 = new(1, "Mesa");
+            Inmueble mesa2 = new(2, "Mesa");
+            Inmueble mesa3 = new(3, "Mesa");
+            MesasComida.Add(mesa1);
+            MesasComida.Add(mesa2);
+            MesasComida.Add(mesa3);
         }
         public void MesasNoche()
         {
@@ -62,16 +58,17 @@
         public bool MesasDisponibles()
         {
             bool bandera = true;
+            int contador = 0;
             foreach (Inmueble i in Mesas)
             {
                 if (!i.IsOcupada)
                 {
-                    bandera = true;
+                    contador++;
                 }
-                else
-                {
-                    bandera = false;
-                }
+            }
+            if(contador == 0)
+            {
+                bandera = false;
             }
             return bandera;
         }
@@ -108,8 +105,7 @@
             }
             return bandera;
         }
-
-            public void MostrarInfoSalas()
+        public void MostrarInfoSalas()
         {
             foreach (Inmueble i in Salas)
             {
