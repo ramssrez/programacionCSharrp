@@ -28,6 +28,7 @@
                 $"Tiempo de cocción: {Tiempo} minutos\n" +
                 $"Tamaño: {Type.Name}\n" +
                 $"Precio: ${Type.Precio}");
+            Console.WriteLine($"Ingredientes: ");
             for (int i=0; i<Ingredientes.Count;i++)
             {
                 Console.WriteLine($"{i+1} - {Ingredientes[i].Name}");
