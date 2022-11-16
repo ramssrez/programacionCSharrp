@@ -2,12 +2,12 @@
 {
     class Inmuebles
     {
-        public List<Inmueble> Mesas{ get; set; }
         public List<Inmueble> MesasDesayuno { get; set; }
         public List<Inmueble> MesasComida { get; set; }
         public List<Inmueble> MesasCena { get; set; }
-
-        public List<Inmueble> Salas { get; set; }
+        public List<Inmueble> SalasDesayuno { get; set; }
+        public List<Inmueble> SalasComida { get; set; }
+        public List<Inmueble> SalasCena { get; set; }
         public Inmuebles()
         {
             MesasMañana();
@@ -24,6 +24,16 @@
             MesasDesayuno.Add(mesa2);
             MesasDesayuno.Add(mesa3);
         }
+        public void SalasMañana()
+        {
+            SalasDesayuno = new List<Inmueble>();
+            Inmueble sala1 = new(1, "Sala");
+            Inmueble sala2 = new(2, "Sala");
+            Inmueble sala3 = new(3, "Sala");
+            SalasDesayuno.Add(sala1);
+            SalasDesayuno.Add(sala2);
+            SalasDesayuno.Add(sala3);
+        }
         public void MesasTarde()
         {
             MesasComida = new List<Inmueble>();
@@ -33,6 +43,16 @@
             MesasComida.Add(mesa1);
             MesasComida.Add(mesa2);
             MesasComida.Add(mesa3);
+        }
+        public void SalasTarde()
+        {
+            SalasComida = new List<Inmueble>();
+            Inmueble sala1 = new(1, "Sala");
+            Inmueble sala2 = new(2, "Sala");
+            Inmueble sala3 = new(3, "Sala");
+            SalasComida.Add(sala1);
+            SalasComida.Add(sala2);
+            SalasComida.Add(sala3);
         }
         public void MesasNoche()
         {
@@ -44,73 +64,15 @@
             MesasCena.Add(mesa2);
             MesasCena.Add(mesa3);
         }
-        public void MostrarMesasDisponibles()
+        public void SalasNoche()
         {
-            foreach (Inmueble i in Mesas)
-            {
-                if (!i.IsOcupada)
-                {
-                    Console.WriteLine($"{i.Tipo} {i.ID}, {i.Espacios} espacios disponibles");
-                }
-                //Console.WriteLine($"Mesa {i.ID}, {i.Espacios} espacios disponibles");
-            }
-        }
-        public bool MesasDisponibles()
-        {
-            bool bandera = true;
-            int contador = 0;
-            foreach (Inmueble i in Mesas)
-            {
-                if (!i.IsOcupada)
-                {
-                    contador++;
-                }
-            }
-            if(contador == 0)
-            {
-                bandera = false;
-            }
-            return bandera;
-        }
-        public void MostrarInfoMesas()
-        {
-            foreach (Inmueble i in Mesas)
-            {
-                Console.WriteLine($"{i.MostrarInformacion()}");
-            }
-        }
-        public void MostrarSalasDisponibles()
-        {
-            foreach (Inmueble i in Salas)
-            {
-                if (!i.IsOcupada)
-                {
-                    Console.WriteLine($"{i.Tipo} {i.ID}, {i.Espacios} espacios disponibles");
-                }
-            }
-        }
-        public bool SalasDisponibles()
-        {
-            bool bandera = true;
-            foreach (Inmueble i in Salas)
-            {
-                if (!i.IsOcupada)
-                {
-                    bandera = true;
-                }
-                else
-                {
-                    bandera = false;
-                }
-            }
-            return bandera;
-        }
-        public void MostrarInfoSalas()
-        {
-            foreach (Inmueble i in Salas)
-            {
-                Console.WriteLine($"{i.MostrarInformacion()}");
-            }
+            SalasCena = new List<Inmueble>();
+            Inmueble sala1 = new(1, "Sala");
+            Inmueble sala2 = new(2, "Sala");
+            Inmueble sala3 = new(3, "Sala");
+            SalasCena.Add(sala1);
+            SalasCena.Add(sala2);
+            SalasCena.Add(sala3);
         }
     }
 }

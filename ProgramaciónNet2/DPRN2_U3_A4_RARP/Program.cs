@@ -7,9 +7,15 @@
         public static List<Inmueble> mesasDesayuno = inmuebles.MesasDesayuno;
         public static List<Inmueble> mesasComida = inmuebles.MesasComida;
         public static List<Inmueble> mesasCena = inmuebles.MesasCena;
+        public static List<Inmueble> salasDesayuno = inmuebles.SalasDesayuno;
+        public static List<Inmueble> salasComida = inmuebles.SalasComida;
+        public static List<Inmueble> salasCena = inmuebles.SalasCena;
         public static int conMeDe= 0;
         public static int conMeCo = 0;
         public static int conMeCe = 0;
+        public static int conSaDe = 0;
+        public static int conSaCo = 0;
+        public static int conSaCe = 0;
 
         //public static Reserva? reserva = null;
         public static List<Reserva> reservas = new();
@@ -50,7 +56,7 @@
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
-                        CancelarReserva();
+                         CancelarReserva();
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Caso para poder visualizar la cartera del usuario
@@ -80,26 +86,46 @@
                 }
             }
         }
-
+        //
         private static void CancelarReserva()
         {
             int id = ValidarNumero("Ingresa el valor ID de la reserva: ");
-            //Reserva reserva = reservas.Equals(id-1);
-            //if (reservas.Contains(id-1))
             try
             {
                 Reserva r = reservas.ElementAt(id - 1);
                 r.Inmueble.IsOcupada = false;
-                r.Inmueble.Espacios = 4;
+                if (r.Inmueble.Tipo.Equals("Mesa"))
+                {
+                    r.Inmueble.Espacios = 4;
+                    if (r.Tiempo.Equals("Desayuno"))
+                    {
+                        conMeDe--;
+                    }
+                    else if (r.Tiempo.Equals("Comida"))
+                    {
+                        conMeCo--;
+                    }
+                    else if (r.Tiempo.Equals("Cena"))
+                    {
+                        conMeCe--;
+                    }
+                }
+                else if (r.Inmueble.Tipo.Equals("Sala"))
+                {
+                    r.Inmueble.Espacios = 10;
+                }
+
+
+                Console.WriteLine("1. Desayuno.");
+                Console.WriteLine("2. Comida");
+                Console.WriteLine("3. Cena");
                 reservas.RemoveAt(id-1);
-                Console.WriteLine(r.MostrarInformacion());
+                Console.WriteLine($"Se ha eliminado la reserva con ID: {id}");
             }
             catch (ArgumentOutOfRangeException ex)
             {
                 Console.WriteLine("No se cuenta con la información del ID ingresado");
             }
-            //Reserva r = reservas.ElementAt(id-1);
-            //r.Inmueble.IsOcupada = false;
         }
 
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
@@ -185,21 +211,21 @@
                     case 1:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 1");
-                        conMeDe = TipoReserva("Desayuno", mesasDesayuno,conMeDe);
+                        TipoReserva("Desayuno", mesasDesayuno,conMeDe);
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Caso para poder realizar la compra de monedas virtuales
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
-                        conMeCo = TipoReserva("Comida",mesasComida,conMeCo);
+                        TipoReserva("Comida",mesasComida,conMeCo);
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     //Caso para poder visualizar la cartera del usuario
                     case 3:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 3");
-                        conMeCe = TipoReserva("Cena",mesasCena,conMeCe);
+                        TipoReserva("Cena",mesasCena,conMeCe);
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 4:
@@ -217,42 +243,6 @@
                         break;
                 }
             }
-        }
-        //Métod que valida el string ingresado desde la consola
-        public static string ValidarString(string mensaje)
-        {
-            bool salir = false;
-            string s = null;
-            //Ciclo while para verificar las caracteristicas del string
-            while (!salir)
-            {
-                //Uso de la sentencia try/catch para el caso de que no se haya ingresado de manera adecuada la información 
-                try
-                {
-                    Console.Write(mensaje);
-                    s = Console.ReadLine();
-                    //Sentencia if/else para verificar si esta escrito sin espacios y vacios el string
-                    if (string.IsNullOrEmpty(s))
-                    {
-                        Console.WriteLine("El string se encuentra vacío, vuelve a intentarlo");
-                    }
-                    else if (EspacioVacio(s))
-                    {
-                        Console.WriteLine("Ingresa un string sin espacios");
-                    }
-                    else
-                    {
-                        salir = true;
-                    }
-                }
-                //Catch para el caso de que se cuente con un error
-                catch (FormatException ex)
-                {
-                    Console.WriteLine("Error al ingresar el texto, vuelve a intentarlo");
-                }
-            }
-            //Retorno de string obtenido desde la consola
-            return s;
         }
         //Método que reliza la validación del string sea solo string sin números 
         public static string ValidarSoloString(string mensaje)
@@ -312,7 +302,7 @@
             }
             return true;
         }
-        public static int TipoReserva(string tiempo, List<Inmueble> inmuebl, int contador)
+        public static void TipoReserva(string tiempo, List<Inmueble> inmuebl, int contador)
         {
             //Mensaje de presentación del programa
             Console.WriteLine("**********************************************************************************************");
@@ -344,7 +334,18 @@
                                 inmuebl[contador].IsOcupada = true;
                                 inmuebl[contador].Espacios = numeroPersonas;
                                 CrearReserva(inmuebl[contador], tiempo, nombre, apellido);
-                                contador++;
+                                if (tiempo.Equals("Desayuno"))
+                                {
+                                    conMeDe++;
+                                }
+                                else if (tiempo.Equals("Comida"))
+                                {
+                                    conMeCo++;
+                                }
+                                else if (tiempo.Equals("Cena"))
+                                {
+                                    conMeCe++;
+                                }
                             }
                             else
                             {
@@ -361,46 +362,27 @@
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
-                        /*
-                        try
+                        if (InmuebleDisponibles(inmuebl))
                         {
-                            if (inmuebles.SalasDisponibles())
+                            int numeroPersonas = ValidarNumero("Ingresa la cantidad de personas: ");
+                            if (!(numeroPersonas > 10))
                             {
-                                inmuebles.MostrarSalasDisponibles();
-                                int op = ValidarNumero("Selecciona una sala: ");
-                                int numeroPersonas = ValidarNumero("Ingresa la cantidad de personas: ");
-                                if (!(numeroPersonas > inmuebles.Salas[op - 1].TotalPersonas) && (!inmuebles.Salas[op - 1].IsOcupada))
-                                {
-                                    string nombre = ValidarSoloString("Ingresa el nombre de la persona: ");
-                                    string apellido = ValidarSoloString("Ingresa el apellido de la persona: ");
-                                    CrearReserva(inmuebles.Salas[op - 1], tiempo, nombre, apellido);
-                                    inmuebles.Salas[op - 1].IsOcupada = true;
-                                    inmuebles.Salas[op - 1].Espacios = numeroPersonas;
-                                    Console.WriteLine("La reservación ha sido creada con la siguiente información ");
-                                    Console.WriteLine($"{reserva.MostrarInformacion()}");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("No es posible realizar la reservación, vuelve a intentarlo");
-                                }
-
+                                string nombre = ValidarSoloString("Ingresa el nombre de la persona: ");
+                                string apellido = ValidarSoloString("Ingresa el apellido de la persona: ");
+                                inmuebl[contador].IsOcupada = true;
+                                inmuebl[contador].Espacios = numeroPersonas;
+                                CrearReserva(inmuebl[contador], tiempo, nombre, apellido);
+                                contador++;
                             }
                             else
                             {
-                                Console.WriteLine("Ya no se cuentan con mesas disponibles");
+                                Console.WriteLine("Solo se pueden 4 personas por mesa");
                             }
-
                         }
-                        catch (ArgumentOutOfRangeException ex)
+                        else
                         {
-                            Console.WriteLine("No se ha seleccionado una opción de la lista, vuelve a intentarlo");
-                            reserva = null;
+                            Console.WriteLine("Ya no se cuenta con mesas disponibles");
                         }
-                        finally
-                        {
-                            reserva = null;
-                        }
-                        */
                         //inmuebles.MostrarSalasDisponibles();
                         Console.WriteLine("**********************************************************************************************");
                         break;
@@ -420,7 +402,6 @@
                         break;
                 }
             }
-            return contador;
         }
         //Método que crea una reserva con el ingreso de varios parametros de entrada
         public static void CrearReserva(Inmueble inmueble, string tiempo, string nombre, string apellido)
@@ -457,17 +438,6 @@
                 bandera = false;
             }
             return bandera;
-        }
-        public static void MostrarInmuebleDisponibles(List<Inmueble> inmueble)
-        {
-            foreach (Inmueble i in inmueble)
-            {
-                if (!i.IsOcupada)
-                {
-                    Console.WriteLine($"{i.Tipo} {i.ID}, {i.Espacios} espacios disponibles");
-                }
-            }
-
         }
     }
 }
