@@ -100,19 +100,7 @@
             Ingrediente ing11 = new("Anchoas");
             Ingrediente ing12 = new("Mariscos");
             Ingrediente ing13 = new("Peperoni");
-            Ingredientes.Add(ing1);
-            Ingredientes.Add(ing2);
-            Ingredientes.Add(ing3);
-            Ingredientes.Add(ing4);
-            Ingredientes.Add(ing5);
-            Ingredientes.Add(ing6);
-            Ingredientes.Add(ing7);
-            Ingredientes.Add(ing8);
-            Ingredientes.Add(ing9);
-            Ingredientes.Add(ing10);
-            Ingredientes.Add(ing11);
-            Ingredientes.Add(ing12);
-            Ingredientes.Add(ing13);
+            Ingredientes = new List<Ingrediente> {ing1, ing2,ing3, ing4, ing5, ing6, ing7, ing8, ing9, ing10, ing11, ing12,ing13 };
         }
     }
 }
