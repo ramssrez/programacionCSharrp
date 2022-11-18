@@ -17,8 +17,7 @@
             Console.WriteLine($"Hora de pedido: {Hora} \n" +
                 $"Latitud: {Posicion.Latitud} \n" +
                 $"Longitud: {Posicion.Longitud} \n" +
-                
-                $"Pizzas: ");
+                $"Total de Pizzas: ");
             MostrarPizzas(Pizzas);
         }
         public static void MostrarPizzas(List<Pizza> pizzas)
