@@ -5,6 +5,11 @@
       "ProjectGuid": "e502d2cd-2cb2-4516-ba91-4b07cc7c760a",
       "DisplayName": "DPRN2_U3_EA_RARP",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 1

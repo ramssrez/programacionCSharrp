@@ -1,7 +1,9 @@
 ﻿namespace UnidadTresEA
 {
+    //Declaración de la clase HorarioException
     public class HorarioException:Exception
     {
+        //Constructores de la clase para diferentes parametros de entrada
         public HorarioException()
         {
 

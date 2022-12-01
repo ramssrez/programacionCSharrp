@@ -1,7 +1,9 @@
 ﻿namespace UnidadTresEA
 {
+    //Declaración de la clase DireccionException
     public class DirecionException : Exception
     {
+        //Constructores de la clase para diferentes parametros de entrada
         public DirecionException()
         {
 
