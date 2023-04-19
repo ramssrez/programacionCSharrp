@@ -23,11 +23,5 @@
             Id = identificador;
             Name = nombre;
         }
-        //Método que imprime las variables que componen al objeto
-        public void AtributosConsole ()
-        {
-            Console.WriteLine($"Id: {Id} \n" +
-                $"Nombre: {Name} \n");
-        }
     }
 }

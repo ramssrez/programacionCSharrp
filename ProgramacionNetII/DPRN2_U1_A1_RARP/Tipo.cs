@@ -2,6 +2,13 @@
 {
     public class Tipo
     {
+         /*
+         * Identificadores por tipo y descripción
+         * 1.-Lanzador de Conjuros
+         * 2.-Demonio
+         * 3.-Dragón
+         * 4.-Insecto
+         */
         public int Id { get; set; }
         public string TipoName { get; set; }
         public bool IsEfect { get; set; }
@@ -14,14 +21,6 @@
             Id = id;
             TipoName = tipo;
             IsEfect = isEfect;
-        }
-        //Método que imprime las variables que componen al objeto
-        public void AtributosConsole()
-        {
-            string efecto = IsEfect ? "Si" : "No";
-            Console.WriteLine($"Id: {Id} \n" +
-                $"Tipo: {TipoName} \n" +
-                $"¿Es un efecto? {efecto}" );
         }
     }
 }
