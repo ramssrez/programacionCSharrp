@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-namespace UnidadUnoA1
+﻿namespace UnidadUnoA1
 {
     class Program
     {
@@ -24,7 +22,7 @@ namespace UnidadUnoA1
             while (!salir)
             {
                 //Impresión de los diferentes opciones
-                Console.WriteLine("1. Mostrar información de los personajes");
+                Console.WriteLine("1. Mostrar información de las cartas");
                 Console.WriteLine("2. Seleccionar personaje");
                 Console.WriteLine("3. Pelea");
                 Console.WriteLine("4. Ataque");
@@ -37,6 +35,11 @@ namespace UnidadUnoA1
                     case 1:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 1, información de los personajes de DC");
+                        Carta carta = new Carta("Mago obscuro", new Atributo(1,"Agua"), new Tipo(1,"Dragon",true));
+                        Console.WriteLine(carta.NombreMonstruo);
+                        carta.Atributo.AtributosConsole();
+                        carta.TipoMonstruo.AtributosConsole();
+                        //Console.WriteLine(carta.Atributo.ToString());
                         //infoPersonajes(personajeList);
                         Console.WriteLine("**********************************************************************************************");
                         break;
