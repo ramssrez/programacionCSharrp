@@ -2,19 +2,20 @@
 {
     class Program
     {
+        //Decalración de las variables globales
         public static Cartas? cartas;
         public static List<Carta>? cartasList;
+        public static Carta? carta;
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
+            //Instancia de las variables globales
             cartas = new Cartas();
             cartasList = cartas.CartasList;
-            //Instancia de las variables globales
-            //personajes = new Personajes();
-            //personajeList = personajes.PersonajesDC();
             //Llamado al método de presentación
             Presentacion();
         }
+        //Declaración del método presentación
         public static void Presentacion()
         {
             //Mensaje de presentación del programa
@@ -28,8 +29,8 @@
                 //Impresión de los diferentes opciones
                 Console.WriteLine("1. Mostrar información de las cartas");
                 Console.WriteLine("2. Seleccionar carta");
-                Console.WriteLine("3. Pelea");
-                Console.WriteLine("4. Ataque");
+                Console.WriteLine("3. Mostrar defensa del monstruo");
+                Console.WriteLine("4. Mostrar ataque del monstruo");
                 Console.WriteLine("5. Salir");
                 int opcion = ValidarNumero("Ingresa una opción del menú: ");
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
@@ -40,50 +41,27 @@
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 1, información de las cartas");
                         InfoCartas(cartasList);
-                        /*
-                        Carta carta = new Carta("Mago obscuro", new Atributo(1,"Agua"), new Tipo(1,"Dragon",true),"Es el mamadisimo mago obscuro"
-                            ,10,1500,2000);
-                        carta.AtributosConsole();
-                        */
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Caso para poder elegir un personaje
+                    //Caso para poder elegir una carta
                     case 2:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 2");
-                        //seleccionPersonaje();
+                        SeleccionCarta();
                         Console.WriteLine("**********************************************************************************************");
                         break;
-                    //Caso para poder realizar la pelea del personaje seleccionado
+                    //Caso para poder mostrar la defensa del monstruo
                     case 3:
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 3");
-                        /*
-                        if (personaje != null)
-                        {
-                            personaje.Pelea();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se ha seleccionado al personaje");
-                        }
-                        */
+                        Console.WriteLine(carta != null ? $"{carta.DefensaMonstruo()}" : "No se ha seleccionado al personaje");
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 4:
-                        //Caso para poder realizar el ataque del personaje
+                        //Caso para poder mostrar el ataque del monstruo
                         Console.WriteLine("**********************************************************************************************");
                         Console.WriteLine("Has elegido la opción 4");
-                        /*
-                        if (personaje != null)
-                        {
-                            personaje.Ataque();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No se ha seleccionado al personaje");
-                        }
-                        */
+                        Console.WriteLine(carta != null ? $"{carta.AtaqueMonstruo()}" : "No se ha seleccionado al personaje");
                         Console.WriteLine("**********************************************************************************************");
                         break;
                     case 5:
@@ -134,16 +112,32 @@
             return valor;
         }
         //Método que imprime la información de las cartas
-        public static void InfoCartas(List<Carta>? cartaList)
+        public static void InfoCartas(List<Carta> cartaList)
         {
-            //Recorrido de la lista de los personajes
+            //Recorrido de la lista de las cartas
             foreach (Carta ca in cartaList)
             {
-                //Impresión de la informaición de los personajes
+                //Impresión de la informaición de las cartas
                 Console.WriteLine("**********************************************************************************************");
                 ca.AtributosConsole();
                 Console.WriteLine("**********************************************************************************************");
             }
+        }
+        //Método que permite seleccionar una carta de un menú
+        public static void SeleccionCarta()
+        {
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine("Selecciona una carta de YuGi-Oh");
+            for (int i = 0; i<cartasList.Count; i++)
+            {
+                Console.WriteLine($"{i}. {cartasList[i].NombreMonstruo}");
+            }
+            int opcion = ValidarNumero("Ingresa una opción del menú: ");
+            carta = opcion >= 0 && opcion < cartasList.Count ? cartasList[opcion] : null;
+
+            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(carta != null ? $"Has elegido al monstruo: {carta.NombreMonstruo}" : "No se ha seleccionado al personaje");
+            Console.WriteLine("**********************************************************************************************");
         }
     }
 }
