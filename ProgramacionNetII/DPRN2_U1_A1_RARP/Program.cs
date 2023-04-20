@@ -6,12 +6,14 @@
         public static Cartas? cartas;
         public static List<Carta>? cartasList;
         public static Carta? carta;
+        public static StringProyect strings;
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
             //Instancia de las variables globales
             cartas = new Cartas();
             cartasList = cartas.CartasList;
+
             //Llamado al método de presentación
             Presentacion();
         }
@@ -19,63 +21,67 @@
         public static void Presentacion()
         {
             //Mensaje de presentación del programa
-            Console.WriteLine("**********************************************************************************************");
-            Console.WriteLine("Bienvenidos al sistema de cartas de YuGi-Oh");
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(StringProyect.BIENVENIDO);
             //Variable para salir del ciclo.
             bool salir = false;
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
             while (!salir)
             {
                 //Impresión de los diferentes opciones
-                Console.WriteLine("1. Mostrar información de las cartas");
-                Console.WriteLine("2. Seleccionar carta");
-                Console.WriteLine("3. Mostrar defensa del monstruo");
-                Console.WriteLine("4. Mostrar ataque del monstruo");
-                Console.WriteLine("5. Salir");
-                int opcion = ValidarNumero("Ingresa una opción del menú: ");
+                Console.WriteLine(StringProyect.OPCIONES_MENU);
+                int opcion = ValidarNumero(StringProyect.OPCION_MENU);
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
                     //Caso para poder mostrar la información de las cartas
                     case 1:
-                        Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido la opción 1, información de las cartas");
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
                         InfoCartas(cartasList);
-                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     //Caso para poder elegir una carta
                     case 2:
-                        Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido la opción 2");
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
                         SeleccionCarta();
-                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     //Caso para poder mostrar la defensa del monstruo
                     case 3:
-                        Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido la opción 3");
-                        Console.WriteLine(carta != null ? $"{carta.DefensaMonstruo()}" : "No se ha seleccionado al personaje");
-                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(carta != null ? $"{carta.DefensaMonstruo()}" : StringProyect.NO_SELECCION_PERSONAJE);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 4:
                         //Caso para poder mostrar el ataque del monstruo
-                        Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido la opción 4");
-                        Console.WriteLine(carta != null ? $"{carta.AtaqueMonstruo()}" : "No se ha seleccionado al personaje");
-                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(carta != null ? $"{carta.AtaqueMonstruo()}" : StringProyect.NO_SELECCION_PERSONAJE);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 5:
+                        //Caso para poder mostrar el ataque del monstruo
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        //PoscionCarta();
+                        Console.WriteLine(carta != null ? PoscionCarta() : StringProyect.NO_SELECCION_PERSONAJE);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 6:
                         //Opción para la salida del programa
-                        Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Has elegido salir de la aplicación");
-                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.SALIR);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
                         salir = true;
                         break;
                     //Opción en el caso de que el usuario no seleccione una opción
                     default:
-                        Console.WriteLine("**********************************************************************************************");
-                        Console.WriteLine("Elige una opcion entre 1 y 5");
-                        Console.WriteLine("**********************************************************************************************");
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.RANGO_OPCIONES);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                 }
             }
@@ -100,12 +106,12 @@
                 catch (FormatException ex)
                 {
                     //Mensaje de error en caso de que no se haya ingresado un entero
-                    Console.WriteLine("Error al ingresa valor, vuelve a intentarlo");
+                    Console.WriteLine(StringProyect.ERROR_INGRESAR_NUMERO);
                 }
                 catch (OverflowException ex)
                 {
                     //Mensaje de error en caso de que se haya ingresado un número muy grande
-                    Console.WriteLine("Número demasiado grande, intenta con otro número");
+                    Console.WriteLine(StringProyect.ERROR_NUMERO_GRANDE);
                 }
             }
             //Retorno del valor ingresado
@@ -118,26 +124,34 @@
             foreach (Carta ca in cartaList)
             {
                 //Impresión de la informaición de las cartas
-                Console.WriteLine("**********************************************************************************************");
+                Console.WriteLine(StringProyect.STRING_FORMATO);
                 ca.AtributosConsole();
-                Console.WriteLine("**********************************************************************************************");
+                Console.WriteLine(StringProyect.STRING_FORMATO);
             }
         }
         //Método que permite seleccionar una carta de un menú
         public static void SeleccionCarta()
         {
-            Console.WriteLine("**********************************************************************************************");
-            Console.WriteLine("Selecciona una carta de YuGi-Oh");
-            for (int i = 0; i<cartasList.Count; i++)
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(StringProyect.SELECCION_CARTA);
+            for (int i = 0; i < cartasList.Count; i++)
             {
                 Console.WriteLine($"{i}. {cartasList[i].NombreMonstruo}");
             }
-            int opcion = ValidarNumero("Ingresa una opción del menú: ");
+            int opcion = ValidarNumero(StringProyect.OPCION_MENU);
             carta = opcion >= 0 && opcion < cartasList.Count ? cartasList[opcion] : null;
 
-            Console.WriteLine("**********************************************************************************************");
-            Console.WriteLine(carta != null ? $"Has elegido al monstruo: {carta.NombreMonstruo}" : "No se ha seleccionado al personaje");
-            Console.WriteLine("**********************************************************************************************");
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(carta != null ? StringProyect.SeleccionMonstruo(carta.NombreMonstruo) : StringProyect.NO_SELECCION_PERSONAJE);
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+        }
+        //Método que permite posicionar la carta seleccionada
+        public static string PoscionCarta()
+        {
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(StringProyect.OPCIONES_ATAQUE_DEFENSA);
+            int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+            return opcion > 0 && opcion <= 2 ? carta.PosicionCarta(opcion) : StringProyect.NO_OPCION_MENU;
         }
     }
 }

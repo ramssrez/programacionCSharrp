@@ -15,8 +15,8 @@ public class Carta
 	{
 	}
 	//Declaración del constructor con parametros de entrada
-	public Carta(string nombreMonstruo, Atributo atributo,Tipo tipo, string descripcion, int nivel, int ataque, int defensa)
-    {
+	public Carta(string nombreMonstruo, Atributo atributo, Tipo tipo, string descripcion, int nivel, int ataque, int defensa)
+	{
 		NombreMonstruo = nombreMonstruo;
 		Atributo = atributo;
 		TipoMonstruo = tipo;
@@ -24,16 +24,21 @@ public class Carta
 		Nivel = nivel;
 		Ataque = ataque;
 		Defensa = defensa;
-    }
+	}
 	//Método que imprime el ataque del monstruo
 	public string AtaqueMonstruo()
-    {
-		return $"El monstruo {NombreMonstruo} atacará con {Ataque} puntos" ;
-    }
+	{
+		return $"El monstruo {NombreMonstruo} atacará con {Ataque} puntos";
+	}
 	//Método que imprime la defensa del monstruo
 	public string DefensaMonstruo()
-    {
+	{
 		return $"El monstruo {NombreMonstruo} defenderá con {Defensa} puntos";
+	}
+	public string PosicionCarta(int valor)
+    {
+		//string s = valor == 1 ? "Ataque (ATK)" : "Defensa (DEF)";
+		return $"El monstruo {NombreMonstruo} esta en posicion de {(valor == 1 ? "Ataque (ATK)" : "Defensa(DEF)")}";
     }
 	//Método que imprime los atributos que componen al objeto
 	public void AtributosConsole()
