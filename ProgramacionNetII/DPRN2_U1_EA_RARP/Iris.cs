@@ -2,13 +2,14 @@
 {
     public class Iris
     {
+        public int Id { get; }
         public string PatronTextura { get; set; }
         public string Forma { get; set; }
         public ColorIris Color { get; set; }
         public List<string> PatronRayas { get; set; }
         public List<double> Curvatura { get; set; }
         public List<string> Otros { get; set; }
-        public Iris(string patronTextura, string forma, ColorIris color, List<string> patronRayas, List<Double> curvatura, List<string> otros)
+        public Iris(int id, string patronTextura, string forma, ColorIris color, List<string> patronRayas, List<Double> curvatura, List<string> otros)
         {
             PatronTextura = patronTextura;
             Forma = forma;
@@ -16,10 +17,22 @@
             PatronRayas = patronRayas;
             Curvatura = curvatura;
             Otros = otros;
+            Id = id;
+        }
+        public void SimularEnvejecimiento(int intensidad)
+        {
+            Color.Intensidad = intensidad;
+        }
+        public void SimularEnvejecimiento(List<double> curvaturas)
+        {
+            Curvatura = curvaturas;
+        }
+        public void SimularEnvejecimiento(string otro)
+        {
+            Otros.Add(otro);
         }
         public void AtributosConsole()
         {
-            //string efecto = TipoMonstruo.IsEfect ? "Si" : "No";
             Console.WriteLine($"Patron textura: {PatronTextura} \n" +
                     $"Forma: {Forma} \n" +
                     $"Color: {Color.Color} \n" +
@@ -32,8 +45,7 @@
             Console.WriteLine("Curvatura:");
             foreach (double d in Curvatura)
             {
-                int index = Curvatura.IndexOf(d);
-                Console.WriteLine($" Radio: {d} {index}");
+                Console.WriteLine($" Radio: {d}");
             }
             Console.WriteLine("Otras caracteristicas:");
             foreach (string d in Otros)

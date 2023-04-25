@@ -21,9 +21,19 @@
 
             //Llamado al método de presentación
             //Presentacion();
-            Iris i = new Iris("AEECAwQF", "Oval", new ColorIris("Verde", 100), 
+            Iris i = new Iris(1,"AEECAwQF", "Oval", new ColorIris("Verde", 100), 
                 new List<string>() { "aabbaaaabb", "bbbaaaabbb" }, new List<double>() { 1.1, 1.2, 1.3 },new List<string>() { "Mancha"});
+            Iris iris2 = new Iris(2, "AEECAW1QF", "Oval", new ColorIris("Azul", 80),
+                new List<string>() { "aabbaaabbb", "bbbaaabbbb" }, new List<double>() { 1.1, 1.2, 1.3 ,1.4}, new List<string>() { "Mancha","Cicatriz"});
             i.AtributosConsole();
+            i.SimularEnvejecimiento(90);
+            i.AtributosConsole();
+            i.SimularEnvejecimiento(new List<double>() { 1.4,1.5,1.6});
+            i.AtributosConsole();
+            i.SimularEnvejecimiento("Cicatriz");
+            i.AtributosConsole();
+            iris2.AtributosConsole();
+            Reconocimiento re = new Reconocimiento();
         }
         //Declaración del método presentación
         public static void Presentacion()
