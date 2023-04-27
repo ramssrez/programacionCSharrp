@@ -2,42 +2,20 @@
 {
     class Program
     {
-        //Decalración de las variables globales
-        /*
-        public static Cartas? cartas;
-        public static List<Carta>? cartasList;
-        public static Carta? carta;
-        public static StringProyect strings;
-        */
+        //Declaración de las variables globales
+        public static Iris? irisUno = null;
+        public static Iris? irisDos = null;
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
-            //Instancia de las variables globales
-            /*
-            
-            cartas = new Cartas();
-            cartasList = cartas.CartasList;
-            */
-
             //Llamado al método de presentación
-            //Presentacion();
-            Iris i = new Iris(1,"AEECAwQF", "Oval", new ColorIris("Verde", 100), 
-                new List<string>() { "aabbaaaabb", "bbbaaaabbb" }, new List<double>() { 1.1, 1.2, 1.3 },new List<string>() { "Mancha"});
-            Iris iris2 = new Iris(2, "AEECAW1QF", "Oval", new ColorIris("Azul", 80),
-                new List<string>() { "aabbaaabbb", "bbbaaabbbb" }, new List<double>() { 1.1, 1.2, 1.3 ,1.4}, new List<string>() { "Mancha","Cicatriz"});
-            i.AtributosConsole();
-            i.SimularEnvejecimiento(90);
-            i.AtributosConsole();
-            i.SimularEnvejecimiento(new List<double>() { 1.4,1.5,1.6});
-            i.AtributosConsole();
-            i.SimularEnvejecimiento("Cicatriz");
-            i.AtributosConsole();
-            iris2.AtributosConsole();
-            Reconocimiento re = new Reconocimiento();
+            Presentacion();
         }
         //Declaración del método presentación
         public static void Presentacion()
         {
+            irisUno = new Iris("AEECAwQF", "Oval", new ColorIris("Verde", 100), "bbbaaaabbb", 1.3, new List<string>() { "Mancha" });
+            irisDos = new Iris("AEECAwQF", "Oval", new ColorIris("Verde", 100), "bbbaaaabbb", 1.3, new List<string>() { "Mancha"});
             //Mensaje de presentación del programa
             Console.WriteLine(StringProyect.STRING_FORMATO);
             Console.WriteLine(StringProyect.BIENVENIDO);
@@ -56,13 +34,16 @@
                     case 1:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        //InfoCartas(cartasList);
+                        irisUno = CrearIris();
+                        //irisUno.AtributosConsole();
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     //Caso para poder elegir una carta
                     case 2:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        irisDos = CrearIris();
+                        //irisDos.AtributosConsole();
                         //SeleccionCarta();
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
@@ -70,14 +51,47 @@
                     case 3:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        //Console.WriteLine(carta != null ? $"{carta.DefensaMonstruo()}" : StringProyect.NO_SELECCION_PERSONAJE);
+                        if (irisUno != null && irisDos != null)
+                        {
+                            Reconocimiento re = new Reconocimiento(irisUno, irisDos);
+                            re.AtributosConsole();
+                        }
+                        else
+                        {
+                            Console.WriteLine(StringProyect.NO_SELECCION_IRIS);
+                        }
+                        //string i = (irisUno != null && irisDos != null) ? new Reconocimiento(irisUno, irisDos).AtributosConsole() : StringProyect.NO_SELECCION_IRIS;
+
+                        //Reconocimiento re = new Reconocimiento(i,i2);
+                        //Console.WriteLine($"total iguales {re.ContadorVerdaderos()}");
+                        //re.AtributosConsole();
+                        //Console.WriteLine(irisDos != null && irisDos != null ? $"{carta.DefensaMonstruo()}" : StringProyect.NO_SELECCION_PERSONAJE);
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 4:
                         //Caso para poder mostrar el ataque del monstruo
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        //Console.WriteLine(carta != null ? $"{carta.AtaqueMonstruo()}" : StringProyect.NO_SELECCION_PERSONAJE);
+                        if (irisUno != null && irisDos != null)
+                        {
+                            int opc = SeleccionIris();
+                            if (opc == 1)
+                            {
+                                SelecionEnvejecimiento(irisUno);
+                            }
+                            else if(opc == 2)
+                            {
+                                SelecionEnvejecimiento(irisDos);
+                            }
+                            else
+                            {
+                                Console.WriteLine(StringProyect.NO_SELECCION_SUBMENU);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine(StringProyect.NO_SELECCION_IRIS);
+                        }
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 5:
@@ -102,6 +116,73 @@
                         break;
                 }
             }
+        }
+
+        private static void SelecionEnvejecimiento(Iris iris)
+        {
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            bool salir = false;
+            //Uso del switch para seleccion de las opciones ingresadas desde la consola
+            while (!salir)
+            {
+                Console.WriteLine(StringProyect.OPCIONES_ENVEJECIMIENTO);
+                int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+                switch (opcion)
+                {
+                    case 1:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        int intensidad = ValidarNumero(StringProyect.INGRESO_INTENSIDAD);
+                        iris.SimularEnvejecimiento(intensidad);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        salir = true;
+                        break;
+                    case 2:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        double curvatura = ValidarNumeroDouble(StringProyect.INGRESO_CURVATURA);
+                        iris.SimularEnvejecimiento(curvatura);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        salir = true;
+                        break;
+                    case 3:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        string otro = ValidarString(StringProyect.INGRESO_OTRO);
+                        iris.SimularEnvejecimiento(otro);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción
+                    default:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.RANGO_OPCIONES_SUBMENU);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                }
+            }
+            
+        }
+
+        private static int  SeleccionIris()
+        {
+            //List<Iris> listIris = new List<Iris>() { };
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(StringProyect.OPCIONES_IRIS);
+            int opcion = ValidarNumero(StringProyect.SELECCION_IRIS);
+            return opcion;
+        }
+
+        public static Iris CrearIris()
+        {
+            string textura = ValidarString(StringProyect.TEXTURA);
+            string forma = ValidarString(StringProyect.FORMA);
+            string color = ValidarString(StringProyect.COLOR);
+            int intensidad = ValidarNumero(StringProyect.INTENSIDAD);
+            string patron = ValidarString(StringProyect.PATRON);
+            double curvatura = ValidarNumeroDouble(StringProyect.CURVATURA);
+            string otros = ValidarString(StringProyect.OTROS);
+            return new Iris(textura,forma,new ColorIris(color,intensidad),patron,curvatura,new List<string> { otros});
         }
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
@@ -134,44 +215,85 @@
             //Retorno del valor ingresado
             return valor;
         }
-        /*
-        //Método que imprime la información de las cartas
-        public static void InfoCartas(List<Carta> cartaList)
+        //Método que valida el string ingresado desde la consola
+        public static string ValidarString(string mensaje)
         {
-            //Recorrido de la lista de las cartas
-            foreach (Carta ca in cartaList)
+            bool salir = false;
+            string s = null;
+            //Ciclo while para verificar las caracteristicas del string
+            while (!salir)
             {
-                //Impresión de la informaición de las cartas
-                Console.WriteLine(StringProyect.STRING_FORMATO);
-                ca.AtributosConsole();
-                Console.WriteLine(StringProyect.STRING_FORMATO);
+                //Uso de la sentencia try/catch para el caso de que no se haya ingresado de manera adecuada la información 
+                try
+                {
+                    Console.Write(mensaje);
+                    s = Console.ReadLine();
+                    //Sentencia if/else para verificar si esta escrito sin espacios y vacios el string
+                    if (string.IsNullOrEmpty(s))
+                    {
+                        Console.WriteLine(StringProyect.ERROR_INGRESAR_STRING_VACIO);
+                    }
+                    else if (EspacioVacio(s))
+                    {
+                        Console.WriteLine(StringProyect.ERROR_INGRESAR_STRING_VACIO_ESPACIOS);
+                    }
+                    else
+                    {
+                        salir = true;
+                    }
+                }
+                //Catch para el caso de que se cuente con un error
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(StringProyect.ERROR_INGRESAR_STRING_GRANDE);
+                }
             }
+            //Retorno de string obtenido desde la consola
+            return s;
         }
-        //Método que permite seleccionar una carta de un menú
-        public static void SeleccionCarta()
+        //Metodo que permite identificar si al inicio del string haya un espacio
+        public static bool EspacioVacio(string s)
         {
-            Console.WriteLine(StringProyect.STRING_FORMATO);
-            Console.WriteLine(StringProyect.SELECCION_CARTA);
-            for (int i = 0; i < cartasList.Count; i++)
+            foreach (char ch in s)
             {
-                Console.WriteLine($"{i}. {cartasList[i].NombreMonstruo}");
+                //Verificación del codigo ASCII para el espacio vacio
+                if (ch != 32)
+                {
+                    return false;
+                }
             }
-            int opcion = ValidarNumero(StringProyect.OPCION_MENU);
-            carta = opcion >= 0 && opcion < cartasList.Count ? cartasList[opcion] : null;
-
-            Console.WriteLine(StringProyect.STRING_FORMATO);
-            Console.WriteLine(carta != null ? StringProyect.SeleccionMonstruo(carta.NombreMonstruo) : StringProyect.NO_SELECCION_PERSONAJE);
-            Console.WriteLine(StringProyect.STRING_FORMATO);
+            return true;
         }
-        //Método que permite posicionar la carta seleccionada
-        public static string PoscionCarta()
+        //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
+        public static double ValidarNumeroDouble(string mensaje)
         {
-            Console.WriteLine(StringProyect.STRING_FORMATO);
-            Console.WriteLine(StringProyect.OPCIONES_ATAQUE_DEFENSA);
-            int opcion = ValidarNumero(StringProyect.OPCION_MENU);
-            return opcion > 0 && opcion <= 2 ? carta.PosicionCarta(opcion) : StringProyect.NO_OPCION_MENU;
+            //Declaración de variables necesarias para realizar el programa
+            bool salir = false;
+            double valor = 0.0d;
+            //Ciclo while que se repite en caso de que no se haya  ingresado un entero o sea menor a cuatro
+            while (!salir)
+            {
+                //Uso de la sentencia try/catch para el caso de que no se ingrese un entero
+                try
+                {
+                    Console.Write(mensaje);
+                    valor = Convert.ToDouble(Console.ReadLine());
+                    salir = true;
+                }
+                catch (FormatException ex)
+                {
+                    //Mensaje de error en caso de que no se haya ingresado un número
+                    Console.WriteLine(StringProyect.ERROR_INGRESAR_NUMERO);
+                }
+                catch (OverflowException ex)
+                {
+                    //Mensaje de error en caso de que se haya ingresado un número muy grande
+                    Console.WriteLine(StringProyect.ERROR_NUMERO_GRANDE);
+                }
+            }
+            //Retorno del valor ingresado
+            return valor;
         }
-        */
     }
 }
 

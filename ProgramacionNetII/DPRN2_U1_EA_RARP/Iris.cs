@@ -2,14 +2,17 @@
 {
     public class Iris
     {
-        public int Id { get; }
         public string PatronTextura { get; set; }
         public string Forma { get; set; }
         public ColorIris Color { get; set; }
-        public List<string> PatronRayas { get; set; }
-        public List<double> Curvatura { get; set; }
+        public string PatronRayas { get; set; }
+        public double Curvatura { get; set; }
         public List<string> Otros { get; set; }
-        public Iris(int id, string patronTextura, string forma, ColorIris color, List<string> patronRayas, List<Double> curvatura, List<string> otros)
+        public Iris()
+        {
+
+        }
+        public Iris(string patronTextura, string forma, ColorIris color, string patronRayas, double curvatura, List<string> otros)
         {
             PatronTextura = patronTextura;
             Forma = forma;
@@ -17,13 +20,12 @@
             PatronRayas = patronRayas;
             Curvatura = curvatura;
             Otros = otros;
-            Id = id;
         }
         public void SimularEnvejecimiento(int intensidad)
         {
             Color.Intensidad = intensidad;
         }
-        public void SimularEnvejecimiento(List<double> curvaturas)
+        public void SimularEnvejecimiento(double curvaturas)
         {
             Curvatura = curvaturas;
         }
@@ -36,22 +38,15 @@
             Console.WriteLine($"Patron textura: {PatronTextura} \n" +
                     $"Forma: {Forma} \n" +
                     $"Color: {Color.Color} \n" +
+                    $"Patron de rayas: {PatronRayas}\n" +
+                    $"Curvatura: {Curvatura}\n" +
                     $"Intensidad: {Color.Intensidad}%");
-            Console.WriteLine("Patron Rayas:");
-            foreach (string s in PatronRayas)
-            {
-                Console.WriteLine($" {s}");
-            }
-            Console.WriteLine("Curvatura:");
-            foreach (double d in Curvatura)
-            {
-                Console.WriteLine($" Radio: {d}");
-            }
             Console.WriteLine("Otras caracteristicas:");
             foreach (string d in Otros)
             {
                 Console.WriteLine($" {d}");
             }
+            Console.WriteLine("\n");
         }
     }
 }
