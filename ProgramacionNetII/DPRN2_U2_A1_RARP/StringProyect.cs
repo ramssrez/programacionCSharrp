@@ -14,12 +14,16 @@
         public const string ERROR_INGRESAR_STRING_VACIO = "El string se encuentra vacío, vuelve a intentarlo";
         public const string ERROR_INGRESAR_STRING_VACIO_ESPACIOS = "Ingresa un string sin espacios";
         public const string ERROR_INGRESAR_STRING_GRANDE = "Error al ingresar el texto, vuelve a intentarlo";
-        public const string OPCIONES_MENU = "1. Mostrar Información de todos los drones. \n2. Ingresar la información del segundo Iris.\n3. Autentificación\n4. Simular envejecimiento\n5. Salir";
+        
+        public const string OPCIONES_MENU = "1. Seleccionar drones tipo Tricóptero. \n2. Seleccionar drones tipo Cuadricóptero.\n3. Seleccionar drones tipo Hexacóptero\n4. Seleccionar drones tipo Coaxial\n5. Salir";
         public const string TRICOPTERO = "Tricóptero";
         public const string CUADRICOPTERO = "Cuadricóptero";
         public const string HEXACOPTERO = "Hexacóptero";
         public const string COAXIAL = "Coaxial";
-
+        public const string OPCIONES_MENU_SECUNDARIO = "1. Crear un nuevo dron Tricóptero. \n2. Seleccionar un dron de la lista.\n3. Salir";
+        public const string STRING_MENU_SECUNDARIO = "Selección una opción del menú secundario";
+        public const string RANGO_OPCIONES_DOS = "Elige una opcion entre 1 y 3";
+        public const string SALIR_MENU_SECUNDARIO = "Retornando al menú principal...";
         /*
         public const string TEXTURA = "Ingresa la textura de la iris: ";
         public const string FORMA = "Ingresa la forma de la iris: ";

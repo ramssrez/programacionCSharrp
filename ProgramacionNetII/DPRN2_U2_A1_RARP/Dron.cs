@@ -7,46 +7,33 @@
         public int NumeroSerie { get; }
         public int NumeroBrazos { get; set; }
         public double Peso { get; set; }
-        public string EnergiaImpacto { get; set; }
+        public double EnergiaImpacto { get; set; }
         public double VelocidadVuelo { get; set; }
-        //public string Dimension { get; set; }
         public Dimension Dimension { get; set; }
-        public static int contador = 1;
+        private static int Contador = 1;
         //Declaración del constructor vacio de la clase
         public Dron()
         {
         }
         //Declaración del constructor con parametros de entrada
-        public Dron(int numeroBrazos, double peso, string energiaImpacto, double velocidadVuelo, Dimension dimension)
+        public Dron(int numeroBrazos, double peso, double energiaImpacto, double velocidadVuelo, Dimension dimension)
         {
-            NumeroSerie = contador;
+            NumeroSerie = Contador;
             NumeroBrazos = numeroBrazos;
             Peso = peso;
             EnergiaImpacto = energiaImpacto;
             VelocidadVuelo = velocidadVuelo;
             Dimension = dimension;
-            contador++;
+            Contador++;
         }
-        /*
-        public Dron(int numeroBrazos, double peso, string energiaImpacto, double velocidadVuelo, Dimension dimension)
-        {
-            NumeroSerie = contador;
-            NumeroBrazos = numeroBrazos;
-            Peso = peso;
-            EnergiaImpacto = energiaImpacto;
-            VelocidadVuelo = velocidadVuelo;
-            Dimension = dimension;
-            contador++;
-        }
-        */
         //Método que imprime los atributos que componen al objeto
         public virtual string MostrarInformacion()
         {
             return $"Número de serie: {NumeroSerie} \n" +
-                    $"Número de brazos: {NumeroBrazos} \n" +
+                    $"Número de brazos: {NumeroBrazos} [brazos]\n" +
                     $"Peso: {Peso} [kg]\n" +
-                    $"Energía de Impacto: {EnergiaImpacto}\n" +
-                    $"Velocidad de Vuelo: {VelocidadVuelo} m/s\n" +
+                    $"Energía de Impacto: {EnergiaImpacto} [Julios]\n" +
+                    $"Velocidad de Vuelo: {VelocidadVuelo} [m/s]\n" +
                     $"Dimensión: {Dimension.Altura}x{Dimension.Ancho}x{Dimension.BaseDron} [cm]";
         }
     }
