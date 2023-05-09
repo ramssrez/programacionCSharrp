@@ -11,29 +11,34 @@
         public double VelocidadVuelo { get; set; }
         //public string Dimension { get; set; }
         public Dimension Dimension { get; set; }
+        public static int contador = 1;
         //Declaración del constructor vacio de la clase
         public Dron()
         {
-            
         }
         //Declaración del constructor con parametros de entrada
-        public Dron(int numeroSerie, int numeroBrazos, double peso, string energiaImpacto, double velocidadVuelo, Dimension dimension)
-        {
-            NumeroSerie = numeroSerie;
-            NumeroBrazos = numeroBrazos;
-            Peso = peso;
-            EnergiaImpacto = energiaImpacto;
-            VelocidadVuelo = velocidadVuelo;
-            Dimension = dimension;
-        }
         public Dron(int numeroBrazos, double peso, string energiaImpacto, double velocidadVuelo, Dimension dimension)
         {
+            NumeroSerie = contador;
             NumeroBrazos = numeroBrazos;
             Peso = peso;
             EnergiaImpacto = energiaImpacto;
             VelocidadVuelo = velocidadVuelo;
             Dimension = dimension;
+            contador++;
         }
+        /*
+        public Dron(int numeroBrazos, double peso, string energiaImpacto, double velocidadVuelo, Dimension dimension)
+        {
+            NumeroSerie = contador;
+            NumeroBrazos = numeroBrazos;
+            Peso = peso;
+            EnergiaImpacto = energiaImpacto;
+            VelocidadVuelo = velocidadVuelo;
+            Dimension = dimension;
+            contador++;
+        }
+        */
         //Método que imprime los atributos que componen al objeto
         public virtual string MostrarInformacion()
         {

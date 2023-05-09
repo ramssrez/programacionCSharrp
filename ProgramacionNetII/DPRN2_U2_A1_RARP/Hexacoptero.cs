@@ -4,8 +4,8 @@
     {
         public string Tipo { get; set; }
         public double ResolucionCamara { get; set; }
-        public Hexacoptero(string tipo, int resolucionCamara, int numeroSerie, int numeroBrazos, double peso, string energiaImpacto, double velocidadVuelo, Dimension dimension)
-            :base(numeroSerie, numeroBrazos, peso, energiaImpacto, velocidadVuelo, dimension)
+        public Hexacoptero(string tipo, int resolucionCamara, int numeroBrazos, double peso, string energiaImpacto, double velocidadVuelo, Dimension dimension)
+            :base(numeroBrazos, peso, energiaImpacto, velocidadVuelo, dimension)
         {
             Tipo = tipo;
             ResolucionCamara = resolucionCamara;

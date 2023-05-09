@@ -14,15 +14,55 @@
         {
             //Instancia de las variables globales
             //cartas = new Cartas();
-            //cartasList = cartas.CartasList;
 
+            //cartasList = cartas.CartasList;
+            Drones drones = new Drones();
+            foreach (Tricoptero tr in drones.TricopteroList)
+            {
+                Console.WriteLine(StringProyect.STRING_FORMATO);
+                Console.WriteLine(tr.MostrarInformacion());
+            }
+            foreach (Cuadricoptero tr in drones.CuadricopteroList)
+            {
+                Console.WriteLine(StringProyect.STRING_FORMATO);
+                Console.WriteLine(tr.MostrarInformacion());
+            }
+            foreach (Hexacoptero tr in drones.HexacopteroList)
+            {
+                Console.WriteLine(StringProyect.STRING_FORMATO);
+                Console.WriteLine(tr.MostrarInformacion());
+            }
+            foreach (Coaxial tr in drones.CoaxialList)
+            {
+                Console.WriteLine(StringProyect.STRING_FORMATO);
+                Console.WriteLine(tr.MostrarInformacion());
+            }
+            //Dron dron = new Dron(4,1.2,"12",15,new Dimension(12,15,3));
+            /*
+            Tricoptero tricoptero = new Tricoptero(StringProyect.TRICOPTERO,20, 3, 1.2, "12", 15, new Dimension(15, 12, 5));
+            Cuadricoptero cuadricoptero = new Cuadricoptero(StringProyect.CUADRICOPTERO, 1.3, 4, 1.2, "12", 15, new Dimension(20, 18, 8));
+            Hexacoptero hexacoptero = new Hexacoptero(StringProyect.HEXACOPTERO, 14,  6, 1.2, "12", 15, new Dimension(22, 20, 3));
+            Coaxial coaxial = new Coaxial(StringProyect.COAXIAL, 14.5, 4, 1.2, "12", 15, new Dimension(30, 30, 15));
+            //Cuadricoptero Hexacoptero Coaxial 
+
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(tricoptero.MostrarInformacion());
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(cuadricoptero.MostrarInformacion());
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(hexacoptero.MostrarInformacion());
+            Console.WriteLine(hexacoptero.IniciarGrabacion());
+            Console.WriteLine(hexacoptero.DetenerGrabacion());
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(coaxial.MostrarInformacion());
+            Console.WriteLine(coaxial.TransportarCarga());
+            */
             //Llamado al método de presentación
             Presentacion();
         }
         //Declaración del método presentación
         public static void Presentacion()
         {
-            Console.WriteLine("Esto es de las ");
             // Mensaje de presentación del programa
             Console.WriteLine(StringProyect.STRING_FORMATO);
             Console.WriteLine(StringProyect.BIENVENIDO);
@@ -41,59 +81,24 @@
                     case 1:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        //irisUno = CrearIris();
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     //Caso para ingresar los datos del segundo Iris
                     case 2:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        //irisDos = CrearIris();
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     //Caso para poder mostrar la autentificación de los dos iris ingresados, así como el porcentaje de similitud
                     case 3:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        /*
-                        if (irisUno != null && irisDos != null)
-                        {
-                            Reconocimiento re = new Reconocimiento(irisUno, irisDos);
-                            re.AtributosConsole();
-                        }
-                        else
-                        {
-                            Console.WriteLine(StringProyect.NO_SELECCION_IRIS);
-                        }
-                        */
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 4:
                         //Caso para poder simular el envejecimiento de la iris
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        /*
-                        if (irisUno != null && irisDos != null)
-                        {
-                            int opc = SeleccionIris();
-                            if (opc == 1)
-                            {
-                                SelecionEnvejecimiento(irisUno);
-                            }
-                            else if (opc == 2)
-                            {
-                                SelecionEnvejecimiento(irisDos);
-                            }
-                            else
-                            {
-                                Console.WriteLine(StringProyect.NO_SELECCION_SUBMENU);
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine(StringProyect.NO_SELECCION_IRIS);
-                        }
-                        */
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 5:
