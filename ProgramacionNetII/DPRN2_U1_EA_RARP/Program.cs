@@ -14,8 +14,11 @@
         //Declaración del método presentación
         public static void Presentacion()
         {
+            //Objetos tipo iris como opción para pruebas
+            /*
             irisUno = new Iris("AEECAwQF", "Oval", new ColorIris("Verde", 100), "bbbaaaabbb", 1.3, new List<string>() { "Mancha" });
             irisDos = new Iris("AEECAwQF", "Oval", new ColorIris("Verde", 100), "bbbaaaabbb", 1.3, new List<string>() { "Mancha"});
+            */
             //Mensaje de presentación del programa
             Console.WriteLine(StringProyect.STRING_FORMATO);
             Console.WriteLine(StringProyect.BIENVENIDO);
@@ -30,24 +33,21 @@
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
-                    //Caso para poder mostrar la información de las cartas
+                    //Caso para ingresar los datos del primer Iris
                     case 1:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
                         irisUno = CrearIris();
-                        //irisUno.AtributosConsole();
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
-                    //Caso para poder elegir una carta
+                    //Caso para ingresar los datos del segundo Iris
                     case 2:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
                         irisDos = CrearIris();
-                        //irisDos.AtributosConsole();
-                        //SeleccionCarta();
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
-                    //Caso para poder mostrar la defensa del monstruo
+                    //Caso para poder mostrar la autentificación de los dos iris ingresados, así como el porcentaje de similitud
                     case 3:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
@@ -60,16 +60,10 @@
                         {
                             Console.WriteLine(StringProyect.NO_SELECCION_IRIS);
                         }
-                        //string i = (irisUno != null && irisDos != null) ? new Reconocimiento(irisUno, irisDos).AtributosConsole() : StringProyect.NO_SELECCION_IRIS;
-
-                        //Reconocimiento re = new Reconocimiento(i,i2);
-                        //Console.WriteLine($"total iguales {re.ContadorVerdaderos()}");
-                        //re.AtributosConsole();
-                        //Console.WriteLine(irisDos != null && irisDos != null ? $"{carta.DefensaMonstruo()}" : StringProyect.NO_SELECCION_PERSONAJE);
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 4:
-                        //Caso para poder mostrar el ataque del monstruo
+                        //Caso para poder simular el envejecimiento de la iris
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
                         if (irisUno != null && irisDos != null)
@@ -95,20 +89,13 @@
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 5:
-                        //Caso para poder mostrar el ataque del monstruo
-                        Console.WriteLine(StringProyect.STRING_FORMATO);
-                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        //Console.WriteLine(carta != null ? PoscionCarta() : StringProyect.NO_SELECCION_PERSONAJE);
-                        Console.WriteLine(StringProyect.STRING_FORMATO);
-                        break;
-                    case 6:
                         //Opción para la salida del programa
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.SALIR);
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         salir = true;
                         break;
-                    //Opción en el caso de que el usuario no seleccione una opción
+                    //Opción en el caso de que el usuario no seleccione una opción del menú
                     default:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.RANGO_OPCIONES);
@@ -117,7 +104,7 @@
                 }
             }
         }
-
+        //Método que permite cambiar los atributos del iris, para simular el envejecimientos
         private static void SelecionEnvejecimiento(Iris iris)
         {
             Console.WriteLine(StringProyect.STRING_FORMATO);
@@ -125,10 +112,13 @@
             //Uso del switch para seleccion de las opciones ingresadas desde la consola
             while (!salir)
             {
+                //Impresión de los diferentes opciones
                 Console.WriteLine(StringProyect.OPCIONES_ENVEJECIMIENTO);
                 int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
+                    //Caso para que el usuario ingrese la intensidad del iris
                     case 1:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
@@ -138,6 +128,7 @@
                         salir = true;
                         break;
                     case 2:
+                        //Caso para que el usuario ingrese la curvatura del iris
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
                         double curvatura = ValidarNumeroDouble(StringProyect.INGRESO_CURVATURA);
@@ -146,6 +137,7 @@
                         salir = true;
                         break;
                     case 3:
+                        //Caso para que el usuario ingrese cicatrices o manchas del iris
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
                         string otro = ValidarString(StringProyect.INGRESO_OTRO);
@@ -163,16 +155,15 @@
             }
             
         }
-
+        //Método que retorna la opción ingresada por el usuario, de esta manera para escoger alguna de las dos iris
         private static int  SeleccionIris()
         {
-            //List<Iris> listIris = new List<Iris>() { };
             Console.WriteLine(StringProyect.STRING_FORMATO);
             Console.WriteLine(StringProyect.OPCIONES_IRIS);
             int opcion = ValidarNumero(StringProyect.SELECCION_IRIS);
             return opcion;
         }
-
+        //Método que permite la creación de las dos diferentes iris, esto con datos ingresados desde la consola. Retornando un objeto de tipo iris
         public static Iris CrearIris()
         {
             string textura = ValidarString(StringProyect.TEXTURA);
@@ -296,4 +287,3 @@
         }
     }
 }
-
