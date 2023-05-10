@@ -24,6 +24,7 @@
         public const string HEXACOPTERO = "Hexacóptero";
         public const string COAXIAL = "Coaxial";
         public const string OPCIONES_MENU_SECUNDARIO = "1. Crear un nuevo dron Tricóptero. \n2. Seleccionar un dron de la lista.\n3. Regresar..";
+        public const string OPCIONES_MENU_SECUNDARIO_DOS = "1. Crear un nuevo dron Cuadricóptero. \n2. Seleccionar un dron de la lista.\n3. Regresar..";
         public const string OPCIONES_MENU_SECUNDARIO_DRON = "1. Mostrar Información del dron. \n2. Modificar datos del dron.\n3. Regresar..";
         public const string OPCIONES_MENU_DRON_UPDATE = "1. Modificar peso. \n2. Modificar velocidad de vuelo.\n3. Modificar energía de impacto.\n4. Modificar ancho.\n5. Modificar altura.\n6. Modificar base.\n7. Modificar potencia del motor.\n8. Regresar..";
         public const string STRING_MENU_SECUNDARIO = "Selección una opción del menú secundario";

@@ -147,7 +147,7 @@
             {
                 //Impresión de los diferentes opciones y presentación
                 Console.WriteLine(StringProyect.STRING_MENU_SECUNDARIO);
-                Console.WriteLine(StringProyect.OPCIONES_MENU_SECUNDARIO);
+                Console.WriteLine(StringProyect.OPCIONES_MENU_SECUNDARIO_DOS);
                 int opcion = ValidarNumero(StringProyect.OPCION_MENU);
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
