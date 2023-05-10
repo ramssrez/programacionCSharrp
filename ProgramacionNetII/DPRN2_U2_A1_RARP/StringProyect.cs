@@ -17,6 +17,7 @@
 
         public const string NO_SELECCION_DRON = "No se ha seleccionado una dron";
         public const string SELECCION_DRON = "Selecciona un dron: ";
+        public const string SELECCION_DRON_LISTA = "Selecciona un dron de la lista";
         public const string OPCIONES_MENU = "1. Seleccionar drones tipo Tricóptero. \n2. Seleccionar drones tipo Cuadricóptero.\n3. Seleccionar drones tipo Hexacóptero\n4. Seleccionar drones tipo Coaxial\n5. Salir";
         public const string TRICOPTERO = "Tricóptero";
         public const string CUADRICOPTERO = "Cuadricóptero";
@@ -37,6 +38,7 @@
         public const string INGRESO_ALTURA_DRON = "Ingresa la altura del dron [cm]: ";
         public const string INGRESO_BASE_DRON = "Ingresa la base del dron [cm]: ";
         public const string INGRESO_MOTOR_TRASERO_DRON = "Ingresa la potencia del motor trasero [W]: ";
+        public const string INGRESO_ALTITUD_MAXIMA_DRON = "Ingresa la altitud de vuelo máximo [m]: ";
 
         public const string SUCCESS_PESO_DRON = "¡Se ha modificado el peso!";
         public const string SUCCESS_ENERGIA_IMPACTO = "¡Se ha modificado la energía de impacto del dron!";
@@ -45,6 +47,7 @@
         public const string SUCCESS_ALTURA_DRON = "¡Se ha modificado la altura del dron!";
         public const string SUCCESS_BASE_DRON = "¡Se ha modificado la base del dron!";
         public const string SUCCESS_MOTOR_TRASERO_DRON = "¡Se ha modificado la potencia del motor trasero del dron!";
+        public const string CREANDO_DRON = "Creando un nuevo dron ......";
         //Método que concatena la opción del menú seleccionado
         public static string OpcionMenu(int valor)
         {
@@ -56,8 +59,11 @@
         }
         public static string SeleccionDronLista(int valor, int valorDos)
         {
-            //$"{i}. Tricóptero # de serie {tricopteros[i].NumeroSerie}"
             return string.Format("{0}. Tricóptero # de serie: {1}", valor,valorDos);
+        }
+        public static string CreacionDron(int valor)
+        {
+            return string.Format("¡Se ha creado un nuevo dron con número de serie: {0}!", valor);
         }
     }
 }
