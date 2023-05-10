@@ -68,13 +68,14 @@
         {
             // Mensaje de presentación del programa
             Console.WriteLine(StringProyect.STRING_FORMATO);
-            Console.WriteLine(StringProyect.BIENVENIDO);
+            
             //Variable para salir del ciclo.
             bool salir = false;
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
             while (!salir)
             {
                 //Impresión de los diferentes opciones
+                Console.WriteLine(StringProyect.BIENVENIDO);
                 Console.WriteLine(StringProyect.OPCIONES_MENU);
                 int opcion = ValidarNumero(StringProyect.OPCION_MENU);
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
@@ -84,8 +85,7 @@
                     case 1:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        //FuncionesTricopteros();
-                        SeleccionListas(drones.TricopteroList);
+                        SeleccionListasTricoptero(drones.TricopteroList);
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     //Caso para mostrar y modificar información de la lista de drones tipo Cuadricóptero
@@ -122,62 +122,41 @@
                 }
             }
         }
-        private static void SeleccionListas(List<Tricoptero> tricopteros)
+        //Método que permite la creación de un menú secundario para la lista de los drones seleccioando
+        private static void SeleccionListasTricoptero(List<Tricoptero> tricopteros)
         {
-            // Mensaje de presentación del programa
-            Console.WriteLine(StringProyect.STRING_FORMATO);
-            Console.WriteLine(StringProyect.STRING_MENU_SECUNDARIO);
+            Console.WriteLine(StringProyect.STRING_FORMATO); 
             //Variable para salir del ciclo.
             bool salir = false;
             //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
             while (!salir)
             {
-                //Impresión de los diferentes opciones
+                //Impresión de los diferentes opciones y presentación
+                Console.WriteLine(StringProyect.STRING_MENU_SECUNDARIO);
                 Console.WriteLine(StringProyect.OPCIONES_MENU_SECUNDARIO);
                 int opcion = ValidarNumero(StringProyect.OPCION_MENU);
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
-                    //Caso para ingresar los datos del primer Iris
+                    //Caso para la creación de un nuevo dron
                     case 1:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        double peso = VerificarMayorCero("Ingresa el peso del dron [kg]: ");
-                        /*
-                        bool salida = false;
-                        while (salida)
-                        {
-                            double peso = ValidarNumeroDouble("Ingresa el peso del dron [kg]: ");
-                            if (peso <= 0)
-                            {
-                                Console.WriteLine("El peso debe ser mayor a cero");
-                            }
-                            else
-                            {
-                                salida = true;
-                        }
-                        */
-                        double energiaImpacto = ValidarNumeroDouble("Ingresa la energía de impacto [Julios]: ");
-                        double velocidad = ValidarNumeroDouble("Ingresa la velocidad del dron [m/s]: ");
-                        double ancho = ValidarNumeroDouble("Ingresa el ancho del dron [cm]: ");
-                        double altura = ValidarNumeroDouble("Ingresa la altura del dron [cm]: ");
-                        double baseDron = ValidarNumeroDouble("Ingresa la base del dron [cm]: ");
-                        double potencia = ValidarNumeroDouble("Ingresa la potencia del motor trasero [W]: ");
-                        tricopteros.Add(new Tricoptero(StringProyect.TRICOPTERO, potencia,3,peso,energiaImpacto,velocidad,new Dimension(altura,ancho,baseDron)));
-                        Console.WriteLine("Creando un nuevo dron ......");
-                        Console.WriteLine("Se ha creado un nuevo dron");
+                        //Instancia para recuperar los datos que ingrese el usuario
+                        Tricoptero tr = CreacionTricoptero();
+                        Console.WriteLine();
+                        Console.WriteLine(StringProyect.CreacionDron(tr.NumeroSerie));
+                        //Console.WriteLine($"Se ha creado un nuevo dron con número de serie: {tr.NumeroSerie}");
+                        //Agregación de un nuevo Dron a la lista de drones
+                        tricopteros.Add(tr);
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
-                    //Caso para ingresar los datos del segundo Iris
+                    //Caso para la selección de un dron de la lista que se tiene 
                     case 2:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        foreach (Tricoptero tr in tricopteros)
-                        {
-                            Console.WriteLine(StringProyect.STRING_FORMATO);
-                            //tr.Tipo("Waka");
-                            Console.WriteLine(tr.MostrarInformacion());
-                        }
+                        SeleccionTricoptero(tricopteros);
+
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 3:
@@ -196,11 +175,176 @@
                 }
             }
         }
+        //Método que muestra la lista de drones tricopteros para poder seleccionar uno de ellos
+        private static void SeleccionTricoptero(List<Tricoptero> tricopteros)
+        {
+            Console.WriteLine("Selecciona un dron de la lista");
+            //Ciclo for que imprime todo los drones de la lista
+            for (int i = 0; i < tricopteros.Count; i++)
+            {
+                Console.WriteLine(StringProyect.SeleccionDronLista(i, tricopteros[i].NumeroSerie));
+            }
+            int dronSeleccionado = ValidarNumero(StringProyect.SELECCION_DRON);
+            //Sentencia para el caso de que el usuario no haya seleccioanado una opción de los drones
+            if (dronSeleccionado >= 0 && dronSeleccionado < tricopteros.Count)
+            {
+                OpcionesTricopteros(tricopteros, dronSeleccionado);
+            }
+            else
+            {
+                Console.WriteLine(StringProyect.NO_SELECCION_DRON);
+            }
+        }
 
+        private static void OpcionesTricopteros(List<Tricoptero> tricopteros, int dron)
+        {
+            // Mensaje de presentación del programa
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+                
+            //Console.WriteLine($"Se ha seleccionado el dron con numero de serie: {tricopteros[dron].NumeroSerie}");
+            //Variable para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones
+                Console.WriteLine(StringProyect.SeleccionDron(tricopteros[dron].NumeroSerie));
+                Console.WriteLine(StringProyect.OPCIONES_MENU_SECUNDARIO_DRON);
+                int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    case 1:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(tricopteros[dron].MostrarInformacion());
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 2:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        ModificarDatosDron(tricopteros,dron);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 3:
+                        //Opción para la salida del programa
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.SALIR_MENU_SECUNDARIO);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción del menú
+                    default:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.RANGO_OPCIONES_DOS);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                }
+            }
+        }
+        //
+        private static void ModificarDatosDron(List<Tricoptero> tricopteros, int dron)
+        {
+            // Mensaje de presentación del programa
+            Console.WriteLine(StringProyect.STRING_FORMATO); 
+            //Variable para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones
+                Console.WriteLine(StringProyect.STRING_MENU_SECUNDARIO);
+                Console.WriteLine(StringProyect.OPCIONES_MENU_DRON_UPDATE);
+                int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    case 1:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        tricopteros[dron].Peso = VerificarMayorCero(StringProyect.INGRESO_PESO_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_PESO_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 2:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        tricopteros[dron].VelocidadVuelo = VerificarMayorCero(StringProyect.INGRESO_VELOCIDAD_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_VELOCIDAD_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 3:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        tricopteros[dron].EnergiaImpacto = VerificarMayorCero(StringProyect.INGRESO_ENERGIA_IMPACTO);
+                        Console.WriteLine(StringProyect.SUCCESS_ENERGIA_IMPACTO);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 4:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        tricopteros[dron].Dimension.Ancho = VerificarMayorCero(StringProyect.INGRESO_ANCHO_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_ANCHO_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 5:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        tricopteros[dron].Dimension.Altura = VerificarMayorCero(StringProyect.INGRESO_ALTURA_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_ALTURA_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 6:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        tricopteros[dron].Dimension.BaseDron = VerificarMayorCero(StringProyect.INGRESO_BASE_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_BASE_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 7:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        tricopteros[dron].PotenciaMotorTrasero = VerificarMayorCero(StringProyect.INGRESO_MOTOR_TRASERO_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_MOTOR_TRASERO_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 8:
+                        //Opción para la salida del programa
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.SALIR_MENU_SECUNDARIO);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción del menú
+                    default:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.RANGO_OPCIONES_TRES);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                }
+            }
+        }
+        //Método que permite la creación de un tricóptero con la información que agregue el cliente
+        private static Tricoptero CreacionTricoptero()
+        {
+            //Intancia de las variables necesarias para la creación del objeto Tricoptero
+            double peso = VerificarMayorCero(StringProyect.INGRESO_PESO_DRON);
+            double energiaImpacto = VerificarMayorCero(StringProyect.INGRESO_ENERGIA_IMPACTO);
+            double velocidad = VerificarMayorCero(StringProyect.INGRESO_VELOCIDAD_DRON);
+            double ancho = VerificarMayorCero(StringProyect.INGRESO_ANCHO_DRON);
+            double altura = VerificarMayorCero(StringProyect.INGRESO_ALTURA_DRON);
+            double baseDron = VerificarMayorCero(StringProyect.INGRESO_BASE_DRON);
+            double potencia = VerificarMayorCero(StringProyect.INGRESO_MOTOR_TRASERO_DRON);
+            Tricoptero tricoptero = new Tricoptero(StringProyect.TRICOPTERO, potencia, 3, peso, energiaImpacto, velocidad, new Dimension(altura, ancho, baseDron));
+            //Retorno del tricoptero creado
+            return tricoptero;
+        }
+        //Método que permite la verificación de que el valor ingresado por el usuario sea mayor a cero
         private static double VerificarMayorCero(string v)
         {
             bool salida = false;
             double valor = 0;
+            //Utilización del ciclo while que solicita el valor hasta que sea un número mayor a cero
             while (!salida)
             {
                 valor = ValidarNumeroDouble(v);
@@ -215,23 +359,6 @@
             }
             return valor;
         }
-
-        private static void FuncionesTricopteros()
-        {
-            for (int i = 0; i < drones.TricopteroList.Count; i++)
-            {
-                Console.WriteLine("");
-            }
-            /*
-            foreach (Tricoptero tr in drones.TricopteroList)
-            {
-                Console.WriteLine(StringProyect.STRING_FORMATO);
-                //tr.Tipo("Waka");
-                Console.WriteLine(tr.MostrarInformacion());
-            }
-            */
-        }
-
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
         {
@@ -262,54 +389,6 @@
             }
             //Retorno del valor ingresado
             return valor;
-        }
-        public static string ValidarString(string mensaje)
-        {
-            bool salir = false;
-            string s = null;
-            //Ciclo while para verificar las caracteristicas del string
-            while (!salir)
-            {
-                //Uso de la sentencia try/catch para el caso de que no se haya ingresado de manera adecuada la información 
-                try
-                {
-                    Console.Write(mensaje);
-                    s = Console.ReadLine();
-                    //Sentencia if/else para verificar si esta escrito sin espacios y vacios el string
-                    if (string.IsNullOrEmpty(s))
-                    {
-                        Console.WriteLine(StringProyect.ERROR_INGRESAR_STRING_VACIO);
-                    }
-                    else if (EspacioVacio(s))
-                    {
-                        Console.WriteLine(StringProyect.ERROR_INGRESAR_STRING_VACIO_ESPACIOS);
-                    }
-                    else
-                    {
-                        salir = true;
-                    }
-                }
-                //Catch para el caso de que se cuente con un error
-                catch (FormatException ex)
-                {
-                    Console.WriteLine(StringProyect.ERROR_INGRESAR_STRING_GRANDE);
-                }
-            }
-            //Retorno de string obtenido desde la consola
-            return s;
-        }
-        //Metodo que permite identificar si al inicio del string haya un espacio
-        public static bool EspacioVacio(string s)
-        {
-            foreach (char ch in s)
-            {
-                //Verificación del codigo ASCII para el espacio vacio
-                if (ch != 32)
-                {
-                    return false;
-                }
-            }
-            return true;
         }
         //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static double ValidarNumeroDouble(string mensaje)

@@ -29,7 +29,8 @@
         //Método que imprime los atributos que componen al objeto
         public virtual string MostrarInformacion()
         {
-            return $"Número de serie: {NumeroSerie} \n" +
+            return $"Datos del dron: \n"+
+                    $"Número de serie: {NumeroSerie} \n" +
                     $"Número de brazos: {NumeroBrazos} [brazos]\n" +
                     $"Peso: {Peso} [kg]\n" +
                     $"Energía de Impacto: {EnergiaImpacto} [Julios]\n" +
