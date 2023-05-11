@@ -146,8 +146,8 @@
             while (!salir)
             {
                 //Impresión de los diferentes opciones y presentación
-                Console.WriteLine(StringProyect.STRING_MENU_SECUNDARIO);
-                Console.WriteLine(StringProyect.OPCIONES_MENU_SECUNDARIO_DOS);
+                Console.WriteLine(StringProyect.STRING_MENU_SECUNDARIO_DOS);
+                Console.WriteLine(StringProyect.OPCIONES_MENU_SECUNDARIO);
                 int opcion = ValidarNumero(StringProyect.OPCION_MENU);
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
@@ -188,9 +188,6 @@
                 }
             }
         }
-
-
-
         //Método que permite la creación de un menú secundario para la lista de los drones seleccioando
         private static void SeleccionListas(List<Tricoptero> tricopteros)
         {
@@ -272,7 +269,7 @@
             {
                 //Impresión de los diferentes opciones y presentación
                 Console.WriteLine(StringProyect.SeleccionDron(cuadricopteros[dronSeleccionado].NumeroSerie));
-                Console.WriteLine(StringProyect.OPCIONES_MENU_SECUNDARIO_DRON);
+                Console.WriteLine(StringProyect.OPCIONES_MENU_SECUNDARIO_DRON_DOS);
                 int opcion = ValidarNumero(StringProyect.OPCION_MENU);
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
@@ -292,6 +289,12 @@
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 3:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(cuadricopteros[dronSeleccionado].IniciarServomotor());
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 4:
                         //Opción para la salida del programa
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.SALIR_MENU_SECUNDARIO);
@@ -301,7 +304,7 @@
                     //Opción en el caso de que el usuario no seleccione una opción del menú
                     default:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
-                        Console.WriteLine(StringProyect.RANGO_OPCIONES_DOS);
+                        Console.WriteLine(StringProyect.RANGO_OPCIONES_CUATRO);
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                 }
@@ -311,8 +314,92 @@
 
         private static void ModificarDatosDron(List<Cuadricoptero> cuadricopteros, int dronSeleccionado)
         {
-
-            throw new NotImplementedException();
+            //Console.WriteLine("Datos para modificar datos");
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            //Variable para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones así como la presentación del submenu
+                Console.WriteLine($"Cuadricóptero # de serie {cuadricopteros[dronSeleccionado].NumeroSerie}");
+                Console.WriteLine(StringProyect.OPCIONES_MENU_DRON_UPDATE_DOS);
+                int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    //Caso para modificar el peso del dron
+                    case 1:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        //tricopteros[dron].Peso = VerificarMayorCero(StringProyect.INGRESO_PESO_DRON);
+                        cuadricopteros[dronSeleccionado].Peso = VerificarMayorCero(StringProyect.INGRESO_PESO_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_PESO_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar la velocidad de vuelo
+                    case 2:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        cuadricopteros[dronSeleccionado].VelocidadVuelo = VerificarMayorCero(StringProyect.INGRESO_VELOCIDAD_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_VELOCIDAD_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar la energia de impacto
+                    case 3:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        cuadricopteros[dronSeleccionado].EnergiaImpacto = VerificarMayorCero(StringProyect.INGRESO_ENERGIA_IMPACTO);
+                        Console.WriteLine(StringProyect.SUCCESS_ENERGIA_IMPACTO);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar el ancho del dron
+                    case 4:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        cuadricopteros[dronSeleccionado].Dimension.Ancho = VerificarMayorCero(StringProyect.INGRESO_ANCHO_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_ANCHO_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar la altura del dron
+                    case 5:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        cuadricopteros[dronSeleccionado].Dimension.Altura = VerificarMayorCero(StringProyect.INGRESO_ALTURA_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_ALTURA_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar la base del dron
+                    case 6:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        cuadricopteros[dronSeleccionado].Dimension.BaseDron = VerificarMayorCero(StringProyect.INGRESO_BASE_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_BASE_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar la altitud maxima del dron
+                    case 7:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        cuadricopteros[dronSeleccionado].AltitudVueloMaxima = VerificarMayorCero(StringProyect.INGRESO_ALTITUD_MAXIMA_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_ALTITUD_MAXIMA_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 8:
+                        //Opción para la salida del programa
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.SALIR_MENU_SECUNDARIO);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción del menú
+                    default:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.RANGO_OPCIONES_TRES);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                }
+            }
         }
 
         //Método que muestra la lista de drones tricopteros para poder seleccionar uno de ellos
@@ -391,7 +478,7 @@
             while (!salir)
             {
                 //Impresión de los diferentes opciones así como la presentación del submenu
-                Console.WriteLine(StringProyect.STRING_MENU_SECUNDARIO);
+                Console.WriteLine($"Tricóptero # de serie {tricopteros[dron].NumeroSerie}");
                 Console.WriteLine(StringProyect.OPCIONES_MENU_DRON_UPDATE);
                 int opcion = ValidarNumero(StringProyect.OPCION_MENU);
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola

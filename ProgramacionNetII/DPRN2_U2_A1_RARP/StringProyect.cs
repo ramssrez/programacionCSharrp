@@ -23,13 +23,18 @@
         public const string CUADRICOPTERO = "Cuadricóptero";
         public const string HEXACOPTERO = "Hexacóptero";
         public const string COAXIAL = "Coaxial";
-        public const string OPCIONES_MENU_SECUNDARIO = "1. Crear un nuevo dron Tricóptero. \n2. Seleccionar un dron de la lista.\n3. Regresar..";
-        public const string OPCIONES_MENU_SECUNDARIO_DOS = "1. Crear un nuevo dron Cuadricóptero. \n2. Seleccionar un dron de la lista.\n3. Regresar..";
+        public const string OPCIONES_MENU_SECUNDARIO = "1. Crear un nuevo dron. \n2. Seleccionar un dron de la lista.\n3. Regresar..";
         public const string OPCIONES_MENU_SECUNDARIO_DRON = "1. Mostrar Información del dron. \n2. Modificar datos del dron.\n3. Regresar..";
-        public const string OPCIONES_MENU_DRON_UPDATE = "1. Modificar peso. \n2. Modificar velocidad de vuelo.\n3. Modificar energía de impacto.\n4. Modificar ancho.\n5. Modificar altura.\n6. Modificar base.\n7. Modificar potencia del motor.\n8. Regresar..";
-        public const string STRING_MENU_SECUNDARIO = "Selección una opción del menú secundario";
+        public const string OPCIONES_MENU_SECUNDARIO_DRON_DOS = "1. Mostrar Información del dron. \n2. Modificar datos del dron.\n3. Iniciar servomotor.\n4. Regresar..";
+        public const string OPCIONES_MENU_DRON_UPDATE = "1. Modificar peso. \n2. Modificar velocidad de vuelo.\n3. Modificar energía de impacto.\n4. Modificar ancho.\n5. Modificar altura.\n6. Modificar base.\n7. Modificar potencia del motor.\n8. Regresar.....";
+        public const string OPCIONES_MENU_DRON_UPDATE_DOS = "1. Modificar peso. \n2. Modificar velocidad de vuelo.\n3. Modificar energía de impacto.\n4. Modificar ancho.\n5. Modificar altura.\n6. Modificar base.\n7. Modificar altitud máxima del dron.\n8. Regresar....";
+
+
+        public const string STRING_MENU_SECUNDARIO = "Drones Tricópteros";
+        public const string STRING_MENU_SECUNDARIO_DOS = "Drones cuadricópteros";
         public const string RANGO_OPCIONES_DOS = "Elige una opcion entre 1 y 3";
         public const string RANGO_OPCIONES_TRES = "Elige una opcion entre 1 y 8";
+        public const string RANGO_OPCIONES_CUATRO = "Elige una opcion entre 1 y 4";
         public const string SALIR_MENU_SECUNDARIO = "Retornando.......";
         public const string NUMERO_MAYOR_CERO = "El peso debe ser mayor a cero";
         public const string INGRESO_PESO_DRON = "Ingresa el peso del dron [kg]: ";
@@ -48,6 +53,7 @@
         public const string SUCCESS_ALTURA_DRON = "¡Se ha modificado la altura del dron!";
         public const string SUCCESS_BASE_DRON = "¡Se ha modificado la base del dron!";
         public const string SUCCESS_MOTOR_TRASERO_DRON = "¡Se ha modificado la potencia del motor trasero del dron!";
+        public const string SUCCESS_ALTITUD_MAXIMA_DRON = "¡Se ha modificado la altitud máxima del dron!";
         public const string CREANDO_DRON = "Creando un nuevo dron ......";
         //Método que concatena la opción del menú seleccionado
         public static string OpcionMenu(int valor)
