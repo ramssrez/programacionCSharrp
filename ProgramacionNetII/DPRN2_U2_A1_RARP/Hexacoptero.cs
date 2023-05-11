@@ -7,7 +7,7 @@
         public string Tipo { get; set; }
         public double ResolucionCamara { get; set; }
         //Declaración del constructor con parametros de entrada
-        public Hexacoptero(string tipo, int resolucionCamara, int numeroBrazos, double peso, double energiaImpacto, double velocidadVuelo, Dimension dimension)
+        public Hexacoptero(string tipo, double resolucionCamara, int numeroBrazos, double peso, double energiaImpacto, double velocidadVuelo, Dimension dimension)
             :base(numeroBrazos, peso, energiaImpacto, velocidadVuelo, dimension)
         {
             Tipo = tipo;
@@ -15,11 +15,13 @@
         }
         public string IniciarGrabacion()
         {
-            return "El dron esta comenzando a grabar";
+            return "Iniciando grabación...........\n\n" +
+                $"¡El dron con # serie {NumeroSerie} esta comenzando a grabar!";
         }
         public string DetenerGrabacion()
         {
-            return "El dron esta deteniendo la grabación";
+            return "Deteniendo grabación...........\n\n"+
+                $"¡El dron con # serie {NumeroSerie} esta deteniendo la grabación!";
         }
         //Método que imprime los atributos que componen al objeto
         public override string MostrarInformacion()
