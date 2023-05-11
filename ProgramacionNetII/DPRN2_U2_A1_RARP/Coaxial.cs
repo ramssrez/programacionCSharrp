@@ -15,7 +15,7 @@
         }
         public string TransportarCarga()
         {
-            return $"El peso que puede transportar es menor a {CapacidadCarga} [kg]";
+            return $"¡El peso que puede transportar el dron es menor a {CapacidadCarga} [kg]!";
         }
         //Método que imprime los atributos que componen al objeto
         public override string MostrarInformacion()

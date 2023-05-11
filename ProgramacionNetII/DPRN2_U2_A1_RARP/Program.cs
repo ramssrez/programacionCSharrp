@@ -72,12 +72,58 @@
                 }
             }
         }
-
+        //Método que permite la creación de un menú secundario para la lista de los drones seleccionado
         private static void SeleccionListas(List<Coaxial> coaxialList)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            //Variable para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones y presentación
+                Console.WriteLine(StringProyect.SeleccionDron(StringProyect.COAXIAL));
+                Console.WriteLine(StringProyect.OPCIONES_MENU_SECUNDARIO);
+                int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    //Caso para la creación de un nuevo dron
+                    case 1:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        //Instancia para recuperar los datos que ingrese el usuario
+                        Coaxial cx = CreacionCoaxial();
+                        Console.WriteLine(StringProyect.CREANDO_DRON);
+                        Console.WriteLine(StringProyect.CreacionDron(cx.NumeroSerie));
+                        //Agregación de un nuevo Dron a la lista de drones
+                        coaxialList.Add(cx);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para la selección de un dron de la lista que se tiene 
+                    case 2:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        SeleccionDron(coaxialList);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 3:
+                        //Opción para la salida del programa
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.SALIR_MENU_SECUNDARIO);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción del menú
+                    default:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.RangoOpciones(1, 3));
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                }
+            }
         }
-
+        //Método que permite la creación de un menú secundario para la lista de los drones seleccionado
         private static void SeleccionListas(List<Hexacoptero> hexacopteroList)
         {
             Console.WriteLine(StringProyect.STRING_FORMATO);
@@ -230,6 +276,26 @@
                 }
             }
         }
+        private static void SeleccionDron(List<Coaxial> coaxiales)
+        {
+            Console.WriteLine(StringProyect.SELECCION_DRON_LISTA);
+            //Ciclo for que imprime todo los drones de la lista
+            for (int i = 0; i < coaxiales.Count; i++)
+            {
+                Console.WriteLine(StringProyect.SeleccionDronLista(i, StringProyect.COAXIAL, coaxiales[i].NumeroSerie));
+            }
+            int dronSeleccionado = ValidarNumero(StringProyect.SELECCION_DRON);
+            //Sentencia para el caso de que el usuario no haya seleccioanado una opción de los drones
+            if (dronSeleccionado >= 0 && dronSeleccionado < coaxiales.Count)
+            {
+                OpcionesDron(coaxiales, dronSeleccionado);
+            }
+            else
+            {
+                Console.WriteLine(StringProyect.NO_SELECCION_DRON);
+            }
+        }
+
         //Método que muestra la lista de drones tricopteros para poder seleccionar uno de ellos
         private static void SeleccionDron(List<Hexacoptero> hexacopteros)
         {
@@ -289,6 +355,58 @@
             else
             {
                 Console.WriteLine(StringProyect.NO_SELECCION_DRON);
+            }
+        }
+        //Método que muestra la opciones que se puede realizar al seleccionar un dron
+        private static void OpcionesDron(List<Coaxial> coaxiales, int dronSeleccionado)
+        {
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            //Variable para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones y presentación
+                Console.WriteLine(StringProyect.SeleccionDron(coaxiales[dronSeleccionado].NumeroSerie));
+                Console.WriteLine(StringProyect.OPCIONES_MENU_SECUNDARIO_DRON_CUATRO);
+                int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    //Caso para que se muetre la información del dron
+                    case 1:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(coaxiales[dronSeleccionado].MostrarInformacion());
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar los datos del dron
+                    case 2:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        ModificarDatosDron(coaxiales, dronSeleccionado);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 3:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(coaxiales[dronSeleccionado].TransportarCarga());
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 4:
+                        //Opción para la salida del programa
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.SALIR_MENU_SECUNDARIO);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción del menú
+                    default:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.RangoOpciones(1, 4));
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                }
             }
         }
         //Método que muestra la opciones que se puede realizar al seleccionar un dron
@@ -449,6 +567,95 @@
             }
         }
         //Menú que permite modificar los atributos del dron
+        private static void ModificarDatosDron(List<Coaxial> coaxiales, int dronSeleccionado)
+        {
+            //Console.WriteLine("Datos para modificar datos");
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            //Variable para salir del ciclo.
+            bool salir = false;
+            //Inicio del comienzo de ciclo para mostrar las diferentes opciones del menú
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones así como la presentación del submenu
+                Console.WriteLine(StringProyect.SeleccionDronLista(coaxiales[dronSeleccionado].NumeroSerie, StringProyect.COAXIAL));
+                Console.WriteLine(StringProyect.OPCIONES_MENU_DRON_UPDATE_CUATRO);
+                int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+                //Uso del switch para seleccion de las opciones ingresadas desde la consola
+                switch (opcion)
+                {
+                    //Caso para modificar el peso del dron
+                    case 1:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        coaxiales[dronSeleccionado].Peso = VerificarMayorCero(StringProyect.INGRESO_PESO_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_PESO_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar la velocidad de vuelo
+                    case 2:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        coaxiales[dronSeleccionado].VelocidadVuelo = VerificarMayorCero(StringProyect.INGRESO_VELOCIDAD_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_VELOCIDAD_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar la energia de impacto
+                    case 3:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        coaxiales[dronSeleccionado].EnergiaImpacto = VerificarMayorCero(StringProyect.INGRESO_ENERGIA_IMPACTO);
+                        Console.WriteLine(StringProyect.SUCCESS_ENERGIA_IMPACTO);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar el ancho del dron
+                    case 4:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        coaxiales[dronSeleccionado].Dimension.Ancho = VerificarMayorCero(StringProyect.INGRESO_ANCHO_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_ANCHO_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar la altura del dron
+                    case 5:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        coaxiales[dronSeleccionado].Dimension.Altura = VerificarMayorCero(StringProyect.INGRESO_ALTURA_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_ALTURA_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar la base del dron
+                    case 6:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        coaxiales[dronSeleccionado].Dimension.BaseDron = VerificarMayorCero(StringProyect.INGRESO_BASE_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_BASE_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para modificar la capacidad de carga del dron
+                    case 7:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        coaxiales[dronSeleccionado].CapacidadCarga = VerificarMayorCero(StringProyect.INGRESO_CAPACIDAD_CARGA_DRON);
+                        Console.WriteLine(StringProyect.SUCCESS_CAPACIDAD_CARGA_DRON);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    case 8:
+                        //Opción para la salida del programa
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.SALIR_MENU_SECUNDARIO);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        salir = true;
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción del menú
+                    default:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.RangoOpciones(1, 8));
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                }
+            }
+        }
+        //Menú que permite modificar los atributos del dron
         private static void ModificarDatosDron(List<Hexacoptero> hexacopteros, int dronSeleccionado)
         {
             //Console.WriteLine("Datos para modificar datos");
@@ -460,7 +667,7 @@
             {
                 //Impresión de los diferentes opciones así como la presentación del submenu
                 Console.WriteLine(StringProyect.SeleccionDronLista(hexacopteros[dronSeleccionado].NumeroSerie, StringProyect.HEXACOPTERO));
-                Console.WriteLine(StringProyect.OPCIONES_MENU_DRON_UPDATE_DOS);
+                Console.WriteLine(StringProyect.OPCIONES_MENU_DRON_UPDATE_TRES);
                 int opcion = ValidarNumero(StringProyect.OPCION_MENU);
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
@@ -715,6 +922,18 @@
                         break;
                 }
             }
+        }
+        //Método que permite la creación de un coaxial con la información que agregue el cliente
+        private static Coaxial CreacionCoaxial()
+        {
+            double peso = VerificarMayorCero(StringProyect.INGRESO_PESO_DRON);
+            double energiaImpacto = VerificarMayorCero(StringProyect.INGRESO_ENERGIA_IMPACTO);
+            double velocidad = VerificarMayorCero(StringProyect.INGRESO_VELOCIDAD_DRON);
+            double ancho = VerificarMayorCero(StringProyect.INGRESO_ANCHO_DRON);
+            double altura = VerificarMayorCero(StringProyect.INGRESO_ALTURA_DRON);
+            double baseDron = VerificarMayorCero(StringProyect.INGRESO_BASE_DRON);
+            double capacidadCarga = VerificarMayorCero(StringProyect.INGRESO_CAPACIDAD_CARGA_DRON);
+            return new Coaxial(StringProyect.COAXIAL,capacidadCarga, 6, peso, energiaImpacto, velocidad, new Dimension(altura, ancho, baseDron));
         }
         //Método que permite la creación de un hexacóptero con la información que agregue el cliente
         private static Hexacoptero CreacionHexacoptero()
