@@ -62,26 +62,32 @@
         {
             return string.Format("Has elegido la opción {0}", valor);
         }
+        //Método que concatena el número de serie del dron seleccionado
         public static string SeleccionDron(int valor)
         {
             return string.Format("Se ha seleccionado el dron con numero de serie: {0}", valor);
         }
+        //Método que concatena los diferentes drones que existen
         public static string SeleccionDron(string valor)
         {
             return string.Format("Drones {0}s", valor);
         }
+        //Método que concatena el número de lista, el tipo y número de serie del dron
         public static string SeleccionDronLista(int valor, string valorDos, int valorTres)
         {
             return string.Format("{0}. {1} # de serie: {2}", valor, valorDos, valorTres);
         }
+        //Método que concatena el tipo y número de serie del dron
         public static string SeleccionDronLista(int valor, string valorDos)
         {
             return string.Format("{1} # de serie: {0}", valor, valorDos);
         }
+        //Método que concatena las opciones que puede tener el menú
         public static string RangoOpciones(int v1, int v2)
         {
             return string.Format("Elige una opcion entre {0} y {1}", v1, v2);
         }
+        //Método que concatena el número de serie del dron
         public static string CreacionDron(int valor)
         {
             return string.Format("¡Se ha creado un nuevo dron con número de serie: {0}!", valor);

@@ -13,11 +13,13 @@
             Tipo = tipo;
             ResolucionCamara = resolucionCamara;
         }
+        //Método que inicia la grabación de un dron
         public string IniciarGrabacion()
         {
             return "Iniciando grabación...........\n\n" +
                 $"¡El dron con # serie {NumeroSerie} esta comenzando a grabar!";
         }
+        //Método que detiene la grabación de un dron
         public string DetenerGrabacion()
         {
             return "Deteniendo grabación...........\n\n"+

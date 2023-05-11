@@ -19,6 +19,7 @@
             return "Iniciando servomotor......\n\n" +
                 $"¡Se ha establecido estabilidad en el vuelo! # de serie {NumeroSerie}";
         }
+        //Método que imprime los atributos que componen al objeto
         public override string MostrarInformacion()
         {
             return $"{base.MostrarInformacion()}\n" +
