@@ -21,8 +21,8 @@
         {
             return new List<Coaxial>
             {
-                new Coaxial(StringProyect.COAXIAL, 14.5, 6, 1.2, 12, 15, new Dimension(30, 30, 15)),
-                new Coaxial(StringProyect.COAXIAL, 14.5, 6, 1.2, 12, 15, new Dimension(30, 30, 15))
+                new Coaxial(StringProyect.COAXIAL, 14.5, 4, 1.2, 12, 15, new Dimension(30, 30, 15)),
+                new Coaxial(StringProyect.COAXIAL, 14.5, 4, 1.2, 12, 15, new Dimension(30, 30, 15))
             };
         }
         //Método que retorna lista de objetos de tipo hexacoptero

@@ -933,7 +933,7 @@
             double altura = VerificarMayorCero(StringProyect.INGRESO_ALTURA_DRON);
             double baseDron = VerificarMayorCero(StringProyect.INGRESO_BASE_DRON);
             double capacidadCarga = VerificarMayorCero(StringProyect.INGRESO_CAPACIDAD_CARGA_DRON);
-            return new Coaxial(StringProyect.COAXIAL,capacidadCarga, 6, peso, energiaImpacto, velocidad, new Dimension(altura, ancho, baseDron));
+            return new Coaxial(StringProyect.COAXIAL,capacidadCarga, 4, peso, energiaImpacto, velocidad, new Dimension(altura, ancho, baseDron));
         }
         //Método que permite la creación de un hexacóptero con la información que agregue el cliente
         private static Hexacoptero CreacionHexacoptero()
