@@ -4,7 +4,6 @@
     {
         //Declaración de las variables globales
         public static Cuentas cuentas = new Cuentas();
-        //public static Drones drones = new Drones();
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
@@ -31,29 +30,28 @@
                     case 1:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        CrearCuenta(cuentas.MaestraList,cuentas.InversionList);
-                        //SeleccionListas(drones.TricopteroList);
+                        CrearCuenta(cuentas.MaestraList, cuentas.InversionList);
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     //Caso para calcular el interes de una cuenta
                     case 2:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        //SeleccionListas(drones.CuadricopteroList);
+                        SeleccionTipoCuenta(cuentas.MaestraList, cuentas.InversionList);
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     //Caso para cerrar una cuenta
                     case 3:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        //SeleccionListas(drones.HexacopteroList);
+                        CancelacionCuenta(cuentas.MaestraList);
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 4:
                         //Caso para mostrar la información de todas las cuentas
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        for (int i = 0; i<cuentas.MaestraList.Count;i++)
+                        for (int i = 0; i < cuentas.MaestraList.Count; i++)
                         {
                             Console.WriteLine(cuentas.MaestraList[i].MostrarInformacion());
                             Console.WriteLine(StringProyect.STRING_FORMATO);
@@ -63,7 +61,6 @@
                             Console.WriteLine(cuentas.InversionList[i].MostrarInformacion());
                             Console.WriteLine(StringProyect.STRING_FORMATO);
                         }
-                        //SeleccionListas(drones.CoaxialList);
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
                     case 5:
@@ -82,20 +79,199 @@
 
                 }
             }
-
-
-
-
-            /*
-            CuentaMaestra cuenta = new CuentaMaestra("Maestra",1000,10);
-            CuentaMaestra cuenta2 = new CuentaMaestra("Maestra", 1000, 10);
-            Inversion inversion = new Inversion("Inversion",1000,"20/05/2023","Largo plazo");
-            Console.WriteLine(cuenta.MostrarInformacion());
-            Console.WriteLine(cuenta2.MostrarInformacion());
-            Console.WriteLine(inversion.MostrarInformacion());
-            */
         }
-
+        //Metodo que permite la cancelación de una cuenta
+        private static void CancelacionCuenta(List<CuentaMaestra> maestraList)
+        {
+            CuentaMaestra cuenta = RetornoCuentaMaestra(maestraList);
+            if (cuenta != null)
+            {
+                Console.WriteLine(StringProyect.STRING_FORMATO);
+                OpcionesCancelacion(cuenta);
+            }
+            else
+            {
+                Console.WriteLine(StringProyect.NO_CUENTA);
+            }
+        }
+        //Método que muestra las opciones de cancelación para la lista de cuentas
+        private static void OpcionesCancelacion(CuentaMaestra cuenta)
+        {
+            //Variable para salir del ciclo.
+            bool salir = false;
+            while (!salir)
+            {
+                Console.WriteLine(StringProyect.OpcionCuenta(cuenta.NumeroCuenta));
+                //Impresión de los diferentes opciones
+                Console.WriteLine(StringProyect.OPCIONES_MENU_CUARTO);
+                int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+                switch (opcion)
+                {
+                    //Caso para cerrar la cuenta por fallecimiento del titular
+                    case 1:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(StringProyect.CERRARDO_CUENTA);
+                        Console.WriteLine(cuenta.CerrarCuenta(opcion));
+                        salir = true;
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para cerra la cuenta por calcelación del titular
+                    case 2:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(StringProyect.CERRARDO_CUENTA);
+                        Console.WriteLine(cuenta.CerrarCuenta(opcion));
+                        salir = true;
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                        //Caso para cerrar la cuenta por cancelación del banco
+                    case 3:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(StringProyect.CERRARDO_CUENTA);
+                        Console.WriteLine(cuenta.CerrarCuenta(opcion));
+                        salir = true;
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                        //Caso para cerrar la cuenta por motivo desconocido
+                    case 4:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(StringProyect.CERRARDO_CUENTA);
+                        Console.WriteLine(cuenta.CerrarCuenta(opcion));
+                        salir = true;
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                        //Caso para ingresar el motivo desde la consola
+                    case 5:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        string s = ValidarString(StringProyect.INGRESO_CANCELACION);
+                        Console.WriteLine(StringProyect.CERRARDO_CUENTA);
+                        Console.WriteLine(cuenta.CerrarCuenta(s));
+                        salir = true;
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para salir del menú secundario
+                    case 6:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(StringProyect.RETORNO);
+                        salir = true;
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción del menú
+                    default:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.RangoOpciones(1, 6));
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                }
+            }
+        }
+        //Método que permite seleccionar las cuentas que maestras o de inversión para calcular el interes
+        private static void SeleccionTipoCuenta(List<CuentaMaestra> maestraList, List<Inversion> inversionList)
+        {
+            //Variable para salir del ciclo.
+            bool salir = false;
+            while (!salir)
+            {
+                //Impresión de los diferentes opciones
+                Console.WriteLine(StringProyect.OPCIONES_MENU_TERCIARIO);
+                int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+                switch (opcion)
+                {
+                    //Caso para ingresar el interes de las cuentas maestras
+                    case 1:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        InteresCuenta(maestraList);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para ingresar el interes de las cuentas de inversion
+                    case 2:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        InteresesCuenta(inversionList);
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Caso para salir del menú secundario
+                    case 3:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.OpcionMenu(opcion));
+                        Console.WriteLine(StringProyect.RETORNO);
+                        salir = true;
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                    //Opción en el caso de que el usuario no seleccione una opción del menú
+                    default:
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        Console.WriteLine(StringProyect.RangoOpciones(1, 3));
+                        Console.WriteLine(StringProyect.STRING_FORMATO);
+                        break;
+                }
+            }
+        }
+        //Método que realiza el calculo del interes para las cuentas de inversión
+        private static void InteresesCuenta(List<Inversion> inversionList)
+        {
+            Inversion cuenta = RetornoCuentaInversion(inversionList);
+            if (cuenta != null)
+            {
+                Console.WriteLine(StringProyect.OpcionCuenta(cuenta.NumeroCuenta));
+                double interes = VerificarMayorCero(StringProyect.INGRESO_INTERES);
+                cuenta.CalcularIntereses(interes);
+                Console.WriteLine(StringProyect.NuevoSueldo(cuenta.Saldo));
+            }
+            else
+            {
+                Console.WriteLine(StringProyect.NO_CUENTA);
+            }
+        }
+        //Método que recupera el objeto de tipo Inversión de la lista de cuentas
+        private static Inversion RetornoCuentaInversion(List<Inversion> inversionList)
+        {
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(StringProyect.SELECCION_CUENTA);
+            for (int i = 0; i < inversionList.Count; i++)
+            {
+                Console.WriteLine($"{i}. Número de cuenta {inversionList[i].NumeroCuenta}");
+            }
+            int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+            Inversion? cuenta = opcion >= 0 && opcion < inversionList.Count ? inversionList[opcion] : null;
+            return cuenta;
+        }
+        //Método que realiza el calculo del interes para las cuentas maestras
+        private static void InteresCuenta(List<CuentaMaestra> maestraList)
+        {
+            CuentaMaestra cuenta = RetornoCuentaMaestra(maestraList);
+            if (cuenta != null)
+            {
+                Console.WriteLine(StringProyect.OpcionCuenta(cuenta.NumeroCuenta));
+                double interes = VerificarMayorCero(StringProyect.INGRESO_INTERES);
+                cuenta.CalcularIntereses(interes);
+                Console.WriteLine(StringProyect.NuevoSueldo(cuenta.Saldo));
+            }
+            else
+            {
+                Console.WriteLine(StringProyect.NO_CUENTA);
+            }
+        }
+        //Método que recupera el objeto de tipo CuentaMaestra de la lista de cuentas
+        private static CuentaMaestra RetornoCuentaMaestra(List<CuentaMaestra> maestraList)
+        {
+            Console.WriteLine(StringProyect.STRING_FORMATO);
+            Console.WriteLine(StringProyect.SELECCION_CUENTA);
+            for (int i = 0; i < maestraList.Count; i++)
+            {
+                Console.WriteLine($"{i}. Número de cuenta {maestraList[i].NumeroCuenta}");
+            }
+            int opcion = ValidarNumero(StringProyect.OPCION_MENU);
+            CuentaMaestra?  cuenta = opcion >= 0 && opcion < maestraList.Count ? maestraList[opcion] :null;
+            return cuenta;
+        }
+        //Método que permite la ceración de una cuenta en función del tipo
         private static void CrearCuenta(List<CuentaMaestra> maestraList, List<Inversion> inversionList)
         {
             //Variable para salir del ciclo.
@@ -131,7 +307,7 @@
                     case 3:
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         Console.WriteLine(StringProyect.OpcionMenu(opcion));
-                        Console.WriteLine(StringProyect.SALIR);
+                        Console.WriteLine(StringProyect.RETORNO);
                         salir = true;
                         Console.WriteLine(StringProyect.STRING_FORMATO);
                         break;
@@ -145,13 +321,14 @@
             }
 
         }
-
+        //Metodo que obtiene los datos que se ingrese desde la consola y retorna un objeto de CuentaMaestra
         private static CuentaMaestra CuentaMaestra()
         {
             double saldo = VerificarMayorCero(StringProyect.INGRESO_SALDO);
             double comision = VerificarMayorCero(StringProyect.INGRESO_COMISION);
             return new CuentaMaestra(StringProyect.MAESTRA, saldo, comision);
         }
+        //Metodo que obtiene los datos que se ingrese desde la consola y retorna un objeto de Inversion
         private static Inversion CuentaInversion()
         {
             double saldo = VerificarMayorCero(StringProyect.INGRESO_SALDO);

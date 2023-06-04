@@ -1,24 +1,28 @@
 ﻿namespace UnidadDosEA
 {
+    //Declaración de la clase CuentaMaestra con sus atributos necesarios
     public class CuentaMaestra : Cuenta
     {
+        //Declaración de las variables y métodos  getter y setter del objeto CuentaMaestra
         public double Comision { get; set; }
+        //Declaración de constructor con parametros de entrada
         public CuentaMaestra(string tipoCuenta, double saldo, double comision)
         {
             TipoCuenta = tipoCuenta;
             Saldo = saldo;
             Comision = comision;
         }
+        //Método para calcular el interes de la cuenta
         public override double CalcularIntereses(double interes)
         {
             Saldo = Saldo - interes - Comision;
             return Saldo;
         }
         // Métodos polimórficos para cerrar la cuenta
-        public void CerrarCuenta(string motivo)
+        public string CerrarCuenta(string motivo)
         {
-            Console.WriteLine("Saldo actual: {0}", Saldo);
-            Console.WriteLine("Motivo de la cancelación: {0}", motivo);
+            return $"Saldo actual: ${Saldo}\n" +
+                $"Motivo de la cancelación: {motivo}";
         }
         public string CerrarCuenta(int motivo)
         {
@@ -34,13 +38,11 @@
                 case 3:
                     mensaje = "Cancelación por el banco";
                     break;
-                default:
+                case 4:
                     mensaje = "Motivo desconocido";
                     break;
             }
-            //Console.WriteLine($"Saldo actual: {Saldo}");
-            //Console.WriteLine($"Motivo de la cancelación: {mensaje}");
-            return $"Saldo actual: {Saldo}\n" +
+            return $"Saldo actual: ${Saldo}\n" +
                 $"Motivo de la cancelación: {mensaje}";
         }
         //Método que imprime los atributos que componen al objeto
