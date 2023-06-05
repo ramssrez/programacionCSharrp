@@ -3,10 +3,11 @@
     public class Objeto : EntidadMetaverso
     {
         public string Tipo { get; set; }
-        public Objeto(string nombre, string descripcion, string tipo)
+        public Objeto(string nombre, string descripcion, string tipoObjeto,string tipo)
         {
             Nombre = nombre;
             Descripcion = descripcion;
+            TipoObjeto = tipoObjeto;
             Tipo = tipo;
         }
 

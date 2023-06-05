@@ -3,10 +3,11 @@
     public class Personaje : EntidadMetaverso
     {
         public string Rol { get; set; }
-        public Personaje(string nombre, string descripcion, string rol)
+        public Personaje(string nombre, string descripcion,string tipoObjeto, string rol)
         {
             Nombre = nombre;
             Descripcion = descripcion;
+            TipoObjeto = tipoObjeto;
             Rol = rol;
         }
         public override string Interactuar()

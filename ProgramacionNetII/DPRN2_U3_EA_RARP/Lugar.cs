@@ -3,10 +3,11 @@
     public class Lugar : EntidadMetaverso
     {
         public string Ubicacion { get; set; }
-        public Lugar(string nombre, string descripcion, string ubicacion)
+        public Lugar(string nombre, string descripcion, string tipoObjeto,string ubicacion)
         {
             Nombre = nombre;
             Descripcion = descripcion;
+            TipoObjeto = tipoObjeto;
             Ubicacion = ubicacion;
         }
         public override string Interactuar()
