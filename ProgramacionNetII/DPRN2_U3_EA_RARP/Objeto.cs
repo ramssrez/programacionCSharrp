@@ -3,8 +3,11 @@
     public class Objeto : EntidadMetaverso
     {
         public string Tipo { get; set; }
-        public Objeto()
+        public Objeto(string nombre, string descripcion, string tipo)
         {
+            Nombre = nombre;
+            Descripcion = descripcion;
+            Tipo = tipo;
         }
 
         public override string Interactuar()

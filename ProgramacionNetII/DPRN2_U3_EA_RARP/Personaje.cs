@@ -11,7 +11,7 @@
         }
         public override string Interactuar()
         {
-            return $"{Nombre} te esta saludando";
+            return $"{Nombre} te esta saludando, te esta invitando a codear un gran videojuego";
         }
         public override string DatosEntidad()
         {

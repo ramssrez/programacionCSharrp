@@ -11,7 +11,7 @@
         }
         public override string Interactuar()
         {
-            return $"Estas interactuando en la ubicación {Ubicacion}";
+            return $"Estas interactuando en la ubicación {Nombre} en {Ubicacion}";
         }
         public override string DatosEntidad()
         {
