@@ -2,8 +2,10 @@
 
 namespace UnidadTresEA
 {
+    //Declaración de la clase para manejo de exepciones
     public class LimitesInteraccionException : Exception
     {
+        //Declaración de diferentes tipos de contructores para su utilización
         public LimitesInteraccionException()
         {
         }

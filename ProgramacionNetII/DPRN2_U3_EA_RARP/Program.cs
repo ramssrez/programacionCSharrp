@@ -3,7 +3,8 @@
     class Program
     {
         //Declaración de la variable global de la aplicación
-        Strings strings = new Strings();
+        public static EntidadesMetaverso entidadesMeta = new ();
+        public static UsuarioMetaverso usuario = new("Gratuita");
         //Comienzo de la función principal en C#
         static void Main(string[] args)
         {
@@ -28,31 +29,43 @@
                 //Uso del switch para seleccion de las opciones ingresadas desde la consola
                 switch (opcion)
                 {
-                    //Caso para mostrar y modificar información de la lista de drones tipo Tricópteros
+                    //Caso para mostrar las entidades que sean un personaje
                     case 1:
                         Console.WriteLine(Strings.STRING_FORMATO);
                         Console.WriteLine(Strings.OpcionMenu(opcion));
+                        ImprimirOpciones(entidadesMeta.Entidades, Strings.PERSONAJE);
                         Console.WriteLine(Strings.STRING_FORMATO);
                         break;
-                    //Caso para mostrar y modificar información de la lista de drones tipo Cuadricóptero
+                    //Caso para mostrar las entidades que sean un objeto
                     case 2:
                         Console.WriteLine(Strings.STRING_FORMATO);
                         Console.WriteLine(Strings.OpcionMenu(opcion));
+                        ImprimirOpciones(entidadesMeta.Entidades, Strings.OBJETO);
                         Console.WriteLine(Strings.STRING_FORMATO);
                         break;
-                    //Caso para mostrar y modificar información de la lista de drones tipo Hexacóptero
+                    //Caso para mostrar las entidades que sean un lugar
                     case 3:
                         Console.WriteLine(Strings.STRING_FORMATO);
                         Console.WriteLine(Strings.OpcionMenu(opcion));
+                        ImprimirOpciones(entidadesMeta.Entidades, Strings.LUGAR);
+
                         Console.WriteLine(Strings.STRING_FORMATO);
                         break;
                     case 4:
-                        //Caso para mostrar y modificar información de la lista de drones tipo Coaxial
+                        //Caso para mostrar las entidades que sean un evento
                         Console.WriteLine(Strings.STRING_FORMATO);
                         Console.WriteLine(Strings.OpcionMenu(opcion));
+                        ImprimirOpciones(entidadesMeta.Entidades, Strings.EVENTO);
                         Console.WriteLine(Strings.STRING_FORMATO);
                         break;
                     case 5:
+                        //Caso para mostrar toda la información de las entidades
+                        Console.WriteLine(Strings.STRING_FORMATO);
+                        Console.WriteLine(Strings.OpcionMenu(opcion));
+                        MostrarInformacion(entidadesMeta.Entidades);
+                        Console.WriteLine(Strings.STRING_FORMATO);
+                        break;
+                    case 6:
                         //Opción para la salida del programa
                         Console.WriteLine(Strings.STRING_FORMATO);
                         Console.WriteLine(Strings.SALIR);
@@ -62,55 +75,54 @@
                     //Opción en el caso de que el usuario no seleccione una opción del menú
                     default:
                         Console.WriteLine(Strings.STRING_FORMATO);
-                        Console.WriteLine(Strings.RangoOpciones(1, 5));
+                        Console.WriteLine(Strings.RangoOpciones(1, 6));
                         Console.WriteLine(Strings.STRING_FORMATO);
                         break;
                 }
             }
-            /*
-            UsuarioMetaverso usuario = new UsuarioMetaverso("Platino");
-            usuario.RealizarInteraccion();
-            usuario.RealizarInteraccion();
-            usuario.RealizarInteraccion();
-            usuario.RealizarInteraccion();
-            usuario.RealizarInteraccion();
-            usuario.RealizarInteraccion();
-            usuario.RealizarInteraccion();
-            usuario.RealizarInteraccion();
-            usuario.RealizarInteraccion();
-            usuario.RealizarInteraccion();
-            usuario.RealizarInteraccion();
-
-            //EntidadMetaverso entidad = new EntidadMetaverso();
-            Personaje personaje = new Personaje("Programador 1","Desarrollador de videojuegos dentro del metaverso nivel I",Strings.PERSONAJE,"Desarrollador videojuegos consola");
-            Personaje personaje2 = new Personaje("Programador 2", "Desarrollador de videojuegos dentro del metaverso nivel II", Strings.PERSONAJE,"Desarrollador videojuegos móvil");
-            Personaje personaje3 = new Personaje("Programador 3", "Desarrollador de videojuegos dentro del metaverso nivel III", Strings.PERSONAJE,"Desarrollador videojuegos de escritorio");
-            
-            Objeto objeto = new Objeto("Computadora","Computadora de ultima generación que contiene los programas necesarios para poder desarrollar videojuegos para consolas", Strings.OBJETO, "Electrónico");
-            Objeto objeto1 = new Objeto("Escritorio", "Escritorio que sostiene todo el equipo necesario para poder desarrollar videojuegos", Strings.OBJETO,"Mueble");
-            Objeto objeto2 = new Objeto("Mouse", "Mouse necesario para tener el control de la interfaz gráfica con el usuaro", Strings.OBJETO, "Electrónico");
-            Objeto objeto3 = new Objeto("Silla", "Silla en donde el usuario puede sentarse y desarrollar los videojuegos con su respectiva computadora", Strings.OBJETO, "Mueble");
-            Objeto objeto4 = new Objeto("Teclado", "Teclado para que el usuario pueda escribir en la computadora", Strings.OBJETO, "Electrónico");
-
-            Lugar lugar = new Lugar("Oficina","Oficina de desarrollo de videojuegos", Strings.LUGAR,"CDMX");
-            Lugar lugar2 = new Lugar("World Trade Center","Primer piso de la torre", Strings.LUGAR, "CDMX");
-            Lugar lugar3 = new Lugar("Friki Plaza", "Tercer piso de la Friki Plaza", Strings.LUGAR, "CDMX");
-
-            Evento evento = new Evento("Hackaton","Hackaton desarrollo de videojuegos",Strings.EVENTO,"20/06/2023",lugar2,"Hackaton para todo publico en general, que guste experimentar" +
-                "la adredalina para poder desarrollar videojuegos en consola, ven con tu equipo para mostrar tus habilidades de desarrollo ya sea en equipo o dentro de " +
-                "las instalaciones puedes crear tu propio equipo");
-
-            Evento evento2 = new Evento("La Mole", "Comics, anime y videojuegos en un solo lugar", Strings.EVENTO,"24/06/2023", lugar3, "Visita el evento anual de comics, anime y videjuegos" +
-                "en donde podras una gran cantidad de stands de diferentes temas que te pueden interesar, además de stads de actores de doblaje");
-
-            List<EntidadMetaverso> entidadMeta = new List<EntidadMetaverso>() { personaje, personaje2, personaje3, objeto, objeto1, objeto2, objeto3, objeto4, lugar,lugar2,lugar3,evento, evento2 };
-
-            for (int i = 0; i < entidadMeta.Count; i++)
-            {
-                Console.WriteLine($"{i}. {entidadMeta[i].Descripcion}");
-            }
-            */
         }
+        //Método que imprime la información de las entidades del metaverso
+        private static void MostrarInformacion(List<EntidadMetaverso>? entidades)
+        {
+            foreach (EntidadMetaverso em in entidades)
+            {
+                Console.WriteLine(em.DatosEntidad());
+                Console.WriteLine(Strings.STRING_FORMATO);
+            }
+        }
+        //Método que imprime las opciones y realiza el conteo de las entidades con las que interactua el usuario
+        private static void ImprimirOpciones(List<EntidadMetaverso>? entidades, string s)
+        {
+            for (int i = 0; i < entidades?.Count; i++)
+            {
+                if (entidades[i].TipoObjeto.Equals(s))
+                {
+                    Console.WriteLine($"{entidades[i].ID}. {entidades[i].Nombre}");
+                }
+            }
+            int opcion = ValidarNumero(Strings.OPCION_ENTIDAD);
+            //Opción de la lista para poder visualizar si existe un elemento de la lista con las necesidades requeridas
+            EntidadMetaverso? ent = entidades?.Find(
+                delegate (EntidadMetaverso enti)
+                {
+                    return enti.ID == opcion && enti.TipoObjeto.Equals(s);
+                });
+            //Sentencia para el caso de que se ha encontraso una entidad en la lista
+            if (ent != null)
+            {
+                usuario.RealizarInteraccion();
+                if (usuario.PuedeInteractuar)
+                {
+                    Console.WriteLine(ent.Interactuar()); 
+                }
+            }
+            else
+            {
+                Console.WriteLine(Strings.NoInteraccion(s));
+            }
+
+        }
+        //Método que varifica si es un entero el valor ingresado desde la consola, se repite hasta que sea correcto
         public static int ValidarNumero(string mensaje)
         {
             //Declaración de variables necesarias para realizar el programa
@@ -124,15 +136,14 @@
                 {
                     Console.Write(mensaje);
                     valor = Convert.ToInt32(Console.ReadLine());
-                    //Llamado al metodo para verificar que el valor ingresado sea mayor a cuatro
                     salir = true;
                 }
-                catch (FormatException ex)
+                catch (FormatException)
                 {
                     //Mensaje de error en caso de que no se haya ingresado un entero
                     Console.WriteLine(Strings.ERROR_INGRESAR_NUMERO);
                 }
-                catch (OverflowException ex)
+                catch (OverflowException)
                 {
                     //Mensaje de error en caso de que se haya ingresado un número muy grande
                     Console.WriteLine(Strings.ERROR_NUMERO_GRANDE);
