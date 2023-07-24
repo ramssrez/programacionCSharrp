@@ -44,11 +44,58 @@ namespace DPRN3_U1_EA_RARP
             RRPDataAdapter.Fill(RRPDataSet,"proveedores");
             dgvProvedores.DataSource = RRPDataSet;
             dgvProvedores.DataMember = "proveedores";
-            /*
-            dgvProvedores.Columns["Id_proveedor"].HeaderText = "Id";
-            dgvProvedores.Columns["Nombre"].HeaderText = "Nombre";
-            dgvProvedores.Columns["ApellidoPaterno"].HeaderText = "Descripcion";
-            */
+        }
+
+        private void btnAutoPartes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (RRPSqlConnection = new SqlConnection(cadenaConexion))
+                {
+                    RRPSqlConnection.Open();
+                    ConsultaAutoPartes();
+                    RRPSqlConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se puede conectar a la base de datos" + ex.Message);
+            }
+        }
+
+        private void ConsultaAutoPartes()
+        {
+            RRPDataAdapter = new SqlDataAdapter("select * from RRPAutopartes", RRPSqlConnection);
+            RRPDataSet = new DataSet();
+            RRPDataAdapter.Fill(RRPDataSet, "autopartes");
+            dgvAutoPartes.DataSource = RRPDataSet;
+            dgvAutoPartes.DataMember = "autopartes";
+        }
+
+        private void btnDetalleCompra_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (RRPSqlConnection = new SqlConnection(cadenaConexion))
+                {
+                    RRPSqlConnection.Open();
+                    ConsultaADetalleCompra();
+                    RRPSqlConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se puede conectar a la base de datos" + ex.Message);
+            }
+        }
+
+        private void ConsultaADetalleCompra()
+        {
+            RRPDataAdapter = new SqlDataAdapter("select * from RRPDetalleCompra", RRPSqlConnection);
+            RRPDataSet = new DataSet();
+            RRPDataAdapter.Fill(RRPDataSet, "detalles");
+            dgvDetalleCompra.DataSource = RRPDataSet;
+            dgvDetalleCompra.DataMember = "detalles";
         }
     }
 }
