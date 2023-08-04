@@ -17,9 +17,9 @@ namespace DSDPRN3RRP2302B1
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnRRP_Click(object sender, EventArgs e)
         {
-
+            Console.WriteLine($"Esto es desde el botón {btnRRP.Name}");
         }
     }
 }
