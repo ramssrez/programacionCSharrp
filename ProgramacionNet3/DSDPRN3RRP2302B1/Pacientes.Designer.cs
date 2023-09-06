@@ -1,6 +1,6 @@
 ﻿namespace DSDPRN3RRP2302B1
 {
-    partial class Form1
+    partial class Pacientes
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -44,6 +44,10 @@
             this.BtnEliminarRRP = new System.Windows.Forms.Button();
             this.BtnActualizarRRP = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TxtCodigoPostalCRRP = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.TxtCiudadCRRP = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtEstadoCRRP = new System.Windows.Forms.TextBox();
             this.TxtCalleCRRP = new System.Windows.Forms.TextBox();
@@ -55,14 +59,13 @@
             this.TxtTelefonoFijoCRRP = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.TxtCiudadCRRP = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.TxtCodigoPostalCRRP = new System.Windows.Forms.TextBox();
+            this.DtWConexionRRP = new System.Windows.Forms.DataGridView();
+            this.BtnConexionRRP = new System.Windows.Forms.Button();
             this.GrbSexoRRP.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtWConexionRRP)).BeginInit();
             this.SuspendLayout();
             // 
             // GrbSexoRRP
@@ -107,11 +110,11 @@
             this.CbxEdoCivilRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbxEdoCivilRRP.FormattingEnabled = true;
             this.CbxEdoCivilRRP.Items.AddRange(new object[] {
-            "Soltero",
-            "Casado",
-            "Divorciado",
-            "Viudo",
-            "Concubinato"});
+            "Soltero(a)",
+            "Casado(a)",
+            "Viudo(a)",
+            "Divorciado(a)",
+            "Concubinato(a)"});
             this.CbxEdoCivilRRP.Location = new System.Drawing.Point(287, 103);
             this.CbxEdoCivilRRP.Name = "CbxEdoCivilRRP";
             this.CbxEdoCivilRRP.Size = new System.Drawing.Size(141, 27);
@@ -257,6 +260,42 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dirección";
             // 
+            // TxtCodigoPostalCRRP
+            // 
+            this.TxtCodigoPostalCRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCodigoPostalCRRP.Location = new System.Drawing.Point(347, 118);
+            this.TxtCodigoPostalCRRP.Name = "TxtCodigoPostalCRRP";
+            this.TxtCodigoPostalCRRP.Size = new System.Drawing.Size(283, 27);
+            this.TxtCodigoPostalCRRP.TabIndex = 14;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(343, 96);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(110, 19);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Código Postal";
+            // 
+            // TxtCiudadCRRP
+            // 
+            this.TxtCiudadCRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCiudadCRRP.Location = new System.Drawing.Point(19, 118);
+            this.TxtCiudadCRRP.Name = "TxtCiudadCRRP";
+            this.TxtCiudadCRRP.Size = new System.Drawing.Size(276, 27);
+            this.TxtCiudadCRRP.TabIndex = 12;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(19, 91);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 19);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Ciudad";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -289,7 +328,7 @@
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(15, 26);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 24);
+            this.label4.Size = new System.Drawing.Size(45, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "Calle";
             // 
@@ -363,47 +402,36 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Teléfono Fijo";
             // 
-            // label10
+            // DtWConexionRRP
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(19, 91);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 24);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Ciudad";
+            this.DtWConexionRRP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtWConexionRRP.Location = new System.Drawing.Point(782, 42);
+            this.DtWConexionRRP.Name = "DtWConexionRRP";
+            this.DtWConexionRRP.RowHeadersWidth = 51;
+            this.DtWConexionRRP.RowTemplate.Height = 24;
+            this.DtWConexionRRP.Size = new System.Drawing.Size(615, 252);
+            this.DtWConexionRRP.TabIndex = 12;
             // 
-            // TxtCiudadCRRP
+            // BtnConexionRRP
             // 
-            this.TxtCiudadCRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCiudadCRRP.Location = new System.Drawing.Point(19, 118);
-            this.TxtCiudadCRRP.Name = "TxtCiudadCRRP";
-            this.TxtCiudadCRRP.Size = new System.Drawing.Size(276, 27);
-            this.TxtCiudadCRRP.TabIndex = 12;
+            this.BtnConexionRRP.BackColor = System.Drawing.Color.Cyan;
+            this.BtnConexionRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnConexionRRP.ForeColor = System.Drawing.Color.Snow;
+            this.BtnConexionRRP.Location = new System.Drawing.Point(983, 341);
+            this.BtnConexionRRP.Name = "BtnConexionRRP";
+            this.BtnConexionRRP.Size = new System.Drawing.Size(117, 42);
+            this.BtnConexionRRP.TabIndex = 13;
+            this.BtnConexionRRP.Text = "Conexión";
+            this.BtnConexionRRP.UseVisualStyleBackColor = false;
+            this.BtnConexionRRP.Click += new System.EventHandler(this.BtnConexionRRP_Click);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(343, 96);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(110, 19);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Código Postal";
-            // 
-            // TxtCodigoPostalCRRP
-            // 
-            this.TxtCodigoPostalCRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCodigoPostalCRRP.Location = new System.Drawing.Point(347, 118);
-            this.TxtCodigoPostalCRRP.Name = "TxtCodigoPostalCRRP";
-            this.TxtCodigoPostalCRRP.Size = new System.Drawing.Size(283, 27);
-            this.TxtCodigoPostalCRRP.TabIndex = 14;
-            // 
-            // Form1
+            // Pacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 542);
+            this.ClientSize = new System.Drawing.Size(1446, 598);
+            this.Controls.Add(this.BtnConexionRRP);
+            this.Controls.Add(this.DtWConexionRRP);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.BtnActualizarRRP);
@@ -411,7 +439,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnGuardarRRP);
             this.Controls.Add(this.GrbSexoRRP);
-            this.Name = "Form1";
+            this.Name = "Pacientes";
             this.Text = "Registro de Pacientes";
             this.GrbSexoRRP.ResumeLayout(false);
             this.GrbSexoRRP.PerformLayout();
@@ -421,6 +449,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtWConexionRRP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -457,6 +486,8 @@
         private System.Windows.Forms.TextBox TxtCiudadCRRP;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox TxtCodigoPostalCRRP;
+        private System.Windows.Forms.DataGridView DtWConexionRRP;
+        private System.Windows.Forms.Button BtnConexionRRP;
     }
 }
 
