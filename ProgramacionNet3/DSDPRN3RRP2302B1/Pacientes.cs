@@ -15,9 +15,11 @@ namespace DSDPRN3RRP2302B1
     {
         private MySqlDataAdapter adapterRRP;
         private DataTable dataTableRRP;
+        private Conexion conexion;
         public Pacientes()
         {
             InitializeComponent();
+            PacientesConsulta();
         }
 
         private void BtnGuardarRRP_Click(object sender, EventArgs e)
@@ -34,7 +36,7 @@ namespace DSDPRN3RRP2302B1
                 s = RgbMasculinoRRP.Text;
                 numero = RgbMasculinoRRP.TabIndex+1;
             }
-            Console.WriteLine($"Botón: {BtnGuardarRRP.Text}\nSexo: {s}\nEstado Civil:{CbxEdoCivilRRP.Items[CbxEdoCivilRRP.SelectedIndex]}\nNombre: {TxtNombreCRRP.Text}\nApellidos: {TxtApellidoCRRP.Text}");
+            Console.WriteLine($"Botón: {BtnGuardarRRP.Text}\nSexo: {s}\nEstado Civil:{CbxEdoCivilRRP.Items[CbxEdoCivilRRP.SelectedIndex]}\nNombre: {TxtNombreCRRP.Text}\nApellidos: {TxtApellidoPaternoCRRP.Text}");
             Console.WriteLine($"Edad: {TxtEdadCRRP.Text}\nCalle: {TxtCalleCRRP.Text}\nEstado: {TxtEstadoCRRP.Text}\nCiudad: {TxtCiudadCRRP.Text}\nCódigo Postal: {TxtCodigoPostalCRRP.Text}");
             Console.WriteLine($"Fijo: {TxtTelefonoFijoCRRP.Text}\nCelular: {TxtTelefonoCelularCRRP.Text}\nEmail: {TxtEmailCRRP.Text}");
             Console.WriteLine($"{CbxEdoCivilRRP.Items[CbxEdoCivilRRP.SelectedIndex]}, {CbxEdoCivilRRP.SelectedIndex+1}");
@@ -52,7 +54,7 @@ namespace DSDPRN3RRP2302B1
             {
                 s = RgbMasculinoRRP.Text;
             }
-            Console.WriteLine($"Botón: {BtnActualizarRRP.Text}\nSexo: {s}\nEstado Civil:{CbxEdoCivilRRP.Items[CbxEdoCivilRRP.SelectedIndex]}\nNombre: {TxtNombreCRRP.Text}\nApellidos: {TxtApellidoCRRP.Text}");
+            Console.WriteLine($"Botón: {BtnActualizarRRP.Text}\nSexo: {s}\nEstado Civil:{CbxEdoCivilRRP.Items[CbxEdoCivilRRP.SelectedIndex]}\nNombre: {TxtNombreCRRP.Text}\nApellidos: {TxtApellidoPaternoCRRP.Text}");
             Console.WriteLine($"Edad: {TxtEdadCRRP.Text}\nCalle: {TxtCalleCRRP.Text}\nEstado: {TxtEstadoCRRP.Text}\nCiudad: {TxtCiudadCRRP.Text}\nCódigo Postal: {TxtCodigoPostalCRRP.Text}");
             Console.WriteLine($"Fijo: {TxtTelefonoFijoCRRP.Text}\nCelular: {TxtTelefonoCelularCRRP.Text}\nEmail: {TxtEmailCRRP.Text}");
         }
@@ -68,7 +70,7 @@ namespace DSDPRN3RRP2302B1
             {
                 s = RgbMasculinoRRP.Text;
             }
-            Console.WriteLine($"Botón: {BtnEliminarRRP.Text}\nSexo: {s}\nEstado Civil:{CbxEdoCivilRRP.Items[CbxEdoCivilRRP.SelectedIndex]}\nNombre: {TxtNombreCRRP.Text}\nApellidos: {TxtApellidoCRRP.Text}");
+            Console.WriteLine($"Botón: {BtnEliminarRRP.Text}\nSexo: {s}\nEstado Civil:{CbxEdoCivilRRP.Items[CbxEdoCivilRRP.SelectedIndex]}\nNombre: {TxtNombreCRRP.Text}\nApellidos: {TxtApellidoPaternoCRRP.Text}");
             Console.WriteLine($"Edad: {TxtEdadCRRP.Text}\nCalle: {TxtCalleCRRP.Text}\nEstado: {TxtEstadoCRRP.Text}\nCiudad: {TxtCiudadCRRP.Text}\nCódigo Postal: {TxtCodigoPostalCRRP.Text}");
             Console.WriteLine($"Fijo: {TxtTelefonoFijoCRRP.Text}\nCelular: {TxtTelefonoCelularCRRP.Text}\nEmail: {TxtEmailCRRP.Text}");
 
@@ -76,17 +78,17 @@ namespace DSDPRN3RRP2302B1
 
         private void BtnConexionRRP_Click(object sender, EventArgs e)
         {
-            DoctoresConsulta();
+            //DoctoresConsulta();
         }
 
-        private void DoctoresConsulta()
+        private void PacientesConsulta()
         {
-            string sqlRRP = $"SELECT idPacientes as Id, Nombre, ApellidoMaterno as 'Apellido Paterno', ApellidoMaterno as 'Apellido Materno', Direccion, Celular, TelefonoFijo as 'Telefono Fijo', Edad, Sexo, EstadoCivil as 'Estado Civil' FROM tbpacientesrrp";
-            MySqlConnection conexionDBRRP = Conexion.conexion();
+            conexion = new Conexion();
+            MySqlConnection conexionDBRRP = conexion.GetConexionMySQL();
             try
             {
                 conexionDBRRP.Open();
-                adapterRRP = new MySqlDataAdapter(sqlRRP, conexionDBRRP);
+                adapterRRP = new MySqlDataAdapter(SentenciaSQL.SQL_OBTENER_PACIENTES_RRP, conexionDBRRP);
                 dataTableRRP = new DataTable();
                 adapterRRP.Fill(dataTableRRP);
                 DtWConexionRRP.DataSource = dataTableRRP;

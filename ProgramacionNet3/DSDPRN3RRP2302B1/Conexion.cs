@@ -6,17 +6,22 @@ namespace DSDPRN3RRP2302B1
 {
     internal class Conexion
     {
-        public static MySqlConnection conexion()
+        private MySqlConnection ConnectionRRP;
+        private static string servidorRRP = "localhost";
+        private static string dbRRP = "prn3s2b123rrp";
+        private static string passwordRRP = "admin";
+        private static string usuarioRRP = "root";
+
+        public Conexion()
         {
-            string servidorRRP = "localhost";
-            string dbRRP = "prn3s2b123rrp";
-            string passwordRRP = "admin";
-            string usuarioRRP = "root";
             string cadenaConexionRRP = $"Database={dbRRP}; Data Source={servidorRRP}; User Id={usuarioRRP}; Password={passwordRRP}";
+            ConnectionRRP = new MySqlConnection(cadenaConexionRRP);
+        }
+        public MySqlConnection GetConexionMySQL()
+        {
             try
-            {
-                MySqlConnection conexionDbRRP = new MySqlConnection(cadenaConexionRRP);
-                return conexionDbRRP;
+            {                
+                return ConnectionRRP;
             }
             catch (MySqlException ex)
             {
