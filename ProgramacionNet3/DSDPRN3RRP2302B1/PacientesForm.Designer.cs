@@ -43,13 +43,7 @@
             this.TxtApellidoPaternoCRRP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.TxtCodigoPostalCRRP = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.TxtCiudadCRRP = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.TxtEstadoCRRP = new System.Windows.Forms.TextBox();
-            this.TxtCalleCRRP = new System.Windows.Forms.TextBox();
+            this.TxtDireccionCRRP = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.TxtEmailCRRP = new System.Windows.Forms.TextBox();
@@ -59,17 +53,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.DgvPacientesRRP = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoCivil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnBuscarRRP = new System.Windows.Forms.Button();
             this.TxtBuscarRRP = new System.Windows.Forms.TextBox();
@@ -78,6 +72,8 @@
             this.BtnEliminarRRP = new System.Windows.Forms.Button();
             this.BtnActualizar = new System.Windows.Forms.Button();
             this.BtnRegresarRRP = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TxtIdRRP = new System.Windows.Forms.TextBox();
             this.GrbSexoRRP.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -244,83 +240,23 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.TxtCodigoPostalCRRP);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.TxtCiudadCRRP);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.TxtEstadoCRRP);
-            this.groupBox2.Controls.Add(this.TxtCalleCRRP);
+            this.groupBox2.Controls.Add(this.TxtDireccionCRRP);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(29, 292);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(840, 166);
+            this.groupBox2.Size = new System.Drawing.Size(840, 160);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dirección";
             // 
-            // TxtCodigoPostalCRRP
+            // TxtDireccionCRRP
             // 
-            this.TxtCodigoPostalCRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCodigoPostalCRRP.Location = new System.Drawing.Point(567, 105);
-            this.TxtCodigoPostalCRRP.Name = "TxtCodigoPostalCRRP";
-            this.TxtCodigoPostalCRRP.Size = new System.Drawing.Size(243, 27);
-            this.TxtCodigoPostalCRRP.TabIndex = 14;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(387, 106);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(159, 26);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Código Postal:";
-            // 
-            // TxtCiudadCRRP
-            // 
-            this.TxtCiudadCRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCiudadCRRP.Location = new System.Drawing.Point(115, 103);
-            this.TxtCiudadCRRP.Name = "TxtCiudadCRRP";
-            this.TxtCiudadCRRP.Size = new System.Drawing.Size(243, 27);
-            this.TxtCiudadCRRP.TabIndex = 12;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(20, 103);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 26);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Ciudad:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(387, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 26);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Estado:";
-            // 
-            // TxtEstadoCRRP
-            // 
-            this.TxtEstadoCRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtEstadoCRRP.Location = new System.Drawing.Point(567, 55);
-            this.TxtEstadoCRRP.Name = "TxtEstadoCRRP";
-            this.TxtEstadoCRRP.Size = new System.Drawing.Size(243, 27);
-            this.TxtEstadoCRRP.TabIndex = 9;
-            // 
-            // TxtCalleCRRP
-            // 
-            this.TxtCalleCRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCalleCRRP.Location = new System.Drawing.Point(115, 50);
-            this.TxtCalleCRRP.Name = "TxtCalleCRRP";
-            this.TxtCalleCRRP.Size = new System.Drawing.Size(243, 27);
-            this.TxtCalleCRRP.TabIndex = 8;
+            this.TxtDireccionCRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtDireccionCRRP.Location = new System.Drawing.Point(273, 50);
+            this.TxtDireccionCRRP.Name = "TxtDireccionCRRP";
+            this.TxtDireccionCRRP.Size = new System.Drawing.Size(545, 27);
+            this.TxtDireccionCRRP.TabIndex = 8;
             // 
             // label4
             // 
@@ -328,12 +264,14 @@
             this.label4.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(20, 52);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 26);
+            this.label4.Size = new System.Drawing.Size(265, 33);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Calle:";
+            this.label4.Text = "Dirección completa:";
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.TxtIdRRP);
+            this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.TxtEmailCRRP);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.TxtTelefonoCelularCRRP);
@@ -408,17 +346,17 @@
             this.DgvPacientesRRP.AllowUserToDeleteRows = false;
             this.DgvPacientesRRP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvPacientesRRP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11});
+            this.Id,
+            this.Nombre,
+            this.ApellidoPaterno,
+            this.ApellidoMaterno,
+            this.Direccion,
+            this.Celular,
+            this.Telefono,
+            this.Edad,
+            this.Sexo,
+            this.Email,
+            this.EstadoCivil});
             this.DgvPacientesRRP.Location = new System.Drawing.Point(29, 484);
             this.DgvPacientesRRP.Name = "DgvPacientesRRP";
             this.DgvPacientesRRP.ReadOnly = true;
@@ -426,94 +364,95 @@
             this.DgvPacientesRRP.RowTemplate.Height = 24;
             this.DgvPacientesRRP.Size = new System.Drawing.Size(1224, 252);
             this.DgvPacientesRRP.TabIndex = 12;
+            this.DgvPacientesRRP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPacientesRRP_CellClick);
             // 
-            // Column1
+            // Id
             // 
-            this.Column1.HeaderText = "Id";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 50;
             // 
-            // Column2
+            // Nombre
             // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 125;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 125;
             // 
-            // Column3
+            // ApellidoPaterno
             // 
-            this.Column3.HeaderText = "Apellido Paterno";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 125;
+            this.ApellidoPaterno.HeaderText = "Apellido Paterno";
+            this.ApellidoPaterno.MinimumWidth = 6;
+            this.ApellidoPaterno.Name = "ApellidoPaterno";
+            this.ApellidoPaterno.ReadOnly = true;
+            this.ApellidoPaterno.Width = 125;
             // 
-            // Column4
+            // ApellidoMaterno
             // 
-            this.Column4.HeaderText = "Apellido Materno";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 125;
+            this.ApellidoMaterno.HeaderText = "Apellido Materno";
+            this.ApellidoMaterno.MinimumWidth = 6;
+            this.ApellidoMaterno.Name = "ApellidoMaterno";
+            this.ApellidoMaterno.ReadOnly = true;
+            this.ApellidoMaterno.Width = 125;
             // 
-            // Column5
+            // Direccion
             // 
-            this.Column5.HeaderText = "Dirección";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 125;
+            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.MinimumWidth = 6;
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            this.Direccion.Width = 125;
             // 
-            // Column6
+            // Celular
             // 
-            this.Column6.HeaderText = "Celular";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 125;
+            this.Celular.HeaderText = "Celular";
+            this.Celular.MinimumWidth = 6;
+            this.Celular.Name = "Celular";
+            this.Celular.ReadOnly = true;
+            this.Celular.Width = 125;
             // 
-            // Column7
+            // Telefono
             // 
-            this.Column7.HeaderText = "Teléfono Fijo";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 125;
+            this.Telefono.HeaderText = "Teléfono Fijo";
+            this.Telefono.MinimumWidth = 6;
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 125;
             // 
-            // Column8
+            // Edad
             // 
-            this.Column8.HeaderText = "Edad";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 50;
+            this.Edad.HeaderText = "Edad";
+            this.Edad.MinimumWidth = 6;
+            this.Edad.Name = "Edad";
+            this.Edad.ReadOnly = true;
+            this.Edad.Width = 50;
             // 
-            // Column9
+            // Sexo
             // 
-            this.Column9.HeaderText = "Sexo";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Width = 50;
+            this.Sexo.HeaderText = "Sexo";
+            this.Sexo.MinimumWidth = 6;
+            this.Sexo.Name = "Sexo";
+            this.Sexo.ReadOnly = true;
+            this.Sexo.Width = 50;
             // 
-            // Column10
+            // Email
             // 
-            this.Column10.HeaderText = "Email";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Width = 125;
+            this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 6;
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 125;
             // 
-            // Column11
+            // EstadoCivil
             // 
-            this.Column11.HeaderText = "Estado Civil";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 125;
+            this.EstadoCivil.HeaderText = "Estado Civil";
+            this.EstadoCivil.MinimumWidth = 6;
+            this.EstadoCivil.Name = "EstadoCivil";
+            this.EstadoCivil.ReadOnly = true;
+            this.EstadoCivil.Width = 125;
             // 
             // groupBox4
             // 
@@ -595,6 +534,7 @@
             this.BtnActualizar.TabIndex = 17;
             this.BtnActualizar.Text = "Actualizar";
             this.BtnActualizar.UseVisualStyleBackColor = false;
+            this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
             // BtnRegresarRRP
             // 
@@ -609,12 +549,31 @@
             this.BtnRegresarRRP.UseVisualStyleBackColor = false;
             this.BtnRegresarRRP.Click += new System.EventHandler(this.BtnRegresarRRP_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(21, 197);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 26);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Id:";
+            // 
+            // TxtIdRRP
+            // 
+            this.TxtIdRRP.Enabled = false;
+            this.TxtIdRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtIdRRP.Location = new System.Drawing.Point(107, 200);
+            this.TxtIdRRP.Name = "TxtIdRRP";
+            this.TxtIdRRP.Size = new System.Drawing.Size(66, 27);
+            this.TxtIdRRP.TabIndex = 15;
+            // 
             // PacientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1296, 875);
+            this.ClientSize = new System.Drawing.Size(1351, 872);
             this.Controls.Add(this.BtnRegresarRRP);
             this.Controls.Add(this.BtnActualizar);
             this.Controls.Add(this.BtnEliminarRRP);
@@ -653,9 +612,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TxtEstadoCRRP;
-        private System.Windows.Forms.TextBox TxtCalleCRRP;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox TxtDireccionCRRP;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -666,10 +623,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox TxtEmailCRRP;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox TxtCiudadCRRP;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox TxtCodigoPostalCRRP;
         private System.Windows.Forms.DataGridView DgvPacientesRRP;
         private System.Windows.Forms.TextBox TxtApellidoMaternoCRRP;
         private System.Windows.Forms.Label label12;
@@ -680,18 +633,20 @@
         private System.Windows.Forms.Button BtnEliminarRRP;
         private System.Windows.Forms.Button BtnActualizar;
         private System.Windows.Forms.Button btnBuscarRRP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.Button BtnRegresarRRP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoPaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoMaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Edad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sexo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoCivil;
+        private System.Windows.Forms.TextBox TxtIdRRP;
+        private System.Windows.Forms.Label label3;
     }
 }
 

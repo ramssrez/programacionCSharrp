@@ -85,24 +85,9 @@ namespace DSDPRN3RRP2302B1
                 MessageBox.Show("Ingrese el email");
                 return false;
             }
-            if (TxtCiudadCRRP.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Ingrese la ciudad");
-                return false;
-            }
-            if (TxtCalleCRRP.Text.Trim().Equals(""))
+            if (TxtDireccionCRRP.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Ingrese la calle");
-                return false;
-            }
-            if (TxtCodigoPostalCRRP.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Ingrese el código postal");
-                return false;
-            }
-            if (TxtEstadoCRRP.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Ingrese el estado");
                 return false;
             }
             if (!int.TryParse(TxtEdadCRRP.Text.Trim(),out int edad))
@@ -127,7 +112,7 @@ namespace DSDPRN3RRP2302B1
             CargarPaciente();
             if (PacienteConsultasRRP.AgregarPaciente(PacienteRRP))
             {
-                MessageBox.Show("Paciente agregado");
+                MessageBox.Show("Se ha agregado un paciente");
                 CargarPacientes();
                 LimpiarCampos();
             }
@@ -138,15 +123,11 @@ namespace DSDPRN3RRP2302B1
             TxtNombreCRRP.Text = "";
             TxtApellidoMaternoCRRP.Text = "";
             TxtApellidoPaternoCRRP.Text = "";
-            TxtCalleCRRP.Text = "";
-            TxtCiudadCRRP.Text = "";
-            TxtEstadoCRRP.Text = "";
-            TxtCodigoPostalCRRP.Text = "";
+            TxtDireccionCRRP.Text = "";
             TxtTelefonoCelularCRRP.Text = "";
             TxtTelefonoFijoCRRP.Text = "";
             TxtEmailCRRP.Text = "";
             TxtEdadCRRP.Text = "";
-            //throw new NotImplementedException();
         }
 
         private void CargarPaciente()
@@ -160,17 +141,59 @@ namespace DSDPRN3RRP2302B1
             {
                 sexoRRP ='H';
             }
+            //PacienteRRP.IdRRP = GetIdPaciente();
             PacienteRRP.NombreRRP = TxtNombreCRRP.Text.Trim();
             PacienteRRP.ApellidoPaternoRRP = TxtApellidoPaternoCRRP.Text.Trim();
             PacienteRRP.ApellidoMaternoRRP = TxtApellidoMaternoCRRP.Text.Trim();
-            PacienteRRP.DireccionRRP = TxtCalleCRRP.Text.Trim()+", "+TxtEstadoCRRP.Text.Trim()+", "+TxtCiudadCRRP.Text.Trim()+", "+TxtCodigoPostalCRRP.Text.Trim();
+            PacienteRRP.DireccionRRP = TxtDireccionCRRP.Text.Trim();
             PacienteRRP.CelularRRP = TxtTelefonoCelularCRRP.Text.Trim();
             PacienteRRP.TelefonoFijoRRP = TxtTelefonoFijoCRRP.Text.Trim();
             PacienteRRP.EdadRRP = int.Parse(TxtEdadCRRP.Text.Trim());
             PacienteRRP.SexoRRP = sexoRRP;
             PacienteRRP.EmailRRP = TxtEmailCRRP.Text.Trim();
             PacienteRRP.EstadoCivilRRP = CbxEdoCivilRRP.SelectedIndex+1;
+        }
+
+        private int GetIdPaciente()
+        {
+            if (!TxtIdRRP.Text.Trim().Equals(""))
+            {
+                if (int.TryParse(TxtIdRRP.Text.Trim(),out int id))
+                {
+                    return id;
+                }
+            }
+            else return -1;
             //throw new NotImplementedException();
+        }
+
+        private void DgvPacientesRRP_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow filaRRP = DgvPacientesRRP.Rows[e.RowIndex];
+            TxtIdRRP.Text = Convert.ToString(filaRRP.Cells["Id"].Value);
+            TxtNombreCRRP.Text = Convert.ToString(filaRRP.Cells["Nombre"].Value);
+            TxtApellidoPaternoCRRP.Text = Convert.ToString(filaRRP.Cells["ApellidoPaterno"].Value);
+            TxtApellidoMaternoCRRP.Text = Convert.ToString(filaRRP.Cells["ApellidoMaterno"].Value);
+            TxtEdadCRRP.Text = Convert.ToString(filaRRP.Cells["Edad"].Value);
+            TxtTelefonoFijoCRRP.Text = Convert.ToString(filaRRP.Cells["Telefono"].Value);
+            TxtTelefonoCelularCRRP.Text = Convert.ToString(filaRRP.Cells["Celular"].Value);
+            TxtEmailCRRP.Text = Convert.ToString(filaRRP.Cells["Email"].Value);
+            TxtDireccionCRRP.Text = Convert.ToString(filaRRP.Cells["Direccion"].Value);
+        }
+
+        private void BtnActualizar_Click(object sender, EventArgs e)
+        {
+            if (!DatosCorrecto())
+            {
+                return;
+            }
+            CargarPaciente();
+            if (PacienteConsultasRRP.ModificarPaciente(PacienteRRP))
+            {
+                MessageBox.Show("Se ha modificado un paciente");
+                CargarPacientes();
+                LimpiarCampos();
+            }
         }
     }
 }
