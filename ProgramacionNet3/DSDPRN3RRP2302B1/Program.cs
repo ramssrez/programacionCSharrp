@@ -16,7 +16,7 @@ namespace DSDPRN3RRP2302B1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Pacientes());
+            Application.Run(new PacientesForm());
         }
     }
 }

@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 
 namespace DSDPRN3RRP2302B1
 {
-    internal class Conexion
+    internal class ConexionMysql
     {
         private MySqlConnection ConnectionRRP;
         private static string servidorRRP = "localhost";
@@ -12,7 +12,7 @@ namespace DSDPRN3RRP2302B1
         private static string passwordRRP = "admin";
         private static string usuarioRRP = "root";
 
-        public Conexion()
+        public ConexionMysql()
         {
             string cadenaConexionRRP = $"Database={dbRRP}; Data Source={servidorRRP}; User Id={usuarioRRP}; Password={passwordRRP}";
             ConnectionRRP = new MySqlConnection(cadenaConexionRRP);
@@ -20,14 +20,17 @@ namespace DSDPRN3RRP2302B1
         public MySqlConnection GetConexionMySQL()
         {
             try
-            {                
-                return ConnectionRRP;
+            {      
+                if (ConnectionRRP.State != System.Data.ConnectionState.Open)
+                {
+                    ConnectionRRP.Open();
+                }
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show($"Error al conectarse a la bd: {ex.Message}");
-                return null;
             }
+            return ConnectionRRP;
         }
     }
 }

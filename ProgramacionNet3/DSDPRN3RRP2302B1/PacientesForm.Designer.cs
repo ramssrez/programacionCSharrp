@@ -1,6 +1,6 @@
 ﻿namespace DSDPRN3RRP2302B1
 {
-    partial class Pacientes
+    partial class PacientesForm
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -34,7 +34,6 @@
             this.CbxEdoCivilRRP = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtNombreCRRP = new System.Windows.Forms.TextBox();
-            this.BtnGuardarRRP = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TxtApellidoMaternoCRRP = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -43,8 +42,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.TxtApellidoPaternoCRRP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.BtnEliminarRRP = new System.Windows.Forms.Button();
-            this.BtnActualizarRRP = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.TxtCodigoPostalCRRP = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -61,16 +58,30 @@
             this.TxtTelefonoFijoCRRP = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.DtWConexionRRP = new System.Windows.Forms.DataGridView();
-            this.BtnConexionRRP = new System.Windows.Forms.Button();
+            this.DgvPacientesRRP = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btnBuscarRRP = new System.Windows.Forms.Button();
+            this.TxtBuscarRRP = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.BtnGuardarRRP = new System.Windows.Forms.Button();
+            this.BtnEliminarRRP = new System.Windows.Forms.Button();
+            this.BtnActualizar = new System.Windows.Forms.Button();
             this.GrbSexoRRP.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DtWConexionRRP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvPacientesRRP)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,19 +155,6 @@
             this.TxtNombreCRRP.Name = "TxtNombreCRRP";
             this.TxtNombreCRRP.Size = new System.Drawing.Size(243, 27);
             this.TxtNombreCRRP.TabIndex = 4;
-            // 
-            // BtnGuardarRRP
-            // 
-            this.BtnGuardarRRP.BackColor = System.Drawing.Color.Lime;
-            this.BtnGuardarRRP.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGuardarRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnGuardarRRP.Location = new System.Drawing.Point(144, 773);
-            this.BtnGuardarRRP.Name = "BtnGuardarRRP";
-            this.BtnGuardarRRP.Size = new System.Drawing.Size(189, 42);
-            this.BtnGuardarRRP.TabIndex = 5;
-            this.BtnGuardarRRP.Text = "Guardar";
-            this.BtnGuardarRRP.UseVisualStyleBackColor = false;
-            this.BtnGuardarRRP.Click += new System.EventHandler(this.BtnConexionRRP_Click);
             // 
             // groupBox1
             // 
@@ -242,32 +240,6 @@
             this.label2.Size = new System.Drawing.Size(182, 26);
             this.label2.TabIndex = 5;
             this.label2.Text = "Apellido Paterno:";
-            // 
-            // BtnEliminarRRP
-            // 
-            this.BtnEliminarRRP.BackColor = System.Drawing.Color.Red;
-            this.BtnEliminarRRP.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnEliminarRRP.Location = new System.Drawing.Point(803, 773);
-            this.BtnEliminarRRP.Name = "BtnEliminarRRP";
-            this.BtnEliminarRRP.Size = new System.Drawing.Size(189, 42);
-            this.BtnEliminarRRP.TabIndex = 7;
-            this.BtnEliminarRRP.Text = "Eliminar";
-            this.BtnEliminarRRP.UseVisualStyleBackColor = false;
-            this.BtnEliminarRRP.Click += new System.EventHandler(this.BtnEliminarRRP_Click);
-            // 
-            // BtnActualizarRRP
-            // 
-            this.BtnActualizarRRP.BackColor = System.Drawing.Color.Gold;
-            this.BtnActualizarRRP.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizarRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnActualizarRRP.Location = new System.Drawing.Point(478, 773);
-            this.BtnActualizarRRP.Name = "BtnActualizarRRP";
-            this.BtnActualizarRRP.Size = new System.Drawing.Size(189, 42);
-            this.BtnActualizarRRP.TabIndex = 8;
-            this.BtnActualizarRRP.Text = "Actualizar";
-            this.BtnActualizarRRP.UseVisualStyleBackColor = false;
-            this.BtnActualizarRRP.Click += new System.EventHandler(this.BtnActualizarRRP_Click);
             // 
             // groupBox2
             // 
@@ -429,36 +401,123 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Teléfono Fijo:";
             // 
-            // DtWConexionRRP
+            // DgvPacientesRRP
             // 
-            this.DtWConexionRRP.AllowUserToAddRows = false;
-            this.DtWConexionRRP.AllowUserToDeleteRows = false;
-            this.DtWConexionRRP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtWConexionRRP.Location = new System.Drawing.Point(29, 484);
-            this.DtWConexionRRP.Name = "DtWConexionRRP";
-            this.DtWConexionRRP.ReadOnly = true;
-            this.DtWConexionRRP.RowHeadersWidth = 45;
-            this.DtWConexionRRP.RowTemplate.Height = 24;
-            this.DtWConexionRRP.Size = new System.Drawing.Size(1224, 252);
-            this.DtWConexionRRP.TabIndex = 12;
+            this.DgvPacientesRRP.AllowUserToAddRows = false;
+            this.DgvPacientesRRP.AllowUserToDeleteRows = false;
+            this.DgvPacientesRRP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvPacientesRRP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11});
+            this.DgvPacientesRRP.Location = new System.Drawing.Point(29, 484);
+            this.DgvPacientesRRP.Name = "DgvPacientesRRP";
+            this.DgvPacientesRRP.ReadOnly = true;
+            this.DgvPacientesRRP.RowHeadersWidth = 45;
+            this.DgvPacientesRRP.RowTemplate.Height = 24;
+            this.DgvPacientesRRP.Size = new System.Drawing.Size(1224, 252);
+            this.DgvPacientesRRP.TabIndex = 12;
             // 
-            // BtnConexionRRP
+            // Column1
             // 
-            this.BtnConexionRRP.BackColor = System.Drawing.Color.Cyan;
-            this.BtnConexionRRP.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnConexionRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnConexionRRP.Location = new System.Drawing.Point(115, 97);
-            this.BtnConexionRRP.Name = "BtnConexionRRP";
-            this.BtnConexionRRP.Size = new System.Drawing.Size(189, 42);
-            this.BtnConexionRRP.TabIndex = 13;
-            this.BtnConexionRRP.Text = "Conexión";
-            this.BtnConexionRRP.UseVisualStyleBackColor = false;
-            this.BtnConexionRRP.Click += new System.EventHandler(this.BtnConexionRRP_Click);
+            this.Column1.HeaderText = "Id";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nombre";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Apellido Paterno";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 125;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Apellido Materno";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Dirección";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 125;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Celular";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 125;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Teléfono Fijo";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 125;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Edad";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 50;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Sexo";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 50;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Email";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 125;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Estado Civil";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 125;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox4);
-            this.groupBox4.Controls.Add(this.BtnConexionRRP);
+            this.groupBox4.Controls.Add(this.btnBuscarRRP);
+            this.groupBox4.Controls.Add(this.TxtBuscarRRP);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(888, 292);
@@ -468,13 +527,26 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Búsqueda";
             // 
-            // textBox4
+            // btnBuscarRRP
             // 
-            this.textBox4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(107, 50);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(243, 27);
-            this.textBox4.TabIndex = 8;
+            this.btnBuscarRRP.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.btnBuscarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarRRP.ForeColor = System.Drawing.Color.Snow;
+            this.btnBuscarRRP.Location = new System.Drawing.Point(30, 98);
+            this.btnBuscarRRP.Name = "btnBuscarRRP";
+            this.btnBuscarRRP.Size = new System.Drawing.Size(307, 62);
+            this.btnBuscarRRP.TabIndex = 18;
+            this.btnBuscarRRP.Text = "Buscar";
+            this.btnBuscarRRP.UseVisualStyleBackColor = false;
+            this.btnBuscarRRP.Click += new System.EventHandler(this.btnBuscarRRP_Click);
+            // 
+            // TxtBuscarRRP
+            // 
+            this.TxtBuscarRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBuscarRRP.Location = new System.Drawing.Point(107, 50);
+            this.TxtBuscarRRP.Name = "TxtBuscarRRP";
+            this.TxtBuscarRRP.Size = new System.Drawing.Size(243, 27);
+            this.TxtBuscarRRP.TabIndex = 8;
             // 
             // label16
             // 
@@ -486,21 +558,57 @@
             this.label16.TabIndex = 3;
             this.label16.Text = "Buscar:";
             // 
-            // Pacientes
+            // BtnGuardarRRP
+            // 
+            this.BtnGuardarRRP.BackColor = System.Drawing.Color.Lime;
+            this.BtnGuardarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGuardarRRP.ForeColor = System.Drawing.Color.Snow;
+            this.BtnGuardarRRP.Location = new System.Drawing.Point(29, 774);
+            this.BtnGuardarRRP.Name = "BtnGuardarRRP";
+            this.BtnGuardarRRP.Size = new System.Drawing.Size(307, 62);
+            this.BtnGuardarRRP.TabIndex = 9;
+            this.BtnGuardarRRP.Text = "Agregar";
+            this.BtnGuardarRRP.UseVisualStyleBackColor = false;
+            // 
+            // BtnEliminarRRP
+            // 
+            this.BtnEliminarRRP.BackColor = System.Drawing.Color.Red;
+            this.BtnEliminarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEliminarRRP.ForeColor = System.Drawing.Color.Snow;
+            this.BtnEliminarRRP.Location = new System.Drawing.Point(946, 774);
+            this.BtnEliminarRRP.Name = "BtnEliminarRRP";
+            this.BtnEliminarRRP.Size = new System.Drawing.Size(307, 62);
+            this.BtnEliminarRRP.TabIndex = 16;
+            this.BtnEliminarRRP.Text = "Eliminar";
+            this.BtnEliminarRRP.UseVisualStyleBackColor = false;
+            // 
+            // BtnActualizar
+            // 
+            this.BtnActualizar.BackColor = System.Drawing.Color.Gold;
+            this.BtnActualizar.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnActualizar.ForeColor = System.Drawing.Color.Snow;
+            this.BtnActualizar.Location = new System.Drawing.Point(501, 774);
+            this.BtnActualizar.Name = "BtnActualizar";
+            this.BtnActualizar.Size = new System.Drawing.Size(307, 62);
+            this.BtnActualizar.TabIndex = 17;
+            this.BtnActualizar.Text = "Actualizar";
+            this.BtnActualizar.UseVisualStyleBackColor = false;
+            // 
+            // PacientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1296, 875);
+            this.Controls.Add(this.BtnActualizar);
+            this.Controls.Add(this.BtnEliminarRRP);
+            this.Controls.Add(this.BtnGuardarRRP);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.DtWConexionRRP);
+            this.Controls.Add(this.DgvPacientesRRP);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.BtnActualizarRRP);
-            this.Controls.Add(this.BtnEliminarRRP);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.BtnGuardarRRP);
-            this.Name = "Pacientes";
+            this.Name = "PacientesForm";
             this.Text = "Registro de Pacientes";
             this.GrbSexoRRP.ResumeLayout(false);
             this.GrbSexoRRP.PerformLayout();
@@ -510,7 +618,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DtWConexionRRP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvPacientesRRP)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
@@ -524,12 +632,9 @@
         private System.Windows.Forms.ComboBox CbxEdoCivilRRP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtNombreCRRP;
-        private System.Windows.Forms.Button BtnGuardarRRP;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TxtApellidoPaternoCRRP;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button BtnEliminarRRP;
-        private System.Windows.Forms.Button BtnActualizarRRP;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TxtEstadoCRRP;
@@ -549,13 +654,27 @@
         private System.Windows.Forms.TextBox TxtCiudadCRRP;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox TxtCodigoPostalCRRP;
-        private System.Windows.Forms.DataGridView DtWConexionRRP;
-        private System.Windows.Forms.Button BtnConexionRRP;
+        private System.Windows.Forms.DataGridView DgvPacientesRRP;
         private System.Windows.Forms.TextBox TxtApellidoMaternoCRRP;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox TxtBuscarRRP;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button BtnGuardarRRP;
+        private System.Windows.Forms.Button BtnEliminarRRP;
+        private System.Windows.Forms.Button BtnActualizar;
+        private System.Windows.Forms.Button btnBuscarRRP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
     }
 }
 
