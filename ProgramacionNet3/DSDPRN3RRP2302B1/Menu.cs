@@ -17,19 +17,22 @@ namespace DSDPRN3RRP2302B1
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void BtnPacientesRRP_Click(object sender, EventArgs e)
         {
-
+            PacientesForm pacientesForm = new PacientesForm();
+            pacientesForm.ShowDialog();
         }
 
-        private void pacienteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BtnDoctoresRRP_Click(object sender, EventArgs e)
         {
-
+            MedicoForm doctoresForm = new MedicoForm();
+            doctoresForm.ShowDialog();
         }
 
-        private void holaPToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BtnEspecialidadesRRP_Click(object sender, EventArgs e)
         {
-
+            EspecialidadesForm especialidadesForm = new EspecialidadesForm();
+            especialidadesForm.ShowDialog();
         }
     }
 }

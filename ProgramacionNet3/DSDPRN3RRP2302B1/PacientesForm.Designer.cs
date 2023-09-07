@@ -77,6 +77,7 @@
             this.BtnGuardarRRP = new System.Windows.Forms.Button();
             this.BtnEliminarRRP = new System.Windows.Forms.Button();
             this.BtnActualizar = new System.Windows.Forms.Button();
+            this.BtnRegresarRRP = new System.Windows.Forms.Button();
             this.GrbSexoRRP.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -563,19 +564,20 @@
             this.BtnGuardarRRP.BackColor = System.Drawing.Color.Lime;
             this.BtnGuardarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnGuardarRRP.Location = new System.Drawing.Point(29, 774);
+            this.BtnGuardarRRP.Location = new System.Drawing.Point(2, 774);
             this.BtnGuardarRRP.Name = "BtnGuardarRRP";
             this.BtnGuardarRRP.Size = new System.Drawing.Size(307, 62);
             this.BtnGuardarRRP.TabIndex = 9;
             this.BtnGuardarRRP.Text = "Agregar";
             this.BtnGuardarRRP.UseVisualStyleBackColor = false;
+            this.BtnGuardarRRP.Click += new System.EventHandler(this.BtnGuardarRRP_Click);
             // 
             // BtnEliminarRRP
             // 
             this.BtnEliminarRRP.BackColor = System.Drawing.Color.Red;
             this.BtnEliminarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminarRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnEliminarRRP.Location = new System.Drawing.Point(946, 774);
+            this.BtnEliminarRRP.Location = new System.Drawing.Point(655, 774);
             this.BtnEliminarRRP.Name = "BtnEliminarRRP";
             this.BtnEliminarRRP.Size = new System.Drawing.Size(307, 62);
             this.BtnEliminarRRP.TabIndex = 16;
@@ -587,12 +589,25 @@
             this.BtnActualizar.BackColor = System.Drawing.Color.Gold;
             this.BtnActualizar.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnActualizar.ForeColor = System.Drawing.Color.Snow;
-            this.BtnActualizar.Location = new System.Drawing.Point(501, 774);
+            this.BtnActualizar.Location = new System.Drawing.Point(329, 774);
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.Size = new System.Drawing.Size(307, 62);
             this.BtnActualizar.TabIndex = 17;
             this.BtnActualizar.Text = "Actualizar";
             this.BtnActualizar.UseVisualStyleBackColor = false;
+            // 
+            // BtnRegresarRRP
+            // 
+            this.BtnRegresarRRP.BackColor = System.Drawing.Color.DarkViolet;
+            this.BtnRegresarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRegresarRRP.ForeColor = System.Drawing.Color.Snow;
+            this.BtnRegresarRRP.Location = new System.Drawing.Point(968, 774);
+            this.BtnRegresarRRP.Name = "BtnRegresarRRP";
+            this.BtnRegresarRRP.Size = new System.Drawing.Size(307, 62);
+            this.BtnRegresarRRP.TabIndex = 18;
+            this.BtnRegresarRRP.Text = "Regresar";
+            this.BtnRegresarRRP.UseVisualStyleBackColor = false;
+            this.BtnRegresarRRP.Click += new System.EventHandler(this.BtnRegresarRRP_Click);
             // 
             // PacientesForm
             // 
@@ -600,6 +615,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1296, 875);
+            this.Controls.Add(this.BtnRegresarRRP);
             this.Controls.Add(this.BtnActualizar);
             this.Controls.Add(this.BtnEliminarRRP);
             this.Controls.Add(this.BtnGuardarRRP);
@@ -675,6 +691,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.Button BtnRegresarRRP;
     }
 }
 

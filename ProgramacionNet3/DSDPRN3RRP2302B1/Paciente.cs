@@ -20,30 +20,5 @@ namespace DSDPRN3RRP2302B1
         public char SexoRRP { get; set; }
         public int EstadoCivilRRP { get; set; }
         public string EstadoCivilStringRRP { get; set; }
-        public string TipoEstadoCivil()
-        {
-            string s = "";
-            if (EstadoCivilRRP == 1)
-            {
-                s = "Soltero(a)"; 
-            }
-            if (EstadoCivilRRP == 2)
-            {
-                s = "Casado(a)";
-            }
-            if (EstadoCivilRRP == 3)
-            {
-                s = "Viudo(a)";
-            }
-            if (EstadoCivilRRP == 4)
-            {
-                s = "Divorciado(a)";
-            }
-            if (EstadoCivilRRP == 5)
-            {
-                s = "Concubinato(a)";
-            }
-            return s;
-        }
     }
 }
