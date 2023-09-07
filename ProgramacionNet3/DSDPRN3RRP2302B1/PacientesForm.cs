@@ -22,10 +22,10 @@ namespace DSDPRN3RRP2302B1
             ListPacientesRRP = new List<Paciente>();
             PacienteConsultasRRP = new PacienteConsultas();
             PacienteRRP = new Paciente();
-            CargarPacientes();
+            CargarDatosPacientes();
         }
 
-        private void CargarPacientes(string filtro = "")
+        private void CargarDatosPacientes(string filtro = "")
         {
             DgvPacientesRRP.Rows.Clear();
             DgvPacientesRRP.Refresh();
@@ -51,7 +51,7 @@ namespace DSDPRN3RRP2302B1
         }
         private void btnBuscarRRP_Click(object sender, EventArgs e)
         {
-            CargarPacientes(TxtBuscarRRP.Text.Trim());
+            CargarDatosPacientes(TxtBuscarRRP.Text.Trim());
         }
         private bool DatosCorrecto()
         {
@@ -113,7 +113,7 @@ namespace DSDPRN3RRP2302B1
             if (PacienteConsultasRRP.AgregarPaciente(PacienteRRP))
             {
                 MessageBox.Show("Se ha agregado un paciente");
-                CargarPacientes();
+                CargarDatosPacientes();
                 LimpiarCampos();
             }
         }
@@ -128,6 +128,7 @@ namespace DSDPRN3RRP2302B1
             TxtTelefonoFijoCRRP.Text = "";
             TxtEmailCRRP.Text = "";
             TxtEdadCRRP.Text = "";
+            TxtIdRRP.Text = "";
         }
 
         private void CargarPaciente()
@@ -141,7 +142,7 @@ namespace DSDPRN3RRP2302B1
             {
                 sexoRRP ='H';
             }
-            //PacienteRRP.IdRRP = GetIdPaciente();
+            PacienteRRP.IdRRP = GetIdPaciente();
             PacienteRRP.NombreRRP = TxtNombreCRRP.Text.Trim();
             PacienteRRP.ApellidoPaternoRRP = TxtApellidoPaternoCRRP.Text.Trim();
             PacienteRRP.ApellidoMaternoRRP = TxtApellidoMaternoCRRP.Text.Trim();
@@ -156,15 +157,15 @@ namespace DSDPRN3RRP2302B1
 
         private int GetIdPaciente()
         {
+            int numberRRP = -1;
             if (!TxtIdRRP.Text.Trim().Equals(""))
             {
-                if (int.TryParse(TxtIdRRP.Text.Trim(),out int id))
+                if (int.TryParse(TxtIdRRP.Text.Trim(), out int ids))
                 {
-                    return id;
+                    numberRRP = ids;
                 }
             }
-            else return -1;
-            //throw new NotImplementedException();
+            return numberRRP;
         }
 
         private void DgvPacientesRRP_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -191,8 +192,27 @@ namespace DSDPRN3RRP2302B1
             if (PacienteConsultasRRP.ModificarPaciente(PacienteRRP))
             {
                 MessageBox.Show("Se ha modificado un paciente");
-                CargarPacientes();
+                CargarDatosPacientes();
                 LimpiarCampos();
+            }
+        }
+
+        private void BtnEliminarRRP_Click(object sender, EventArgs e)
+        {
+            if (GetIdPaciente() == -1)
+            {
+                return;
+            }
+            //CargarDatosPacientes();
+            if (MessageBox.Show("¿Desea eliminar el paciente?","Eliminar paciente",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                CargarPaciente();
+                if (PacienteConsultasRRP.EliminarPaciente(PacienteRRP))
+                {
+                    MessageBox.Show("Se ha Eliminado un paciente");
+                    CargarDatosPacientes();
+                    LimpiarCampos();
+                }
             }
         }
     }

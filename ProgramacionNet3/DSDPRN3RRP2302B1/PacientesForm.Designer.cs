@@ -46,6 +46,8 @@
             this.TxtDireccionCRRP = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.TxtIdRRP = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.TxtEmailCRRP = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.TxtTelefonoCelularCRRP = new System.Windows.Forms.TextBox();
@@ -72,8 +74,6 @@
             this.BtnEliminarRRP = new System.Windows.Forms.Button();
             this.BtnActualizar = new System.Windows.Forms.Button();
             this.BtnRegresarRRP = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.TxtIdRRP = new System.Windows.Forms.TextBox();
             this.GrbSexoRRP.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -264,7 +264,7 @@
             this.label4.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(20, 52);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(265, 33);
+            this.label4.Size = new System.Drawing.Size(212, 26);
             this.label4.TabIndex = 3;
             this.label4.Text = "Dirección completa:";
             // 
@@ -285,6 +285,25 @@
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contacto";
+            // 
+            // TxtIdRRP
+            // 
+            this.TxtIdRRP.Enabled = false;
+            this.TxtIdRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtIdRRP.Location = new System.Drawing.Point(107, 200);
+            this.TxtIdRRP.Name = "TxtIdRRP";
+            this.TxtIdRRP.Size = new System.Drawing.Size(66, 27);
+            this.TxtIdRRP.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(21, 197);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 26);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Id:";
             // 
             // TxtEmailCRRP
             // 
@@ -522,6 +541,7 @@
             this.BtnEliminarRRP.TabIndex = 16;
             this.BtnEliminarRRP.Text = "Eliminar";
             this.BtnEliminarRRP.UseVisualStyleBackColor = false;
+            this.BtnEliminarRRP.Click += new System.EventHandler(this.BtnEliminarRRP_Click);
             // 
             // BtnActualizar
             // 
@@ -548,25 +568,6 @@
             this.BtnRegresarRRP.Text = "Regresar";
             this.BtnRegresarRRP.UseVisualStyleBackColor = false;
             this.BtnRegresarRRP.Click += new System.EventHandler(this.BtnRegresarRRP_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(21, 197);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 26);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Id:";
-            // 
-            // TxtIdRRP
-            // 
-            this.TxtIdRRP.Enabled = false;
-            this.TxtIdRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtIdRRP.Location = new System.Drawing.Point(107, 200);
-            this.TxtIdRRP.Name = "TxtIdRRP";
-            this.TxtIdRRP.Size = new System.Drawing.Size(66, 27);
-            this.TxtIdRRP.TabIndex = 15;
             // 
             // PacientesForm
             // 

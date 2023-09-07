@@ -75,5 +75,32 @@ namespace DSDPRN3RRP2302B1
             CommandRRP.Parameters.Add(new MySqlParameter("@civil", pacienteRRP.EstadoCivilRRP));
             return CommandRRP.ExecuteNonQuery() > 0;
         }
+
+        internal bool EliminarPaciente(Paciente pacienteRRP)
+        {
+            string QueryRRP = "DELETE FROM tbpacientesrrp WHERE idPacientes=@id;";
+            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+            CommandRRP.Parameters.Add(new MySqlParameter("@id", pacienteRRP.IdRRP));
+            return CommandRRP.ExecuteNonQuery() > 0;
+            //throw new NotImplementedException();
+        }
+
+        internal bool ModificarPaciente(Paciente pacienteRRP)
+        {
+            string QueryRRP = "UPDATE tbpacientesrrp SET Nombre = @nombre, ApellidoPaterno=@apellidoP, ApellidoMaterno=@apellidoM, Direccion=@direccion, Celular=@celular, TelefonoFijo=@telefono, Edad=@edad, Sexo=@sexo, Email=@email, idEstadoCivil=@civil WHERE idPacientes=@id;";
+            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+            CommandRRP.Parameters.Add(new MySqlParameter("@nombre", pacienteRRP.NombreRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", pacienteRRP.ApellidoPaternoRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", pacienteRRP.ApellidoMaternoRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@direccion", pacienteRRP.DireccionRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@celular", pacienteRRP.CelularRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@telefono", pacienteRRP.TelefonoFijoRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@edad", pacienteRRP.EdadRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@sexo", pacienteRRP.SexoRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@email", pacienteRRP.EmailRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@civil", pacienteRRP.EstadoCivilRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@id", pacienteRRP.IdRRP));
+            return CommandRRP.ExecuteNonQuery() > 0;
+        }
     }
 }
