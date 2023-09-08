@@ -173,7 +173,7 @@ namespace DSDPRN3RRP2302B1
                 return;
             }
             CargarMedico();
-            if (MedicoConsultasRRP.ModificarPaciente(MedicoRRP))
+            if (MedicoConsultasRRP.ModificarMedico(MedicoRRP))
             {
                 MessageBox.Show("Se ha modificado un médico");
                 CargarDatosMedico();
@@ -200,7 +200,7 @@ namespace DSDPRN3RRP2302B1
             if (MessageBox.Show("¿Desea eliminar al médico?", "Eliminar Médico", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 CargarMedico();
-                if (MedicoConsultasRRP.EliminarPaciente(MedicoRRP))
+                if (MedicoConsultasRRP.EliminarMedico(MedicoRRP))
                 {
                     MessageBox.Show("Se ha Eliminado un médico");
                     CargarDatosMedico();

@@ -26,8 +26,17 @@ namespace DSDPRN3RRP2302B1
             {
                 if (filtro != "")
                 {
-                    string s = $" WHERE idPacientes LIKE '%{filtro}%' OR Nombre LIKE '%{filtro}%' OR ApellidoPaterno LIKE '%{filtro}%' OR ApellidoMaterno LIKE '%{filtro}%';";
-                    QueryRRP += s;
+                    /*
+                     *                 if (filtro != "")
+                {
+                    QueryRRP = "";
+                    string s = $" WHERE idMedicos LIKE '%{filtro}%' OR tbmedicosrrp.Nombre LIKE '%{filtro}%' OR tbmedicosrrp.ApellidoPaterno LIKE '%{filtro}%' OR tbmedicosrrp.ApellidoMaterno LIKE '%{filtro}%' ORDER By tbmedicosrrp.idMedicos ASC;";
+                    QueryRRP=SentenciaSQL.SQL_OBTENER_MEDICO_FILTTRO_RRP+s;
+                }
+                     * */
+                    QueryRRP = "";
+                    string s = $" WHERE idPacientes LIKE '%{filtro}%' OR Nombre LIKE '%{filtro}%' OR ApellidoPaterno LIKE '%{filtro}%' OR ApellidoMaterno LIKE '%{filtro}%' ORDER By idPacientes ASC;";
+                    QueryRRP = SentenciaSQL.SQL_OBTENER_PACIENTES_FILTRO_RRP+s;
                 }
                 MySqlCommand commandRRP = new MySqlCommand(QueryRRP);
                 commandRRP.Connection = ConexionMysqlRRP.GetConexionMySQL();
@@ -55,51 +64,94 @@ namespace DSDPRN3RRP2302B1
             {
                 MessageBox.Show($"Error al obtener pacientes: {ex.Message}");
             }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
             return ListPacientesRRP;
         }
 
         internal bool AgregarPaciente(Paciente pacienteRRP)
         {
-            string QueryRRP = "INSERT INTO tbpacientesrrp (Nombre, ApellidoPaterno, ApellidoMaterno, Direccion, Celular, TelefonoFijo, Edad, Sexo, Email, idEstadoCivil) " +
-                "VALUES (@nombre, @apellidoP, @apellidoM, @direccion, @celular, @telefono, @edad, @sexo, @email, @civil);";
-            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
-            CommandRRP.Parameters.Add(new MySqlParameter("@nombre", pacienteRRP.NombreRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", pacienteRRP.ApellidoPaternoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", pacienteRRP.ApellidoMaternoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@direccion", pacienteRRP.DireccionRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@celular", pacienteRRP.CelularRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@telefono", pacienteRRP.TelefonoFijoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@edad", pacienteRRP.EdadRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@sexo", pacienteRRP.SexoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@email", pacienteRRP.EmailRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@civil", pacienteRRP.EstadoCivilRRP));
-            return CommandRRP.ExecuteNonQuery() > 0;
+            bool BanderaRRP = false;
+            try
+            {
+                string QueryRRP = "INSERT INTO tbpacientesrrp (Nombre, ApellidoPaterno, ApellidoMaterno, Direccion, Celular, TelefonoFijo, Edad, Sexo, Email, idEstadoCivil) " +
+                    "VALUES (@nombre, @apellidoP, @apellidoM, @direccion, @celular, @telefono, @edad, @sexo, @email, @civil);";
+                MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+                CommandRRP.Parameters.Add(new MySqlParameter("@nombre", pacienteRRP.NombreRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", pacienteRRP.ApellidoPaternoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", pacienteRRP.ApellidoMaternoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@direccion", pacienteRRP.DireccionRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@celular", pacienteRRP.CelularRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@telefono", pacienteRRP.TelefonoFijoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@edad", pacienteRRP.EdadRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@sexo", pacienteRRP.SexoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@email", pacienteRRP.EmailRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@civil", pacienteRRP.EstadoCivilRRP));
+                BanderaRRP = CommandRRP.ExecuteNonQuery() > 0;
+            }            
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error al agregar paciente: {ex.Message}");
+            }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return BanderaRRP;
         }
 
         internal bool EliminarPaciente(Paciente pacienteRRP)
         {
-            string QueryRRP = "DELETE FROM tbpacientesrrp WHERE idPacientes=@id;";
-            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
-            CommandRRP.Parameters.Add(new MySqlParameter("@id", pacienteRRP.IdRRP));
-            return CommandRRP.ExecuteNonQuery() > 0;
+            bool BanderaRRP = false;
+            try
+            {
+                string QueryRRP = "DELETE FROM tbpacientesrrp WHERE idPacientes=@id;";
+                MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+                CommandRRP.Parameters.Add(new MySqlParameter("@id", pacienteRRP.IdRRP));
+                BanderaRRP = CommandRRP.ExecuteNonQuery() > 0;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error al eliminar paciente: {ex.Message}");
+            }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return BanderaRRP;
         }
 
         internal bool ModificarPaciente(Paciente pacienteRRP)
         {
-            string QueryRRP = "UPDATE tbpacientesrrp SET Nombre = @nombre, ApellidoPaterno=@apellidoP, ApellidoMaterno=@apellidoM, Direccion=@direccion, Celular=@celular, TelefonoFijo=@telefono, Edad=@edad, Sexo=@sexo, Email=@email, idEstadoCivil=@civil WHERE idPacientes=@id;";
-            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
-            CommandRRP.Parameters.Add(new MySqlParameter("@nombre", pacienteRRP.NombreRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", pacienteRRP.ApellidoPaternoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", pacienteRRP.ApellidoMaternoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@direccion", pacienteRRP.DireccionRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@celular", pacienteRRP.CelularRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@telefono", pacienteRRP.TelefonoFijoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@edad", pacienteRRP.EdadRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@sexo", pacienteRRP.SexoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@email", pacienteRRP.EmailRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@civil", pacienteRRP.EstadoCivilRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@id", pacienteRRP.IdRRP));
-            return CommandRRP.ExecuteNonQuery() > 0;
+            bool BanderaRRP = false;
+            try
+            {
+                string QueryRRP = "UPDATE tbpacientesrrp SET Nombre = @nombre, ApellidoPaterno=@apellidoP, ApellidoMaterno=@apellidoM, Direccion=@direccion, Celular=@celular, TelefonoFijo=@telefono, Edad=@edad, Sexo=@sexo, Email=@email, idEstadoCivil=@civil WHERE idPacientes=@id;";
+                MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+                CommandRRP.Parameters.Add(new MySqlParameter("@nombre", pacienteRRP.NombreRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", pacienteRRP.ApellidoPaternoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", pacienteRRP.ApellidoMaternoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@direccion", pacienteRRP.DireccionRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@celular", pacienteRRP.CelularRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@telefono", pacienteRRP.TelefonoFijoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@edad", pacienteRRP.EdadRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@sexo", pacienteRRP.SexoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@email", pacienteRRP.EmailRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@civil", pacienteRRP.EstadoCivilRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@id", pacienteRRP.IdRRP));
+                BanderaRRP = CommandRRP.ExecuteNonQuery() > 0;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error al modificar paciente: {ex.Message}");
+            }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return BanderaRRP;
         }
     }
 }

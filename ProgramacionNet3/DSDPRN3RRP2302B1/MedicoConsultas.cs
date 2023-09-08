@@ -51,41 +51,84 @@ namespace DSDPRN3RRP2302B1
             {
                 MessageBox.Show($"Error al obtener medicos: {ex.Message}");
             }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
             return ListMedicoRRP;      
         }
 
         internal bool AgregarMedico(Medico medicoRRP)
         {
-            string QueryRRP = "INSERT INTO tbmedicosrrp (Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, idEspecialidades) " +
-                "VALUES (@nombre, @apellidoP, @apellidoM, @cedula, @idEspecialida);";
-            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
-            CommandRRP.Parameters.Add(new MySqlParameter("@nombre", medicoRRP.NombreRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", medicoRRP.ApellidoPaternoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", medicoRRP.ApellidoMaternoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@cedula", medicoRRP.CedulaRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@idEspecialida", medicoRRP.EspcialidadIntRRP));
-            return CommandRRP.ExecuteNonQuery() > 0;
+            bool BanderaRRP = false;
+            try
+            {
+                string QueryRRP = "INSERT INTO tbmedicosrrp (Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, idEspecialidades) " +
+                    "VALUES (@nombre, @apellidoP, @apellidoM, @cedula, @idEspecialida);";
+                MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+                CommandRRP.Parameters.Add(new MySqlParameter("@nombre", medicoRRP.NombreRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", medicoRRP.ApellidoPaternoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", medicoRRP.ApellidoMaternoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@cedula", medicoRRP.CedulaRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@idEspecialida", medicoRRP.EspcialidadIntRRP));
+                BanderaRRP = CommandRRP.ExecuteNonQuery() > 0;
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show($"Error al agregar médico: {ex.Message}");
+            }
+            finally{
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return BanderaRRP;
         }
 
-        internal bool EliminarPaciente(Medico medicoRRP)
+        internal bool EliminarMedico(Medico medicoRRP)
         {
-            string QueryRRP = "DELETE FROM tbmedicosrrp WHERE idMedicos=@id;";
-            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
-            CommandRRP.Parameters.Add(new MySqlParameter("@id", medicoRRP.IdRRP));
-            return CommandRRP.ExecuteNonQuery() > 0;
+            bool BanderaRRP = false;
+            try
+            {
+                string QueryRRP = "DELETE FROM tbmedicosrrp WHERE idMedicos=@id;";
+                MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+                CommandRRP.Parameters.Add(new MySqlParameter("@id", medicoRRP.IdRRP));
+                BanderaRRP = CommandRRP.ExecuteNonQuery() > 0;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error al eliminar médico: {ex.Message}");
+            }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return BanderaRRP;
+
         }
 
-        internal bool ModificarPaciente(Medico medicoRRP)
+        internal bool ModificarMedico(Medico medicoRRP)
         {
-            string QueryRRP = "UPDATE tbmedicosrrp SET Nombre = @nombre, ApellidoPaterno=@apellidoP, ApellidoMaterno=@apellidoM, Cedula=@cedula, idEspecialidades=@idEspecialida WHERE idMedicos=@id;";
-            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
-            CommandRRP.Parameters.Add(new MySqlParameter("@nombre", medicoRRP.NombreRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", medicoRRP.ApellidoPaternoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", medicoRRP.ApellidoMaternoRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@cedula", medicoRRP.CedulaRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@idEspecialida", medicoRRP.EspcialidadIntRRP));
-            CommandRRP.Parameters.Add(new MySqlParameter("@id", medicoRRP.IdRRP));
-            return CommandRRP.ExecuteNonQuery() > 0;
+            bool BanderaRRP = false;
+            try
+            {
+                string QueryRRP = "UPDATE tbmedicosrrp SET Nombre = @nombre, ApellidoPaterno=@apellidoP, ApellidoMaterno=@apellidoM, Cedula=@cedula, idEspecialidades=@idEspecialida WHERE idMedicos=@id;";
+                MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+                CommandRRP.Parameters.Add(new MySqlParameter("@nombre", medicoRRP.NombreRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", medicoRRP.ApellidoPaternoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", medicoRRP.ApellidoMaternoRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@cedula", medicoRRP.CedulaRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@idEspecialida", medicoRRP.EspcialidadIntRRP));
+                CommandRRP.Parameters.Add(new MySqlParameter("@id", medicoRRP.IdRRP));
+                BanderaRRP = CommandRRP.ExecuteNonQuery() > 0;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error al modificar al médico: {ex.Message}");
+            }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return BanderaRRP;
         }
     }
 }

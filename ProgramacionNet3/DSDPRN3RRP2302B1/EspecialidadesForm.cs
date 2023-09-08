@@ -15,6 +15,12 @@ namespace DSDPRN3RRP2302B1
         public EspecialidadesForm()
         {
             InitializeComponent();
+
+        }
+
+        private void BtnRegresarRRP_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

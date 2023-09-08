@@ -42,6 +42,10 @@ namespace DSDPRN3RRP2302B1
             {
                 MessageBox.Show($"Error al obtener pacientes: {ex.Message}");
             }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
             return ListEspecialidaRRP;
         }
     }

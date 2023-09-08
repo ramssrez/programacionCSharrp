@@ -48,7 +48,7 @@
             // 
             // BtnDoctoresRRP
             // 
-            this.BtnDoctoresRRP.BackColor = System.Drawing.Color.YellowGreen;
+            this.BtnDoctoresRRP.BackColor = System.Drawing.SystemColors.Highlight;
             this.BtnDoctoresRRP.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDoctoresRRP.Location = new System.Drawing.Point(158, 214);
             this.BtnDoctoresRRP.Name = "BtnDoctoresRRP";
@@ -74,7 +74,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(177, 41);
+            this.label1.Location = new System.Drawing.Point(166, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(447, 46);
             this.label1.TabIndex = 4;
@@ -84,14 +84,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Salmon;
+            this.BackColor = System.Drawing.Color.MediumOrchid;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnEspecialidadesRRP);
             this.Controls.Add(this.BtnDoctoresRRP);
             this.Controls.Add(this.BtnPacientesRRP);
             this.Name = "Menu";
-            this.Text = "Menu";
+            this.Text = "Menu Principal";
             this.ResumeLayout(false);
             this.PerformLayout();
 

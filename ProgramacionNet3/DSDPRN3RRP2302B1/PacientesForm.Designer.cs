@@ -574,7 +574,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1351, 872);
+            this.ClientSize = new System.Drawing.Size(1301, 872);
             this.Controls.Add(this.BtnRegresarRRP);
             this.Controls.Add(this.BtnActualizar);
             this.Controls.Add(this.BtnEliminarRRP);
@@ -585,7 +585,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "PacientesForm";
-            this.Text = "Registro de Pacientes";
+            this.Text = "Pacientes";
             this.GrbSexoRRP.ResumeLayout(false);
             this.GrbSexoRRP.PerformLayout();
             this.groupBox1.ResumeLayout(false);

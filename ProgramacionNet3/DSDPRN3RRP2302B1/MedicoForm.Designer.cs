@@ -33,6 +33,8 @@
             this.BtnEliminarRRP = new System.Windows.Forms.Button();
             this.BtnGuardarRRP = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TxtIdEspecialidaRRP = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.TxtIdDoctorRRP = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtApellidoMaternoMedicoCRRP = new System.Windows.Forms.TextBox();
@@ -54,8 +56,6 @@
             this.idEspecialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreEs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescipcionEs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TxtIdEspecialidaRRP = new System.Windows.Forms.TextBox();
             this.labelEs = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnBuscarMedicoRRP = new System.Windows.Forms.Button();
@@ -141,6 +141,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del médico";
             // 
+            // TxtIdEspecialidaRRP
+            // 
+            this.TxtIdEspecialidaRRP.Enabled = false;
+            this.TxtIdEspecialidaRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtIdEspecialidaRRP.Location = new System.Drawing.Point(524, 152);
+            this.TxtIdEspecialidaRRP.Name = "TxtIdEspecialidaRRP";
+            this.TxtIdEspecialidaRRP.Size = new System.Drawing.Size(104, 27);
+            this.TxtIdEspecialidaRRP.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(481, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(164, 26);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Id Especialidad";
+            // 
             // TxtIdDoctorRRP
             // 
             this.TxtIdDoctorRRP.Enabled = false;
@@ -156,7 +175,7 @@
             this.label3.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(519, 38);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 33);
+            this.label3.Size = new System.Drawing.Size(110, 26);
             this.label3.TabIndex = 13;
             this.label3.Text = "Id Médico";
             // 
@@ -343,25 +362,6 @@
             this.DescipcionEs.ReadOnly = true;
             this.DescipcionEs.Width = 300;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(481, 116);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(164, 26);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Id Especialidad";
-            // 
-            // TxtIdEspecialidaRRP
-            // 
-            this.TxtIdEspecialidaRRP.Enabled = false;
-            this.TxtIdEspecialidaRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtIdEspecialidaRRP.Location = new System.Drawing.Point(524, 152);
-            this.TxtIdEspecialidaRRP.Name = "TxtIdEspecialidaRRP";
-            this.TxtIdEspecialidaRRP.Size = new System.Drawing.Size(104, 27);
-            this.TxtIdEspecialidaRRP.TabIndex = 16;
-            // 
             // labelEs
             // 
             this.labelEs.AutoSize = true;
@@ -432,7 +432,7 @@
             this.Controls.Add(this.BtnGuardarRRP);
             this.Controls.Add(this.BtnRegresarRRP);
             this.Name = "MedicoForm";
-            this.Text = "DoctoresForm";
+            this.Text = "Doctores";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMedicosRRP)).EndInit();

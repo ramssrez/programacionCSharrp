@@ -33,7 +33,7 @@ namespace DSDPRN3RRP2302B1
             ListPacientesRRP = PacienteConsultasRRP.GetPacientes(filtro);
             for (int i = 0; i < ListPacientesRRP.Count(); i++)
             {
-                DgvPacientesRRP.RowTemplate.Height = 50;
+                DgvPacientesRRP.RowTemplate.Height = 25;
                 DgvPacientesRRP.Rows.Add(
                     ListPacientesRRP[i].IdRRP,
                     ListPacientesRRP[i].NombreRRP,
@@ -94,6 +94,11 @@ namespace DSDPRN3RRP2302B1
             if (!int.TryParse(TxtEdadCRRP.Text.Trim(),out int edad))
             {
                 MessageBox.Show("Ingrese una edad correcta");
+                return false;
+            }
+            if (CbxEdoCivilRRP.SelectedIndex<0)
+            {
+                MessageBox.Show("Seleccione el estado civil");
                 return false;
             }
             return true;
