@@ -42,12 +42,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtNombreMedicoRRP = new System.Windows.Forms.TextBox();
             this.DgvMedicosRRP = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cedul = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMedicosRRP)).BeginInit();
             this.SuspendLayout();
@@ -151,7 +151,7 @@
             this.label8.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(19, 200);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 33);
+            this.label8.Size = new System.Drawing.Size(89, 26);
             this.label8.TabIndex = 9;
             this.label8.Text = "Cedula:";
             // 
@@ -197,67 +197,67 @@
             this.DgvMedicosRRP.AllowUserToDeleteRows = false;
             this.DgvMedicosRRP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvMedicosRRP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.DgvMedicosRRP.Location = new System.Drawing.Point(40, 338);
+            this.Id,
+            this.Nombre,
+            this.ApellidoPaterno,
+            this.ApellidoMaterno,
+            this.Cedul,
+            this.Especialidad});
+            this.DgvMedicosRRP.Location = new System.Drawing.Point(39, 355);
             this.DgvMedicosRRP.Name = "DgvMedicosRRP";
             this.DgvMedicosRRP.ReadOnly = true;
             this.DgvMedicosRRP.RowHeadersWidth = 45;
             this.DgvMedicosRRP.RowTemplate.Height = 24;
-            this.DgvMedicosRRP.Size = new System.Drawing.Size(733, 252);
+            this.DgvMedicosRRP.Size = new System.Drawing.Size(823, 252);
             this.DgvMedicosRRP.TabIndex = 24;
             // 
-            // Column1
+            // Id
             // 
-            this.Column1.HeaderText = "Id";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 50;
             // 
-            // Column2
+            // Nombre
             // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 125;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 125;
             // 
-            // Column3
+            // ApellidoPaterno
             // 
-            this.Column3.HeaderText = "Apellido Paterno";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 125;
+            this.ApellidoPaterno.HeaderText = "Apellido Paterno";
+            this.ApellidoPaterno.MinimumWidth = 6;
+            this.ApellidoPaterno.Name = "ApellidoPaterno";
+            this.ApellidoPaterno.ReadOnly = true;
+            this.ApellidoPaterno.Width = 125;
             // 
-            // Column4
+            // ApellidoMaterno
             // 
-            this.Column4.HeaderText = "Apellido Materno";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 125;
+            this.ApellidoMaterno.HeaderText = "Apellido Materno";
+            this.ApellidoMaterno.MinimumWidth = 6;
+            this.ApellidoMaterno.Name = "ApellidoMaterno";
+            this.ApellidoMaterno.ReadOnly = true;
+            this.ApellidoMaterno.Width = 125;
             // 
-            // Column5
+            // Cedul
             // 
-            this.Column5.HeaderText = "Cedula";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 125;
+            this.Cedul.HeaderText = "Cedula";
+            this.Cedul.MinimumWidth = 6;
+            this.Cedul.Name = "Cedul";
+            this.Cedul.ReadOnly = true;
+            this.Cedul.Width = 125;
             // 
-            // Column6
+            // Especialidad
             // 
-            this.Column6.HeaderText = "Especialidad";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 125;
+            this.Especialidad.HeaderText = "Especialidad";
+            this.Especialidad.MinimumWidth = 6;
+            this.Especialidad.Name = "Especialidad";
+            this.Especialidad.ReadOnly = true;
+            this.Especialidad.Width = 125;
             // 
             // MedicoForm
             // 
@@ -295,11 +295,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtNombreMedicoRRP;
         private System.Windows.Forms.DataGridView DgvMedicosRRP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoPaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoMaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cedul;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Especialidad;
     }
 }
