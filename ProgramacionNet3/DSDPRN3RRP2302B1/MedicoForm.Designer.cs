@@ -61,6 +61,7 @@
             this.btnBuscarMedicoRRP = new System.Windows.Forms.Button();
             this.TxtBuscarRRP = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMedicosRRP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvEspcialidadesRRP)).BeginInit();
@@ -263,7 +264,7 @@
             this.ApellidoMaterno,
             this.Cedula,
             this.Especialidad});
-            this.DgvMedicosRRP.Location = new System.Drawing.Point(502, 331);
+            this.DgvMedicosRRP.Location = new System.Drawing.Point(499, 365);
             this.DgvMedicosRRP.Name = "DgvMedicosRRP";
             this.DgvMedicosRRP.ReadOnly = true;
             this.DgvMedicosRRP.RowHeadersWidth = 45;
@@ -416,12 +417,23 @@
             this.label16.TabIndex = 3;
             this.label16.Text = "Buscar:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(492, 309);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(383, 53);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "Tabla de médicos";
+            // 
             // MedicoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(1311, 773);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.labelEs);
             this.Controls.Add(this.DgvEspcialidadesRRP);
@@ -478,5 +490,6 @@
         private System.Windows.Forms.Button btnBuscarMedicoRRP;
         private System.Windows.Forms.TextBox TxtBuscarRRP;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label5;
     }
 }

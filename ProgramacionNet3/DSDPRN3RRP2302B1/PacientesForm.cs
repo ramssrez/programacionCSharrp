@@ -106,7 +106,10 @@ namespace DSDPRN3RRP2302B1
 
         private void BtnRegresarRRP_Click(object sender, EventArgs e)
         {
-            Close();
+            if (MessageBox.Show("¿Desea volver al menú principal?", "Regresar al menú", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void BtnGuardarRRP_Click(object sender, EventArgs e)
@@ -190,6 +193,11 @@ namespace DSDPRN3RRP2302B1
 
         private void BtnActualizar_Click(object sender, EventArgs e)
         {
+            if (TxtIdRRP.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("No se ha seleccionado una opción de la tabla de pacientes");
+                return;
+            }
             if (!DatosCorrecto())
             {
                 return;
@@ -207,6 +215,7 @@ namespace DSDPRN3RRP2302B1
         {
             if (GetIdPaciente() == -1)
             {
+                MessageBox.Show("No se ha seleccionado una opción de la tabla de pacientes");
                 return;
             }
             if (MessageBox.Show("¿Desea eliminar el paciente?","Eliminar paciente",MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -214,7 +223,7 @@ namespace DSDPRN3RRP2302B1
                 CargarPaciente();
                 if (PacienteConsultasRRP.EliminarPaciente(PacienteRRP))
                 {
-                    MessageBox.Show("Se ha Eliminado un paciente");
+                    MessageBox.Show("Se ha eliminado un paciente");
                     CargarDatosPacientes();
                     LimpiarCampos();
                 }

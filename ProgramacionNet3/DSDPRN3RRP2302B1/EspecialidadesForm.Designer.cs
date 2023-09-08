@@ -71,6 +71,7 @@
             this.BtnActualizar.TabIndex = 25;
             this.BtnActualizar.Text = "Actualizar";
             this.BtnActualizar.UseVisualStyleBackColor = false;
+            this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
             // BtnEliminarRRP
             // 
@@ -83,6 +84,7 @@
             this.BtnEliminarRRP.TabIndex = 24;
             this.BtnEliminarRRP.Text = "Eliminar";
             this.BtnEliminarRRP.UseVisualStyleBackColor = false;
+            this.BtnEliminarRRP.Click += new System.EventHandler(this.BtnEliminarRRP_Click);
             // 
             // BtnGuardarRRP
             // 
@@ -95,6 +97,7 @@
             this.BtnGuardarRRP.TabIndex = 23;
             this.BtnGuardarRRP.Text = "Agregar";
             this.BtnGuardarRRP.UseVisualStyleBackColor = false;
+            this.BtnGuardarRRP.Click += new System.EventHandler(this.BtnGuardarRRP_Click);
             // 
             // groupBox1
             // 
@@ -184,6 +187,7 @@
             this.DgvEspcialidadesRRP.RowTemplate.Height = 24;
             this.DgvEspcialidadesRRP.Size = new System.Drawing.Size(698, 256);
             this.DgvEspcialidadesRRP.TabIndex = 27;
+            this.DgvEspcialidadesRRP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvEspcialidadesRRP_CellClick);
             // 
             // idEspecialidad
             // 
@@ -207,7 +211,7 @@
             this.DescipcionEs.MinimumWidth = 6;
             this.DescipcionEs.Name = "DescipcionEs";
             this.DescipcionEs.ReadOnly = true;
-            this.DescipcionEs.Width = 400;
+            this.DescipcionEs.Width = 350;
             // 
             // EspecialidadesForm
             // 
