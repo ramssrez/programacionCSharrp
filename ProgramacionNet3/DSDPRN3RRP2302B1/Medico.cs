@@ -12,7 +12,7 @@ namespace DSDPRN3RRP2302B1
         public string NombreRRP { get; set; }
         public string ApellidoPaternoRRP { get; set; }
         public string ApellidoMaternoRRP { get; set; }
-        public string Cedula { get; set; }
+        public string CedulaRRP { get; set; }
         public string EspcialidadRRP { get; set; }
         public int EspcialidadIntRRP { get; set; }
     }

@@ -25,8 +25,9 @@ namespace DSDPRN3RRP2302B1
                 
                 if (filtro != "")
                 {
-                    string s = $" WHERE idMedicos LIKE '%{filtro}%' OR Nombre LIKE '%{filtro}%' OR ApellidoPaterno LIKE '%{filtro}%' OR ApellidoMaterno LIKE '%{filtro}%';";
-                    QueryRRP += s;
+                    QueryRRP = "";
+                    string s = $" WHERE idMedicos LIKE '%{filtro}%' OR tbmedicosrrp.Nombre LIKE '%{filtro}%' OR tbmedicosrrp.ApellidoPaterno LIKE '%{filtro}%' OR tbmedicosrrp.ApellidoMaterno LIKE '%{filtro}%' ORDER By tbmedicosrrp.idMedicos ASC;";
+                    QueryRRP=SentenciaSQL.SQL_OBTENER_MEDICO_FILTTRO_RRP+s;
                 }
                 
                 MySqlCommand commandRRP = new MySqlCommand(QueryRRP);
@@ -40,16 +41,51 @@ namespace DSDPRN3RRP2302B1
                     medicoRRP.NombreRRP = readerRRP.GetString("Nombre");
                     medicoRRP.ApellidoPaternoRRP = readerRRP.GetString("Apellido Paterno");
                     medicoRRP.ApellidoMaternoRRP = readerRRP.GetString("Apellido Materno");
-                    medicoRRP.Cedula = readerRRP.GetString("Cedula");
+                    medicoRRP.CedulaRRP = readerRRP.GetString("Cedula");
                     medicoRRP.EspcialidadRRP = readerRRP.GetString("Especialidad");
                     ListMedicoRRP.Add(medicoRRP);
                 }
+                readerRRP.Close();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show($"Error al obtener medicos: {ex.Message}");
             }
             return ListMedicoRRP;      
+        }
+
+        internal bool AgregarMedico(Medico medicoRRP)
+        {
+            string QueryRRP = "INSERT INTO tbmedicosrrp (Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, idEspecialidades) " +
+                "VALUES (@nombre, @apellidoP, @apellidoM, @cedula, @idEspecialida);";
+            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+            CommandRRP.Parameters.Add(new MySqlParameter("@nombre", medicoRRP.NombreRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", medicoRRP.ApellidoPaternoRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", medicoRRP.ApellidoMaternoRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@cedula", medicoRRP.CedulaRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@idEspecialida", medicoRRP.EspcialidadIntRRP));
+            return CommandRRP.ExecuteNonQuery() > 0;
+        }
+
+        internal bool EliminarPaciente(Medico medicoRRP)
+        {
+            string QueryRRP = "DELETE FROM tbmedicosrrp WHERE idMedicos=@id;";
+            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+            CommandRRP.Parameters.Add(new MySqlParameter("@id", medicoRRP.IdRRP));
+            return CommandRRP.ExecuteNonQuery() > 0;
+        }
+
+        internal bool ModificarPaciente(Medico medicoRRP)
+        {
+            string QueryRRP = "UPDATE tbmedicosrrp SET Nombre = @nombre, ApellidoPaterno=@apellidoP, ApellidoMaterno=@apellidoM, Cedula=@cedula, idEspecialidades=@idEspecialida WHERE idMedicos=@id;";
+            MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+            CommandRRP.Parameters.Add(new MySqlParameter("@nombre", medicoRRP.NombreRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoP", medicoRRP.ApellidoPaternoRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@apellidoM", medicoRRP.ApellidoMaternoRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@cedula", medicoRRP.CedulaRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@idEspecialida", medicoRRP.EspcialidadIntRRP));
+            CommandRRP.Parameters.Add(new MySqlParameter("@id", medicoRRP.IdRRP));
+            return CommandRRP.ExecuteNonQuery() > 0;
         }
     }
 }

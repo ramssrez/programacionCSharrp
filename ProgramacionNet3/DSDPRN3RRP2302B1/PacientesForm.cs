@@ -52,6 +52,7 @@ namespace DSDPRN3RRP2302B1
         private void btnBuscarRRP_Click(object sender, EventArgs e)
         {
             CargarDatosPacientes(TxtBuscarRRP.Text.Trim());
+            TxtBuscarRRP.Text = "";
         }
         private bool DatosCorrecto()
         {
@@ -203,7 +204,6 @@ namespace DSDPRN3RRP2302B1
             {
                 return;
             }
-            //CargarDatosPacientes();
             if (MessageBox.Show("¿Desea eliminar el paciente?","Eliminar paciente",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 CargarPaciente();

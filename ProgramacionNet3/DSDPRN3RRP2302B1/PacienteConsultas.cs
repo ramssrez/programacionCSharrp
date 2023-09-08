@@ -82,7 +82,6 @@ namespace DSDPRN3RRP2302B1
             MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
             CommandRRP.Parameters.Add(new MySqlParameter("@id", pacienteRRP.IdRRP));
             return CommandRRP.ExecuteNonQuery() > 0;
-            //throw new NotImplementedException();
         }
 
         internal bool ModificarPaciente(Paciente pacienteRRP)
