@@ -99,6 +99,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionMysql.cs" />
+    <Compile Include="Especialidad.cs" />
+    <Compile Include="EspecialidadesConsultas.cs" />
     <Compile Include="Medico.cs" />
     <Compile Include="MedicoConsultas.cs" />
     <Compile Include="MedicoForm.cs">
@@ -130,6 +132,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SentenciaSQL.cs" />
+    <EmbeddedResource Include="EspecialidadesForm.resx">
+      <DependentUpon>EspecialidadesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MedicoForm.resx">
       <DependentUpon>MedicoForm.cs</DependentUpon>
     </EmbeddedResource>
