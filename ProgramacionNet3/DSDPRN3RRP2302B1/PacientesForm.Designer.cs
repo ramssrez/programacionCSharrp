@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GrbSexoRRP = new System.Windows.Forms.GroupBox();
             this.RgbMasculinoRRP = new System.Windows.Forms.RadioButton();
             this.RgbFemeninoRRP = new System.Windows.Forms.RadioButton();
@@ -199,6 +200,7 @@
             this.TxtEdadCRRP.Name = "TxtEdadCRRP";
             this.TxtEdadCRRP.Size = new System.Drawing.Size(243, 27);
             this.TxtEdadCRRP.TabIndex = 10;
+            this.TxtEdadCRRP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtEdadCRRP_KeyPress);
             // 
             // label8
             // 
@@ -330,6 +332,7 @@
             this.TxtTelefonoCelularCRRP.Name = "TxtTelefonoCelularCRRP";
             this.TxtTelefonoCelularCRRP.Size = new System.Drawing.Size(243, 27);
             this.TxtTelefonoCelularCRRP.TabIndex = 11;
+            this.TxtTelefonoCelularCRRP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTelefonoCelularCRRP_KeyPress);
             // 
             // TxtTelefonoFijoCRRP
             // 
@@ -338,6 +341,7 @@
             this.TxtTelefonoFijoCRRP.Name = "TxtTelefonoFijoCRRP";
             this.TxtTelefonoFijoCRRP.Size = new System.Drawing.Size(243, 27);
             this.TxtTelefonoFijoCRRP.TabIndex = 8;
+            this.TxtTelefonoFijoCRRP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTelefonoFijoCRRP_KeyPress);
             // 
             // label5
             // 
@@ -376,6 +380,14 @@
             this.Sexo,
             this.Email,
             this.EstadoCivil});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvPacientesRRP.DefaultCellStyle = dataGridViewCellStyle3;
             this.DgvPacientesRRP.Location = new System.Drawing.Point(29, 484);
             this.DgvPacientesRRP.Name = "DgvPacientesRRP";
             this.DgvPacientesRRP.ReadOnly = true;
@@ -506,6 +518,7 @@
             this.TxtBuscarRRP.Name = "TxtBuscarRRP";
             this.TxtBuscarRRP.Size = new System.Drawing.Size(243, 27);
             this.TxtBuscarRRP.TabIndex = 8;
+            this.TxtBuscarRRP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtBuscarRRP_KeyDown);
             // 
             // label16
             // 

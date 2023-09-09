@@ -16,13 +16,13 @@ namespace DSDPRN3RRP2302B1
         }
         public List<Especialidad> GetEspecialidades(string filtro)
         {
-            string QueryRRP = SentenciaSQL.SQL_OBTENER_ESPECIALIDADES_RRP;
+            string QueryRRP = SentenciaSQLAndStrings.SQL_OBTENER_ESPECIALIDADES_RRP;
             MySqlDataReader readerRRP = null;
             try
             {
                 if (filtro != "")
                 {
-                    string s = $" WHERE idEspecialidades LIKE '%{filtro}%' OR Nombre LIKE '%{filtro}%' OR DescripcionLIKE '%{filtro}%';";
+                    string s = $" WHERE idEspecialidades LIKE '%{filtro}%' OR Nombre LIKE '%{filtro}%' OR Descripcion LIKE '%{filtro}%';";
                     QueryRRP += s;
                 }
                 MySqlCommand commandRRP = new MySqlCommand(QueryRRP);
@@ -41,7 +41,7 @@ namespace DSDPRN3RRP2302B1
             }
             catch(MySqlException ex)
             {
-                MessageBox.Show($"Error al obtener pacientes: {ex.Message}");
+                MessageBox.Show($"Error al obtener las especialidades: {ex.Message}");
             }
             finally
             {

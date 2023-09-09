@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -75,6 +76,18 @@ namespace DSDPRN3RRP2302B1
                 MessageBox.Show("Ingrese la descripción de la especialidad");
                 return false;
             }
+            if (!Regex.IsMatch(TxtNombreEspecialidadRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDatosRRP))
+            {
+                TxtNombreEspecialidadRRP.BackColor = Color.Red;
+                MessageBox.Show("No se permiten caracteres especiales");
+                return false;
+            }
+            if (!Regex.IsMatch(TxtDescripcionRRP.Text.Trim(), SentenciaSQLAndStrings.PatronEspecialidaRRP))
+            {
+                TxtDescripcionRRP.BackColor = Color.Red;
+                MessageBox.Show("No se permiten caracteres especiales");
+                return false;
+            }
             return true;
         }
 
@@ -90,7 +103,14 @@ namespace DSDPRN3RRP2302B1
                 MessageBox.Show("Se ha agregado una especialidad");
                 CargarDatosEspecialidades();
                 LimpiarCampos();
+                BackColorTextInput();
             }
+        }
+
+        private void BackColorTextInput()
+        {
+            TxtNombreEspecialidadRRP.BackColor = Color.White;
+            TxtDescripcionRRP.BackColor=Color.White;
         }
 
         private void CargarEspecialidad()
@@ -129,6 +149,7 @@ namespace DSDPRN3RRP2302B1
                 MessageBox.Show("Se ha modificado la especialidad");
                 CargarDatosEspecialidades();
                 LimpiarCampos();
+                BackColorTextInput();
             }
         }
 
@@ -147,6 +168,30 @@ namespace DSDPRN3RRP2302B1
                     MessageBox.Show("Se ha eliminado una especialidad");
                     CargarDatosEspecialidades();
                     LimpiarCampos();
+                    BackColorTextInput();
+                }
+            }
+        }
+
+        private void BtnBuscarEspecialidaRRP_Click(object sender, EventArgs e)
+        {
+            CargarDatosEspecialidades(TxtBuscarRRP.Text.Trim());
+            TxtIdEspecialidaRRP.Text = "";
+            if (DgvEspcialidadesRRP.RowCount == 0)
+            {
+                MessageBox.Show("No se han encontrado datos");
+            }
+        }
+
+        private void TxtBuscarRRP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CargarDatosEspecialidades(TxtBuscarRRP.Text.Trim());
+                TxtBuscarRRP.Text = "";
+                if (DgvEspcialidadesRRP.RowCount == 0)
+                {
+                    MessageBox.Show("No se han encontrado datos");
                 }
             }
         }

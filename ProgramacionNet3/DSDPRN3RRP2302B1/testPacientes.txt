@@ -1,0 +1,9 @@
+Nombre,ApellidoPaterno,ApellidoMaterno,Direccion,Celular,TelefonoFijo,Edad,Sexo,Email,idEstadoCivil
+Jose,Ortiz, Reyna,Test #10 ciudad test,5511220033,8899665544,32,H,jrTest@test.com,2
+Martha,Sanchez,Reyna,Test #20 ciudad test,5511880033,8899669944,35,F,MSTest@test.com,1
+Manuel,Gonzalez,Reyna,Test #11 ciudad test,5511220034,8899665545,35,H,MGTest@test.com,3
+Marinela,Sanchez,Alvarez,Test #21 ciudad test,5511880039,8899669940,36,F,MSATest@test.com,5
+Victor,Angulo,Reyna,Test #12 ciudad test,5511220035,8899665546,39,H,VARTest@test.com,5
+Olga,Juarez,Reyna,Test #22 ciudad test,5511880040,8899669941,38,F,OJRest@test.com,5
+Alejandro,Martinez, Reyna,Test #13 ciudad test,5511220036,8899665547,32,H,AMRTest@test.com,1
+Sandra,Sanchez,Gutierrez,Test #23 ciudad test,5511880041,8899669949,28,F,SSGTest@test.com,1

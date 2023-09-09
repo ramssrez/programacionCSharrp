@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -53,6 +54,10 @@ namespace DSDPRN3RRP2302B1
         {
             CargarDatosPacientes(TxtBuscarRRP.Text.Trim());
             TxtBuscarRRP.Text = "";
+            if (DgvPacientesRRP.RowCount == 0)
+            {
+                MessageBox.Show("No se han encontrado datos");
+            }
         }
         private bool DatosCorrecto()
         {
@@ -101,6 +106,37 @@ namespace DSDPRN3RRP2302B1
                 MessageBox.Show("Seleccione el estado civil");
                 return false;
             }
+            
+            if (!Regex.IsMatch(TxtEmailCRRP.Text.Trim(),SentenciaSQLAndStrings.PatronEmailRRP))
+            {
+                TxtEmailCRRP.BackColor = Color.Red;
+                MessageBox.Show("Ingrese el correo en formato correcto");
+                return false;
+            }
+            if (!Regex.IsMatch(TxtNombreCRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDatosRRP))
+            {
+                TxtNombreCRRP.BackColor = Color.Red;
+                MessageBox.Show("No se permiten caracteres especiales");
+                return false;
+            }
+            if (!Regex.IsMatch(TxtApellidoPaternoCRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDatosRRP))
+            {
+                TxtApellidoPaternoCRRP.BackColor = Color.Red;
+                MessageBox.Show("No se permiten caracteres especiales");
+                return false;
+            }
+            if (!Regex.IsMatch(TxtApellidoMaternoCRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDatosRRP))
+            {
+                TxtApellidoMaternoCRRP.BackColor = Color.Red;
+                MessageBox.Show("No se permiten caracteres especiales");
+                return false;
+            }
+            if (!Regex.IsMatch(TxtDireccionCRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDireccionRRP))
+            {
+                TxtDireccionCRRP.BackColor = Color.Red;
+                MessageBox.Show("No se permiten caracteres especiales");
+                return false;
+            }
             return true;
         }
 
@@ -124,6 +160,7 @@ namespace DSDPRN3RRP2302B1
                 MessageBox.Show("Se ha agregado un paciente");
                 CargarDatosPacientes();
                 LimpiarCampos();
+                BackColorTextInput();
             }
         }
 
@@ -138,6 +175,14 @@ namespace DSDPRN3RRP2302B1
             TxtEmailCRRP.Text = "";
             TxtEdadCRRP.Text = "";
             TxtIdRRP.Text = "";
+        }
+        private void BackColorTextInput() 
+        {
+            TxtEmailCRRP.BackColor = Color.White;
+            TxtDireccionCRRP.BackColor = Color.White;
+            TxtNombreCRRP.BackColor = Color.White;
+            TxtApellidoPaternoCRRP.BackColor = Color.White;
+            TxtApellidoMaternoCRRP.BackColor = Color.White;
         }
 
         private void CargarPaciente()
@@ -208,6 +253,7 @@ namespace DSDPRN3RRP2302B1
                 MessageBox.Show("Se ha modificado un paciente");
                 CargarDatosPacientes();
                 LimpiarCampos();
+                BackColorTextInput();
             }
         }
 
@@ -226,7 +272,45 @@ namespace DSDPRN3RRP2302B1
                     MessageBox.Show("Se ha eliminado un paciente");
                     CargarDatosPacientes();
                     LimpiarCampos();
+                    BackColorTextInput();
                 }
+            }
+        }
+
+        private void TxtBuscarRRP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CargarDatosPacientes(TxtBuscarRRP.Text.Trim());
+                TxtBuscarRRP.Text = "";
+                if (DgvPacientesRRP.RowCount == 0)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                }
+            }
+        }
+
+        private void TxtTelefonoCelularCRRP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtTelefonoFijoCRRP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtEdadCRRP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

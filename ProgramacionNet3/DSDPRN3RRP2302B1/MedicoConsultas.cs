@@ -18,7 +18,7 @@ namespace DSDPRN3RRP2302B1
 
         public List<Medico> GetMedicos(string filtro)
         {
-            string QueryRRP = SentenciaSQL.SQL_OBTENER_MEDICO_RRP;
+            string QueryRRP = SentenciaSQLAndStrings.SQL_OBTENER_MEDICO_RRP;
             MySqlDataReader readerRRP = null;
             try
             {
@@ -27,7 +27,7 @@ namespace DSDPRN3RRP2302B1
                 {
                     QueryRRP = "";
                     string s = $" WHERE idMedicos LIKE '%{filtro}%' OR tbmedicosrrp.Nombre LIKE '%{filtro}%' OR tbmedicosrrp.ApellidoPaterno LIKE '%{filtro}%' OR tbmedicosrrp.ApellidoMaterno LIKE '%{filtro}%' ORDER By tbmedicosrrp.idMedicos ASC;";
-                    QueryRRP=SentenciaSQL.SQL_OBTENER_MEDICO_FILTTRO_RRP+s;
+                    QueryRRP=SentenciaSQLAndStrings.SQL_OBTENER_MEDICO_FILTTRO_RRP+s;
                 }
                 
                 MySqlCommand commandRRP = new MySqlCommand(QueryRRP);

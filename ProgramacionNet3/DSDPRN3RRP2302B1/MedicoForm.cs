@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -85,8 +86,16 @@ namespace DSDPRN3RRP2302B1
             {
                 MessageBox.Show("Se ha agregado un médico");
                 CargarDatosMedico();
+                BackColorTextInput();
                 LimpiarCampos();
             }
+        }
+
+        private void BackColorTextInput()
+        {
+            TxtNombreMedicoRRP.BackColor = Color.White;
+            TxtApellidoPaternoMedicoRRP.BackColor = Color.White;
+            TxtApellidoMaternoMedicoCRRP.BackColor=Color.White;
         }
 
         private void LimpiarCampos()
@@ -160,6 +169,24 @@ namespace DSDPRN3RRP2302B1
                 MessageBox.Show("Selecciona una especialidad de la tabla");
                 return false;
             }
+            if (!Regex.IsMatch(TxtNombreMedicoRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDatosRRP))
+            {
+                TxtNombreMedicoRRP.BackColor = Color.Red;
+                MessageBox.Show("No se permiten caracteres especiales");
+                return false;
+            }
+            if (!Regex.IsMatch(TxtApellidoPaternoMedicoRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDatosRRP))
+            {
+                TxtApellidoPaternoMedicoRRP.BackColor = Color.Red;
+                MessageBox.Show("No se permiten caracteres especiales");
+                return false;
+            }
+            if (!Regex.IsMatch(TxtApellidoMaternoMedicoCRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDatosRRP))
+            {
+                TxtApellidoMaternoMedicoCRRP.BackColor = Color.Red;
+                MessageBox.Show("No se permiten caracteres especiales");
+                return false;
+            }
             return true;
         }
 
@@ -185,6 +212,7 @@ namespace DSDPRN3RRP2302B1
             {
                 MessageBox.Show("Se ha modificado un médico");
                 CargarDatosMedico();
+                BackColorTextInput();
                 LimpiarCampos();
             }
         }
@@ -213,6 +241,7 @@ namespace DSDPRN3RRP2302B1
                 {
                     MessageBox.Show("Se ha eliminado un médico");
                     CargarDatosMedico();
+                    BackColorTextInput();
                     LimpiarCampos();
                 }
             }
@@ -222,6 +251,31 @@ namespace DSDPRN3RRP2302B1
         {
             CargarDatosMedico(TxtBuscarRRP.Text.Trim());
             TxtBuscarRRP.Text = "";
+            if (DgvMedicosRRP.RowCount == 0)
+            {
+                MessageBox.Show("No se han encontrado datos");
+            }
+        }
+
+        private void TxtBuscarRRP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CargarDatosMedico(TxtBuscarRRP.Text.Trim());
+                TxtBuscarRRP.Text = "";
+                if (DgvMedicosRRP.RowCount == 0)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                }
+            }
+        }
+
+        private void TxtCedulaRRP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

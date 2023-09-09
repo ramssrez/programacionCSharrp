@@ -205,6 +205,7 @@
             this.TxtCedulaRRP.Name = "TxtCedulaRRP";
             this.TxtCedulaRRP.Size = new System.Drawing.Size(243, 27);
             this.TxtCedulaRRP.TabIndex = 10;
+            this.TxtCedulaRRP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCedulaRRP_KeyPress);
             // 
             // label8
             // 
@@ -379,7 +380,7 @@
             this.groupBox4.Controls.Add(this.TxtBuscarRRP);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(53, 343);
+            this.groupBox4.Location = new System.Drawing.Point(53, 344);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(365, 166);
             this.groupBox4.TabIndex = 27;
@@ -406,6 +407,7 @@
             this.TxtBuscarRRP.Name = "TxtBuscarRRP";
             this.TxtBuscarRRP.Size = new System.Drawing.Size(243, 27);
             this.TxtBuscarRRP.TabIndex = 8;
+            this.TxtBuscarRRP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtBuscarRRP_KeyDown);
             // 
             // label16
             // 
@@ -423,7 +425,7 @@
             this.label5.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(492, 309);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(383, 53);
+            this.label5.Size = new System.Drawing.Size(306, 42);
             this.label5.TabIndex = 28;
             this.label5.Text = "Tabla de médicos";
             // 

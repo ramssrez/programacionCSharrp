@@ -43,8 +43,13 @@
             this.idEspecialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreEs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescipcionEs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.BtnBuscarEspecialidaRRP = new System.Windows.Forms.Button();
+            this.TxtBuscarRRP = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvEspcialidadesRRP)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnRegresarRRP
@@ -52,7 +57,7 @@
             this.BtnRegresarRRP.BackColor = System.Drawing.Color.DarkViolet;
             this.BtnRegresarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnRegresarRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnRegresarRRP.Location = new System.Drawing.Point(996, 378);
+            this.BtnRegresarRRP.Location = new System.Drawing.Point(970, 424);
             this.BtnRegresarRRP.Name = "BtnRegresarRRP";
             this.BtnRegresarRRP.Size = new System.Drawing.Size(307, 62);
             this.BtnRegresarRRP.TabIndex = 19;
@@ -65,7 +70,7 @@
             this.BtnActualizar.BackColor = System.Drawing.Color.Gold;
             this.BtnActualizar.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnActualizar.ForeColor = System.Drawing.Color.Snow;
-            this.BtnActualizar.Location = new System.Drawing.Point(358, 378);
+            this.BtnActualizar.Location = new System.Drawing.Point(970, 336);
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.Size = new System.Drawing.Size(307, 62);
             this.BtnActualizar.TabIndex = 25;
@@ -78,7 +83,7 @@
             this.BtnEliminarRRP.BackColor = System.Drawing.Color.Red;
             this.BtnEliminarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminarRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnEliminarRRP.Location = new System.Drawing.Point(683, 378);
+            this.BtnEliminarRRP.Location = new System.Drawing.Point(570, 424);
             this.BtnEliminarRRP.Name = "BtnEliminarRRP";
             this.BtnEliminarRRP.Size = new System.Drawing.Size(307, 62);
             this.BtnEliminarRRP.TabIndex = 24;
@@ -91,7 +96,7 @@
             this.BtnGuardarRRP.BackColor = System.Drawing.Color.Lime;
             this.BtnGuardarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnGuardarRRP.Location = new System.Drawing.Point(32, 378);
+            this.BtnGuardarRRP.Location = new System.Drawing.Point(570, 335);
             this.BtnGuardarRRP.Name = "BtnGuardarRRP";
             this.BtnGuardarRRP.Size = new System.Drawing.Size(307, 62);
             this.BtnGuardarRRP.TabIndex = 23;
@@ -213,12 +218,58 @@
             this.DescipcionEs.ReadOnly = true;
             this.DescipcionEs.Width = 350;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.BtnBuscarEspecialidaRRP);
+            this.groupBox4.Controls.Add(this.TxtBuscarRRP);
+            this.groupBox4.Controls.Add(this.label16);
+            this.groupBox4.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(32, 320);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(365, 166);
+            this.groupBox4.TabIndex = 28;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Búsqueda";
+            // 
+            // BtnBuscarEspecialidaRRP
+            // 
+            this.BtnBuscarEspecialidaRRP.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.BtnBuscarEspecialidaRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBuscarEspecialidaRRP.ForeColor = System.Drawing.Color.Snow;
+            this.BtnBuscarEspecialidaRRP.Location = new System.Drawing.Point(30, 98);
+            this.BtnBuscarEspecialidaRRP.Name = "BtnBuscarEspecialidaRRP";
+            this.BtnBuscarEspecialidaRRP.Size = new System.Drawing.Size(307, 62);
+            this.BtnBuscarEspecialidaRRP.TabIndex = 18;
+            this.BtnBuscarEspecialidaRRP.Text = "Buscar";
+            this.BtnBuscarEspecialidaRRP.UseVisualStyleBackColor = false;
+            this.BtnBuscarEspecialidaRRP.Click += new System.EventHandler(this.BtnBuscarEspecialidaRRP_Click);
+            // 
+            // TxtBuscarRRP
+            // 
+            this.TxtBuscarRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBuscarRRP.Location = new System.Drawing.Point(107, 50);
+            this.TxtBuscarRRP.Name = "TxtBuscarRRP";
+            this.TxtBuscarRRP.Size = new System.Drawing.Size(243, 27);
+            this.TxtBuscarRRP.TabIndex = 8;
+            this.TxtBuscarRRP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtBuscarRRP_KeyDown);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(6, 52);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(90, 26);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Buscar:";
+            // 
             // EspecialidadesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cyan;
-            this.ClientSize = new System.Drawing.Size(1321, 709);
+            this.ClientSize = new System.Drawing.Size(1321, 554);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.DgvEspcialidadesRRP);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnActualizar);
@@ -230,6 +281,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvEspcialidadesRRP)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -251,5 +304,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idEspecialidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreEs;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescipcionEs;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button BtnBuscarEspecialidaRRP;
+        private System.Windows.Forms.TextBox TxtBuscarRRP;
+        private System.Windows.Forms.Label label16;
     }
 }

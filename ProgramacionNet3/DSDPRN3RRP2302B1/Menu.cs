@@ -19,20 +19,26 @@ namespace DSDPRN3RRP2302B1
 
         private void BtnPacientesRRP_Click(object sender, EventArgs e)
         {
-            PacientesForm pacientesForm = new PacientesForm();
-            pacientesForm.ShowDialog();
+            PacientesForm pacientesFormRRP = new PacientesForm();
+            pacientesFormRRP.ShowDialog();
         }
 
         private void BtnDoctoresRRP_Click(object sender, EventArgs e)
         {
-            MedicoForm doctoresForm = new MedicoForm();
-            doctoresForm.ShowDialog();
+            MedicoForm doctoresFormRRP = new MedicoForm();
+            doctoresFormRRP.ShowDialog();
         }
 
         private void BtnEspecialidadesRRP_Click(object sender, EventArgs e)
         {
-            EspecialidadesForm especialidadesForm = new EspecialidadesForm();
-            especialidadesForm.ShowDialog();
+            EspecialidadesForm especialidadesFormRRP = new EspecialidadesForm();
+            especialidadesFormRRP.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ImportarTxt importarTxtRRP = new ImportarTxt();
+            importarTxtRRP.ShowDialog();
         }
     }
 }

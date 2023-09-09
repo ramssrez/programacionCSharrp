@@ -1,0 +1,9 @@
+Nombre,ApellidoPaterno,ApellidoMaterno,Cedula,idEspecialidades
+Juan,Pérez,López,12345,5
+María,Lopéz,Ramos,67890,2
+Raúl,Ramírez,Pérez,85964,1
+Julia,Mercado,Jimenez,12347,1
+Pedro,Montiel,Blanco,67890,6
+Karla,Montiel,Ramos,68890,2
+Ofelia,Cruz,Cruz,58964,4
+Jesus,Juarez,Sanchez,345675656,4

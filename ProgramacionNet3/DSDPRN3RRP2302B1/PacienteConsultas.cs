@@ -20,23 +20,15 @@ namespace DSDPRN3RRP2302B1
 
        public List<Paciente> GetPacientes(string filtro)
         {
-            string QueryRRP = SentenciaSQL.SQL_OBTENER_PACIENTES_RRP;
+            string QueryRRP = SentenciaSQLAndStrings.SQL_OBTENER_PACIENTES_RRP;
             MySqlDataReader readerRRP = null;
             try
             {
                 if (filtro != "")
                 {
-                    /*
-                     *                 if (filtro != "")
-                {
-                    QueryRRP = "";
-                    string s = $" WHERE idMedicos LIKE '%{filtro}%' OR tbmedicosrrp.Nombre LIKE '%{filtro}%' OR tbmedicosrrp.ApellidoPaterno LIKE '%{filtro}%' OR tbmedicosrrp.ApellidoMaterno LIKE '%{filtro}%' ORDER By tbmedicosrrp.idMedicos ASC;";
-                    QueryRRP=SentenciaSQL.SQL_OBTENER_MEDICO_FILTTRO_RRP+s;
-                }
-                     * */
                     QueryRRP = "";
                     string s = $" WHERE idPacientes LIKE '%{filtro}%' OR Nombre LIKE '%{filtro}%' OR ApellidoPaterno LIKE '%{filtro}%' OR ApellidoMaterno LIKE '%{filtro}%' ORDER By idPacientes ASC;";
-                    QueryRRP = SentenciaSQL.SQL_OBTENER_PACIENTES_FILTRO_RRP+s;
+                    QueryRRP = SentenciaSQLAndStrings.SQL_OBTENER_PACIENTES_FILTRO_RRP+s;
                 }
                 MySqlCommand commandRRP = new MySqlCommand(QueryRRP);
                 commandRRP.Connection = ConexionMysqlRRP.GetConexionMySQL();
