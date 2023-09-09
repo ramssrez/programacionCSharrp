@@ -14,7 +14,7 @@ namespace DSDPRN3RRP2302B1
         public const string SQL_OBTENER_MEDICO_FILTTRO_RRP = "SELECT tbmedicosrrp.idMedicos as Id, tbmedicosrrp.Nombre as Nombre, tbmedicosrrp.ApellidoPaterno as 'Apellido Paterno',tbmedicosrrp.ApellidoMaterno as 'Apellido Materno', tbmedicosrrp.Cedula,tbespecialidadesrrp.Nombre as Especialidad FROM tbmedicosrrp inner join tbespecialidadesrrp on tbmedicosrrp.idEspecialidades = tbespecialidadesrrp.idEspecialidades";
         public const string SQL_OBTENER_ESPECIALIDADES_RRP = "SELECT idEspecialidades, Nombre, Descripcion FROM tbespecialidadesrrp";
         public const string PatronDireccionRRP = @"^[0-9A-Za-z#,\s]+$";
-        public const string PatronEspecialidaRRP = @"^[0-9A-Za-z,\s]+$";
+        public const string PatronEspecialidaRRP = @"^[\p{L}\p{M},\d\s]+|ñ$";
         public const string PatronDatosRRP = @"^[\p{L}\p{M}]+$";
         public const string PatronEmailRRP = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
     }
