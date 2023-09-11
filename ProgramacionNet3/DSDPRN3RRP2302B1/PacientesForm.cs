@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DSDPRN3RRP2302B1
 {
@@ -66,82 +67,179 @@ namespace DSDPRN3RRP2302B1
         //Método que permite verificar diferentes tipos de datos, si es de un tipo o si esta vacío.
         private bool DatosCorrecto()
         {
+            int caracterUno = 3;
+            int caracterDos = 100;
+            int caracterTres = 5;
+            //Validaciones para el campo de nombre
             if (TxtNombreCRRP.Text.Trim().Equals(""))
             {
-                MessageBox.Show("Ingrese el nombre");
+                TxtNombreCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.INGRESO_NOMBRE);
+                TxtNombreCRRP.Focus();
                 return false;
             }
-            if (TxtApellidoPaternoCRRP.Text.Trim().Equals(""))
+            if (!(TxtNombreCRRP.Text.Length >= caracterUno && TxtNombreCRRP.Text.Length <= caracterDos))
             {
-                MessageBox.Show("Ingrese el apellido paterno");
-                return false;
-            }
-            if (TxtApellidoMaternoCRRP.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Ingrese el apellido materno");
-                return false;
-            }
-            if (TxtTelefonoCelularCRRP.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Ingrese el telefono fijo");
-                return false;
-            }
-            if (TxtTelefonoCelularCRRP.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Ingrese el telefono celular");
-                return false;
-            }
-            if (TxtEmailCRRP.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Ingrese el email");
-                return false;
-            }
-            if (TxtDireccionCRRP.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Ingrese la calle");
-                return false;
-            }
-            if (!int.TryParse(TxtEdadCRRP.Text.Trim(),out int edad))
-            {
-                MessageBox.Show("Ingrese una edad correcta");
-                return false;
-            }
-            if (CbxEdoCivilRRP.SelectedIndex<0)
-            {
-                MessageBox.Show("Seleccione el estado civil");
-                return false;
-            }
-            
-            if (!Regex.IsMatch(TxtEmailCRRP.Text.Trim(),SentenciaSQLAndStrings.PatronEmailRRP))
-            {
-                TxtEmailCRRP.BackColor = Color.Red;
-                MessageBox.Show("Ingrese el correo en formato correcto");
+                TxtNombreCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.RangoOpciones(caracterUno, caracterDos));
+                TxtNombreCRRP.Focus();
+
                 return false;
             }
             if (!Regex.IsMatch(TxtNombreCRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDatosRRP))
             {
-                TxtNombreCRRP.BackColor = Color.Red;
-                MessageBox.Show("No se permiten caracteres especiales");
+                TxtNombreCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.NO_CARACTERES_ESPECIALES);
+                TxtNombreCRRP.Focus();
+                return false;
+            }
+
+            //Validaciones para el campo de apellido paterno
+            if (TxtApellidoPaternoCRRP.Text.Trim().Equals(""))
+            {
+                TxtApellidoPaternoCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.INGRESO_APELLIDO_PATERNO);
+                TxtApellidoPaternoCRRP.Focus();
+                return false;
+            }
+            if (!(TxtApellidoPaternoCRRP.Text.Length >= caracterUno && TxtApellidoPaternoCRRP.Text.Length <= caracterDos))
+            {
+                TxtApellidoPaternoCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.RangoOpciones(caracterUno, caracterDos));
+                TxtApellidoPaternoCRRP.Focus();
                 return false;
             }
             if (!Regex.IsMatch(TxtApellidoPaternoCRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDatosRRP))
             {
-                TxtApellidoPaternoCRRP.BackColor = Color.Red;
-                MessageBox.Show("No se permiten caracteres especiales");
+                TxtApellidoPaternoCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.NO_CARACTERES_ESPECIALES);
+                TxtApellidoPaternoCRRP.Focus();
+                return false;
+            }
+
+            //Validaciones para el campo de apellido materno
+            if (TxtApellidoMaternoCRRP.Text.Trim().Equals(""))
+            {
+                TxtApellidoMaternoCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.INGRESO_APELLIDO_MATERNO);
+                TxtApellidoMaternoCRRP.Focus();
+                return false;
+            }
+            if (!(TxtApellidoMaternoCRRP.Text.Length >= caracterUno && TxtApellidoMaternoCRRP.Text.Length <= caracterDos))
+            {
+                TxtApellidoMaternoCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.RangoOpciones(caracterUno, caracterDos));
+                TxtApellidoMaternoCRRP.Focus();
                 return false;
             }
             if (!Regex.IsMatch(TxtApellidoMaternoCRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDatosRRP))
             {
-                TxtApellidoMaternoCRRP.BackColor = Color.Red;
-                MessageBox.Show("No se permiten caracteres especiales");
+                TxtApellidoMaternoCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.NO_CARACTERES_ESPECIALES);
+                TxtApellidoMaternoCRRP.Focus();
+                return false;
+            }
+
+            //Validaciones para el campo de edad
+            if (!int.TryParse(TxtEdadCRRP.Text.Trim(), out int edad))
+            {
+                TxtEdadCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.INGRESO_EDAD);
+                TxtEdadCRRP.Focus();
+                return false;
+            }
+            if (!(TxtEdadCRRP.Text.Length >= 1 && TxtEdadCRRP.Text.Length <= 2))
+            {
+                TxtEdadCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.RangoOpciones(1, 2));
+                TxtEdadCRRP.Focus();
+                return false;
+            }
+
+            //Validaciones para el campo de dirección
+            if (TxtDireccionCRRP.Text.Trim().Equals(""))
+            {
+                TxtDireccionCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.INGRESO_DIRECCION);
+                TxtDireccionCRRP.Focus();
+                return false;
+            }
+            if (!(TxtDireccionCRRP.Text.Length >= caracterTres && TxtDireccionCRRP.Text.Length <= caracterDos))
+            {
+                TxtDireccionCRRP.BackColor= Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.RangoOpciones(caracterTres, caracterDos));
+                TxtDireccionCRRP.Focus();
                 return false;
             }
             if (!Regex.IsMatch(TxtDireccionCRRP.Text.Trim(), SentenciaSQLAndStrings.PatronDireccionRRP))
             {
-                TxtDireccionCRRP.BackColor = Color.Red;
-                MessageBox.Show("No se permiten caracteres especiales");
+                TxtDireccionCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.NO_CARACTERES_ESPECIALES);
+                TxtDireccionCRRP.Focus();
                 return false;
             }
+
+            //Validación para el campo de telefono celular
+            if (TxtTelefonoCelularCRRP.Text.Trim().Equals(""))
+            {
+                TxtTelefonoCelularCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.INGRESO_CELULAR);
+                TxtTelefonoCelularCRRP.Focus();
+                return false;
+            }
+            if (!(TxtTelefonoCelularCRRP.Text.Length == 10))
+            {
+                TxtTelefonoCelularCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.NO_SIZE_PHONE);
+                TxtTelefonoCelularCRRP.Focus();
+                return false;
+            }
+
+            //Validación para el campo de telefono fijo
+            if (TxtTelefonoFijoCRRP.Text.Trim().Equals(""))
+            {
+                TxtTelefonoFijoCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.INGRESO_TELEFONO_FIJO);
+                TxtTelefonoFijoCRRP.Focus();
+                return false;
+            }
+            if (!(TxtTelefonoFijoCRRP.Text.Length == 10))
+            {
+                TxtTelefonoFijoCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.NO_SIZE_PHONE);
+                TxtTelefonoFijoCRRP.Focus();
+                return false;
+            }
+
+            //Validación para el campo de email
+            if (TxtEmailCRRP.Text.Trim().Equals(""))
+            {
+                TxtEmailCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.INGRESO_EMAIL);
+                TxtEmailCRRP.Focus();
+                return false;
+            }
+            if (!(TxtEmailCRRP.Text.Length >= 6 && TxtDireccionCRRP.Text.Length <= 50))
+            {
+                TxtEmailCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.RangoOpciones(6, 50));
+                TxtEmailCRRP.Focus();
+                return false;
+            }
+            if (!Regex.IsMatch(TxtEmailCRRP.Text.Trim(), SentenciaSQLAndStrings.PatronEmailRRP))
+            {
+                TxtEmailCRRP.BackColor = Color.Gold;
+                MessageBox.Show(SentenciaSQLAndStrings.INGRESO_EMAIL_FORMATO_CORRECTO);
+                TxtEmailCRRP.Focus();
+                return false;
+            }
+            //Validación para el estado civil
+            if (CbxEdoCivilRRP.SelectedIndex<0)
+            {
+                MessageBox.Show(SentenciaSQLAndStrings.INGRESO_ESTADO_CIVIL);
+                CbxEdoCivilRRP.Focus();
+                return false;
+            }   
             return true;
         }
         //Método que permite regresar al menú principal del proyecto.
@@ -189,6 +287,9 @@ namespace DSDPRN3RRP2302B1
             TxtNombreCRRP.BackColor = Color.White;
             TxtApellidoPaternoCRRP.BackColor = Color.White;
             TxtApellidoMaternoCRRP.BackColor = Color.White;
+            TxtEdadCRRP.BackColor = Color.White;
+            TxtTelefonoCelularCRRP.BackColor = Color.White;
+            TxtTelefonoFijoCRRP.BackColor=Color.White;
         }
         //Método que permite crear un objeto de tipo Paciente
         private void CargarPaciente()
