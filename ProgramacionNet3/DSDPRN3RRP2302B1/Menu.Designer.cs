@@ -32,7 +32,7 @@
             this.BtnDoctoresRRP = new System.Windows.Forms.Button();
             this.BtnEspecialidadesRRP = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnExportarTxtRRP = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnPacientesRRP
@@ -84,18 +84,18 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Seleccióna una opcion";
             // 
-            // button1
+            // BtnExportarTxtRRP
             // 
-            this.button1.BackColor = System.Drawing.Color.Crimson;
-            this.button1.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Snow;
-            this.button1.Location = new System.Drawing.Point(158, 418);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(491, 71);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Exportar TXT";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BtnExportarTxtRRP.BackColor = System.Drawing.Color.Crimson;
+            this.BtnExportarTxtRRP.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnExportarTxtRRP.ForeColor = System.Drawing.Color.Snow;
+            this.BtnExportarTxtRRP.Location = new System.Drawing.Point(158, 418);
+            this.BtnExportarTxtRRP.Name = "BtnExportarTxtRRP";
+            this.BtnExportarTxtRRP.Size = new System.Drawing.Size(491, 71);
+            this.BtnExportarTxtRRP.TabIndex = 5;
+            this.BtnExportarTxtRRP.Text = "Exportar TXT";
+            this.BtnExportarTxtRRP.UseVisualStyleBackColor = false;
+            this.BtnExportarTxtRRP.Click += new System.EventHandler(this.BtnExportarTxtRRP_Click);
             // 
             // Menu
             // 
@@ -103,7 +103,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumOrchid;
             this.ClientSize = new System.Drawing.Size(800, 566);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnExportarTxtRRP);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnEspecialidadesRRP);
             this.Controls.Add(this.BtnDoctoresRRP);
@@ -121,6 +121,6 @@
         private System.Windows.Forms.Button BtnDoctoresRRP;
         private System.Windows.Forms.Button BtnEspecialidadesRRP;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnExportarTxtRRP;
     }
 }

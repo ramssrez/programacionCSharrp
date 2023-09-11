@@ -12,11 +12,14 @@ using System.Windows.Forms;
 
 namespace DSDPRN3RRP2302B1
 {
+    //Clase para crear un form de medicos
     public partial class PacientesForm : Form
     {
+        //Variables para poder realizar la conexión y la consulta de tabla de médicos
         private List<Paciente> ListPacientesRRP;
         private PacienteConsultas PacienteConsultasRRP;
         private Paciente PacienteRRP;
+        //Constructor del form de pacientes.
         public PacientesForm()
         {
             InitializeComponent();
@@ -25,7 +28,7 @@ namespace DSDPRN3RRP2302B1
             PacienteRRP = new Paciente();
             CargarDatosPacientes();
         }
-
+        //Método que permite cargar los pacientes en un DataGridView.
         private void CargarDatosPacientes(string filtro = "")
         {
             DgvPacientesRRP.Rows.Clear();
@@ -50,6 +53,7 @@ namespace DSDPRN3RRP2302B1
                     );
             }
         }
+        //Método que permite buscar un médico por medio de un texto y que sea por medio de un click en el boton
         private void btnBuscarRRP_Click(object sender, EventArgs e)
         {
             CargarDatosPacientes(TxtBuscarRRP.Text.Trim());
@@ -59,6 +63,7 @@ namespace DSDPRN3RRP2302B1
                 MessageBox.Show("No se han encontrado datos");
             }
         }
+        //Método que permite verificar diferentes tipos de datos, si es de un tipo o si esta vacío.
         private bool DatosCorrecto()
         {
             if (TxtNombreCRRP.Text.Trim().Equals(""))
@@ -139,7 +144,7 @@ namespace DSDPRN3RRP2302B1
             }
             return true;
         }
-
+        //Método que permite regresar al menú principal del proyecto.
         private void BtnRegresarRRP_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea volver al menú principal?", "Regresar al menú", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -147,7 +152,7 @@ namespace DSDPRN3RRP2302B1
                 Close();
             }
         }
-
+        //Método que permite realizar el guardado de los datos al momento de realizar click.
         private void BtnGuardarRRP_Click(object sender, EventArgs e)
         {
             if (!DatosCorrecto())
@@ -163,7 +168,7 @@ namespace DSDPRN3RRP2302B1
                 BackColorTextInput();
             }
         }
-
+        //Método que permite limpiar lo que contenga en las cajas de texto.
         private void LimpiarCampos()
         {
             TxtNombreCRRP.Text = "";
@@ -176,6 +181,7 @@ namespace DSDPRN3RRP2302B1
             TxtEdadCRRP.Text = "";
             TxtIdRRP.Text = "";
         }
+         //Método que permite cambiar el color de los cajas de texto.
         private void BackColorTextInput() 
         {
             TxtEmailCRRP.BackColor = Color.White;
@@ -184,7 +190,7 @@ namespace DSDPRN3RRP2302B1
             TxtApellidoPaternoCRRP.BackColor = Color.White;
             TxtApellidoMaternoCRRP.BackColor = Color.White;
         }
-
+        //Método que permite crear un objeto de tipo Paciente
         private void CargarPaciente()
         {
             char sexoRRP =' ';
@@ -208,7 +214,7 @@ namespace DSDPRN3RRP2302B1
             PacienteRRP.EmailRRP = TxtEmailCRRP.Text.Trim();
             PacienteRRP.EstadoCivilRRP = CbxEdoCivilRRP.SelectedIndex+1;
         }
-
+        //Método que permite obtener el id del paciente de una caja de texto.
         private int GetIdPaciente()
         {
             int numberRRP = -1;
@@ -221,7 +227,7 @@ namespace DSDPRN3RRP2302B1
             }
             return numberRRP;
         }
-
+        //Método que permite seleccionar una opción de la DataGridView y los datos obtenidos agregarlos a los caja de texto.
         private void DgvPacientesRRP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow filaRRP = DgvPacientesRRP.Rows[e.RowIndex];
@@ -235,7 +241,7 @@ namespace DSDPRN3RRP2302B1
             TxtEmailCRRP.Text = Convert.ToString(filaRRP.Cells["Email"].Value);
             TxtDireccionCRRP.Text = Convert.ToString(filaRRP.Cells["Direccion"].Value);
         }
-
+        //Método que permite actualizar un registro de la tabla pacientes.
         private void BtnActualizar_Click(object sender, EventArgs e)
         {
             if (TxtIdRRP.Text.Trim().Equals(""))
@@ -256,7 +262,7 @@ namespace DSDPRN3RRP2302B1
                 BackColorTextInput();
             }
         }
-
+        //Método que permite eliminar un registro de la tabla pacientes.
         private void BtnEliminarRRP_Click(object sender, EventArgs e)
         {
             if (GetIdPaciente() == -1)
@@ -276,7 +282,7 @@ namespace DSDPRN3RRP2302B1
                 }
             }
         }
-
+        //Método que permite realizar la busqueda, pero con un enter en el textBox
         private void TxtBuscarRRP_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -289,7 +295,7 @@ namespace DSDPRN3RRP2302B1
                 }
             }
         }
-
+        //Método que no permites el ingreso caracteres a cajas de texto donde solo se necesite números
         private void TxtTelefonoCelularCRRP_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -297,7 +303,7 @@ namespace DSDPRN3RRP2302B1
                 e.Handled = true;
             }
         }
-
+        //Método que no permites el ingreso caracteres a cajas de texto donde solo se necesite números
         private void TxtTelefonoFijoCRRP_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -305,7 +311,7 @@ namespace DSDPRN3RRP2302B1
                 e.Handled = true;
             }
         }
-
+        //Método que no permites el ingreso caracteres a cajas de texto donde solo se necesite números
         private void TxtEdadCRRP_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))

@@ -10,32 +10,34 @@ using System.Windows.Forms;
 
 namespace DSDPRN3RRP2302B1
 {
+    //Clase para crear un form del menu
     public partial class Menu : Form
     {
+        //Constructor del form del menu.
         public Menu()
         {
             InitializeComponent();
         }
-
+        //Método que permite abrir el form de pacientes
         private void BtnPacientesRRP_Click(object sender, EventArgs e)
         {
             PacientesForm pacientesFormRRP = new PacientesForm();
             pacientesFormRRP.ShowDialog();
         }
-
+        //Método que permite abrir el form de doctores
         private void BtnDoctoresRRP_Click(object sender, EventArgs e)
         {
             MedicoForm doctoresFormRRP = new MedicoForm();
             doctoresFormRRP.ShowDialog();
         }
-
+        //Método que permites abrir el form de especialidades
         private void BtnEspecialidadesRRP_Click(object sender, EventArgs e)
         {
             EspecialidadesForm especialidadesFormRRP = new EspecialidadesForm();
             especialidadesFormRRP.ShowDialog();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        //Método que permite abri el form de la importación txt 
+         private void BtnExportarTxtRRP_Click(object sender, EventArgs e)
         {
             ImportarTxt importarTxtRRP = new ImportarTxt();
             importarTxtRRP.ShowDialog();
