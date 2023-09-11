@@ -5,17 +5,19 @@ using System.Windows.Forms;
 
 namespace DSDPRN3RRP2302B1
 {
+        //Clase que permite realizar las diferentes consultas a las tabla de medicos
     internal class MedicoConsultas
     {
-
+        //Atributos de la clase
         private ConexionMysql ConexionMysqlRRP;
         private List<Medico> ListMedicoRRP;
+        //Instancia de las clases para poder realizar la conexión para la base de datos
         public MedicoConsultas() 
         {
             ConexionMysqlRRP = new ConexionMysql();
             ListMedicoRRP = new List<Medico>();
         }
-
+        //Método que permite obtener la lista de los médicos
         public List<Medico> GetMedicos(string filtro)
         {
             string QueryRRP = SentenciaSQLAndStrings.SQL_OBTENER_MEDICO_RRP;
@@ -57,7 +59,7 @@ namespace DSDPRN3RRP2302B1
             }
             return ListMedicoRRP;      
         }
-
+        //Método que permite agregar medicos a la base de datos
         internal bool AgregarMedico(Medico medicoRRP)
         {
             bool BanderaRRP = false;
@@ -82,7 +84,7 @@ namespace DSDPRN3RRP2302B1
             }
             return BanderaRRP;
         }
-
+        //Método que permite eliminar un registro de la tabla de medicos
         internal bool EliminarMedico(Medico medicoRRP)
         {
             bool BanderaRRP = false;
@@ -104,7 +106,7 @@ namespace DSDPRN3RRP2302B1
             return BanderaRRP;
 
         }
-
+        //Método que permite modificar un registro de la tabla de médicos en base de su id
         internal bool ModificarMedico(Medico medicoRRP)
         {
             bool BanderaRRP = false;

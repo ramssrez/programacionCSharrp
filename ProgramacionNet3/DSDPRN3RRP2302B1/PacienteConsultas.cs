@@ -8,16 +8,19 @@ using System.Windows.Forms;
 
 namespace DSDPRN3RRP2302B1
 {
+    //Clase que permite realizar las diferentes consultas a las tabla de pacientes
     internal class PacienteConsultas
     {
+        //Atributos de la clase
         private ConexionMysql ConexionMysqlRRP;
         private List<Paciente> ListPacientesRRP;
+        //Instancia de las clases para poder realizar la conexión para la base de datos
         public PacienteConsultas()
         {
             ConexionMysqlRRP = new ConexionMysql();
             ListPacientesRRP = new List<Paciente>();
         }
-
+        //Método que permite obtener la lista de pacientes
        public List<Paciente> GetPacientes(string filtro)
         {
             string QueryRRP = SentenciaSQLAndStrings.SQL_OBTENER_PACIENTES_RRP;
@@ -62,7 +65,7 @@ namespace DSDPRN3RRP2302B1
             }
             return ListPacientesRRP;
         }
-
+        //Método que permite agregar pacientes a la base de datos
         internal bool AgregarPaciente(Paciente pacienteRRP)
         {
             bool BanderaRRP = false;
@@ -93,7 +96,7 @@ namespace DSDPRN3RRP2302B1
             }
             return BanderaRRP;
         }
-
+        //Método que permite eliminar un registro de la tabla de pacientes
         internal bool EliminarPaciente(Paciente pacienteRRP)
         {
             bool BanderaRRP = false;
@@ -114,7 +117,7 @@ namespace DSDPRN3RRP2302B1
             }
             return BanderaRRP;
         }
-
+        //Método que permite modificar un registro de la tabla de pacientes, en base de su id
         internal bool ModificarPaciente(Paciente pacienteRRP)
         {
             bool BanderaRRP = false;

@@ -5,19 +5,24 @@ using System.Windows.Forms;
 
 namespace DSDPRN3RRP2302B1
 {
+    //Clase que permite realizar las diferentes consultas a las tabla de especialidades
     internal class EspecialidadesConsultas
     {
+        //Atributos de la clase
         private ConexionMysql ConexionMysqlRRP;
         private List<Especialidad> ListEspecialidaRRP;
+        //Instancia de las clases para poder realizar la conexión para la base de datos
         public EspecialidadesConsultas()
         {
             ConexionMysqlRRP = new ConexionMysql();
             ListEspecialidaRRP = new List<Especialidad>();
         }
+        //Método que permite obtener la lista de las especialidades 
         public List<Especialidad> GetEspecialidades(string filtro)
         {
             string QueryRRP = SentenciaSQLAndStrings.SQL_OBTENER_ESPECIALIDADES_RRP;
             MySqlDataReader readerRRP = null;
+            //try/cathc para poder realizar la consulta de las especialidades
             try
             {
                 if (filtro != "")
@@ -49,7 +54,7 @@ namespace DSDPRN3RRP2302B1
             }
             return ListEspecialidaRRP;
         }
-
+        //Método que permite agregar especialidades a la base de datos
         internal bool AgregarEspecialidad(Especialidad especialidadRRP)
         {
             bool BanderaRRP = false;
@@ -72,7 +77,7 @@ namespace DSDPRN3RRP2302B1
             }
             return BanderaRRP;
         }
-
+        //Método que permite eliminar un registro de la tabla de especilidades 
         internal bool EliminarEspecialidad(Especialidad especialidadRRP)
         {
             bool BanderaRRP = false;
@@ -94,7 +99,7 @@ namespace DSDPRN3RRP2302B1
             return BanderaRRP;
             throw new NotImplementedException();
         }
-
+        //Método que permite modificar un registro de la tabla de especilidad, en base de su id
         internal bool ModificarEspecialidad(Especialidad especialidadRRP)
         {
             bool BanderaRRP = false;
