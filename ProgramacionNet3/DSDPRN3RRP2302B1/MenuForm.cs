@@ -11,10 +11,10 @@ using System.Windows.Forms;
 namespace DSDPRN3RRP2302B1
 {
     //Clase para crear un form del menu
-    public partial class Menu : Form
+    public partial class MenuForm : Form
     {
         //Constructor del form del menu.
-        public Menu()
+        public MenuForm()
         {
             InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace DSDPRN3RRP2302B1
         //Método que permite abri el form de la importación txt 
          private void BtnExportarTxtRRP_Click(object sender, EventArgs e)
         {
-            ImportarTxt importarTxtRRP = new ImportarTxt();
+            ImportarTxtForm importarTxtRRP = new ImportarTxtForm();
             importarTxtRRP.ShowDialog();
         }
     }

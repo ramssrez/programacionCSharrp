@@ -101,11 +101,11 @@
     <Compile Include="ConexionMysql.cs" />
     <Compile Include="Especialidad.cs" />
     <Compile Include="EspecialidadesConsultas.cs" />
-    <Compile Include="ImportarTxt.cs">
+    <Compile Include="ImportarTxtForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImportarTxt.Designer.cs">
-      <DependentUpon>ImportarTxt.cs</DependentUpon>
+    <Compile Include="ImportarTxtForm.Designer.cs">
+      <DependentUpon>ImportarTxtForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LeerTxt.cs" />
     <Compile Include="Medico.cs" />
@@ -122,11 +122,11 @@
     <Compile Include="EspecialidadesForm.Designer.cs">
       <DependentUpon>EspecialidadesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Paciente.cs" />
     <Compile Include="PacienteConsultas.cs" />
@@ -142,14 +142,14 @@
     <EmbeddedResource Include="EspecialidadesForm.resx">
       <DependentUpon>EspecialidadesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImportarTxt.resx">
-      <DependentUpon>ImportarTxt.cs</DependentUpon>
+    <EmbeddedResource Include="ImportarTxtForm.resx">
+      <DependentUpon>ImportarTxtForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedicoForm.resx">
       <DependentUpon>MedicoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PacientesForm.resx">
       <DependentUpon>PacientesForm.cs</DependentUpon>

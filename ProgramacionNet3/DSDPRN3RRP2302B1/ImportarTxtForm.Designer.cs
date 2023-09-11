@@ -1,6 +1,6 @@
 ﻿namespace DSDPRN3RRP2302B1
 {
-    partial class ImportarTxt
+    partial class ImportarTxtForm
     {
         /// <summary>
         /// Required designer variable.

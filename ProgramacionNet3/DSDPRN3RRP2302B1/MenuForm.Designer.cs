@@ -1,6 +1,6 @@
 ﻿namespace DSDPRN3RRP2302B1
 {
-    partial class Menu
+    partial class MenuForm
     {
         /// <summary>
         /// Required designer variable.

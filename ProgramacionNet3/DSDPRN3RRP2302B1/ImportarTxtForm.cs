@@ -11,13 +11,13 @@ using System.Windows.Forms;
 namespace DSDPRN3RRP2302B1
 {
     //Clase para crear un form para importar un txt
-    public partial class ImportarTxt : Form
+    public partial class ImportarTxtForm : Form
     {
         //Variables para realizar las actividades necesarias para el form
         private LeerTxt LeerTxtRRP;
         public string ArchivoRRP = "";
         //Constructor del form de importar txt.
-        public ImportarTxt()
+        public ImportarTxtForm()
         {
             InitializeComponent();
             LeerTxtRRP = new LeerTxt();
