@@ -42,5 +42,11 @@ namespace DSDPRN3RRP2302B1
             ImportarTxtForm importarTxtRRP = new ImportarTxtForm();
             importarTxtRRP.ShowDialog();
         }
+
+        private void BtnAsignarDoctor_Click(object sender, EventArgs e)
+        {
+            AsignarDoctorForm asignarDoctorFormRRP  = new AsignarDoctorForm();
+            asignarDoctorFormRRP.ShowDialog();
+        }
     }
 }

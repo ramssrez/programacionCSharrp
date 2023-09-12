@@ -33,6 +33,7 @@
             this.BtnEspecialidadesRRP = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnExportarTxtRRP = new System.Windows.Forms.Button();
+            this.BtnAsignarDoctor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnPacientesRRP
@@ -53,7 +54,7 @@
             this.BtnDoctoresRRP.BackColor = System.Drawing.SystemColors.Highlight;
             this.BtnDoctoresRRP.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDoctoresRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnDoctoresRRP.Location = new System.Drawing.Point(158, 214);
+            this.BtnDoctoresRRP.Location = new System.Drawing.Point(158, 314);
             this.BtnDoctoresRRP.Name = "BtnDoctoresRRP";
             this.BtnDoctoresRRP.Size = new System.Drawing.Size(491, 71);
             this.BtnDoctoresRRP.TabIndex = 2;
@@ -66,7 +67,7 @@
             this.BtnEspecialidadesRRP.BackColor = System.Drawing.Color.Tan;
             this.BtnEspecialidadesRRP.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEspecialidadesRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnEspecialidadesRRP.Location = new System.Drawing.Point(158, 316);
+            this.BtnEspecialidadesRRP.Location = new System.Drawing.Point(158, 405);
             this.BtnEspecialidadesRRP.Name = "BtnEspecialidadesRRP";
             this.BtnEspecialidadesRRP.Size = new System.Drawing.Size(491, 71);
             this.BtnEspecialidadesRRP.TabIndex = 3;
@@ -89,7 +90,7 @@
             this.BtnExportarTxtRRP.BackColor = System.Drawing.Color.Crimson;
             this.BtnExportarTxtRRP.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnExportarTxtRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnExportarTxtRRP.Location = new System.Drawing.Point(158, 418);
+            this.BtnExportarTxtRRP.Location = new System.Drawing.Point(158, 492);
             this.BtnExportarTxtRRP.Name = "BtnExportarTxtRRP";
             this.BtnExportarTxtRRP.Size = new System.Drawing.Size(491, 71);
             this.BtnExportarTxtRRP.TabIndex = 5;
@@ -97,18 +98,32 @@
             this.BtnExportarTxtRRP.UseVisualStyleBackColor = false;
             this.BtnExportarTxtRRP.Click += new System.EventHandler(this.BtnExportarTxtRRP_Click);
             // 
-            // Menu
+            // BtnAsignarDoctor
+            // 
+            this.BtnAsignarDoctor.BackColor = System.Drawing.Color.YellowGreen;
+            this.BtnAsignarDoctor.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAsignarDoctor.ForeColor = System.Drawing.Color.Snow;
+            this.BtnAsignarDoctor.Location = new System.Drawing.Point(158, 207);
+            this.BtnAsignarDoctor.Name = "BtnAsignarDoctor";
+            this.BtnAsignarDoctor.Size = new System.Drawing.Size(491, 71);
+            this.BtnAsignarDoctor.TabIndex = 6;
+            this.BtnAsignarDoctor.Text = "Asignar doctores";
+            this.BtnAsignarDoctor.UseVisualStyleBackColor = false;
+            this.BtnAsignarDoctor.Click += new System.EventHandler(this.BtnAsignarDoctor_Click);
+            // 
+            // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumOrchid;
-            this.ClientSize = new System.Drawing.Size(800, 566);
+            this.ClientSize = new System.Drawing.Size(800, 656);
+            this.Controls.Add(this.BtnAsignarDoctor);
             this.Controls.Add(this.BtnExportarTxtRRP);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnEspecialidadesRRP);
             this.Controls.Add(this.BtnDoctoresRRP);
             this.Controls.Add(this.BtnPacientesRRP);
-            this.Name = "Menu";
+            this.Name = "MenuForm";
             this.Text = "Menu Principal";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -122,5 +137,6 @@
         private System.Windows.Forms.Button BtnEspecialidadesRRP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnExportarTxtRRP;
+        private System.Windows.Forms.Button BtnAsignarDoctor;
     }
 }
