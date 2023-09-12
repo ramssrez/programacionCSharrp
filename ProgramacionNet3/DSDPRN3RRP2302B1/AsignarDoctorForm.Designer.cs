@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgvMedicosRRP = new System.Windows.Forms.DataGridView();
             this.IdMedico = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,11 +57,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BtnAsignarRRP = new System.Windows.Forms.Button();
             this.DgvPacienteMedicoRRP = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.BtnEliminarRRP = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TxtIdPacienteMedicoRRP = new System.Windows.Forms.TextBox();
+            this.idPacienteMedico = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
+            this.BtnPacientesSinMedicoRRP = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMedicosRRP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvPacientesRRP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvPacienteMedicoRRP)).BeginInit();
@@ -79,7 +83,7 @@
             this.ApellidoMaterno,
             this.Cedula,
             this.Especialidad});
-            this.DgvMedicosRRP.Location = new System.Drawing.Point(56, 369);
+            this.DgvMedicosRRP.Location = new System.Drawing.Point(35, 369);
             this.DgvMedicosRRP.Name = "DgvMedicosRRP";
             this.DgvMedicosRRP.ReadOnly = true;
             this.DgvMedicosRRP.RowHeadersWidth = 45;
@@ -153,15 +157,15 @@
             this.Sexo,
             this.Email,
             this.EstadoCivil});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvPacientesRRP.DefaultCellStyle = dataGridViewCellStyle1;
-            this.DgvPacientesRRP.Location = new System.Drawing.Point(56, 54);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvPacientesRRP.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DgvPacientesRRP.Location = new System.Drawing.Point(35, 54);
             this.DgvPacientesRRP.Name = "DgvPacientesRRP";
             this.DgvPacientesRRP.ReadOnly = true;
             this.DgvPacientesRRP.RowHeadersWidth = 45;
@@ -263,7 +267,7 @@
             this.BtnRegresarRRP.BackColor = System.Drawing.Color.DarkViolet;
             this.BtnRegresarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnRegresarRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnRegresarRRP.Location = new System.Drawing.Point(1278, 722);
+            this.BtnRegresarRRP.Location = new System.Drawing.Point(1194, 722);
             this.BtnRegresarRRP.Name = "BtnRegresarRRP";
             this.BtnRegresarRRP.Size = new System.Drawing.Size(307, 62);
             this.BtnRegresarRRP.TabIndex = 27;
@@ -275,7 +279,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(49, 9);
+            this.label11.Location = new System.Drawing.Point(22, 9);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(180, 42);
             this.label11.TabIndex = 30;
@@ -285,7 +289,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(49, 324);
+            this.label5.Location = new System.Drawing.Point(28, 324);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(154, 42);
             this.label5.TabIndex = 31;
@@ -295,7 +299,7 @@
             // 
             this.TxtIdDoctorRRP.Enabled = false;
             this.TxtIdDoctorRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtIdDoctorRRP.Location = new System.Drawing.Point(1351, 191);
+            this.TxtIdDoctorRRP.Location = new System.Drawing.Point(1315, 122);
             this.TxtIdDoctorRRP.Name = "TxtIdDoctorRRP";
             this.TxtIdDoctorRRP.Size = new System.Drawing.Size(104, 27);
             this.TxtIdDoctorRRP.TabIndex = 33;
@@ -304,7 +308,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1346, 162);
+            this.label3.Location = new System.Drawing.Point(1310, 93);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 26);
             this.label3.TabIndex = 32;
@@ -314,7 +318,7 @@
             // 
             this.TxtIdPacienteRRP.Enabled = false;
             this.TxtIdPacienteRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtIdPacienteRRP.Location = new System.Drawing.Point(1351, 115);
+            this.TxtIdPacienteRRP.Location = new System.Drawing.Point(1315, 54);
             this.TxtIdPacienteRRP.Name = "TxtIdPacienteRRP";
             this.TxtIdPacienteRRP.Size = new System.Drawing.Size(105, 27);
             this.TxtIdPacienteRRP.TabIndex = 35;
@@ -323,7 +327,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1346, 82);
+            this.label1.Location = new System.Drawing.Point(1310, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 26);
             this.label1.TabIndex = 34;
@@ -334,7 +338,7 @@
             this.BtnAsignarRRP.BackColor = System.Drawing.Color.Lime;
             this.BtnAsignarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAsignarRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnAsignarRRP.Location = new System.Drawing.Point(70, 722);
+            this.BtnAsignarRRP.Location = new System.Drawing.Point(35, 722);
             this.BtnAsignarRRP.Name = "BtnAsignarRRP";
             this.BtnAsignarRRP.Size = new System.Drawing.Size(307, 62);
             this.BtnAsignarRRP.TabIndex = 36;
@@ -348,25 +352,68 @@
             this.DgvPacienteMedicoRRP.AllowUserToDeleteRows = false;
             this.DgvPacienteMedicoRRP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvPacienteMedicoRRP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this.idPacienteMedico,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn9});
-            this.DgvPacienteMedicoRRP.Location = new System.Drawing.Point(971, 369);
+            this.DgvPacienteMedicoRRP.Location = new System.Drawing.Point(956, 369);
             this.DgvPacienteMedicoRRP.Name = "DgvPacienteMedicoRRP";
             this.DgvPacienteMedicoRRP.ReadOnly = true;
             this.DgvPacienteMedicoRRP.RowHeadersWidth = 45;
             this.DgvPacienteMedicoRRP.RowTemplate.Height = 24;
             this.DgvPacienteMedicoRRP.Size = new System.Drawing.Size(624, 324);
             this.DgvPacienteMedicoRRP.TabIndex = 37;
+            this.DgvPacienteMedicoRRP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPacienteMedicoRRP_CellClick);
             // 
-            // dataGridViewTextBoxColumn1
+            // label2
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(949, 324);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(326, 42);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "Pacientes-Médicos";
+            // 
+            // BtnEliminarRRP
+            // 
+            this.BtnEliminarRRP.BackColor = System.Drawing.Color.Red;
+            this.BtnEliminarRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEliminarRRP.ForeColor = System.Drawing.Color.Snow;
+            this.BtnEliminarRRP.Location = new System.Drawing.Point(360, 722);
+            this.BtnEliminarRRP.Name = "BtnEliminarRRP";
+            this.BtnEliminarRRP.Size = new System.Drawing.Size(307, 62);
+            this.BtnEliminarRRP.TabIndex = 39;
+            this.BtnEliminarRRP.Text = "Eliminar";
+            this.BtnEliminarRRP.UseVisualStyleBackColor = false;
+            this.BtnEliminarRRP.Click += new System.EventHandler(this.BtnEliminarRRP_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(1310, 152);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(207, 26);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Id Paciente-Médico";
+            // 
+            // TxtIdPacienteMedicoRRP
+            // 
+            this.TxtIdPacienteMedicoRRP.Enabled = false;
+            this.TxtIdPacienteMedicoRRP.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtIdPacienteMedicoRRP.Location = new System.Drawing.Point(1315, 181);
+            this.TxtIdPacienteMedicoRRP.Name = "TxtIdPacienteMedicoRRP";
+            this.TxtIdPacienteMedicoRRP.Size = new System.Drawing.Size(104, 27);
+            this.TxtIdPacienteMedicoRRP.TabIndex = 41;
+            // 
+            // idPacienteMedico
+            // 
+            this.idPacienteMedico.HeaderText = "Id";
+            this.idPacienteMedico.MinimumWidth = 6;
+            this.idPacienteMedico.Name = "idPacienteMedico";
+            this.idPacienteMedico.ReadOnly = true;
+            this.idPacienteMedico.Width = 50;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -392,22 +439,29 @@
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 125;
             // 
-            // label2
+            // BtnPacientesSinMedicoRRP
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(973, 324);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(326, 42);
-            this.label2.TabIndex = 38;
-            this.label2.Text = "Pacientes-Médicos";
+            this.BtnPacientesSinMedicoRRP.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.BtnPacientesSinMedicoRRP.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPacientesSinMedicoRRP.ForeColor = System.Drawing.Color.Snow;
+            this.BtnPacientesSinMedicoRRP.Location = new System.Drawing.Point(673, 722);
+            this.BtnPacientesSinMedicoRRP.Name = "BtnPacientesSinMedicoRRP";
+            this.BtnPacientesSinMedicoRRP.Size = new System.Drawing.Size(505, 62);
+            this.BtnPacientesSinMedicoRRP.TabIndex = 42;
+            this.BtnPacientesSinMedicoRRP.Text = "Pacientes sin médico";
+            this.BtnPacientesSinMedicoRRP.UseVisualStyleBackColor = false;
+            this.BtnPacientesSinMedicoRRP.Click += new System.EventHandler(this.BtnPacientesSinMedicoRRP_Click);
             // 
             // AsignarDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkOrange;
-            this.ClientSize = new System.Drawing.Size(1609, 796);
+            this.ClientSize = new System.Drawing.Size(1595, 796);
+            this.Controls.Add(this.BtnPacientesSinMedicoRRP);
+            this.Controls.Add(this.TxtIdPacienteMedicoRRP);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.BtnEliminarRRP);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DgvPacienteMedicoRRP);
             this.Controls.Add(this.BtnAsignarRRP);
@@ -460,10 +514,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoCivil;
         private System.Windows.Forms.Button BtnAsignarRRP;
         private System.Windows.Forms.DataGridView DgvPacienteMedicoRRP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button BtnEliminarRRP;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox TxtIdPacienteMedicoRRP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idPacienteMedico;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button BtnPacientesSinMedicoRRP;
     }
 }

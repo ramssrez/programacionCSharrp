@@ -20,6 +20,45 @@ namespace DSDPRN3RRP2302B1
             ConexionMysqlRRP = new ConexionMysql();
             ListPacientesRRP = new List<Paciente>();
         }
+        public List<Paciente> GetPacientesWioutMedicos()
+        {
+            string QueryRRP = SentenciaSQLAndStrings.SQL_OBTENER_PACIENTES_WITHOUT_DOCTOR_RRP;
+            MySqlDataReader readerRRP = null;
+            ListPacientesRRP.Clear();
+            try
+            {
+                MySqlCommand commandRRP = new MySqlCommand(QueryRRP);
+                commandRRP.Connection = ConexionMysqlRRP.GetConexionMySQL();
+                readerRRP = commandRRP.ExecuteReader();
+                Paciente pacienteRRP = null;
+                while (readerRRP.Read())
+                {
+                    pacienteRRP = new Paciente();
+                    pacienteRRP.IdRRP = readerRRP.GetInt16("Id");
+                    pacienteRRP.NombreRRP = readerRRP.GetString("Nombre");
+                    pacienteRRP.ApellidoPaternoRRP = readerRRP.GetString("Apellido Paterno");
+                    pacienteRRP.ApellidoMaternoRRP = readerRRP.GetString("Apellido Materno");
+                    pacienteRRP.DireccionRRP = readerRRP.GetString("Direccion");
+                    pacienteRRP.CelularRRP = readerRRP.GetString("Celular");
+                    pacienteRRP.TelefonoFijoRRP = readerRRP.GetString("Telefono Fijo");
+                    pacienteRRP.EmailRRP = readerRRP.GetString("Email");
+                    pacienteRRP.EdadRRP = readerRRP.GetInt16("Edad");
+                    pacienteRRP.SexoRRP = readerRRP.GetChar("Sexo");
+                    pacienteRRP.EstadoCivilStringRRP = readerRRP.GetString("Estado Civil");
+                    ListPacientesRRP.Add(pacienteRRP);
+                }
+                readerRRP.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error al obtener pacientes: {ex.Message}");
+            }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return ListPacientesRRP;
+        }
         //Método que permite obtener la lista de pacientes
        public List<Paciente> GetPacientes(string filtro)
         {

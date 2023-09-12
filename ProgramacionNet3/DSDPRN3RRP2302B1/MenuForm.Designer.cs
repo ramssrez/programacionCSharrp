@@ -54,7 +54,7 @@
             this.BtnDoctoresRRP.BackColor = System.Drawing.SystemColors.Highlight;
             this.BtnDoctoresRRP.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDoctoresRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnDoctoresRRP.Location = new System.Drawing.Point(158, 314);
+            this.BtnDoctoresRRP.Location = new System.Drawing.Point(158, 204);
             this.BtnDoctoresRRP.Name = "BtnDoctoresRRP";
             this.BtnDoctoresRRP.Size = new System.Drawing.Size(491, 71);
             this.BtnDoctoresRRP.TabIndex = 2;
@@ -67,7 +67,7 @@
             this.BtnEspecialidadesRRP.BackColor = System.Drawing.Color.Tan;
             this.BtnEspecialidadesRRP.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEspecialidadesRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnEspecialidadesRRP.Location = new System.Drawing.Point(158, 405);
+            this.BtnEspecialidadesRRP.Location = new System.Drawing.Point(158, 295);
             this.BtnEspecialidadesRRP.Name = "BtnEspecialidadesRRP";
             this.BtnEspecialidadesRRP.Size = new System.Drawing.Size(491, 71);
             this.BtnEspecialidadesRRP.TabIndex = 3;
@@ -90,7 +90,7 @@
             this.BtnExportarTxtRRP.BackColor = System.Drawing.Color.Crimson;
             this.BtnExportarTxtRRP.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnExportarTxtRRP.ForeColor = System.Drawing.Color.Snow;
-            this.BtnExportarTxtRRP.Location = new System.Drawing.Point(158, 492);
+            this.BtnExportarTxtRRP.Location = new System.Drawing.Point(158, 381);
             this.BtnExportarTxtRRP.Name = "BtnExportarTxtRRP";
             this.BtnExportarTxtRRP.Size = new System.Drawing.Size(491, 71);
             this.BtnExportarTxtRRP.TabIndex = 5;
@@ -103,7 +103,7 @@
             this.BtnAsignarDoctor.BackColor = System.Drawing.Color.YellowGreen;
             this.BtnAsignarDoctor.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAsignarDoctor.ForeColor = System.Drawing.Color.Snow;
-            this.BtnAsignarDoctor.Location = new System.Drawing.Point(158, 207);
+            this.BtnAsignarDoctor.Location = new System.Drawing.Point(158, 467);
             this.BtnAsignarDoctor.Name = "BtnAsignarDoctor";
             this.BtnAsignarDoctor.Size = new System.Drawing.Size(491, 71);
             this.BtnAsignarDoctor.TabIndex = 6;

@@ -5,15 +5,19 @@ using System.Windows.Forms;
 
 namespace DSDPRN3RRP2302B1
 {
+    //Clase que permite realizar las diferentes consultas a las tabla de pacientesmedicos
     internal class PacienteMedicoConsultasRRP
     {
+        //Atributos de la clase
         private ConexionMysql ConexionMysqlRRP;
         private List<PacienteMedico> ListPacienteMedicosRRP;
+        //Instancia de las clases para poder realizar la conexión para la base de datos
         public PacienteMedicoConsultasRRP()
         {
             ConexionMysqlRRP = new ConexionMysql();
             ListPacienteMedicosRRP = new List<PacienteMedico>();
         }
+        //Método que permite obtener la lista de pacientes-medico
         public List<PacienteMedico> GetMedicoPacientes(string filtro)
         {
             string QueryRRP = SentenciaSQLAndStrings.SQL_OBTENER_PACIENTE_MEDICO_ESPECIALIDAD;
@@ -45,6 +49,7 @@ namespace DSDPRN3RRP2302B1
             }
             return ListPacienteMedicosRRP;
         }
+        //Método que permite agregar la vinculación entre paciente y medico
         internal bool AsignarPacienteMedico(int v1, int v2)
         {
             bool BanderaRRP = false;
@@ -60,6 +65,27 @@ namespace DSDPRN3RRP2302B1
             catch (MySqlException ex)
             {
                 MessageBox.Show($"Error al asignar médico: {ex.Message}");
+            }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return BanderaRRP;
+        }
+        //Método que permite eliminar la vinculación entre paciente y medico
+        internal bool EliminarPacienteMedico(int v)
+        {
+            bool BanderaRRP = false;
+            try
+            {
+                string QueryRRP = "DELETE FROM tbpacientesmedicosrrp WHERE idPacientesMedico=@id;";
+                MySqlCommand CommandRRP = new MySqlCommand(QueryRRP, ConexionMysqlRRP.GetConexionMySQL());
+                CommandRRP.Parameters.Add(new MySqlParameter("@id", v));
+                BanderaRRP = CommandRRP.ExecuteNonQuery() > 0;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error al eliminar médico: {ex.Message}");
             }
             finally
             {
