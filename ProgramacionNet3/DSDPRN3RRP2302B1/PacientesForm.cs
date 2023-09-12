@@ -20,6 +20,7 @@ namespace DSDPRN3RRP2302B1
         private List<Paciente> ListPacientesRRP;
         private PacienteConsultas PacienteConsultasRRP;
         private Paciente PacienteRRP;
+
         //Constructor del form de pacientes.
         public PacientesForm()
         {
@@ -29,6 +30,7 @@ namespace DSDPRN3RRP2302B1
             PacienteRRP = new Paciente();
             CargarDatosPacientes();
         }
+
         //Método que permite cargar los pacientes en un DataGridView.
         private void CargarDatosPacientes(string filtro = "")
         {
@@ -219,7 +221,7 @@ namespace DSDPRN3RRP2302B1
                 TxtEmailCRRP.Focus();
                 return false;
             }
-            if (!(TxtEmailCRRP.Text.Length >= 6 && TxtDireccionCRRP.Text.Length <= 50))
+            if (!(TxtEmailCRRP.Text.Length >= 6 && TxtEmailCRRP.Text.Length <= 50))
             {
                 TxtEmailCRRP.BackColor = Color.Gold;
                 MessageBox.Show(SentenciaSQLAndStrings.RangoOpciones(6, 50));

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GrbSexoRRP = new System.Windows.Forms.GroupBox();
             this.RgbMasculinoRRP = new System.Windows.Forms.RadioButton();
             this.RgbFemeninoRRP = new System.Windows.Forms.RadioButton();
@@ -381,14 +381,14 @@
             this.Sexo,
             this.Email,
             this.EstadoCivil});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvPacientesRRP.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvPacientesRRP.DefaultCellStyle = dataGridViewCellStyle5;
             this.DgvPacientesRRP.Location = new System.Drawing.Point(29, 506);
             this.DgvPacientesRRP.Name = "DgvPacientesRRP";
             this.DgvPacientesRRP.ReadOnly = true;
@@ -587,9 +587,9 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(22, 461);
+            this.label11.Location = new System.Drawing.Point(36, 455);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(225, 53);
+            this.label11.Size = new System.Drawing.Size(180, 42);
             this.label11.TabIndex = 29;
             this.label11.Text = "Pacientes";
             // 
@@ -598,7 +598,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1301, 872);
+            this.ClientSize = new System.Drawing.Size(1312, 872);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.BtnRegresarRRP);
             this.Controls.Add(this.BtnActualizar);
