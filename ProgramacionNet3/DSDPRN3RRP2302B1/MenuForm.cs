@@ -48,5 +48,11 @@ namespace DSDPRN3RRP2302B1
             AsignarDoctorForm asignarDoctorFormRRP  = new AsignarDoctorForm();
             asignarDoctorFormRRP.ShowDialog();
         }
+
+        private void BtnReportesRRP_Click(object sender, EventArgs e)
+        {
+            ReportesForm mainFormRRP = new ReportesForm();
+            mainFormRRP.ShowDialog();
+        }
     }
 }

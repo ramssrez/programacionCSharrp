@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BtnExportarTxtRRP = new System.Windows.Forms.Button();
             this.BtnAsignarDoctor = new System.Windows.Forms.Button();
+            this.BtnReportesRRP = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnPacientesRRP
@@ -111,12 +112,26 @@
             this.BtnAsignarDoctor.UseVisualStyleBackColor = false;
             this.BtnAsignarDoctor.Click += new System.EventHandler(this.BtnAsignarDoctor_Click);
             // 
+            // BtnReportesRRP
+            // 
+            this.BtnReportesRRP.BackColor = System.Drawing.Color.Aqua;
+            this.BtnReportesRRP.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnReportesRRP.ForeColor = System.Drawing.Color.Snow;
+            this.BtnReportesRRP.Location = new System.Drawing.Point(158, 560);
+            this.BtnReportesRRP.Name = "BtnReportesRRP";
+            this.BtnReportesRRP.Size = new System.Drawing.Size(491, 71);
+            this.BtnReportesRRP.TabIndex = 7;
+            this.BtnReportesRRP.Text = "Reportes";
+            this.BtnReportesRRP.UseVisualStyleBackColor = false;
+            this.BtnReportesRRP.Click += new System.EventHandler(this.BtnReportesRRP_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumOrchid;
             this.ClientSize = new System.Drawing.Size(800, 656);
+            this.Controls.Add(this.BtnReportesRRP);
             this.Controls.Add(this.BtnAsignarDoctor);
             this.Controls.Add(this.BtnExportarTxtRRP);
             this.Controls.Add(this.label1);
@@ -138,5 +153,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnExportarTxtRRP;
         private System.Windows.Forms.Button BtnAsignarDoctor;
+        private System.Windows.Forms.Button BtnReportesRRP;
     }
 }
