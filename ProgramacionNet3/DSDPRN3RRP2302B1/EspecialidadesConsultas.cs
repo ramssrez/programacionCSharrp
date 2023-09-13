@@ -17,6 +17,32 @@ namespace DSDPRN3RRP2302B1
             ConexionMysqlRRP = new ConexionMysql();
             ListEspecialidaRRP = new List<Especialidad>();
         }
+        internal List<string> GetEspecialidadesNombre()
+        {
+            string QueryRRP = "SELECT Nombre From tbespecialidadesrrp;";
+            MySqlDataReader readerRRP = null;
+            List<string> listString = new List<string>();
+            try
+            {
+                MySqlCommand commandRRP = new MySqlCommand(QueryRRP);
+                commandRRP.Connection = ConexionMysqlRRP.GetConexionMySQL();
+                readerRRP = commandRRP.ExecuteReader();
+                while (readerRRP.Read())
+                {
+                    listString.Add(readerRRP.GetString("Nombre"));
+                }
+                readerRRP.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error al obtener las especialidades: {ex.Message}");
+            }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return listString;
+        }
         //Método que permite obtener la lista de las especialidades 
         public List<Especialidad> GetEspecialidades(string filtro)
         {
@@ -99,6 +125,7 @@ namespace DSDPRN3RRP2302B1
             return BanderaRRP;
             throw new NotImplementedException();
         }
+
         //Método que permite modificar un registro de la tabla de especilidad, en base de su id
         internal bool ModificarEspecialidad(Especialidad especialidadRRP)
         {
