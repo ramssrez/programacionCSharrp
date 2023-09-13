@@ -17,6 +17,62 @@ namespace DSDPRN3RRP2302B1
             ConexionMysqlRRP = new ConexionMysql();
             ListMedicoRRP = new List<Medico>();
         }
+        //Método que obtiene los nombre de los médicos
+        public List<string> NombresMedicos()
+        {
+            List<string> listString = new List<string>();
+            string QueryRRP = "SELECT Nombre From tbmedicosrrp";
+            MySqlDataReader readerRRP = null;
+            try
+            {
+                MySqlCommand commandRRP = new MySqlCommand(QueryRRP);
+                commandRRP.Connection = ConexionMysqlRRP.GetConexionMySQL();
+                readerRRP = commandRRP.ExecuteReader();
+                while (readerRRP.Read())
+                {
+                    listString.Add(readerRRP.GetString("Nombre"));
+                }
+                readerRRP.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error al obtener medicos: {ex.Message}");
+            }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return listString;
+        }
+        //Método que obtiene los medicos en función de la especialidad
+        internal List<Medico> GetMedicoPorEspecialidad(string filtro)
+        {
+            string QueryRRP = $"SELECT CONCAT(tbmedicosrrp.Nombre ,' ',tbmedicosrrp.ApellidoPaterno,' ',tbmedicosrrp.ApellidoMaterno) AS Medico FROM tbmedicosrrp INNER JOIN tbespecialidadesrrp on tbmedicosrrp.idEspecialidades = tbespecialidadesrrp.idEspecialidades WHERE tbespecialidadesrrp.Nombre LIKE '%{filtro}%' ORDER BY tbmedicosrrp.idMedicos ASC";
+            MySqlDataReader readerRRP = null;
+            try
+            {
+                MySqlCommand commandRRP = new MySqlCommand(QueryRRP);
+                commandRRP.Connection = ConexionMysqlRRP.GetConexionMySQL();
+                readerRRP = commandRRP.ExecuteReader();
+                Medico medicoRRP = null;
+                while (readerRRP.Read())
+                {
+                    medicoRRP = new Medico();
+                    medicoRRP.NombreRRP = readerRRP.GetString("Medico");
+                    ListMedicoRRP.Add(medicoRRP);
+                }
+                readerRRP.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Error al obtener medicos: {ex.Message}");
+            }
+            finally
+            {
+                ConexionMysqlRRP.GetConexionMySQL().Close();
+            }
+            return ListMedicoRRP;
+        }
         //Método que permite obtener la lista de los médicos
         public List<Medico> GetMedicos(string filtro)
         {
@@ -132,5 +188,7 @@ namespace DSDPRN3RRP2302B1
             }
             return BanderaRRP;
         }
+
+
     }
 }
